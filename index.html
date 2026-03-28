@@ -11,48 +11,85 @@ body {
 }
 
 .services {
-  padding: 60px 5%;
-  background: #f5f5f5;
+  padding: 100px 6%;
+  background: linear-gradient(135deg, #f8f9fc, #eef1f7);
   text-align: center;
 }
 
+
 .services h2 {
-  font-size: 32px;
-  margin-bottom: 40px;
+  font-size: 40px;
+  margin-bottom: 60px;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 1px;
 }
 
+/* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 35px;
 }
 
+/* CARD */
 .card {
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  transition: 0.3s;
+  padding: 25px;
+  border-radius: 18px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
-.services {
-  padding: 80px 5%;
-}
+
+/* IMAGE */
 .card img {
   width: 100%;
-  height: 150px;
+  height: 160px;
   object-fit: contain;
-  background: #f0f0f0;
-  border-radius: 8px;
+  border-radius: 10px;
+  background: #f3f4f7;
+  transition: 0.4s;
 }
 
+/* TEXT */
 .card p {
-  margin-top: 15px;
-  font-weight: bold;
+  margin-top: 18px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
 }
 
+/* HOVER EFFECT */
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}  
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+  /* IMAGE HOVER */
+.card:hover img {
+  transform: scale(1.08);
+}
+  /* GLOW BORDER EFFECT */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(45deg, orange, red, purple);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
 .logo {
   width: 320px;
   filter: drop-shadow(0 0 10px rgba(0,0,0,0.7));
@@ -109,11 +146,158 @@ body {
   cursor: pointer;
   border-radius: 25px;
 }
+.btn:hover {
+  background: #ff8800;
+  transform: scale(1.05);
+}
+ .subtitle {
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  font-size: 16px;
+  line-height: 1.6;
+} 
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 15px 5%;
+  z-index: 1000;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  width: 140px;
+}
+
+nav a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: orange;
+}
+
+.quote-btn {
+  background: orange;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.quote-btn:hover {
+  background: #ff8800;
+}  
+.whatsapp-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.whatsapp-btn img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.whatsapp-options {
+  display: none;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.whatsapp-options a {
+  background: #25D366;
+  color: white;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.whatsapp-options a:hover {
+  background: #1ebe5d;
+}
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+nav a {
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: orange;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+.whatsapp img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+.hero {
+  margin-top: 70px;
+}
+.whatsapp img:hover {
+  transform: scale(1.1);
+}  
 </style>
 </head>
 
 <body>
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-container">
 
+    <img src="logo.png" class="nav-logo">
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#services">Services</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <a href="#" class="quote-btn">Request Quote</a>
+
+  </div>
+</header>
 <div class="hero">
   <video autoplay muted loop>
     <source src="15505103_1080_1920_60fps.mp4" type="video/mp4">
@@ -130,8 +314,12 @@ body {
 </div>
 </div>
 
-  <section class="services">
+  <section class="services" id="services">
   <h2>Our Services</h2>
+
+  <p class="subtitle">
+    We offer a wide range of high-quality printing solutions tailored for your business needs.
+  </p>
 
   <div class="grid">
 
@@ -172,5 +360,25 @@ body {
 
   </div>
 </section>
+<!-- WHATSAPP BUTTON -->
+<div class="whatsapp-container">
+
+  <div class="whatsapp-options">
+    <a href="https://wa.me/919014891062" target="_blank">SHARAN</a>
+    <a href="https://wa.me/919010929471" target="_blank">SMARAN</a>
+    <a href="https://wa.me/918074718326" target="_blank">SRINIVAS</a>
+  </div>
+
+  <div class="whatsapp-btn" onclick="toggleWhatsApp()">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+  </div>
+
+</div>
+<script>
+function toggleWhatsApp() {
+  const menu = document.querySelector(".whatsapp-options");
+  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+</script>  
 </body>
 </html>
