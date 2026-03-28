@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Eevee Printers</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: white;
+}
+
+.content h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 18px;
+  max-width: 500px;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: orange;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <video autoplay muted loop>
+    <source src="your-video.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay"></div>
+
+  <div class="content">
+    <h1>WE PRINT YOUR IDEAS</h1>
+    <p>High-quality printing for books, boxes, banners and more.</p>
+    <button class="btn">Request a Quote</button>
+  </div>
+</div>
+
+</body>
+</html>
