@@ -277,6 +277,42 @@ nav a:hover::after {
 .whatsapp img:hover {
   transform: scale(1.1);
 }  
+ .contact-section {
+  padding: 80px 6%;
+  background: #111;
+  color: white;
+  text-align: center;
+}
+
+.locations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.location-card {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.social {
+  padding: 60px;
+  text-align: center;
+}
+
+.social-icons a {
+  margin: 10px;
+  padding: 12px 20px;
+  background: orange;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+} 
+iframe {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
 </style>
 </head>
 
@@ -360,6 +396,52 @@ nav a:hover::after {
 
   </div>
 </section>
+  <!-- LOCATION + REVIEWS + SOCIAL -->
+
+<section class="contact-section">
+
+  <h2>Our Locations</h2>
+
+  <div class="locations">
+
+    <div class="location-card">
+      <h3>Lakdikapul</h3>
+      <p>FTCCI Marg, Hari Nagar, Red Hills, Lakdikapul, Hyderabad, Telangana 500004</p>
+      <p>📞 +91 9014891062</p>
+      <p>📞 +91 9010929471</p>
+      <p>📧 eeveeprinters@gmail.com</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- GOOGLE MAP -->
+<section style="padding:40px;">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.1994628313923!2d78.46101437414161!3d17.402212802379818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb97560e2fd839%3A0x5daa1f09a0427515!2sEevee%20Printers!5e0!3m2!1sen!2sin!4v1774698142414!5m2!1sen!2sin"
+    width="100%" 
+    height="350" 
+    style="border:0; border-radius:10px;"
+    allowfullscreen="" 
+    loading="lazy">
+  </iframe>
+</section>
+
+<!-- SOCIAL MEDIA -->
+<section class="social">
+
+  <h2>Stay Connected</h2>
+
+  <div class="social-icons">
+    <a href="https://www.instagram.com/eeveeprinters?igsh=c25sdHVueWpubWN0" target="_blank">Instagram</a>
+    <a href="https://www.youtube.com/@EeveePrinters" target="_blank">YouTube</a>
+    <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank">LinkedIn</a>
+    <a href="mailto:eeveeprinters@gmail.com">Email</a>
+  </div>
+
+</section>
+  
 <!-- WHATSAPP BUTTON -->
 <div class="whatsapp-container">
 
