@@ -9,6 +9,50 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
+
+.services {
+  padding: 60px 5%;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.services {
+  padding: 80px 5%;
+}
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+.card p {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}  
 .logo {
   width: 320px;
   filter: drop-shadow(0 0 10px rgba(0,0,0,0.7));
@@ -86,5 +130,47 @@ body {
 </div>
 </div>
 
+  <section class="services">
+  <h2>Our Services</h2>
+
+  <div class="grid">
+
+    <div class="card"><img src="images/business-card.png"><p>Business Cards</p></div>
+    <div class="card"><img src="images/letterhead.png"><p>Letter Heads</p></div>
+    <div class="card"><img src="images/envelope.png"><p>Envelopes</p></div>
+    <div class="card"><img src="images/idcard.png"><p>ID Cards & Lanyards</p></div>
+
+    <div class="card"><img src="images/stamp.png"><p>Self-Ink Stamps</p></div>
+    <div class="card"><img src="images/diary.png"><p>Diaries</p></div>
+    <div class="card"><img src="images/calendar.png"><p>Calendars</p></div>
+    <div class="card"><img src="images/badge.png"><p>Button Badges</p></div>
+
+    <div class="card"><img src="images/sticker.png"><p>Shape Sticker & Labels</p></div>
+    <div class="card"><img src="images/tentcard.png"><p>Tent Cards</p></div>
+    <div class="card"><img src="images/tshirt.png"><p>T-Shirt Printing</p></div>
+    <div class="card"><img src="images/valet.png"><p>Valet Parking Coupon</p></div>
+
+    <div class="card"><img src="images/mask.png"><p>Face Mask</p></div>
+    <div class="card"><img src="images/mug.png"><p>Corporate Mugs & Bottles</p></div>
+    <div class="card"><img src="images/gift.png"><p>Corporate Gift Set</p></div>
+    <div class="card"><img src="images/invitation.png"><p>Invitation Cards</p></div>
+
+    <div class="card"><img src="images/copy.png"><p>Copy, Print, Scan & Lamination</p></div>
+    <div class="card"><img src="images/frame.png"><p>Photo Frames</p></div>
+    <div class="card"><img src="images/sweetbox.png"><p>Custom Sweet Box</p></div>
+    <div class="card"><img src="images/binding.png"><p>Book Binding</p></div>
+
+    <div class="card"><img src="images/banner.png"><p>Banner & Signages</p></div>
+    <div class="card"><img src="images/offset.png"><p>Offset Printing</p></div>
+    <div class="card"><img src="images/maps.png"><p>Maps</p></div>
+    <div class="card"><img src="images/billbook.png"><p>Bill Books</p></div>
+
+    <div class="card"><img src="images/tolet.png"><p>To-Let Boards</p></div>
+    <div class="card"><img src="images/qrcode.png"><p>QR Code Stands</p></div>
+    <div class="card"><img src="images/nameboard.png"><p>Name Boards</p></div>
+    <div class="card"><img src="images/tissue.png"><p>Custom Tissue Box</p></div>
+
+  </div>
+</section>
 </body>
 </html>
