@@ -52,7 +52,8 @@ body {
 
 /* CARD */
 .card {
-  background: white;
+  background: #1a1a1a;
+  color: white;
   padding: 25px;
   border-radius: 18px;
   transition: all 0.4s ease;
@@ -76,7 +77,7 @@ body {
   margin-top: 18px;
   font-weight: 600;
   font-size: 16px;
-  color: #333;
+  color: #fff;
 }
 
 /* HOVER EFFECT */
@@ -169,7 +170,7 @@ body {
   transform: scale(1.05);
 }
  .subtitle {
-  color: #666;
+  color: #bbb;
   max-width: 600px;
   margin: 0 auto 50px;
   font-size: 16px;
@@ -322,7 +323,60 @@ nav a:hover::after {
   color: white;
   position: relative;
 }
+.social {
+  padding: 80px 6%;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  color: white;
+}
 
+/* FLEX CONTAINER */
+.social-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* LEFT */
+.social-left {
+  flex: 1;
+  text-align: left;
+}
+
+/* ICONS */
+.social-icons img {
+  width: 45px;
+  height: 45px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+  background: orange;
+}
+
+/* DIVIDER */
+.divider {
+  width: 1px;
+  height: 150px;
+  background: rgba(255,255,255,0.2);
+}
+
+/* RIGHT */
+.social-right {
+  flex: 1;
+  text-align: right;
+}
+
+.social-right p {
+  margin: 10px 0;
+  font-size: 16px;
+}
  /* Glow effect */
 .social::before {
   content: "";
@@ -520,7 +574,32 @@ nav a:hover::after {
   padding: 20px;
   font-size: 14px;
 }
+.location-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  color: #ccc;
+  max-width: 500px;
+}
 
+.location-line img {
+  width: 20px;
+  height: 20px;
+}
+.phone-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.phone-link:hover {
+  color: orange;
+}
+.location-line span {
+  font-size: 14px;
+  line-height: 1.5;
+}
 .footer a {
   color: orange;
   text-decoration: none;
@@ -630,6 +709,12 @@ iframe {
         Experience premium printing services at Eevee Printers.  
         We are located in the heart of Hyderabad, delivering quality and speed.
       </p>
+      <div class="location-line">
+  <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
+  <span>
+    FTCCI Marg, Hari Nagar, Red Hills, Lakdikapul, Hyderabad, Telangana 500004
+  </span>
+</div>
 
       <a href="https://maps.google.com/?q=Eevee Printers" target="_blank" class="map-btn">
         Get Directions
@@ -647,49 +732,36 @@ iframe {
 <!-- SOCIAL MEDIA -->
 <section class="social">
 
-  <h2>Stay Connected</h2>
+  <div class="social-container">
 
-  <div class="social-icons">
+    <!-- LEFT SIDE -->
+    <div class="social-left">
+      <h2>Stay Connected</h2>
 
-  <a href="https://www.instagram.com/eeveeprinters" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
-  </a>
+      <div class="social-icons">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+      </div>
+    </div>
 
-  <a href="https://www.youtube.com/@EeveePrinters" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
-  </a>
+    <!-- CENTER LINE -->
+    <div class="divider"></div>
 
-  <a href="https://linkedin.com" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png">
-  </a>
+    <!-- RIGHT SIDE -->
+    <div class="social-right">
+      <h2>Contact</h2>
 
-  <a href="mailto:eeveeprinters@gmail.com">
-    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
-  </a>
-
-</div>
-
-</section>
-<section class="details-section">
-
-  <h2>Contact & Details</h2>
-
-  <div class="details-box">
-
-    <h3>📍 Lakdikapul</h3>
-
-    <p>
-      FTCCI Marg, Hari Nagar, Red Hills, Lakdikapul, Hyderabad, Telangana 500004
-    </p>
-
-    <p>📞 +91 9014891062</p>
-    <p>📞 +91 9010929471</p>
-
-    <p>📧 eeveeprinters@gmail.com</p>
+      <p>📞 <a href="tel:+919014891062" class="phone-link">+91 9014891062</a></p>
+      <p>📞 <a href="tel:+919010929471" class="phone-link">+91 9010929471</a></p>
+     
+    </div>
 
   </div>
 
 </section>
+
 
   
  <footer class="footer">
