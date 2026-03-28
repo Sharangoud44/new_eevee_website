@@ -301,7 +301,81 @@ nav a:hover::after {
   padding: 60px;
   text-align: center;
 }
+.location-premium {
+  padding: 100px 8%;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  color: white;
+}
 
+.location-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+/* TEXT */
+.location-text {
+  flex: 1;
+  animation: slideLeft 1s ease;
+}
+
+.location-text h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.location-text p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* BUTTON */
+.map-btn {
+  background: orange;
+  padding: 12px 25px;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.map-btn:hover {
+  background: #ff8800;
+  transform: scale(1.05);
+}
+
+/* IMAGE */
+.location-image {
+  flex: 1;
+  text-align: center;
+  animation: slideRight 1s ease;
+}
+
+.location-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  transition: 0.4s;
+}
+
+.location-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ANIMATIONS */
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
 .social-icons a {
   margin: 10px;
   padding: 12px 20px;
@@ -417,15 +491,28 @@ iframe {
 </section>
 
 <!-- GOOGLE MAP -->
-<section style="padding:40px;">
-  <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.1994628313923!2d78.46101437414161!3d17.402212802379818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb97560e2fd839%3A0x5daa1f09a0427515!2sEevee%20Printers!5e0!3m2!1sen!2sin!4v1774698142414!5m2!1sen!2sin"
-    width="100%" 
-    height="350" 
-    style="border:0; border-radius:10px;"
-    allowfullscreen="" 
-    loading="lazy">
-  </iframe>
+<section class="location-premium">
+
+  <div class="location-content">
+
+    <div class="location-text">
+      <h2>Visit Our Store</h2>
+      <p>
+        Experience premium printing services at Eevee Printers.  
+        We are located in the heart of Hyderabad, delivering quality and speed.
+      </p>
+
+      <a href="https://maps.google.com/?q=Eevee Printers" target="_blank" class="map-btn">
+        Get Directions
+      </a>
+    </div>
+
+    <div class="location-image">
+      <img src="map.png" alt="Eevee Location">
+    </div>
+
+  </div>
+
 </section>
 
 <!-- SOCIAL MEDIA -->
