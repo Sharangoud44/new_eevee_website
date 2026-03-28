@@ -12,10 +12,33 @@ body {
 
 .services {
   padding: 100px 6%;
-  background: linear-gradient(135deg, #f8f9fc, #eef1f7);
   text-align: center;
+  background: linear-gradient(135deg, #eef2f7, #dfe6ee);
+}
+.services {
+  position: relative;
+}
+.services {
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  color: white;
 }
 
+.card {
+  background: #1a1a1a;
+  color: white;
+}
+/* Soft glow effect */
+.services::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: orange;
+  filter: blur(150px);
+  top: -100px;
+  left: -100px;
+  opacity: 0.2;
+}
 
 .services h2 {
   font-size: 40px;
@@ -298,9 +321,26 @@ nav a:hover::after {
 }
 
 .social {
-  padding: 60px;
+  padding: 80px 20px;
   text-align: center;
+  background: linear-gradient(135deg, #111, #1c1c1c);
+  color: white;
+  position: relative;
 }
+
+ /* Glow effect */
+.social::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: orange;
+  filter: blur(120px);
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.2;
+} 
 .location-premium {
   padding: 100px 8%;
   background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
@@ -388,19 +428,98 @@ nav a:hover::after {
   padding: 12px;
   border-radius: 50%;
 }
+ .location-advanced {
+  padding: 100px 6%;
+  background: linear-gradient(135deg, #0a0a0a, #121212);
+  color: white;
+  text-align: center;
+}
+
+.location-advanced h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+/* CARD */
+.location-card-advanced {
+  max-width: 700px;
+  margin: auto;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  transition: 0.4s;
+}
+
+/* HOVER EFFECT */
+.location-card-advanced:hover {
+  transform: translateY(-10px);
+}
+
+/* TEXT */
+.location-card-advanced h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.address {
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+/* BUTTON */
+.visit-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: orange;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.visit-btn:hover {
+  background: #ff8800;
+  transform: scale(1.05);
+} 
 .social-icons img {
-  width: 40px;
-  height: 40px;
-  background: white;
-  padding: 10px;
+  width: 45px;
+  height: 45px;
+  padding: 12px;
   border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
   transition: 0.3s;
 }
 
 .social-icons img:hover {
   transform: scale(1.2);
+  background: orange;
+}
+.footer {
+  background: #000;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
 }
 
+.footer a {
+  color: orange;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
 iframe {
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
@@ -489,19 +608,27 @@ iframe {
 </section>
   <!-- LOCATION + REVIEWS + SOCIAL -->
 
-<section class="contact-section">
+<section class="location-advanced">
 
-  <h2>Our Locations</h2>
+  <h2>Our Location</h2>
 
-  <div class="locations">
+  <div class="location-card-advanced">
 
-    <div class="location-card">
-      <h3>Lakdikapul</h3>
-      <p>FTCCI Marg, Hari Nagar, Red Hills, Lakdikapul, Hyderabad, Telangana 500004</p>
+    <h3>📍 Lakdikapul</h3>
+
+    <p class="address">
+      FTCCI Marg, Hari Nagar, Red Hills, Lakdikapul, Hyderabad, Telangana 500004
+    </p>
+
+    <div class="contact-info">
       <p>📞 +91 9014891062</p>
       <p>📞 +91 9010929471</p>
       <p>📧 eeveeprinters@gmail.com</p>
     </div>
+
+    <a href="https://maps.google.com/?q=Eevee Printers" target="_blank" class="visit-btn">
+      View on Map
+    </a>
 
   </div>
 
@@ -558,7 +685,15 @@ iframe {
 </div>
 
 </section>
-  
+ <footer class="footer">
+
+  <p>
+    © 2026 Eevee Printers. All Rights Reserved. |
+    <a href="#">Privacy Policy</a> |
+    <a href="#">Terms of Use</a>
+  </p>
+
+</footer> 
 <!-- WHATSAPP BUTTON -->
 <div class="whatsapp-container">
 
