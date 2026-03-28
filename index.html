@@ -9,7 +9,14 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
+.location-line {
+  margin: 20px 0 10px;
+}
 
+.map-btn {
+  display: inline-block;
+  margin-top: 20px;
+}
 .services {
   padding: 100px 6%;
   text-align: center;
@@ -18,10 +25,7 @@ body {
   position: relative;
 }
 
-.card {
-  background: #1a1a1a;
-  color: white;
-}
+
 /* Soft glow effect */
 .services::before {
   content: "";
@@ -317,13 +321,6 @@ nav a:hover::after {
 }
 
 .social {
-  padding: 80px 20px;
-  text-align: center;
-  background: linear-gradient(135deg, #111, #1c1c1c);
-  color: white;
-  position: relative;
-}
-.social {
   padding: 80px 6%;
   background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
   color: white;
@@ -333,15 +330,18 @@ nav a:hover::after {
 .social-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  justify-content: center;   /* 🔥 THIS FIXES IT */
+  gap: 60px;                 /* spacing between sections */
   flex-wrap: wrap;
 }
-
+.social-left,
+.social-right {
+  width: 300px;     /* equal width = perfect alignment */
+}
 /* LEFT */
 .social-left {
   flex: 1;
-  text-align: left;
+  text-align: center;
 }
 
 /* ICONS */
@@ -363,14 +363,23 @@ nav a:hover::after {
 /* DIVIDER */
 .divider {
   width: 1px;
-  height: 150px;
+  height: 120px;
   background: rgba(255,255,255,0.2);
 }
-
+html {
+  scroll-behavior: smooth;
+}
+ .btn {
+  box-shadow: 0 0 15px orange;
+}
+ .nav-logo:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+} 
 /* RIGHT */
 .social-right {
   flex: 1;
-  text-align: right;
+  text-align: center;
 }
 
 .social-right p {
@@ -629,7 +638,6 @@ iframe {
       <a href="#">Contact</a>
     </nav>
 
-    <a href="#" class="quote-btn">Request Quote</a>
 
   </div>
 </header>
@@ -739,12 +747,23 @@ iframe {
       <h2>Stay Connected</h2>
 
       <div class="social-icons">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
-        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
-        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+        <a href="https://instagram.com/eeveeprinters" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+        </a>
+
+        <a href="https://youtube.com/@eeveeprinters" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+        </a>
+
+        <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png">
+        </a>
+
+        <a href="mailto:eeveeprinters@gmail.com">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+        </a>
       </div>
-    </div>
+    </div> <!-- ✅ MISSING CLOSING FIXED -->
 
     <!-- CENTER LINE -->
     <div class="divider"></div>
@@ -755,7 +774,6 @@ iframe {
 
       <p>📞 <a href="tel:+919014891062" class="phone-link">+91 9014891062</a></p>
       <p>📞 <a href="tel:+919010929471" class="phone-link">+91 9010929471</a></p>
-     
     </div>
 
   </div>
