@@ -475,7 +475,73 @@ html {
   from { opacity: 0; transform: translateX(50px); }
   to { opacity: 1; transform: translateX(0); }
 }
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+}
 
+/* CONTENT */
+.modal-content {
+  background: #1a1a1a;
+  margin: 5% auto;
+  padding: 40px;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  animation: popup 0.4s ease;
+}
+
+/* CLOSE */
+.close {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* GRID */
+.types-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+/* TYPE BOX */
+.type-box {
+  background: #111;
+  padding: 15px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.type-box img {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+}
+
+.type-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ANIMATION */
+@keyframes popup {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
   .social-icons {
   display: flex;
   justify-content: center;
@@ -601,13 +667,25 @@ html {
   text-decoration: none;
   font-weight: bold;
 }
-
+.modal-content {
+  position: relative;   /* ADD THIS */
+}
 .phone-link:hover {
   color: orange;
 }
 .location-line span {
   font-size: 14px;
   line-height: 1.5;
+}
+ .card {
+  cursor: pointer;
+}
+  .type-box img {
+  transition: 0.3s;
+}
+
+.type-box:hover img {
+  transform: scale(1.1);
 }
 .footer a {
   color: orange;
@@ -666,12 +744,12 @@ iframe {
 
   <div class="grid">
 
-    <div class="card"><img src="Business_card_image_Main_Page.png"><p>Business Cards</p></div>
+    <div class="card" onclick="openModal()"><img src="Business_card_image_Main_Page.png"><p>Business Cards</p></div>
     <div class="card"><img src="letter_head_main_page.png"><p>Letter Heads</p></div>
     <div class="card"><img src="envelops_main_page.png"><p>Envelopes</p></div>
     <div class="card"><img src="idcards_main_page.png"><p>ID Cards & Lanyards</p></div>
 
-    <div class="card"><img src="paper_bag_main_page.png"><p>Papper Bags</p></div>
+    <div class="card"><img src="paper_bag_main_page.png"><p>Paper Bags</p></div>
     <div class="card"><img src="diaries_main_page.png"><p>Diaries</p></div>
     <div class="card"><img src="calendar_main_page.png"><p>Calendars</p></div>
     <div class="card"><img src="button_badges_main_page.png"><p>Button Badges</p></div>
@@ -681,12 +759,12 @@ iframe {
     <div class="card"><img src="Tshirt_main_page.png"><p>T-Shirt Printing</p></div>
     <div class="card"><img src="images/valet.png"><p>Valet Parking Coupon</p></div>
 
-    <div class="card"><img src="images/mask.png"><p>Face Mask</p></div>
+    <div class="card"><img src="images/mask.png"><p>Covers</p></div>
     <div class="card"><img src="images/mug.png"><p>Corporate Mugs & Bottles</p></div>
     <div class="card"><img src="images/gift.png"><p>Corporate Gift Set</p></div>
     <div class="card"><img src="images/invitation.png"><p>Invitation Cards</p></div>
 
-    <div class="card"><img src="images/copy.png"><p>Copy, Print, Scan & Lamination</p></div>
+    <div class="card"><img src="images/copy.png"><p>Boxes</p></div>
     <div class="card"><img src="images/frame.png"><p>Photo Frames</p></div>
     <div class="card"><img src="images/sweetbox.png"><p>Custom Sweet Box</p></div>
     <div class="card"><img src="images/binding.png"><p>Book Binding</p></div>
@@ -810,6 +888,65 @@ function toggleWhatsApp() {
   const menu = document.querySelector(".whatsapp-options");
   menu.style.display = menu.style.display === "flex" ? "none" : "flex";
 }
-</script>  
+</script> 
+ <!-- BUSINESS CARD POPUP -->
+<div id="cardModal" class="modal">
+
+  <div class="modal-content">
+
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <h2>Business Cards</h2>
+    <p class="subtitle">Premium finishes for your brand identity</p>
+
+    <!-- TYPES -->
+    <div class="types-grid">
+
+      <div class="type-box">
+        <img src="spotuv.png">
+        <p>Spot UV</p>
+      </div>
+
+      <div class="type-box">
+        <img src="goldfoil.png">
+        <p>Gold Foiling</p>
+      </div>
+
+      <div class="type-box">
+        <img src="matte.png">
+        <p>Matte Finish</p>
+      </div>
+
+      <div class="type-box">
+        <img src="glossy.png">
+        <p>Glossy Finish</p>
+      </div>
+
+    </div>
+
+    <!-- BUTTON -->
+    <a href="https://wa.me/919014891062" target="_blank" class="btn">
+      Request a Quote
+    </a>
+
+  </div>
+</div> 
+  <script>
+function openModal() {
+  document.getElementById("cardModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("cardModal").style.display = "none";
+}
+</script>
+  <script>
+window.onclick = function(event) {
+  const modal = document.getElementById("cardModal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>
