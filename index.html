@@ -187,7 +187,7 @@ body {
 .nav-links {
   display: flex;
   gap: 35px;
-  margin-right: 10px;   /* 🔥 slight shift left */
+  margin-right: 50px;   /* 🔥 slight shift left */
 }
 .nav-links a {
   color: white;
@@ -200,10 +200,19 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+.nav-container {
+  width: 100%;
+  max-width: 1200px;   /* 🔥 keeps content centered */
+  margin: auto;
 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .nav-logo {
-  height: 90px;   /* 🔥 BIGGER */
-  width: auto;
+  height: 90px;
+  transform: scale(1.5);
+  transform-origin: left center;
 }
 
 nav a {
@@ -312,7 +321,7 @@ nav a:hover::after {
   justify-content: space-between;
 
   height: 90px;      /* 🔥 ADD THIS */
-  padding: 0 5%;
+  padding: 0 20%;
 
   background: rgba(0,0,0,0.7);
   backdrop-filter: blur(10px);
@@ -734,15 +743,18 @@ iframe {
 <!-- NAVBAR -->
 <header class="navbar">
 
-  <!-- LEFT LOGO -->
- <div class="nav-left">
-    <img src="eevee_logo.png" class="nav-logo">
-  </div>
-  <!-- RIGHT MENU -->
-  <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Services</a>
-    <a href="#">About</a>
+  <div class="nav-container">
+
+    <div class="nav-left">
+      <img src="eevee_logo.png" class="nav-logo">
+    </div>
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">About</a>
+    </div>
+
   </div>
 
 </header>
