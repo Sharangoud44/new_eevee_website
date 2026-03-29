@@ -182,17 +182,12 @@ body {
 } 
 
 /* NAVBAR */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 5%;
-}
+
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 35px;
+  margin-right: 10px;   /* 🔥 slight shift left */
 }
-
 .nav-links a {
   color: white;
   text-decoration: none;
@@ -206,7 +201,7 @@ body {
 }
 
 .nav-logo {
-  height: 50px;   /* control by height */
+  height: 80px;   /* 🔥 BIGGER */
   width: auto;
 }
 
@@ -304,13 +299,20 @@ nav a:hover::after {
 .hero {
   height: 100vh;
 }
-  .navbar {
+ .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(0,0,0,0.6);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 15px 5%;   /* 🔥 more space left-right */
+
+  background: rgba(0,0,0,0.7);
   backdrop-filter: blur(10px);
 }
   .hero video {
@@ -719,6 +721,10 @@ html {
 iframe {
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
+ .nav-left {
+  display: flex;
+  align-items: center;
+} 
 </style>
 </head>
 
@@ -727,8 +733,9 @@ iframe {
 <header class="navbar">
 
   <!-- LEFT LOGO -->
-  <img src="eevee_logo.png" class="nav-logo">
-
+ <div class="nav-left">
+    <img src="eevee_logo.png" class="nav-logo">
+  </div>
   <!-- RIGHT MENU -->
   <div class="nav-links">
     <a href="#">Home</a>
