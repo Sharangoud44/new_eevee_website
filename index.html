@@ -210,9 +210,9 @@ body {
   justify-content: space-between;
 }
 .nav-logo {
-  height: 90px;
-  transform: scale(1.5);
-  transform-origin: left center;
+  height: 150px;      /* increase size */
+  width: auto;        /* keep ratio */
+  object-fit: contain;
 }
 
 nav a {
@@ -320,7 +320,7 @@ nav a:hover::after {
   align-items: center;
   justify-content: space-between;
 
-  height: 90px;      /* 🔥 ADD THIS */
+  height: 130px;      /* 🔥 ADD THIS */
   padding: 0 20%;
 
   background: rgba(0,0,0,0.7);
