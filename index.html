@@ -936,12 +936,13 @@ function toggleWhatsApp() {
   menu.style.display = menu.style.display === "flex" ? "none" : "flex";
 }
 </script> 
+  
  <!-- BUSINESS CARD POPUP -->
 <div id="cardModal" class="modal">
 
   <div class="modal-content">
 
-    <span class="close" onclick="closeModal()">&times;</span>
+    <span class="close" onclick="closeModal('cardModal')">&times;</span>
 
     <h2>Business Cards</h2>
     <p class="subtitle">Premium finishes for your brand identity</p>
@@ -990,6 +991,13 @@ function toggleWhatsApp() {
       </div>
       
     </div>
+     <!-- BUTTON -->
+    <a href="https://wa.me/919014891062" target="_blank" class="btn">
+      Request a Quote
+    </a>
+
+  </div>
+</div> 
 <!-- LETTER HEAD POPUP -->
 <div id="letterModal" class="modal">
 
@@ -1047,18 +1055,9 @@ function toggleWhatsApp() {
 
   </div>
 </div> 
+  
   <script>
-function openModal() {
-  document.getElementById("cardModal").style.display = "block";
-}
 
-function closeModal() {
-  document.getElementById("cardModal").style.display = "none";
-}
-</script>
-  <script>
-window.onclick = function(event) {
-  const modal = document.getElementById("cardModal");
   if (event.target == modal) {
     modal.style.display = "none";
   }
