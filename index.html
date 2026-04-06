@@ -175,10 +175,10 @@ body {
   transform: scale(1.05);
 }
  .subtitle {
-  color: #bbb;
+  color: #aaa;
+  font-size: 15px;
   max-width: 600px;
   margin: 0 auto 50px;
-  font-size: 16px;
   line-height: 1.6;
 } 
 
@@ -545,7 +545,14 @@ html {
   background: #111;
   padding: 15px;
   border-radius: 12px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.type-box:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 }
 
 .type-box img {
@@ -690,17 +697,24 @@ html {
   font-weight: bold;
 }
 .modal-content {
-  position: relative;   /* for close button */
-  background: #1a1a1a;
+  position: relative;
   margin: 5% auto;
   padding: 40px;
   width: 80%;
   max-width: 800px;
 
-  max-height: 80vh;     /* 🔥 IMPORTANT */
-  overflow-y: auto;     /* 🔥 SCROLL ENABLE */
+  max-height: 80vh;
+  overflow-y: auto;
 
   border-radius: 20px;
+
+  /* 🔥 PREMIUM LOOK START */
+  background: rgba(26, 26, 26, 0.85);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  /* 🔥 PREMIUM LOOK END */
+
   text-align: center;
   color: white;
   animation: popup 0.4s ease;
@@ -778,8 +792,8 @@ iframe {
 
   <div class="grid">
 
-    <div class="card" onclick="openModal()"><img src="Business_card_image_Main_Page.png"><p>Business Cards</p></div>
-    <div class="card" onclick="openModal()"><img src="letter_head_main_page.png"><p>Letter Heads</p></div>
+    <div class="card" onclick="openModal('cardModal')"><img src="Business_card_image_Main_Page.png"><p>Business Cards</p></div>
+    <div class="card" onclick="openModal('letterModal')"><img src="letter_head_main_page.png"><p>Letter Heads</p></div>
     <div class="card" onclick="openModal()"><img src="envelops_main_page.png"><p>Envelopes</p></div>
    <div class="card" onclick="openModal()"><img src="idcards_main_page.png"><p>ID Cards & Lanyards</p></div>
 
@@ -975,9 +989,57 @@ function toggleWhatsApp() {
         <p>Normal Cards</p>
       </div>
       
+    </div>
+<!-- LETTER HEAD POPUP -->
+<div id="letterModal" class="modal">
+
+  <div class="modal-content">
+
+    <span class="close" onclick="closeModal('letterModal')">&times;</span>
+
+    <h2>Letter Heads</h2>
+    <p class="subtitle">Professional letterheads for your business</p>
+
+    <div class="types-grid">
+
+      <div class="type-box">
+        <img src="letterhead_standard.png">
+        <p>Standard Letterhead</p>
+      </div>
+
+      <div class="type-box">
+        <img src="letterhead_premium.png">
+        <p>Premium Paper</p>
+      </div>
+
+      <div class="type-box">
+        <img src="letterhead_texture.png">
+        <p>Textured Finish</p>
+      </div>
+
+      <div class="type-box">
+        <img src="letterhead_minimal.png">
+        <p>Corporate Design</p>
+      </div>
+
+      <div class="type-box">
+        <img src="letterhead_color.png">
+        <p>Color Print</p>
+      </div>
+
+      <div class="type-box">
+        <img src="letterhead_bw.png">
+        <p>B/W Economy</p>
+      </div>
 
     </div>
 
+    <a href="https://wa.me/919014891062" target="_blank" class="btn">
+      Request a Quote
+    </a>
+
+  </div>
+</div>
     <!-- BUTTON -->
     <a href="https://wa.me/919014891062" target="_blank" class="btn">
       Request a Quote
@@ -1000,6 +1062,24 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+}
+</script>
+  <script>
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+window.onclick = function(event) {
+  const modals = document.querySelectorAll(".modal");
+  modals.forEach(modal => {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  });
 }
 </script>
 </body>
