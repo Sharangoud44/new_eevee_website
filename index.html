@@ -812,7 +812,7 @@ iframe {
     <div class="card" onclick="openModal()"><img src="corportae_gift_set.png"><p>Corporate Gift Set</p></div>
     <div class="card" onclick="openModal()"><img src="invitation_cards_main.png"><p>Invitation Cards</p></div>
 
-    <div class="card" onclick="openModal()"><img src="boxes_main.png"><p>Boxes</p></div>
+    <div class="card" onclick="openModal('boxesModal')"><img src="boxes_main.png"><p>Boxes</p></div>
     <div class="card" onclick="openModal()"><img src="coasters_main.png"><p>Table Coasters</p></div>
     <div class="card" onclick="openModal()"><img src="SWEETBOX_MAIN.PNG"><p>Custom Sweet Box</p></div>
     <div class="card" onclick="openModal()"><img src="BOOKS_MAIN.PNG"><p>Books Printing</p></div>
@@ -1036,7 +1036,43 @@ function toggleWhatsApp() {
 
   </div>
 </div> 
-  
+
+  <!-- BOXES POPUP -->
+<div id="boxesModal" class="modal">
+
+  <div class="modal-content">
+
+    <span class="close" onclick="closeModal('boxesModal')">&times;</span>
+
+    <h2>Box Types</h2>
+    <p class="subtitle">Choose the perfect box style for your product</p>
+
+    <div class="types-grid">
+
+      <div class="type-box">
+        <img src="2flap_box.png">
+        <p>Duplex Boxes</p>
+      </div>
+
+      <div class="type-box">
+        <img src="4flap_box.png">
+        <p>Rigid Boxes</p>
+      </div>
+
+      <div class="type-box">
+        <img src="top_bottom_box.png">
+        <p>Corrugated  Boxes</p>
+      </div>
+
+
+    </div>
+
+    <a href="https://wa.me/919014891062" target="_blank" class="btn">
+      Request a Quote
+    </a>
+
+  </div>
+</div>
   <script>
 
   if (event.target == modal) {
