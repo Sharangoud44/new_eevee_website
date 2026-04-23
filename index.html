@@ -43,41 +43,7 @@ background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
 }
 
 /* TEXT */
-.overlay {
-position: absolute;
-bottom: 25px;
-left: 25px;
-z-index: 2;
-}
 
-.overlay h3 {
-font-size: 20px;
-margin-bottom: 5px;
-}
-
-.overlay p {
-font-size: 14px;
-color: #ccc;
-}
-
-/* ICON CIRCLE */
-.overlay::before {
-content: "🍔";
-position: absolute;
-top: -50px;
-left: 0;
-
-background: orange;
-width: 45px;
-height: 45px;
-
-display: flex;
-align-items: center;
-justify-content: center;
-
-border-radius: 50%;
-font-size: 18px;
-}
 
 /* HOVER */
 .industry-card:hover {
@@ -125,7 +91,7 @@ transform: scale(1.1);
   background: rgba(255,255,255,0.1);
 }
 section {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 .map-btn {
   display: inline-block;
@@ -257,7 +223,7 @@ section {
   object-fit: cover;
 }
 
-.overlay {
+.hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -327,7 +293,7 @@ section {
   justify-content: space-between;
 }
 .nav-logo {
-  height: 300px;
+  height: 60px;
   width: auto;
   object-fit: contain;
 }
@@ -884,6 +850,23 @@ html {
 iframe {
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
+  .industry-overlay {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  z-index: 2;
+}
+
+.industry-overlay h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.industry-overlay p {
+  font-size: 14px;
+  color: #ccc;
+}
  .nav-left {
   display: flex;
   align-items: center;
@@ -913,9 +896,10 @@ iframe {
 </header>
 <div class="hero">
   <video autoplay muted loop>
-    <source src="15505103_1080_1920_60fps.mp4" type="video/mp4">
+    <source src="15505103_1080_1920_60fps.mp4">
   </video>
 
+  <div class="hero-overlay"></div>   <!-- ✅ ADD THIS -->
 </div>
 
 
@@ -973,7 +957,7 @@ iframe {
   <div class="industry-grid">
 
     <div class="industry-card" onclick="openModal('restaurantModal')">
-      <img src="restaurant.jpg">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
       <div class="industry-overlay">
         <h3>Restaurants & Cafes</h3>
         <p>Menus, packaging, coasters & more</p>
@@ -981,7 +965,7 @@ iframe {
     </div>
 
     <div class="industry-card" onclick="openModal('foodModal')">
-      <img src="fried_chicken.jpg">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
       <div class="industry-overlay">
         <h3>Food Brands</h3>
         <p>Boxes, wraps, stickers</p>
@@ -989,7 +973,7 @@ iframe {
     </div>
 
     <div class="industry-card" onclick="openModal('hospitalModal')">
-      <img src="hospital.jpg">
+      <<img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
       <div class="industry-overlay">
         <h3>Hospitals</h3>
         <p>Files, reports, prescriptions</p>
@@ -997,7 +981,7 @@ iframe {
     </div>
 
     <div class="industry-card" onclick="openModal('corporateModal')">
-      <img src="corporate.jpg">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
       <div class="industry-overlay">
         <h3>Corporate</h3>
         <p>Branding & office materials</p>
@@ -1005,7 +989,7 @@ iframe {
     </div>
 
     <div class="industry-card" onclick="openModal('eventModal')">
-      <img src="wedding.jpg">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
       <div class="industry-overlay">
         <h3>Events & Weddings</h3>
         <p>Invitations & gift boxes</p>
@@ -1049,8 +1033,6 @@ iframe {
 <!-- THEN YOUR LOCATION SECTION STARTS -->
 <section class="location-premium">
 
-<!-- GOOGLE MAP -->
-<section class="location-premium">
 
   <div class="location-content">
 
