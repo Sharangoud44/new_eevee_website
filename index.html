@@ -18,7 +18,7 @@ height: 260px;
 border-radius: 16px;
 overflow: hidden;
 cursor: pointer;
-
+border: 1px solid rgba(255,255,255,0.08);
 min-width: 260px;
 flex-shrink: 0;
 
@@ -60,39 +60,43 @@ transform: scale(1.1);
 }
 .features {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 👈 FIXED 5 IN ONE ROW */
-  padding: 60px 6%;
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 0;
+  padding: 25px 6%;
+
   background: #111;
-  gap: 0;   /* removes space between boxes */
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  margin-top: -10px;   /* 👈 THIS CONNECTS BOTH SECTIONS */
+
+  border-radius: 20px; /* 👈 smooth container look */
 }
 
 .feature-box {
-  background: rgba(255,255,255,0.05);
-  padding: 25px;
-  border-radius: 15px;
+  padding: 20px;
 
   display: flex;
-  flex-direction: column;   /* 👈 vertical alignment */
-  align-items: flex-start;
-
-  gap: 10px;
-  transition: 0.3s;
-  
-  border-right: 1px solid rgba(255,255,255,0.08);
-  text-align: center;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+
+  border-right: 1px solid rgba(255,255,255,0.08);
+
+  background: transparent;   /* ❌ REMOVE box look */
 }
+
 .feature-box:last-child {
   border-right: none;
 }
 .feature-box::before {
   content: "✔";
+
   background: orange;
   color: black;
-  width: 35px;
-  height: 35px;
+
+  width: 40px;
+  height: 40px;
+
   border-radius: 50%;
 
   display: flex;
@@ -100,7 +104,9 @@ transform: scale(1.1);
   justify-content: center;
 
   font-size: 14px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+
+  box-shadow: 0 0 15px orange;  /* 🔥 glow like image */
 }
 
 .feature-box:hover {
@@ -810,7 +816,7 @@ html {
 }
 
 .industries {
-  padding: 100px 0;
+  padding: 60px 6% 0;
   background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
   text-align: center;
 }
