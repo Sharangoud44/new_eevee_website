@@ -74,20 +74,10 @@ transform: scale(1.1);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 
-  gap: 0;
-  padding: 35px 6%;
+  margin-top: 40px;   /* proper spacing */
+  padding-top: 30px;
 
-  /* ✅ GLASS EFFECT (MATCH IMAGE) */
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(12px);
-
-  /* ✅ PERFECT CONNECTION */
-  margin-top: -60px;
-
-  border-radius: 20px;
-
-  /* ✅ PREMIUM SHADOW */
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  border-top: 1px solid rgba(255,255,255,0.08); /* subtle divider */
 }
 
 .feature-box {
@@ -1056,38 +1046,48 @@ iframe {
     </div>
 
   </div>
-  <!-- LOCATION + REVIEWS + SOCIAL -->
-</section>  <!-- industries ends -->
+  <section class="industries">
+  <h2>Industries We Serve</h2>
+  <p class="subtitle">Tailored printing solutions for every business type</p>
 
-<!-- 🔥 ADD THIS -->
-<section class="features">
-
-  <div class="feature-box">
-    <h3>Premium Quality</h3>
-    <p>We use the best materials and latest technology</p>
+  <div class="industry-grid">
+    <!-- your cards -->
   </div>
 
-  <div class="feature-box">
-    <h3>On-Time Delivery</h3>
-    <p>We value your time and always deliver on time</p>
-  </div>
+  <!-- ✅ ADD FEATURES HERE (INSIDE SAME SECTION) -->
+  <div class="features">
 
-  <div class="feature-box">
-    <h3>Custom Solutions</h3>
-    <p>Tailored designs and printing for your brand</p>
-  </div>
+    <div class="feature-box">
+      <h3>Premium Quality</h3>
+      <p>We use the best materials and latest technology</p>
+    </div>
 
-  <div class="feature-box">
-    <h3>Best Pricing</h3>
-    <p>Affordable pricing with no compromise on quality</p>
-  </div>
+    <div class="feature-box">
+      <h3>On-Time Delivery</h3>
+      <p>We value your time and always deliver on time</p>
+    </div>
 
-  <div class="feature-box">
-    <h3>24/7 Support</h3>
-    <p>We are always here to help you</p>
+    <div class="feature-box">
+      <h3>Custom Solutions</h3>
+      <p>Tailored designs and printing for your brand</p>
+    </div>
+
+    <div class="feature-box">
+      <h3>Best Pricing</h3>
+      <p>Affordable pricing with no compromise on quality</p>
+    </div>
+
+    <div class="feature-box">
+      <h3>24/7 Support</h3>
+      <p>We are always here to help you</p>
+    </div>
+
   </div>
 
 </section>
+  <!-- LOCATION + REVIEWS + SOCIAL -->
+</section>  <!-- industries ends -->
+
 
 <!-- THEN YOUR LOCATION SECTION STARTS -->
 <section class="location-premium">
