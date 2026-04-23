@@ -14,17 +14,16 @@ body {
 }
 .industry-card {
 position: relative;
-height: 300px;
-border-radius: 20px;
+height: 260px;
+border-radius: 16px;
 overflow: hidden;
 cursor: pointer;
 
-min-width: 280px;   /* 👈 forces single line */
+min-width: 260px;
 flex-shrink: 0;
 
-margin: 10px 0;  
-  
-/* GLASS EFFECT */
+/* REMOVE margin */
+
 background: rgba(255,255,255,0.05);
 backdrop-filter: blur(10px);
 
@@ -62,9 +61,11 @@ transform: scale(1.1);
 .features {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 👈 FIXED 5 IN ONE ROW */
-  gap: 25px;
   padding: 60px 6%;
   background: #111;
+  gap: 0;   /* removes space between boxes */
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .feature-box {
@@ -78,8 +79,14 @@ transform: scale(1.1);
 
   gap: 10px;
   transition: 0.3s;
+  
+  border-right: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+  align-items: center;
 }
-
+.feature-box:last-child {
+  border-right: none;
+}
 .feature-box::before {
   content: "✔";
   background: orange;
@@ -101,7 +108,7 @@ transform: scale(1.1);
   background: rgba(255,255,255,0.1);
 }
 section {
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
 .map-btn {
   display: inline-block;
@@ -788,7 +795,7 @@ html {
 }
   .industry-grid {
   display: flex;
-  gap: 25px;
+  gap: 20px;
   overflow-x: auto;
   padding: 0 6%;
   scroll-behavior: smooth;
