@@ -89,23 +89,40 @@ box-shadow: 0 30px 60px rgba(0,0,0,0.6);
 transform: scale(1.1);
 }
 .features {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-gap: 20px;
-padding: 60px 6%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 25px;
+  padding: 80px 6%;
+  background: #111;
 }
 
 .feature-box {
-background: rgba(255,255,255,0.05);
-padding: 25px;
-border-radius: 15px;
-text-align: center;
-transition: 0.3s;
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  border-radius: 15px;
+  text-align: left;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.feature-box::before {
+  content: "✔";
+  background: orange;
+  color: black;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
 }
 
 .feature-box:hover {
-background: orange;
-transform: translateY(-5px);
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.1);
 }
 section {
   margin-bottom: 80px;
@@ -115,7 +132,7 @@ section {
   margin-top: 20px;
 }
 .services {
-  padding: 100px 6%;
+  padding: 80px 6%;
   text-align: center;
   background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
   color: white;
@@ -137,8 +154,8 @@ section {
 }
 
 .services h2 {
-  font-size: 40px;
-  margin-bottom: 60px;
+  font-size: 42px;
+  margin-bottom: 20px;
   font-weight: 700;
   color: white;
   letter-spacing: 1px;
@@ -146,9 +163,16 @@ section {
 
 /* GRID */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 35px;
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar (premium look) */
+.grid::-webkit-scrollbar {
+  display: none;
 }
 
 /* CARD */
@@ -161,6 +185,8 @@ section {
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  min-width: 220px;   /* 👈 THIS FORCES SINGLE LINE */
+  flex-shrink: 0;
 }
 
 /* IMAGE */
@@ -272,6 +298,7 @@ section {
   transform: scale(1.05);
 }
  .subtitle {
+  margin-bottom: 40px;
   color: #aaa;
   font-size: 15px;
   max-width: 600px;
@@ -783,6 +810,18 @@ html {
   color: #ccc;
   max-width: 500px;
 }
+  .industry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 0 6%;
+}
+
+.industries {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+  text-align: center;
+}
 
 .location-line img {
   width: 20px;
@@ -924,7 +963,6 @@ iframe {
     <div class="card" onclick="openModal()"><img src="MENU_CARD_MAIN.PNG"><p>Menu Cards</p></div>
 
   </div>
-</section>
   </section>   <!-- ✅ SERVICES ENDS -->
 
 <!-- 🔥 ADD THIS BELOW -->
@@ -936,7 +974,7 @@ iframe {
 
     <div class="industry-card" onclick="openModal('restaurantModal')">
       <img src="restaurant.jpg">
-      <div class="overlay">
+      <div class="industry-overlay">
         <h3>Restaurants & Cafes</h3>
         <p>Menus, packaging, coasters & more</p>
       </div>
@@ -944,7 +982,7 @@ iframe {
 
     <div class="industry-card" onclick="openModal('foodModal')">
       <img src="fried_chicken.jpg">
-      <div class="overlay">
+      <div class="industry-overlay">
         <h3>Food Brands</h3>
         <p>Boxes, wraps, stickers</p>
       </div>
@@ -952,7 +990,7 @@ iframe {
 
     <div class="industry-card" onclick="openModal('hospitalModal')">
       <img src="hospital.jpg">
-      <div class="overlay">
+      <div class="industry-overlay">
         <h3>Hospitals</h3>
         <p>Files, reports, prescriptions</p>
       </div>
@@ -960,7 +998,7 @@ iframe {
 
     <div class="industry-card" onclick="openModal('corporateModal')">
       <img src="corporate.jpg">
-      <div class="overlay">
+      <div class="industry-overlay">
         <h3>Corporate</h3>
         <p>Branding & office materials</p>
       </div>
@@ -968,14 +1006,13 @@ iframe {
 
     <div class="industry-card" onclick="openModal('eventModal')">
       <img src="wedding.jpg">
-      <div class="overlay">
+      <div class="industry-overlay">
         <h3>Events & Weddings</h3>
         <p>Invitations & gift boxes</p>
       </div>
     </div>
 
   </div>
-</section>
   <!-- LOCATION + REVIEWS + SOCIAL -->
 </section>  <!-- industries ends -->
 
