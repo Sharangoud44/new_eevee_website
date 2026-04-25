@@ -37,21 +37,21 @@ transition: 0.4s ease;
   text-align: center;
 }
 .industry-icon {
-  width: 45px;
-  height: 45px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,165,0,0.5);
+  width: 42px;
+  height: 42px;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid orange;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 12px;
-  box-shadow: 0 0 20px rgba(255,165,0,0.6);
+  box-shadow: 0 0 15px rgba(255,165,0,0.8);
   overflow: hidden; /* 👈 important */
   border-radius: 50%;
 }
   .industry-icon img {
-  width: 60%;   /* adjust if needed */
-  height: 60%;
+  width: 55%;
+  height: 55%;
   object-fit: contain;
 }
 .industries .subtitle {
@@ -72,7 +72,13 @@ transition: 0.5s;
 content: "";
 position: absolute;
 inset: 0;
-background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.9) 10%,
+    rgba(0,0,0,0.5) 40%,
+    rgba(0,0,0,0.1) 70%,
+    transparent
+  );
 }
 
 /* TEXT */
@@ -80,8 +86,8 @@ background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
 
 /* HOVER */
 .industry-card:hover {
-transform: translateY(-10px) scale(1.02);
-box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(255,165,0,0.15);
 }
 
 .industry-card:hover img {
@@ -887,12 +893,16 @@ html {
   transform: scale(1.1);
 }
 .industry-overlay h3 {
-  color: #fff;
+  font-size: 18px;
   font-weight: 600;
+  color: #fff;
+  margin: 0;
 }
 
 .industry-overlay p {
-  color: #bbb;
+ font-size: 13px;
+  color: #ccc;
+  margin: 0;
 }  
 .footer a {
   color: orange;
@@ -908,11 +918,15 @@ iframe {
 }
  .industry-overlay {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 25px;
+  left: 25px;
+
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;   /* 🔥 MOST IMPORTANT */
+  align-items: flex-start;
+
+  gap: 10px;
+  z-index: 2;
 }
 .feature-icon {
   width: 42px;
@@ -927,13 +941,15 @@ iframe {
   box-shadow: 0 0 20px rgba(255,165,0,0.6);
 }
 .industry-overlay h3 {
-  font-size: 20px;
+  font-size: 19px;
   margin-bottom: 5px;
   color: white;
+   font-weight: 600;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
 }
 
 .industry-overlay p {
-  font-size: 14px;
+  font-size: 13px;
   color: #ccc;
 }
  .nav-left {
@@ -1025,73 +1041,67 @@ iframe {
 
   <div class="industry-grid">
 
-    <div class="industry-card" onclick="openModal('restaurantModal')">
-  <img src="RESTAURANT_CAT.png">
- <div class="industry-overlay">
-  <div class="industry-icon">
-  <img src="RESTAURANT_LOGO.png" alt="icon">
-</div>
-
-  <div>
-    <h3>Restaurants & Cafes</h3>
-    <p>Menus, packaging, coasters & more</p>
-  </div>
-  </div>
-</div>
-
-    <div class="industry-card" onclick="openModal('foodModal')">
-      <img src="fried_chicken_cat.png">
-      <div class="industry-overlay">
-        <div class="industry-icon">
-        <img src="burger_logo.png" alt="icon">
-        </div>
-  <div>
-        <h3>Food Brands</h3>
-        <p>Boxes, wraps, stickers</p>
+  <!-- CARD 1 -->
+  <div class="industry-card">
+    <img src="RESTAURANT_CAT.png">
+    <div class="industry-overlay">
+      <div class="industry-icon">
+        <img src="RESTAURANT_LOGO.png">
       </div>
-  </div>
-</div>
-
-    <div class="industry-card" onclick="openModal('hospitalModal')">
-      <img src="hospital_cat.png">
-      <div class="industry-overlay">
-        <div class="industry-icon">
-        <img src="hospital_logo.png" alt="icon">
-        </div>
-  <div>
-        <h3>Hospitals</h3>
-        <p>Files, reports, prescriptions</p>
-     </div>
-  </div>
-</div>
-
-    <div class="industry-card" onclick="openModal('corporateModal')">
-      <img src="office_cat.png">
-      <div class="industry-overlay">
-        <div class="industry-icon">
-       <img src="corporate.png" alt="icon">
-        </div>
-  <div>
-        <h3>Corporate</h3>
-        <p>Branding & office materials</p>
-     </div>
-  </div>
-</div>
-
-    <div class="industry-card" onclick="openModal('eventModal')">
-      <img src="wedding_cat.png">
-      <div class="industry-overlay">
-        <div class="industry-icon">
-        <img src="event_logo.png" alt="icon">
-        </div>
-  <div>
-        <h3>Events & Weddings</h3>
-        <p>Invitations & gift boxes</p>
+      <h3>Restaurants & Cafes</h3>
+      <p>Menus, packaging, coasters & more</p>
     </div>
   </div>
-</div>
 
+  <!-- CARD 2 -->
+  <div class="industry-card">
+    <img src="fried_chicken_cat.png">
+    <div class="industry-overlay">
+      <div class="industry-icon">
+        <img src="burger_logo.png">
+      </div>
+      <h3>Food Brands</h3>
+      <p>Boxes, wraps, stickers</p>
+    </div>
   </div>
+
+  <!-- CARD 3 -->
+  <div class="industry-card">
+    <img src="hospital_cat.png">
+    <div class="industry-overlay">
+      <div class="industry-icon">
+        <img src="hospital_logo.png">
+      </div>
+      <h3>Hospitals</h3>
+      <p>Files, reports, prescriptions</p>
+    </div>
+  </div>
+
+  <!-- CARD 4 -->
+  <div class="industry-card">
+    <img src="office_cat.png">
+    <div class="industry-overlay">
+      <div class="industry-icon">
+        <img src="corporate.png">
+      </div>
+      <h3>Corporate</h3>
+      <p>Branding & office materials</p>
+    </div>
+  </div>
+
+  <!-- CARD 5 -->
+  <div class="industry-card">
+    <img src="wedding_cat.png">
+    <div class="industry-overlay">
+      <div class="industry-icon">
+        <img src="event_logo.png">
+      </div>
+      <h3>Events & Weddings</h3>
+      <p>Invitations & gift boxes</p>
+    </div>
+  </div>
+
+</div>
   <!-- ✅ ADD FEATURES HERE (INSIDE SAME SECTION) -->
   <div class="features">
 
