@@ -39,15 +39,20 @@ transition: 0.4s ease;
 .industry-icon {
   width: 45px;
   height: 45px;
-  background: orange;
-  color: black;
-  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,165,0,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px; /* spacing like 2nd image */
-  font-size: 16px;
+  margin-bottom: 12px;
   box-shadow: 0 0 20px rgba(255,165,0,0.6);
+  overflow: hidden; /* 👈 important */
+  border-radius: 50%;
+}
+  .industry-icon img {
+  width: 60%;   /* adjust if needed */
+  height: 60%;
+  object-fit: contain;
 }
 .industries .subtitle {
   color: #aaa;
@@ -906,7 +911,7 @@ iframe {
   bottom: 20px;
   left: 20px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
 }
 .feature-icon {
@@ -1023,7 +1028,9 @@ iframe {
     <div class="industry-card" onclick="openModal('restaurantModal')">
   <img src="RESTAURANT_CAT.png">
  <div class="industry-overlay">
-  <div class="industry-icon">🍽</div>
+  <div class="industry-icon">
+  <img src="RESTAURANT_LOGO.png" alt="icon">
+</div>
 
   <div>
     <h3>Restaurants & Cafes</h3>
@@ -1035,8 +1042,9 @@ iframe {
     <div class="industry-card" onclick="openModal('foodModal')">
       <img src="fried_chicken_cat.png">
       <div class="industry-overlay">
-        <div class="industry-icon">🍔</div>
-        
+        <div class="industry-icon">
+        <img src="burger_logo.png" alt="icon">
+        </div>
   <div>
         <h3>Food Brands</h3>
         <p>Boxes, wraps, stickers</p>
@@ -1047,8 +1055,9 @@ iframe {
     <div class="industry-card" onclick="openModal('hospitalModal')">
       <img src="hospital_cat.png">
       <div class="industry-overlay">
-        <div class="industry-icon">🏥</div>
-        
+        <div class="industry-icon">
+        <img src="hospital_logo.png" alt="icon">
+        </div>
   <div>
         <h3>Hospitals</h3>
         <p>Files, reports, prescriptions</p>
@@ -1059,8 +1068,9 @@ iframe {
     <div class="industry-card" onclick="openModal('corporateModal')">
       <img src="office_cat.png">
       <div class="industry-overlay">
-        <div class="industry-icon">🏢</div>
-        
+        <div class="industry-icon">
+       <img src="corporate.png" alt="icon">
+        </div>
   <div>
         <h3>Corporate</h3>
         <p>Branding & office materials</p>
@@ -1071,8 +1081,9 @@ iframe {
     <div class="industry-card" onclick="openModal('eventModal')">
       <img src="wedding_cat.png">
       <div class="industry-overlay">
-        <div class="industry-icon">🎁</div>
-        
+        <div class="industry-icon">
+        <img src="event_logo.png" alt="icon">
+        </div>
   <div>
         <h3>Events & Weddings</h3>
         <p>Invitations & gift boxes</p>
