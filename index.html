@@ -135,7 +135,7 @@ transform: scale(1.1);
   background: rgba(255,255,255,0.1);
 }
 section {
-  margin-bottom: 0px;
+  margin-bottom: 40px;
 }
 .map-btn {
   display: inline-block;
@@ -822,22 +822,22 @@ html {
 }
   .industry-grid {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   overflow-x: auto;
-  padding: 0 6%;
+  padding: 0;
   scroll-behavior: smooth;
   align-items: stretch;
-  padding-left: 6%;
-  padding-right: 6%;  
 }
-
+.container {
+  padding: 0 6%;
+}
 /* Hide scrollbar (premium look) */
 .industry-grid::-webkit-scrollbar {
   display: none;
 }
 
 .industries {
-  padding: 60px 6% 0;
+  padding: 80px 6%;
   background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
   text-align: center;
   padding-bottom: 80px;
@@ -999,7 +999,7 @@ iframe {
   <p class="subtitle">
     We offer a wide range of high-quality printing solutions tailored for your business needs.
   </p>
-
+  <div class="container">
   <div class="grid">
 
     <div class="card" onclick="openModal('cardModal')"><img src="Business_card_image_Main_Page.png"><p>Business Cards</p></div>
@@ -1035,7 +1035,7 @@ iframe {
     <div class="card" onclick="openModal()"><img src="danglers_main.png"><p>Danglers</p></div>
     <div class="card" onclick="openModal()"><img src="COUPONS_MAIN.PNG"><p>Coupons</p></div>
     <div class="card" onclick="openModal()"><img src="MENU_CARD_MAIN.PNG"><p>Menu Cards</p></div>
-
+   </div>
   </div>
   </section>   <!-- ✅ SERVICES ENDS -->
 
@@ -1043,7 +1043,7 @@ iframe {
 <section class="industries">
   <h2>Industries We Serve</h2>
   <p class="subtitle">Tailored printing solutions for every business type</p>
-
+  <div class="container"> 
   <div class="industry-grid">
 
   <!-- CARD 1 -->
@@ -1151,8 +1151,7 @@ iframe {
 </div>
 
   </div>
-
-</section>
+</div>
   <!-- LOCATION + REVIEWS + SOCIAL -->
 </section>  <!-- industries ends -->
 
