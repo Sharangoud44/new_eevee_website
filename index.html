@@ -839,26 +839,36 @@ html {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 5;
+  z-index: 10;
 
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 100%;
 
-  background: rgba(0,0,0,0.7);
-  color: white;
-  border-radius: 50%;
+    background: linear-gradient(to right, rgba(0,0,0,0.7), transparent);
+   /* 🔥 glass look */
+  backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   cursor: pointer;
-  font-size: 22px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+
+  opacity: 0;   /* 🔥 hidden by default */
+}
+  .services:hover .scroll-btn,
+.industries:hover .scroll-btn {
+  opacity: 1;
 }
 
 .scroll-btn:hover {
-  background: orange;
+  background: rgba(255,165,0,0.2);
+  border-color: orange;
+  transform: translateY(-50%) scale(1.1);
 }
 
 .scroll-btn.left {
@@ -1002,6 +1012,21 @@ iframe {
   padding: 4px;       /* small breathing space */
   border-radius: 6px;
 }
+  .arrow {
+  width: 8px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+}
+
+.scroll-btn.left .arrow {
+  transform: rotate(135deg);
+}
+
+.scroll-btn.right .arrow {
+  transform: rotate(-45deg);
+}
   .services::after,
 .industries::after {
   content: "";
@@ -1063,8 +1088,13 @@ iframe {
     We offer a wide range of high-quality printing solutions tailored for your business needs.
   </p>
 
-  <div class="scroll-btn left" onclick="scrollLeftFunc(this)">‹</div>
-  <div class="scroll-btn right" onclick="scrollRightFunc(this)">›</div>
+ <div class="scroll-btn left" onclick="scrollLeftFunc(this)">
+  <span class="arrow"></span>
+</div>
+
+<div class="scroll-btn right" onclick="scrollRightFunc(this)">
+  <span class="arrow"></span>
+</div>
     
   <div class="container">
   <div class="grid">
@@ -1111,8 +1141,13 @@ iframe {
   <h2>Industries We Serve</h2>
   <p class="subtitle">Tailored printing solutions for every business type</p>
 
-   <div class="scroll-btn left" onclick="scrollLeftFunc(this)">‹</div>
-  <div class="scroll-btn right" onclick="scrollRightFunc(this)">›</div>
+  <div class="scroll-btn left" onclick="scrollLeftFunc(this)">
+  <span class="arrow"></span>
+</div>
+
+<div class="scroll-btn right" onclick="scrollRightFunc(this)">
+  <span class="arrow"></span>
+</div>
   <div class="container"> 
   <div class="industry-grid">
 
