@@ -144,7 +144,7 @@ transform: scale(1.1);
   margin-top: 20px;
 }
 .services {
-  padding: 80px 6% 60px;
+ padding: 70px 20px 20px; 
   text-align: center;
   background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
   color: white;
@@ -827,15 +827,49 @@ html {
   align-items: stretch;
 }
 .container {
-  padding: 0 6%;
+  padding: 0 20px;   /* 🔥 fixed clean spacing */
+  max-width: 1400px;
+  margin: auto;
 }
 /* Hide scrollbar (premium look) */
 .industry-grid::-webkit-scrollbar {
   display: none;
 }
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
 
+  width: 40px;
+  height: 40px;
+
+  background: rgba(0,0,0,0.7);
+  color: white;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  font-size: 22px;
+  transition: 0.3s;
+}
+
+.scroll-btn:hover {
+  background: orange;
+}
+
+.scroll-btn.left {
+  left: 10px;
+}
+
+.scroll-btn.right {
+  right: 10px;
+}
 .industries {
-  padding: 60px 6% 40px; 
+ padding: 20px 20px 40px;
   background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
   text-align: center;
   padding-bottom: 80px;
@@ -968,6 +1002,17 @@ iframe {
   padding: 4px;       /* small breathing space */
   border-radius: 6px;
 }
+  .services::after,
+.industries::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  background: linear-gradient(to left, #0f0f0f, transparent);
+  pointer-events: none;
+}
 .industry-overlay p {
   font-size: 13px;
   color: #bbb;
@@ -1017,6 +1062,10 @@ iframe {
   <p class="subtitle">
     We offer a wide range of high-quality printing solutions tailored for your business needs.
   </p>
+
+  <div class="scroll-btn left" onclick="scrollLeftFunc(this)">‹</div>
+  <div class="scroll-btn right" onclick="scrollRightFunc(this)">›</div>
+    
   <div class="container">
   <div class="grid">
 
@@ -1061,6 +1110,9 @@ iframe {
 <section class="industries">
   <h2>Industries We Serve</h2>
   <p class="subtitle">Tailored printing solutions for every business type</p>
+
+   <div class="scroll-btn left" onclick="scrollLeftFunc(this)">‹</div>
+  <div class="scroll-btn right" onclick="scrollRightFunc(this)">›</div>
   <div class="container"> 
   <div class="industry-grid">
 
@@ -1422,6 +1474,17 @@ function toggleWhatsApp() {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+}
+</script>
+  <script>
+function scrollLeftFunc(btn) {
+  const container = btn.parentElement.querySelector('.grid, .industry-grid');
+  container.scrollBy({ left: -300, behavior: 'smooth' });
+}
+
+function scrollRightFunc(btn) {
+  const container = btn.parentElement.querySelector('.grid, .industry-grid');
+  container.scrollBy({ left: 300, behavior: 'smooth' });
 }
 </script>
   <script>
