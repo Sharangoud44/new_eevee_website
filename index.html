@@ -14,14 +14,15 @@ body {
 }
 .industry-card {
 position: relative;
-height: 260px;
+height: 280px;
 border-radius: 16px;
 overflow: hidden;
 cursor: pointer;
 border: 1px solid rgba(255,255,255,0.08);
-min-width: 260px;
+min-width: 300px;
 flex-shrink: 0;
-
+display: flex;
+align-items: flex-end;
 /* REMOVE margin */
 
 background: rgba(255,255,255,0.05);
@@ -36,15 +37,15 @@ transition: 0.4s ease;
   text-align: center;
 }
 .industry-icon {
-  width: 42px;
-  height: 42px;
+  width: 45px;
+  height: 45px;
   background: orange;
   color: black;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px; /* spacing like 2nd image */
   font-size: 16px;
   box-shadow: 0 0 20px rgba(255,165,0,0.6);
 }
@@ -116,24 +117,6 @@ transform: scale(1.1);
 
 .feature-box:last-child {
   border-right: none;
-}
-
-  background: orange;
-  color: black;
-
-  width: 42px;
-  height: 42px;
-
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 14px;
-  margin-bottom: 12px;
-
-  box-shadow: 0 0 20px rgba(255,165,0,0.6);
 }
 
 .feature-box:hover {
@@ -918,11 +901,13 @@ html {
 iframe {
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
-  .industry-overlay {
+ .industry-overlay {
   position: absolute;
-  bottom: 25px;
-  left: 25px;
-  z-index: 2;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
 }
 .feature-icon {
   width: 42px;
@@ -933,7 +918,7 @@ iframe {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 12px;
   box-shadow: 0 0 20px rgba(255,165,0,0.6);
 }
 .industry-overlay h3 {
@@ -1036,46 +1021,64 @@ iframe {
   <div class="industry-grid">
 
     <div class="industry-card" onclick="openModal('restaurantModal')">
-      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
-      <div class="industry-overlay">
-  <div class="industry-icon">
-    <span></span>
+  <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
+ <div class="industry-overlay">
+  <div class="industry-icon">🍽</div>
+
+  <div>
+    <h3>Restaurants & Cafes</h3>
+    <p>Menus, packaging, coasters & more</p>
   </div>
-  <h3>Restaurants & Cafes</h3>
-  <p>Menus, packaging, coasters & more</p>
+  </div>
 </div>
 
     <div class="industry-card" onclick="openModal('foodModal')">
       <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
       <div class="industry-overlay">
+        <div class="industry-icon">🍔</div>
+        
+  <div>
         <h3>Food Brands</h3>
         <p>Boxes, wraps, stickers</p>
       </div>
-    </div>
+  </div>
+</div>
 
     <div class="industry-card" onclick="openModal('hospitalModal')">
       <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
       <div class="industry-overlay">
+        <div class="industry-icon">🏥</div>
+        
+  <div>
         <h3>Hospitals</h3>
         <p>Files, reports, prescriptions</p>
-      </div>
-    </div>
+     </div>
+  </div>
+</div>
 
     <div class="industry-card" onclick="openModal('corporateModal')">
       <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
       <div class="industry-overlay">
+        <div class="industry-icon">🏢</div>
+        
+  <div>
         <h3>Corporate</h3>
         <p>Branding & office materials</p>
-      </div>
-    </div>
+     </div>
+  </div>
+</div>
 
     <div class="industry-card" onclick="openModal('eventModal')">
       <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
       <div class="industry-overlay">
+        <div class="industry-icon">🎁</div>
+        
+  <div>
         <h3>Events & Weddings</h3>
         <p>Invitations & gift boxes</p>
-      </div>
     </div>
+  </div>
+</div>
 
   </div>
   <!-- ✅ ADD FEATURES HERE (INSIDE SAME SECTION) -->
@@ -1090,24 +1093,36 @@ iframe {
 </div>
 
     <div class="feature-box">
-      <h3>On-Time Delivery</h3>
-      <p>We value your time and always deliver on time</p>
-    </div>
+  <div class="feature-icon">✔</div>
+  <div>
+    <h3>On-Time Delivery</h3>
+    <p>We value your time and always deliver on time</p>
+  </div>
+</div>
 
     <div class="feature-box">
+  <div class="feature-icon">✔</div>
+  <div>
       <h3>Custom Solutions</h3>
       <p>Tailored designs and printing for your brand</p>
     </div>
+</div>
 
-    <div class="feature-box">
+   <div class="feature-box">
+  <div class="feature-icon">✔</div>
+  <div>
       <h3>Best Pricing</h3>
       <p>Affordable pricing with no compromise on quality</p>
-    </div>
+     </div>
+</div>
 
     <div class="feature-box">
+  <div class="feature-icon">✔</div>
+  <div>
       <h3>24/7 Support</h3>
       <p>We are always here to help you</p>
-    </div>
+     </div>
+</div>
 
   </div>
 
