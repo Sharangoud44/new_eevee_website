@@ -929,16 +929,25 @@ iframe {
   z-index: 2;
 }
 .feature-icon {
-  width: 42px;
-  height: 42px;
-  background: orange;
-  color: black;
+  width: 38px;
+  height: 38px;
+
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,165,0,0.6);
+
   border-radius: 50%;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  box-shadow: 0 0 20px rgba(255,165,0,0.6);
+
+  box-shadow: none;   /* 🔥 remove glow */
+}
+
+.feature-icon img {
+  width: 55%;
+  height: 55%;
+  object-fit: contain;
 }
 .industry-overlay h3 {
   font-size: 18px;
@@ -1051,7 +1060,7 @@ iframe {
         <img src="RESTAURANT_LOGO.png">
       </div>
       <h3>Restaurants & Cafes</h3>
-      <p>Menus, packaging, coasters & more</p>
+      <p>Menus, Parcel Bags & Covers, coasters, Tent Cards & more</p>
     </div>
   </div>
 
@@ -1063,7 +1072,7 @@ iframe {
         <img src="burger_logo.png">
       </div>
       <h3>Food Brands</h3>
-      <p>Boxes, wraps, stickers</p>
+      <p>Boxes, wraps, stickers & more</p>
     </div>
   </div>
 
@@ -1075,7 +1084,7 @@ iframe {
         <img src="hospital_logo.png">
       </div>
       <h3>Hospitals</h3>
-      <p>Files, reports, prescriptions</p>
+      <p>Patient Files, X-Ray Covers, Prescriptions Pads, Letter Heads & More</p>
     </div>
   </div>
 
@@ -1086,8 +1095,8 @@ iframe {
       <div class="industry-icon">
         <img src="corporate.png">
       </div>
-      <h3>Corporate</h3>
-      <p>Branding & office materials</p>
+      <h3>Corporate Offices</h3>
+      <p>Visting Cards, Branding Gifts, ID Cards & More</p>
     </div>
   </div>
 
@@ -1099,7 +1108,7 @@ iframe {
         <img src="event_logo.png">
       </div>
       <h3>Events & Weddings</h3>
-      <p>Invitations & gift boxes</p>
+      <p>Invitations, gift boxes, Welcome Boards & More</p>
     </div>
   </div>
 
@@ -1108,7 +1117,9 @@ iframe {
   <div class="features">
 
     <div class="feature-box">
-  <div class="feature-icon">✔</div>
+  <div class="feature-icon">
+  <img src="premium_logo.png">
+</div>
   <div>
     <h3>Premium Quality</h3>
     <p>We use the best materials and latest technology</p>
@@ -1116,7 +1127,9 @@ iframe {
 </div>
 
     <div class="feature-box">
-  <div class="feature-icon">✔</div>
+  <div class="feature-icon">
+  <img src="on_time_logo.png">
+</div>
   <div>
     <h3>On-Time Delivery</h3>
     <p>We value your time and always deliver on time</p>
@@ -1124,7 +1137,9 @@ iframe {
 </div>
 
     <div class="feature-box">
-  <div class="feature-icon">✔</div>
+  <div class="feature-icon">
+  <img src="custome_solutioons_logo.png">
+</div>
   <div>
       <h3>Custom Solutions</h3>
       <p>Tailored designs and printing for your brand</p>
@@ -1132,7 +1147,9 @@ iframe {
 </div>
 
    <div class="feature-box">
-  <div class="feature-icon">✔</div>
+ <div class="feature-icon">
+  <img src="best_pricing_logo.png">
+</div>
   <div>
       <h3>Best Pricing</h3>
       <p>Affordable pricing with no compromise on quality</p>
@@ -1140,7 +1157,9 @@ iframe {
 </div>
 
     <div class="feature-box">
-  <div class="feature-icon">✔</div>
+ <div class="feature-icon">
+  <img src="help_support_logo.png">
+</div>
   <div>
       <h3>24/7 Support</h3>
       <p>We are always here to help you</p>
