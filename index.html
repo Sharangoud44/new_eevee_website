@@ -841,15 +841,14 @@ html {
   transform: translateY(-50%);
   z-index: 10;
 
-  width: 60px;
-  height: 100%;
+  width: 38px;
+  height: 38px;
 
-    background: linear-gradient(to right, rgba(0,0,0,0.7), transparent);
-   /* 🔥 glass look */
+   background: rgba(255,255,255,0.06);
   backdrop-filter: blur(8px);
 
+  border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 0;
 
   display: flex;
   align-items: center;
@@ -858,9 +857,9 @@ html {
   cursor: pointer;
   transition: all 0.3s ease;
 
-  opacity: 0;   /* 🔥 hidden by default */
+  opacity: 0.6;   /* 🔥 hidden by default */
 }
-  .services:hover .scroll-btn,
+ .services:hover .scroll-btn,
 .industries:hover .scroll-btn {
   opacity: 1;
 }
@@ -872,11 +871,11 @@ html {
 }
 
 .scroll-btn.left {
-  left: 10px;
+  left: 8px;
 }
 
 .scroll-btn.right {
-  right: 10px;
+  right: 8px;
 }
 .industries {
  padding: 20px 20px 40px;
