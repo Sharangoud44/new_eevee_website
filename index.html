@@ -97,38 +97,35 @@ transform: scale(1.1);
 
   .feature-box h3 {
   color: white;
-  font-size: 14px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+  font-size: 13px;
 }
 
 .feature-box p {
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 1.3;
   color: #aaa;
-  line-height: 1.5;
 }
 .features {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 
-  margin-top: 30px;
-  padding: 25px 20px;
+  margin-top: 20px;          /* tighter */
+  padding: 15px 15px;        /* 🔥 reduced */
 
-  border-radius: 14px;
+  border-radius: 12px;
 
-  background: rgba(255,255,255,0.04);   /* 🔥 MAIN MAGIC */
+  background: #000;
   border: 1px solid rgba(255,255,255,0.08);
-
-  backdrop-filter: blur(10px);
 }
 
 .feature-box {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 
-  text-align: left;
-  padding: 10px 15px;  
+  padding: 6px 10px;   /* 🔥 much tighter */
 
   border-right: 1px solid rgba(255,255,255,0.08);
 }
@@ -967,6 +964,9 @@ iframe {
   width: 28px;   /* 🔥 control size */
   height: 28px;
   object-fit: contain;
+   background: #000;   /* 🔥 hides edges completely */
+  padding: 4px;       /* small breathing space */
+  border-radius: 6px;
 }
 .industry-overlay p {
   font-size: 13px;
