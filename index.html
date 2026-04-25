@@ -29,7 +29,30 @@ backdrop-filter: blur(10px);
 
 transition: 0.4s ease;
 }
-
+.industries h2 {
+  font-size: 38px;
+  color: #fff;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.industry-icon {
+  width: 42px;
+  height: 42px;
+  background: orange;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: 16px;
+  box-shadow: 0 0 20px rgba(255,165,0,0.6);
+}
+.industries .subtitle {
+  color: #aaa;
+  margin-bottom: 40px;
+  text-align: center;
+}
 /* IMAGE */
 .industry-card img {
 width: 100%;
@@ -81,23 +104,19 @@ transform: scale(1.1);
 }
 
 .feature-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  text-align: left;
   padding: 20px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-
   border-right: 1px solid rgba(255,255,255,0.08);
-
-  background: transparent;   /* ❌ REMOVE box look */
 }
 
 .feature-box:last-child {
   border-right: none;
 }
-.feature-box::before {
-  content: "✔";
 
   background: orange;
   color: black;
@@ -905,7 +924,18 @@ iframe {
   left: 25px;
   z-index: 2;
 }
-
+.feature-icon {
+  width: 42px;
+  height: 42px;
+  background: orange;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 0 20px rgba(255,165,0,0.6);
+}
 .industry-overlay h3 {
   font-size: 20px;
   margin-bottom: 5px;
@@ -1008,10 +1038,12 @@ iframe {
     <div class="industry-card" onclick="openModal('restaurantModal')">
       <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
       <div class="industry-overlay">
-        <h3>Restaurants & Cafes</h3>
-        <p>Menus, packaging, coasters & more</p>
-      </div>
-    </div>
+  <div class="industry-icon">
+    <span></span>
+  </div>
+  <h3>Restaurants & Cafes</h3>
+  <p>Menus, packaging, coasters & more</p>
+</div>
 
     <div class="industry-card" onclick="openModal('foodModal')">
       <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
@@ -1050,9 +1082,12 @@ iframe {
   <div class="features">
 
     <div class="feature-box">
-      <h3>Premium Quality</h3>
-      <p>We use the best materials and latest technology</p>
-    </div>
+  <div class="feature-icon">✔</div>
+  <div>
+    <h3>Premium Quality</h3>
+    <p>We use the best materials and latest technology</p>
+  </div>
+</div>
 
     <div class="feature-box">
       <h3>On-Time Delivery</h3>
