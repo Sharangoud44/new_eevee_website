@@ -97,32 +97,38 @@ transform: scale(1.1);
 
   .feature-box h3 {
   color: white;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
 .feature-box p {
+  font-size: 12px;
   color: #aaa;
-  font-size: 13px;
   line-height: 1.5;
 }
 .features {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 
-  margin-top: 40px;   /* proper spacing */
-  padding-top: 30px;
+  margin-top: 30px;
+  padding: 25px 20px;
 
-  border-top: 1px solid rgba(255,255,255,0.08); /* subtle divider */
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.04);   /* 🔥 MAIN MAGIC */
+  border: 1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(10px);
 }
 
 .feature-box {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 
   text-align: left;
-  padding: 20px;
+  padding: 10px 15px;  
 
   border-right: 1px solid rgba(255,255,255,0.08);
 }
@@ -832,7 +838,7 @@ html {
 }
 
 .industries {
-  padding: 60px 6% 80px;
+  padding: 60px 6% 40px; 
   background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
   text-align: center;
   padding-bottom: 80px;
@@ -928,11 +934,11 @@ iframe {
   z-index: 2;
 }
 .feature-icon {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
 
-  background: rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,165,0,0.6);
+  background: rgba(0,0,0,0.8);   /* darker like reference */
+  border: 1px solid rgba(255,165,0,0.7);
 
   border-radius: 50%;
 
@@ -944,8 +950,8 @@ iframe {
 }
 
 .feature-icon img {
-  width: 140%;
-  height: 140%;
+  width: 65%;
+  height: 65%;
   object-fit: contain;
   padding: 6px;   /* 🔥 controls spacing instead of shrinking */
 }
