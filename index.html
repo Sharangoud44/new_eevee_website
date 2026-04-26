@@ -1122,29 +1122,36 @@ iframe {
 
 .hero-trust {
   display: flex;
-  gap: 30px;
-  margin-top: 30px;
-  font-size: 14px;
+  align-items: center;
+  gap: 50px;              /* 🔥 proper spacing */
+  margin-top: 35px;
 }
+
 .trust-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .trust-item img {
-  width: 28px;
-  height: 28px;
+  width: 32px;            /* 🔥 bigger icon */
+  height: 32px;
+    filter: brightness(1.2) saturate(1.2);
+
 }
 
 .trust-item strong {
-  display: block;
-  font-size: 14px;
+  font-size: 18px;        /* 🔥 bigger number */
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
 }
 
 .trust-item span {
-  font-size: 11px;
+  font-size: 12px;        /* 🔥 smaller label */
   color: #aaa;
+  display: block;
+  margin-top: 2px;
 }
 .hero-trust div span {
   display: block;
