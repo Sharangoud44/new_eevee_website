@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Eevee Printers</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: #0f0f0f;
 }
 .location-line {
@@ -276,11 +277,12 @@ transform: scale(1.1);
   left: 0;
   height: 100%;
   width: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(0,0,0,0.8),
-    rgba(0,0,0,0.4),
-    transparent
+    background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.9) 10%,
+    rgba(0,0,0,0.7) 35%,
+    rgba(0,0,0,0.4) 55%,
+    transparent 80%
   );
 }
 
@@ -348,13 +350,15 @@ nav a:hover {
 }
 
 .quote-btn {
-  background: orange;
+  background: linear-gradient(135deg, #ff8c00, #ff5e00);
   color: white;
-  padding: 10px 20px;
-  border-radius: 25px;
+   padding: 10px 22px;
+  border-radius: 30px;
   text-decoration: none;
   font-size: 14px;
   transition: 0.3s;
+  font-weight: 600;
+   box-shadow: 0 5px 15px rgba(255,140,0,0.4);
 }
 
 .quote-btn:hover {
@@ -1046,7 +1050,8 @@ iframe {
   z-index: 2;
 }
 .btn-main:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 35px rgba(255,140,0,0.6);
 }
 
 .btn-outline:hover {
@@ -1061,9 +1066,9 @@ iframe {
 }
 
 .hero-content h1 {
-  font-size: 60px;
+  font-size: 64px;
   font-weight: 800;
-  line-height: 1.1;
+  letter-spacing: -1px;
 }
 
 .hero-content .dot {
@@ -1083,19 +1088,24 @@ iframe {
 }
 
 .btn-main {
-  background: orange;
-  padding: 12px 25px;
-  border-radius: 30px;
+  background: linear-gradient(135deg, #ff8c00, #ff5e00);
+  padding: 14px 28px;
+  border-radius: 40px;
   color: white;
   text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(255,140,0,0.4);
+  transition: all 0.3s ease;
 }
 
 .btn-outline {
-  border: 1px solid white;
-  padding: 12px 25px;
-  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.6);
+  padding: 14px 28px;
+  border-radius: 40px;
   color: white;
-  text-decoration: none;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
 }
 
 .hero-trust {
@@ -1104,7 +1114,26 @@ iframe {
   margin-top: 30px;
   font-size: 14px;
 }
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
+.trust-item img {
+  width: 28px;
+  height: 28px;
+}
+
+.trust-item strong {
+  display: block;
+  font-size: 14px;
+}
+
+.trust-item span {
+  font-size: 11px;
+  color: #aaa;
+}
 .hero-trust div span {
   display: block;
   color: #aaa;
@@ -1165,12 +1194,39 @@ iframe {
     </div>
 
     <div class="hero-trust">
-      <div>100+ <span>Clients</span></div>
-      <div>3+ <span>Years</span></div>
-      <div>5★ <span>Rating</span></div>
-      <div>🌍 <span>Worldwide</span></div>
+
+  <div class="trust-item">
+    <img src="client_icon.png">
+    <div>
+      <strong>100+</strong>
+      <span>Clients</span>
     </div>
   </div>
+
+  <div class="trust-item">
+    <img src="experience_icon.png">
+    <div>
+      <strong>3+</strong>
+      <span>Years</span>
+    </div>
+  </div>
+
+  <div class="trust-item">
+    <img src="rating_icon.png">
+    <div>
+      <strong>5★</strong>
+      <span>Rating</span>
+    </div>
+  </div>
+
+  <div class="trust-item">
+    <img src="globe_icon.png">
+    <div>
+      <strong>Worldwide</strong>
+      <span>Shipping</span>
+    </div>
+  </div>
+</div>
 </div>
 
 
