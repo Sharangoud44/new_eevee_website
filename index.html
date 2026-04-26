@@ -1258,17 +1258,7 @@ iframe {
   display: inline-block;
 }
 
-.highlight::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 2px;            /* 🔥 move slightly down */
-  width: 100%;
-  height: 3px;            /* 🔥 thin like reference */
-  background: #ff4da6;    /* 🔥 soft pink (not neon) */
-  border-radius: 2px;
-  z-index: -1;
-}
+
 
 /* 🔥 DOT COLOR */
 .dot {
@@ -1297,10 +1287,9 @@ iframe {
   color: #aaa;
   font-size: 12px;
 }
-  .dot-pink {
-  color: #ff4da6;   /* pink */
+.dot-soft {
+  color: #ffb27a;   /* 🔥 soft peach (not neon, not pink) */
 }
-
 .dot-orange {
   color: #ff8c00;   /* orange */
 }
@@ -1359,7 +1348,7 @@ iframe {
     <p class="tag">PREMIUM PRINTING SOLUTIONS</p>
 
    <h1 class="hero-title">
-  We Print<span class="dot-pink">.</span><br>
+  We Print<span class="dot-soft">.</span>
   <span class="highlight">You Impress</span><span class="dot-orange">.</span>
 </h1>
 
