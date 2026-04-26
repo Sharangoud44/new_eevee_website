@@ -1123,34 +1123,34 @@ iframe {
 .hero-trust {
   display: flex;
   align-items: center;
-  gap: 50px;              /* 🔥 proper spacing */
-  margin-top: 35px;
+  gap: 60px;              /* 🔥 more premium spacing */
+  margin-top: 40px;
 }
 
 .trust-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
+/* 🔥 ICON SIZE (FINAL PERFECT) */
 .trust-item img {
-  width: 32px;            /* 🔥 bigger icon */
-  height: 32px;
-    filter: brightness(1.2) saturate(1.2);
-
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
 }
 
+/* 🔥 NUMBER (NOT TOO BOLD) */
 .trust-item strong {
-  font-size: 18px;        /* 🔥 bigger number */
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 600;   /* 🔥 reduce bold */
   color: #fff;
-  line-height: 1;
 }
 
+/* 🔥 LABEL */
 .trust-item span {
-  font-size: 12px;        /* 🔥 smaller label */
-  color: #aaa;
-  display: block;
+  font-size: 13px;
+  color: #b5b5b5;
   margin-top: 2px;
 }
 .hero-trust div span {
@@ -1166,6 +1166,12 @@ iframe {
   height: 95px;              /* same as navbar */
   overflow: hidden;
    margin-left: -114px; 
+}
+
+  .trust-item div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
 }
 </style>
 </head>
