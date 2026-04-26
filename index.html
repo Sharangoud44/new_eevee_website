@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Eevee Printers</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-
+  
 <style>
 body {
   margin: 0;
@@ -270,19 +270,32 @@ transform: scale(1.1);
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 
+  background: radial-gradient(
+    circle at 20% 50%,
+    rgba(0,0,0,0.4),
+    transparent 60%
+  );
+
+  pointer-events: none;
+}
 .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-    background: linear-gradient(
+  inset: 0;
+
+  background: linear-gradient(
     90deg,
-    rgba(0,0,0,0.9) 10%,
-    rgba(0,0,0,0.7) 35%,
-    rgba(0,0,0,0.4) 55%,
-    transparent 80%
+    rgba(0,0,0,0.95) 0%,
+    rgba(0,0,0,0.9) 20%,
+    rgba(0,0,0,0.75) 40%,
+    rgba(0,0,0,0.5) 55%,
+    rgba(0,0,0,0.25) 70%,
+    rgba(0,0,0,0.05) 85%,
+    transparent 100%
   );
 }
 
