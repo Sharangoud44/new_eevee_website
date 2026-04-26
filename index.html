@@ -1125,12 +1125,17 @@ iframe {
   align-items: center;
   gap: 55px;              /* 🔥 more premium spacing */
   margin-top: 40px;
+  
+  flex-wrap: nowrap;      /* 🔥 IMPORTANT */
+  white-space: nowrap;    /* 🔥 PREVENT BREAK */
 }
 
 .trust-item {
   display: flex;
   align-items: center;
   gap: 12px;
+   flex-shrink: 0;   /* 🔥 prevents shrinking to next line */
+
 }
 
 /* 🔥 ICON SIZE (FINAL PERFECT) */
