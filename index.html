@@ -868,11 +868,14 @@ html {
 }
 
 .scroll-btn.left {
-  left: 8px;
+  left: 10px;
+}
+  .hero .scroll-btn {
+  display: none;
 }
 
 .scroll-btn.right {
-  right: 8px;
+  right: 10px;
 }
 .industries {
  padding: 20px 20px 40px;
@@ -880,7 +883,10 @@ html {
   text-align: center;
   padding-bottom: 80px;
 }
-
+.services,
+.industries {
+  position: relative;   /* 🔥 IMPORTANT */
+}
 .location-line img {
   width: 20px;
   height: 20px;
