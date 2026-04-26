@@ -1047,13 +1047,14 @@ iframe {
   max-width: 220px;
   text-align: left;
 }
-  .hero-content {
+.hero-content {
   position: absolute;
   top: 50%;
-  left: 6%;
+  left: 8%;                /* 🔥 more breathing space */
   transform: translateY(-50%);
   color: white;
-  max-width: 600px;
+
+  max-width: 720px;       /* 🔥 wider like reference */
   z-index: 2;
 }
 .btn-main:hover {
@@ -1066,32 +1067,36 @@ iframe {
   color: black;
 }
 .tag {
-  color: orange;
-  font-size: 13px;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
+ color: #ff8c00;
+  font-size: 12px;
+  letter-spacing: 3px;   /* 🔥 more spacing */
+  margin-bottom: 15px;
 }
 
 .hero-content h1 {
-  font-size: 64px;
+  font-size: 72px;        /* 🔥 bigger */
   font-weight: 800;
-  letter-spacing: -1px;
+  line-height: 1.05;      /* 🔥 tight premium spacing */
+  letter-spacing: -1.5px; /* 🔥 modern look */
+  margin: 10px 0;
 }
 
 .hero-content .dot {
-  color: orange;
+  color: #ff8c00;
 }
 
 .hero-sub {
-  color: #ccc;
-  margin: 20px 0;
-  line-height: 1.6;
+ color: #cfcfcf;
+  margin: 25px 0;
+  line-height: 1.7;
+  font-size: 16px;
+  max-width: 600px; 
 }
 
 .hero-buttons {
   display: flex;
-  gap: 15px;
-  margin-top: 20px;
+  gap: 18px;
+  margin-top: 30px;
 }
 
 .btn-main {
