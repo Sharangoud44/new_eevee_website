@@ -1283,7 +1283,13 @@ iframe {
   font-size: 16px;
   max-width: 520px;   /* 🔥 forces clean 3 lines */
 }
+.work-item video {
+  transition: transform 0.4s ease, opacity 0.3s;
+}
 
+.work-item:hover video {
+  transform: scale(1.05);
+}
 /* 🔥 TAG IMPROVEMENT */
 .tag {
   color: #ff8c00;
@@ -1645,47 +1651,47 @@ iframe {
 
   <!-- Row 1 -->
   <div class="work-item">
-  <video controls preload="none" poster="thumb1.jpg">
+  <video muted loop playsinline preload="none" poster="thumb1.jpg">
     <source src="foam board sample.mp4" type="video/mp4">
   </video>
 </div>
 
  <div class="work-item">
-  <video controls preload="none" poster="thumb1.jpg">
+  <video muted loop playsinline preload="none" poster="thumb1.jpg">
     <source src="VID_20260224_041201_225.mp4" type="video/mp4">
   </video>
 </div>
 
  
  <div class="work-item">
- <video controls preload="none" poster="thumb1.jpg">
+ <video muted loop playsinline preload="none" poster="thumb1.jpg">
     <source src="cloth.mp4" type="video/mp4">
   </video>
 </div>
 
   
 <div class="work-item">
- <video controls preload="none" poster="thumb1.jpg">
+ <video muted loop playsinline preload="none" poster="thumb1.jpg">
     <source src="rudrabookgit.mp4" type="video/mp4">
   </video>
 </div>
     
-<div class="work-item"><video controls preload="none" poster="thumb1.jpg"><source src="storieswhitegit.mp4" type="video/mp4"></video></div>
+<div class="work-item"><video muted loop playsinline preload="none" poster="thumb1.jpg"><source src="storieswhitegit.mp4" type="video/mp4"></video></div>
 
   <!-- Row 2 -->
-<div class="work-item"><video controls preload="none" poster="thumb1.jpg"><source src="visitingcardsgit1.mp4" type="video/mp4"></video></div>
-<div class="work-item"><video controls preload="none" poster="thumb1.jpg"><source src="visitingcards1git.mp4" type="video/mp4"></video></div>
-<div class="work-item"><video controls preload="none" poster="thumb1.jpg"><source src="storiesgreengit.mp4" type="video/mp4"></video></div>
-<div class="work-item"><video controls preload="none" poster="thumb1.jpg"><source src="windowboxgit.mp4" type="video/mp4"></video></div>
-<div class="work-item"><video controls preload="none" poster="thumb1.jpg"><source src="pencilboxgit.mp4" type="video/mp4"></video></div>
+<div class="work-item"><video muted loop playsinline preload="none" poster="thumb1.jpg"><source src="visitingcardsgit1.mp4" type="video/mp4"></video></div>
+<div class="work-item"><video muted loop playsinline preload="none" poster="thumb1.jpg"><source src="visitingcards1git.mp4" type="video/mp4"></video></div>
+<div class="work-item"><video muted loop playsinline preload="none" poster="thumb1.jpg"><source src="storiesgreengit.mp4" type="video/mp4"></video></div>
+<div class="work-item"><video muted loop playsinline preload="none" poster="thumb1.jpg"><source src="windowboxgit.mp4" type="video/mp4"></video></div>
+<div class="work-item"><video muted loop playsinline preload="none" poster="thumb1.jpg"><source src="pencilboxgit.mp4" type="video/mp4"></video></div>
 
 
   <!-- Row 3 -->
-  <div class="work-item"><video controls preload="none" poster="thumb1.jpg"><source src="momosgit.mp4" type="video/mp4"></video></div>
-<div class="work-item"><video controls preload="none" poster="thumb1.jpg"><source src="medicalboxgit.mp4" type="video/mp4"></video></div>
-<div class="work-item"><video controls preload="none" poster="thumb1.jpg"><source src="magnetbadgesgit.mp4" type="video/mp4"></video></div>
-<div class="work-item"><video controls preload="none" poster="thumb1.jpg"><source src="tentcard1git.mp4" type="video/mp4"></video></div>
-<div class="work-item"><video controls preload="none" poster="thumb1.jpg"><source src="tentcardgit.mp4" type="video/mp4"></video></div>
+  <div class="work-item"><video muted loop playsinline preload="none" poster="thumb1.jpg"><source src="momosgit.mp4" type="video/mp4"></video></div>
+<div class="work-item"><video muted loop playsinline preload="none" poster="thumb1.jpg"><source src="medicalboxgit.mp4" type="video/mp4"></video></div>
+<div class="work-item"><video muted loop playsinline preload="none" poster="thumb1.jpg"><source src="magnetbadgesgit.mp4" type="video/mp4"></video></div>
+<div class="work-item"><video muted loop playsinline preload="none" poster="thumb1.jpg"><source src="tentcard1git.mp4" type="video/mp4"></video></div>
+<div class="work-item"><video muted loop playsinline preload="none" poster="thumb1.jpg"><source src="tentcardgit.mp4" type="video/mp4"></video></div>
 
 </div>
 </section>
@@ -1951,6 +1957,20 @@ window.onclick = function(event) {
     }
   });
 }
+</script>
+  <script>
+document.querySelectorAll(".work-item video").forEach(video => {
+
+  video.addEventListener("mouseenter", () => {
+    video.play();
+  });
+
+  video.addEventListener("mouseleave", () => {
+    video.pause();
+    video.currentTime = 0;
+  });
+
+});
 </script>
   <script>
 window.onload = function() {
