@@ -160,6 +160,7 @@ transform: scale(1.1);
   background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
   color: white;
   position: relative;
+  overflow: hidden;
 }
 
 
@@ -192,6 +193,10 @@ transform: scale(1.1);
   padding-bottom: 20px;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+   padding-left: 20px;   /* 👈 IMPORTANT */
+  padding-right: 20px;
+  
+  padding: 0 10px;
 }
 
 /* Hide scrollbar (premium look) */
@@ -851,7 +856,7 @@ html {
   align-items: stretch;
 }
 .container {
-  padding: 0 20px;   /* 🔥 fixed clean spacing */
+  padding: 0 40px;   /* 🔥 fixed clean spacing */
   max-width: 1400px;
   margin: auto;
 }
@@ -865,23 +870,25 @@ html {
   transform: translateY(-50%);
   z-index: 10;
 
-  width: 38px;
-  height: 38px;
-
-   background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(8px);
+  width: 45px;
+  height: 45px;
 
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.1);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   cursor: pointer;
-  transition: all 0.3s ease;
 
-  opacity: 0.6;   /* 🔥 hidden by default */
+  /* 🔥 PREMIUM GLASS LOOK */
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+
+  transition: all 0.3s ease;
 }
  .services:hover .scroll-btn,
 .industries:hover .scroll-btn {
@@ -889,20 +896,20 @@ html {
 }
 
 .scroll-btn:hover {
-  background: rgba(255,165,0,0.2);
+  background: rgba(255,140,0,0.2);
   border-color: orange;
-  transform: translateY(-50%) scale(1.1);
+  transform: translateY(-50%) scale(1.15);
 }
 
 .scroll-btn.left {
-  left: 10px;
+  left: -10px;
 }
   .hero .scroll-btn {
   display: none;
 }
 
 .scroll-btn.right {
-  right: 10px;
+  right: -10px;
 }
 .industries {
  padding: 20px 20px 40px;
@@ -1042,11 +1049,10 @@ iframe {
   border-radius: 6px;
 }
   .arrow {
-  width: 8px;
-  height: 8px;
+   width: 10px;
+  height: 10px;
   border: solid white;
   border-width: 0 2px 2px 0;
-  display: inline-block;
 }
 
 .scroll-btn.left .arrow {
