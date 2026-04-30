@@ -340,7 +340,7 @@ transform: scale(1.1);
 
 .nav-links {
   display: flex;
-  gap: 35px;
+  gap: 25px;
   margin-right: 50px;   /* 🔥 slight shift left */
 }
 .nav-links a {
@@ -351,14 +351,14 @@ transform: scale(1.1);
 }
 .nav-container {
   width: 100%;
-  padding: 0 40px;
+  padding: 0 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
 }
 .nav-logo {
-  height: 280px;   /* 🔥 bigger */
+  height: 55px;   /* 🔥 bigger */
   width: auto;
   object-fit: contain;
    transform: translateY(2%); 
@@ -1077,7 +1077,7 @@ iframe {
 .hero-content {
   position: relative;
   top: 45%;
-  left: 8%; 
+  left: 4%; 
    z-index: 5;
   /* 🔥 more breathing space */
   transform: translateY(-50%);
@@ -1194,7 +1194,7 @@ iframe {
 .hero-trust {
   display: flex;
   align-items: center;
-  gap: 20px;              /* 🔥 more premium spacing */
+  gap: 30px;              /* 🔥 more premium spacing */
   margin-top: 10px;
   margin-bottom: 40px;
   
@@ -1203,12 +1203,27 @@ iframe {
 }
 
 .trust-item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
    flex-shrink: 0;   /* 🔥 prevents shrinking to next line */
 
 }
+
+  .trust-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -12px;   /* space from item */
+  top: 50%;
+  transform: translateY(-50%);
+  
+  width: 1px;
+  height: 40px;   /* adjust height */
+  
+  background: rgba(255,255,255,0.2);  /* soft line */
+}
+  
  .star {
   color: #ff8c00 !important;   /* 🔥 force orange */
   font-size: 1em;
@@ -1220,7 +1235,7 @@ iframe {
  width: 70px;
   height: 80px;
   object-fit: contain;
-  transform: scale(1.4);
+  transform: scale(1.1);
   display: block;
   margin-right: -6px;
 }
@@ -1317,7 +1332,7 @@ iframe {
   padding-left: 10px;   /* 🔥 slight breathing space */
   height: 95px;              /* same as navbar */
   overflow: hidden;
-   margin-left: -114px; 
+  gap: 12px;
 }
 .rating {
   display: inline-flex;   /* 🔥 keeps in one line */
