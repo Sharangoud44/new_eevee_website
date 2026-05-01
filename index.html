@@ -597,7 +597,65 @@ html {
   background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
   color: white;
 }
+.feature-strip {
+  padding: 20px;
+  background: transparent;
+}
 
+.strip-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+
+  background: rgba(255,255,255,0.05);
+  color: white;
+
+  padding: 20px 30px;
+  border-radius: 12px;
+
+  max-width: 1200px;
+  margin: auto;
+
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+}
+
+.strip-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.strip-item h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.strip-item p {
+  margin: 0;
+  font-size: 12px;
+  color: #555;
+}
+
+.icon {
+  font-size: 22px;
+}
+
+.strip-btn a {
+  background: orange;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.strip-btn a:hover {
+  background: #ff8800;
+}
 .location-content {
   display: flex;
   align-items: center;
@@ -1535,7 +1593,41 @@ iframe {
    </div>
   </div>
   </section>   <!-- ✅ SERVICES ENDS -->
+<section class="feature-strip">
 
+  <div class="strip-container">
+
+    <div class="strip-item">
+      <div class="icon">🚚</div>
+      <div>
+        <h4>Worldwide Delivery</h4>
+        <p>We ship to USA, UK, Canada & more</p>
+      </div>
+    </div>
+
+    <div class="strip-item">
+      <div class="icon">🔒</div>
+      <div>
+        <h4>Secure Payments</h4>
+        <p>Safe & trusted payment methods</p>
+      </div>
+    </div>
+
+    <div class="strip-item">
+      <div class="icon">🎧</div>
+      <div>
+        <h4>24/7 Support</h4>
+        <p>We are always here to help</p>
+      </div>
+    </div>
+
+    <div class="strip-btn">
+      <a href="#contact">Let’s Print Something Great →</a>
+    </div>
+
+  </div>
+
+</section>
 <!-- 🔥 ADD THIS BELOW -->
 <section class="industries">
   <h2>Industries We Serve</h2>
@@ -1613,49 +1705,7 @@ iframe {
 
 </div>
   <!-- ✅ ADD FEATURES HERE (INSIDE SAME SECTION) -->
-  <div class="features">
-
-    <div class="feature-box">
-  <img src="premium_logo.png" class="feature-logo" loading="lazy">
-  <div>
-    <h3>Premium Quality</h3>
-    <p>We use the best materials and latest technology</p>
-  </div>
-</div>
-
-    <div class="feature-box">
-  <img src="on_time_logo.png" class="feature-logo" loading="lazy">
-  <div>
-    <h3>On-Time Delivery</h3>
-    <p>We value your time and always deliver on time</p>
-  </div>
-</div>
-
-    <div class="feature-box">
-  <img src="custome_solutioons_logo.png" class="feature-logo" loading="lazy">
-  <div>
-      <h3>Custom Solutions</h3>
-      <p>Tailored designs and printing for your brand</p>
-    </div>
-</div>
-
-   <div class="feature-box">
- <img src="best_pricing_logo.png" class="feature-logo" loading="lazy">
-  <div>
-      <h3>Best Pricing</h3>
-      <p>Affordable pricing with no compromise on quality</p>
-     </div>
-</div>
-
-    <div class="feature-box">
-<img src="help_support_logo.png" class="feature-logo" loading="lazy">
-  <div>
-      <h3>24/7 Support</h3>
-      <p>We are always here to help you</p>
-     </div>
-</div>
-
-  </div>
+  
 </div>
   <!-- LOCATION + REVIEWS + SOCIAL -->
 </section>  <!-- industries ends -->
