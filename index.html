@@ -1456,6 +1456,7 @@ iframe {
 </head>
 
 <body>
+
 <!-- NAVBAR -->
 <header class="navbar">
 
@@ -2140,5 +2141,50 @@ window.onload = function() {
   window.scrollTo(0, 0);
 };
 </script>
+  <script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
+
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyA-2sDVGbOOwvCWqgJSf12Rlxb6JNEYzpE",
+  authDomain: "eevee-printers.firebaseapp.com",
+  projectId: "eevee-printers",
+  storageBucket: "eevee-printers.firebasestorage.app",
+  messagingSenderId: "646814066578",
+  appId: "1:646814066578:web:0ca3fafa04970791fb834b"
+};
+
+// Initialize
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// Signup
+window.signup = function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(() => alert("Account Created ✅"))
+    .catch(err => alert(err.message));
+};
+
+// Login
+window.login = function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      alert("Login Success ✅");
+      window.location.href = "dashboard.html";
+    })
+    .catch(err => alert(err.message));
+};
+
+</script>
+
 </body>
 </html>
