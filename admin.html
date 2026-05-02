@@ -35,7 +35,7 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
 
     // 👉 CHANGE THIS EMAIL
-    const adminEmail = "sharangoud4444eevee@gmail.com";
+    const adminEmail = "sharangoud4444@gmail.com";
 
     if (user.email === adminEmail) {
       document.getElementById("adminEmail").innerText = "Welcome Admin: " + user.email;
