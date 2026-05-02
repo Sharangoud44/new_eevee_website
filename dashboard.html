@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Account</title>
+</head>
+<body>
+
+<h2>Welcome to Your Dashboard</h2>
+<p id="userEmail"></p>
+
+<button onclick="logout()">Logout</button>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } 
+from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA-2sDVGbOOwvCWqgJSf12Rlxb6JNEYzpE",
+  authDomain: "eevee-printers.firebaseapp.com",
+  projectId: "eevee-printers",
+  storageBucket: "eevee-printers.firebasestorage.app",
+  messagingSenderId: "646814066578",
+  appId: "1:646814066578:web:0ca3fafa04970791fb834b"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// 🔐 Protect page
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    document.getElementById("userEmail").innerText = user.email;
+  } else {
+    window.location.href = "index.html";
+  }
+});
+
+// 🚪 Logout
+window.logout = function () {
+  signOut(auth).then(() => {
+    window.location.href = "index.html";
+  });
+};
+
+</script>
+
+</body>
+</html>
