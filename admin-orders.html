@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Orders</title>
+</head>
+<body>
+
+<h2>Add New Order</h2>
+
+<!-- CUSTOMER -->
+<input id="email" placeholder="Customer Email"><br><br>
+<input id="customerName" placeholder="Customer Name"><br><br>
+
+<!-- ORDER -->
+<input id="orderId" placeholder="Order ID (#1001)"><br><br>
+<input id="jobName" placeholder="Job Name"><br><br>
+<input id="quantity" placeholder="Quantity"><br><br>
+
+<!-- STATUS -->
+<select id="status">
+  <option>New Order</option>
+  <option>Designing</option>
+  <option>Printing</option>
+  <option>Ready</option>
+  <option>Dispatched</option>
+  <option>Delivered</option>
+</select><br><br>
+
+<!-- PAYMENT -->
+<input id="totalAmount" placeholder="Total Amount"><br><br>
+<input id="advancePaid" placeholder="Advance Paid"><br><br>
+
+<select id="paymentStatus">
+  <option>Pending</option>
+  <option>Partial</option>
+  <option>Paid</option>
+</select><br><br>
+
+<!-- DELIVERY -->
+<input id="deliveryDate" placeholder="Delivery Date"><br><br>
+
+<!-- INVOICE -->
+<input id="invoice" placeholder="Invoice Link"><br><br>
+
+<button onclick="addOrder()">Add Order</button>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+import { getFirestore, collection, addDoc } 
+from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCSYwthBX2s99OiYJ0pcgr4ha6VfK214fk",
+  authDomain: "eevee-printers.firebaseapp.com",
+  projectId: "eevee-printers"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.addOrder = async function () {
+
+  const total = Number(document.getElementById("totalAmount").value);
+  const advance = Number(document.getElementById("advancePaid").value);
+
+  const order = {
+    email: document.getElementById("email").value,
+    customerName: document.getElementById("customerName").value,
+    orderId: document.getElementById("orderId").value,
+    jobName: document.getElementById("jobName").value,
+    quantity: document.getElementById("quantity").value,
+    status: document.getElementById("status").value,
+    totalAmount: total,
+    advancePaid: advance,
+    balance: total - advance,
+    paymentStatus: document.getElementById("paymentStatus").value,
+    deliveryDate: document.getElementById("deliveryDate").value,
+    invoice: document.getElementById("invoice").value
+  };
+
+  await addDoc(collection(db, "orders"), order);
+
+  alert("Order Added ✅");
+
+  // 🔥 clear form
+  document.querySelectorAll("input").forEach(i => i.value = "");
+  document.querySelectorAll("select").forEach(s => s.selectedIndex = 0);
+};
+</script>
+
+</body>
+</html>
