@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f9;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .top-bar {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    th {
+      background: #333;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Admin Dashboard</h2>
+
+<div class="top-bar">
+  <button onclick="window.location.href='admin-orders.html'">+ Add Order</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Customer</th>
+      <th>Job</th>
+      <th>Status</th>
+      <th>Payment</th>
+      <th>Delivery</th>
+    </tr>
+  </thead>
+  <tbody id="ordersTable"></tbody>
+</table>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+import { getFirestore, collection, getDocs } 
+from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCSYwthBX2s99OiYJ0pcgr4ha6VfK214fk",
+  authDomain: "eevee-printers.firebaseapp.com",
+  projectId: "eevee-printers"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function loadOrders() {
+  const querySnapshot = await getDocs(collection(db, "orders"));
+
+  let html = "";
+
+  querySnapshot.forEach((doc) => {
+    const d = doc.data();
+
+    html += `
+      <tr>
+        <td>${d.orderId}</td>
+        <td>${d.customerName}</td>
+        <td>${d.jobName}</td>
+        <td>${d.status}</td>
+        <td>₹${d.advancePaid} / ₹${d.totalAmount}</td>
+        <td>${d.deliveryDate}</td>
+      </tr>
+    `;
+  });
+
+  document.getElementById("ordersTable").innerHTML = html;
+}
+
+loadOrders();
+</script>
+
+</body>
+</html>
