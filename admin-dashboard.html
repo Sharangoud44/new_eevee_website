@@ -156,13 +156,14 @@ window.addOrder = async function () {
   closeForm();
   loadOrders(); // 🔥 refresh table
 };
-  function openForm() {
+window.openForm = function () {
   document.getElementById("popup").style.display = "block";
 }
 
-function closeForm() {
+window.closeForm = function () {
   document.getElementById("popup").style.display = "none";
 }
+  document.querySelectorAll("#popup input").forEach(i => i.value = "");
 </script>
 
 </body>
