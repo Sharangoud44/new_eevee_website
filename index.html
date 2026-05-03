@@ -2181,14 +2181,17 @@ window.login = function () {
   const password = document.getElementById("password").value;
 
   signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      alert("Login Success ✅");
-     if (email === "sharangoud4444@gmail.com") {
-  window.location.href = "admin.html";
-} else {
-  window.location.href = "dashboard.html";
-}
-    })
+    .then((userCredential) => {
+  alert("Login Success ✅");
+
+  const user = userCredential.user;
+
+  if (user.email === "sharangoud4444@gmail.com") {
+    window.location.href = "admin.html";
+  } else {
+    window.location.href = "dashboard.html";
+  }
+})
     .catch(err => alert(err.message));
 };
 window.resetPassword = function () {
