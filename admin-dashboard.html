@@ -63,6 +63,7 @@
     <input id="customerName" placeholder="Customer Name"><br><br>
     <input id="orderId" placeholder="Order ID"><br><br>
     <input id="jobName" placeholder="Job"><br><br>
+    <input id="quantity" placeholder="Quantity"><br><br>
 
     <select id="status">
       <option>New Order</option>
@@ -74,7 +75,8 @@
     <input id="totalAmount" placeholder="Total Amount"><br><br>
     <input id="advancePaid" placeholder="Advance Paid"><br><br>
 
-    <input id="deliveryDate" placeholder="Delivery Date"><br><br>
+    <input id="deliveryDate" type="date"><br><br>
+    <input id="invoiceFile" type="file" accept=".pdf,image/*"><br><br>
 
     <button onclick="addOrder()">Save</button>
     <button onclick="closeForm()">Close</button>
@@ -97,9 +99,13 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
-import { getFirestore, collection, getDocs, addDoc } 
+
+  import { getFirestore, collection, getDocs, addDoc, query, where } 
 from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
+  import { getStorage, ref, uploadBytes, getDownloadURL } 
+from "https://www.gstatic.com/firebasejs/12.12.1/firebase-storage.js";
+  
 const firebaseConfig = {
   apiKey: "AIzaSyCSYwthBX2s99OiYJ0pcgr4ha6VfK214fk",
   authDomain: "eevee-printers.firebaseapp.com",
@@ -108,6 +114,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+ const storage = getStorage(app);
 
 async function loadOrders() {
   const querySnapshot = await getDocs(collection(db, "orders"));
@@ -134,25 +141,47 @@ async function loadOrders() {
 
 loadOrders();
 window.addOrder = async function () {
+const orderId = document.getElementById("orderId").value;
 
+const q = query(collection(db, "orders"), where("orderId", "==", orderId));
+const snapshot = await getDocs(q);
+
+if (!snapshot.empty) {
+  alert("Order ID already exists ❌");
+  return;
+}
   const total = Number(document.getElementById("totalAmount").value);
   const advance = Number(document.getElementById("advancePaid").value);
 
+  let invoiceURL = "";
+
+const file = document.getElementById("invoiceFile").files[0];
+
+if (file) {
+  const storageRef = ref(storage, "invoices/" + Date.now() + "_" + file.name);
+  await uploadBytes(storageRef, file);
+  invoiceURL = await getDownloadURL(storageRef);
+}
+  
   const order = {
     email: document.getElementById("email").value,
     customerName: document.getElementById("customerName").value,
-    orderId: document.getElementById("orderId").value,
+    orderId: orderId,
     jobName: document.getElementById("jobName").value,
+    quantity: document.getElementById("quantity").value,
     status: document.getElementById("status").value,
     totalAmount: total,
     advancePaid: advance,
-    deliveryDate: document.getElementById("deliveryDate").value
+    createdAt: new Date().toISOString().split("T")[0],
+    deliveryDate: document.getElementById("deliveryDate").value,
+      invoice: invoiceURL   // 🔥 ADD THIS LINE
+
   };
 
   await addDoc(collection(db, "orders"), order);
 
   alert("Order Added ✅");
-
+document.querySelectorAll("#popup input").forEach(i => i.value = "");
   closeForm();
   loadOrders(); // 🔥 refresh table
 };
@@ -163,7 +192,6 @@ window.openForm = function () {
 window.closeForm = function () {
   document.getElementById("popup").style.display = "none";
 }
-  document.querySelectorAll("#popup input").forEach(i => i.value = "");
 </script>
 
 </body>
