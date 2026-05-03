@@ -69,6 +69,8 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+import { getAuth, onAuthStateChanged } 
+from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
 import { getFirestore, collection, getDocs } 
 from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
@@ -79,31 +81,40 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const db = getFirestore(app);
 
-async function loadOrders() {
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  const userEmail = user.email;
   const querySnapshot = await getDocs(collection(db, "orders"));
+
   let html = "";
 
   querySnapshot.forEach((doc) => {
     const d = doc.data();
 
-    html += `
-      <tr>
-        <td>${d.orderId}</td>
-        <td>${d.jobName}</td>
-        <td class="status">${d.status}</td>
-        <td>₹${d.advancePaid} / ₹${d.totalAmount}</td>
-        <td>${d.deliveryDate}</td>
-        <td><a class="btn" href="${d.invoice}" target="_blank">View</a></td>
-      </tr>
-    `;
+    // 🔥 FILTER HERE
+    if (d.email === userEmail) {
+      html += `
+        <tr>
+          <td>${d.orderId}</td>
+          <td>${d.jobName}</td>
+          <td style="color:orange;font-weight:bold">${d.status}</td>
+          <td>₹${d.advancePaid} / ₹${d.totalAmount}</td>
+          <td>${d.deliveryDate}</td>
+          <td><a href="${d.invoice}" target="_blank">View</a></td>
+        </tr>
+      `;
+    }
   });
 
   document.getElementById("ordersTable").innerHTML = html;
-}
-
-loadOrders();
+});
 </script>
 
 </body>
