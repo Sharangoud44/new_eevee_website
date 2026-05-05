@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eevee Printers</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet"> 
   <link rel="canonical" href="https://sharangoud44.github.io/new_eevee_website/">
@@ -11,7 +10,6 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: #0f0f0f;
-  overflow-x: hidden;
 }
 .location-line {
   margin: 20px 0 10px;
@@ -288,55 +286,6 @@ transform: scale(1.1);
   margin-top: 0;
   padding-top: 90px; 
   overflow: hidden;
-
-    background-size: cover;
-  background-position: center;   /* THIS IS IMPORTANT */
-  background-repeat: no-repeat;
-}
- @media (max-width: 768px) {
-  .nav-left {
-    margin-left: 0;
-  }
-
-  .nav-logo {
-    height: 60px;
-  }
-   .nav-links {
-    display: none;
-  }
-  .hero {
-    height: auto;
-    padding: 120px 20px 60px;
-  }
-
-  .hero-content {
-     position: static !important;
-  transform: none !important;
-  margin-top: 40px;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: left;
-  }
-
-  .hero-title {
-    font-size: 34px;
-    line-height: 1.2;
-  }
-
-  .hero-sub {
-    font-size: 14px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .hero-trust {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
 }
 
 .hero video {
@@ -347,11 +296,6 @@ transform: scale(1.1);
   min-height: 100%;
   transform: translate(-50%, -50%);
   object-fit: cover;
-
-  width: 100%;
-  height: 100%;
-    filter: brightness(0.7);
-
 }
 .hero::after {
   content: "";
@@ -371,10 +315,15 @@ transform: scale(1.1);
   inset: 0;
   z-index: 1;
 
-   background: linear-gradient(
-    to right,
-    rgba(0,0,0,0.6),
-    transparent
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.95) 20%,
+    rgba(0,0,0,0.85) 40%,
+    rgba(0,0,0,0.6) 55%,
+    rgba(0,0,0,0.3) 70%,
+    rgba(0,0,0,0.1) 85%,
+    transparent 100%
   );
 
   mix-blend-mode: multiply; /* 🔥 MAGIC */
@@ -407,6 +356,7 @@ transform: scale(1.1);
 /* NAVBAR */
 
 .nav-links {
+  display: flex;
   gap: 35px;
   margin-right: 50px;   /* 🔥 slight shift left */
 }
@@ -541,7 +491,11 @@ nav a:hover::after {
   background: rgba(0,0,0,0.7);
   backdrop-filter: blur(10px);
 }
-  
+  .hero video {
+  width: 100%;
+  height: 100%;
+    filter: brightness(0.7);
+}
 .whatsapp img:hover {
   transform: scale(1.1);
 }  
@@ -1203,7 +1157,7 @@ iframe {
   text-align: left;
 }
 .hero-content {
-   position: relative;
+  position: relative;
   top: 45%;
   left: 4%; 
    z-index: 5;
@@ -1445,7 +1399,7 @@ iframe {
   padding-left: 10px;   /* 🔥 slight breathing space */
   height: 95px;              /* same as navbar */
   overflow: hidden;
-  margin-left: 0;
+   margin-left: -114px; 
 }
 .rating {
   display: inline-flex;   /* 🔥 keeps in one line */
