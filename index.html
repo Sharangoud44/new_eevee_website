@@ -396,7 +396,7 @@ transform: scale(1.1);
   padding-top: 40px;
 }
   .grid{
-  padding-top: 15px;
+  padding-top: 20px;
 }
 
 
@@ -454,13 +454,16 @@ transform: scale(1.1);
   border-radius: 18px;
   transition: all 0.4s ease;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   min-width: 220px;   /* 👈 THIS FORCES SINGLE LINE */
   flex-shrink: 0;
    scroll-snap-align: start;
 }
-
+.card img{
+  border-radius: 10px;
+  display:block;
+}
 /* IMAGE */
 .card img {
   width: 100%;
