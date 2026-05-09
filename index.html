@@ -60,6 +60,18 @@ overflow-x: hidden;
 
   animation: popup 0.35s ease;
 }
+  .card{
+  position: relative;
+  z-index: 5;
+}
+
+.services::after{
+  z-index: 1;
+}
+
+.grid{
+  padding-top: 30px;
+}
   /* PREMIUM INNER LIGHT */
 .modal-content::after {
   content: "";
@@ -391,6 +403,7 @@ transform: scale(1.1);
   background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
   color: white;
   position: relative;
+  overflow: visible !important;
   overflow-x: hidden;
   overflow-y: visible;
   padding-top: 40px;
@@ -482,7 +495,7 @@ transform: scale(1.1);
 
 /* HOVER EFFECT */
 .card:hover {
-  transform: translateY(-12px) scale(1.02);
+  transform: translate3d(0,-12px,0) scale(1.02);
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
   /* IMAGE HOVER */
