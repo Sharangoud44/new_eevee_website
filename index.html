@@ -1392,6 +1392,12 @@ iframe {
 .dot-orange {
   color: #ff8c00;   /* orange */
 }
+  .track-btn{
+  margin-right: 35px;   /* moves button left */
+}
+  .nav-container{
+  padding-right: 25px;
+}
 .nav-left {
   display: flex;
   align-items: center;
@@ -1473,8 +1479,9 @@ iframe {
        <a href="#">Our Work</a>
       <a href="#">Contact Us</a>
     </div>
-  <a href="#" onclick="openLogin()" class="quote-btn">Login</a>
-
+<a href="#" onclick="openLogin()" class="quote-btn track-btn">
+  Track Order
+</a>
   </div>
 
 </header>
@@ -2207,7 +2214,11 @@ window.resetPassword = function () {
 
     <span class="close" onclick="closeLogin()">&times;</span>
 
-    <h2 style="margin-bottom:20px;">Login</h2>
+    <h2 style="margin-bottom:10px;">Track Your Order</h2>
+
+<p style="color:#aaa;font-size:14px;margin-bottom:20px;">
+Login to view order status, invoices & reorders
+</p>
 
     <input type="email" id="email" placeholder="Email" style="width:100%;padding:10px;margin-bottom:10px;">
     <input type="password" id="password" placeholder="Password" style="width:100%;padding:10px;margin-bottom:15px;">
