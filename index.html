@@ -2316,17 +2316,54 @@ window.onclick = function(event) {
 }
 </script>
   <script>
-document.querySelectorAll(".work-item video").forEach(video => {
+const videos = document.querySelectorAll(".work-item video");
+
+/* DESKTOP HOVER */
+videos.forEach(video => {
 
   video.addEventListener("mouseenter", () => {
-    video.play();
+    if(window.innerWidth > 768){
+      video.play();
+    }
   });
 
   video.addEventListener("mouseleave", () => {
-    video.pause();
-    video.currentTime = 0;
+    if(window.innerWidth > 768){
+      video.pause();
+      video.currentTime = 0;
+    }
   });
 
+});
+
+
+/* MOBILE AUTO PLAY WHEN VISIBLE */
+const observer = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    const video = entry.target;
+
+    if(window.innerWidth <= 768){
+
+      if(entry.isIntersecting){
+        video.play();
+      } else {
+        video.pause();
+        video.currentTime = 0;
+      }
+
+    }
+
+  });
+
+}, {
+  threshold: 0.6
+});
+
+
+videos.forEach(video => {
+  observer.observe(video);
 });
 </script>
   <script>
