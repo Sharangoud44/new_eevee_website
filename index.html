@@ -2,1461 +2,635 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Eevee Printers</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Eevee Printers - Premium printing solutions for businesses. Business cards, boxes, banners & more. Worldwide shipping.">
+<title>Eevee Printers - Premium Printing Solutions</title>
+
+<!-- Preconnect for faster font loading -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Preload critical assets -->
+<link rel="preload" as="image" href="eevee_logo.png">
+<link rel="preload" as="video" href="15505103_1080_1920_60fps.mp4" type="video/mp4">
+
 <link rel="canonical" href="https://sharangoud44.github.io/new_eevee_website/">
+
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #0f0f0f;
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#0f0f0f;
+  color:#fff;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
-/* PREMIUM MODAL */
-.modal-content {
-  position: relative;
-  margin: 3% auto;
-  width: 72%;
-  max-width: 760px;
-  max-height: 82vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 28px;
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at top left, rgba(255,140,0,0.12), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(255,80,0,0.10), transparent 35%),
-    linear-gradient(145deg, rgba(30,30,32,0.96), rgba(10,10,12,0.97));
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(18px);
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.75),
-    0 0 60px rgba(255,140,0,0.12),
-    inset 0 1px 0 rgba(255,255,255,0.05);
-  text-align: center;
-  color: white;
-  animation: popup 0.35s ease;
+img,video{max-width:100%;display:block;}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  height:80px;padding:0 40px;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 }
-.modal-content::after {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: 24px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 20%);
-  pointer-events: none;
+.nav-container{
+  width:100%;max-width:1400px;margin:auto;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
 }
-#loginModal input{
-  width:100%;
-  padding:14px;
-  margin-bottom:14px;
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:12px;
-  color:white;
-  font-size:14px;
-  outline:none;
+.nav-left{display:flex;align-items:center;}
+.nav-logo{
+  height:180px;width:auto;object-fit:contain;
+  transition:transform 0.3s ease;
+}
+.nav-logo:hover{transform:scale(1.05);}
+.nav-links{display:flex;gap:32px;}
+.nav-links a{
+  color:#fff;text-decoration:none;font-size:15px;font-weight:500;
+  position:relative;transition:color 0.3s;
+}
+.nav-links a:hover{color:#ff8c00;}
+.nav-links a::after{
+  content:"";position:absolute;width:0;height:2px;
+  background:#ff8c00;left:0;bottom:-6px;transition:width 0.3s;
+}
+.nav-links a:hover::after{width:100%;}
+.quote-btn{
+  background:linear-gradient(135deg,#ff8c00,#ff5e00);
+  color:#fff;padding:10px 22px;border-radius:30px;
+  text-decoration:none;font-size:14px;font-weight:600;
+  box-shadow:0 5px 15px rgba(255,140,0,0.4);
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.quote-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,140,0,0.55);}
+
+/* Mobile menu toggle */
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
+.menu-toggle span{
+  width:26px;height:2.5px;background:#fff;border-radius:2px;
   transition:0.3s;
 }
-#loginModal input:focus{
-  border-color:orange;
-  box-shadow:0 0 15px rgba(255,140,0,0.25);
-}
-#loginModal input::placeholder{
-  color:#aaa;
+.menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px);}
+.menu-toggle.active span:nth-child(2){opacity:0;}
+.menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px);}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;height:90vh;min-height:600px;
+  padding-top:80px;overflow:hidden;
 }
 .hero video{
-  filter: brightness(0.55) contrast(1.05) saturate(1.1);
-}
-.modal-content::before {
-  content: "";
-  position: absolute;
-  width: 260px;
-  height: 260px;
-  top: -120px;
-  right: -120px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,140,0,0.28), transparent 70%);
-  filter: blur(40px);
-  pointer-events: none;
-}
-.modal-content h2 {
-  font-size: 34px;
-  margin-bottom: 10px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-}
-.type-box {
-  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 18px;
-  padding: 14px;
-  transition: 0.35s ease;
-  backdrop-filter: blur(10px);
-}
-.type-box img {
-  width: 100%;
-  height: 100px;
-  object-fit: contain;
-  border-radius: 12px;
-  transition: 0.35s ease;
-}
-.type-box p {
-  margin-top: 12px;
-  font-size: 15px;
-  font-weight: 500;
-  color: #f3f3f3;
-}
-.type-box:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255,140,0,0.5);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.45), 0 0 25px rgba(255,140,0,0.12);
-}
-.type-box:hover img {
-  transform: scale(1.06);
-}
-.close {
-  position: absolute;
-  right: 22px;
-  top: 18px;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  transition: 0.3s;
-  cursor: pointer;
-}
-.close:hover {
-  background: rgba(255,140,0,0.2);
-  color: orange;
-  transform: rotate(90deg);
-}
-.modal-content::-webkit-scrollbar {
-  width: 5px;
-}
-.modal-content::-webkit-scrollbar-thumb {
-  background: linear-gradient(orange,#ff5e00);
-  border-radius: 20px;
-}
-.location-line {
-  margin: 20px 0 10px;
-}
-.industry-card {
-  position: relative;
-  height: 280px;
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.08);
-  min-width: 300px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: flex-end;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  transition: 0.4s ease;
-}
-.icon img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  display: block;
-}
-.work-item:hover video {
-  transform: scale(1.08);
-  transition: 0.4s;
-}
-.work-item video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.industries h2 {
-  font-size: 38px;
-  color: #fff;
-  margin-bottom: 10px;
-  text-align: center;
-}
-.industry-icon {
-  width: 34px;
-  height: 34px;
-  background: rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,165,0,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2px;
-  box-shadow: none;
-  overflow: hidden;
-  border-radius: 50%;
-}
-.industry-icon img {
-  width: 50%;
-  height: 50%;
-  object-fit: contain;
-}
-.industries .subtitle {
-  color: #aaa;
-  margin-bottom: 40px;
-  text-align: center;
-}
-.industry-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: 0.5s;
-}
-.industry-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.85) 15%,
-    rgba(0,0,0,0.45) 45%,
-    rgba(0,0,0,0.1) 70%,
-    transparent
-  );
-}
-.industry-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 25px 60px rgba(255,165,0,0.15);
-}
-.industry-card:hover img {
-  transform: scale(1.1);
-}
-.feature-box h3 {
-  color: white;
-  font-weight: 600;
-  margin-bottom: 4px;
-  font-size: 13px;
-}
-.feature-box p {
-  font-size: 11px;
-  line-height: 1.3;
-  color: #aaa;
-}
-.features {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  margin-top: 20px;
-  padding: 15px 15px;
-  border-radius: 12px;
-  background: #000;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-.feature-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 10px;
-  border-right: 1px solid rgba(255,255,255,0.08);
-}
-.feature-box:last-child {
-  border-right: none;
-}
-.feature-box:hover {
-  transform: translateY(-5px);
-  background: rgba(255,255,255,0.1);
-}
-.map-btn {
-  display: inline-block;
-  margin-top: 20px;
-}
-.services {
-  padding: 30px 20px 20px;
-  text-align: center;
-  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-.services::before {
-  content: "";
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: orange;
-  filter: blur(150px);
-  top: -100px;
-  left: -100px;
-  opacity: 0.2;
-}
-.services .subtitle {
-  font-size: 18px;
-  color: WHITE;
-  max-width: 520px;
-  line-height: 1;
-  margin: 0 auto 25px;
-}
-.services h2 {
-  font-size: 18px;
-  margin-bottom: 5px;
-  font-weight: 400;
-  color: ORANGE;
-  letter-spacing: 0.4px;
-}
-.grid {
-  display: flex;
-  gap: 25px;
-  overflow-x: auto;
-  padding-bottom: 20px;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  padding: 0 20px;
-}
-.grid::-webkit-scrollbar {
-  display: none;
-}
-.card {
-  background: #1a1a1a;
-  color: white;
-  padding: 15px;
-  border-radius: 18px;
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  min-width: 220px;
-  flex-shrink: 0;
-  scroll-snap-align: start;
-  cursor: pointer;
-}
-.card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-.card p {
-  margin-top: 18px;
-  font-weight: 600;
-  font-size: 16px;
-  color: #fff;
-}
-.card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
-.card:hover img {
-  transform: scale(1.08);
-}
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 18px;
-  padding: 2px;
-  background: linear-gradient(45deg, orange, red, purple);
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: 0.4s;
-}
-.card:hover::before {
-  opacity: 1;
-}
-.logo {
-  width: 320px;
-  filter: drop-shadow(0 0 10px rgba(0,0,0,0.7));
-}
-.hero {
-  position: relative;
-  height: 90vh;
-  margin-top: 0;
-  padding-top: 90px; 
-  overflow: hidden;
-}
-.hero video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at 20% 50%,
-    rgba(0,0,0,0.6),
-    transparent 60%
-  );
-  pointer-events: none;
-}
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    90deg,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,0.95) 20%,
-    rgba(0,0,0,0.85) 40%,
-    rgba(0,0,0,0.6) 55%,
-    rgba(0,0,0,0.3) 70%,
-    rgba(0,0,0,0.1) 85%,
-    transparent 100%
-  );
-  mix-blend-mode: multiply;
-}
-.btn {
-  margin-top: 20px;
-  padding: 12px 25px;
-  background: orange;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 25px;
-  box-shadow: 0 0 15px orange;
-}
-.btn:hover {
-  background: #ff8800;
-  transform: scale(1.05);
-}
-.subtitle {
-  margin-bottom: 40px;
-  color: #aaa;
-  font-size: 15px;
-  max-width: 600px;
-  margin: 0 auto 50px;
-  line-height: 1.6;
-} 
-.nav-links {
-  display: flex;
-  gap: 35px;
-  margin-right: 50px;
-}
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-}
-.nav-container {
-  width: 100%;
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding-right: 25px;
-}
-.nav-logo {
-  height: 280px;
-  width: auto;
-  object-fit: contain;
-  transform: translateY(2%); 
-}
-.nav-logo:hover {
-  transform: scale(1.1);
-  transition: 0.3s;
-}
-nav a {
-  margin: 0 15px;
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-  position: relative;
-}
-nav a:hover {
-  color: orange;
-}
-nav a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background: orange;
-  left: 0;
-  bottom: -5px;
-  transition: 0.3s;
-}
-nav a:hover::after {
-  width: 100%;
-}
-.quote-btn {
-  background: linear-gradient(135deg, #ff8c00, #ff5e00);
-  color: white;
-  padding: 10px 22px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: 0.3s;
-  font-weight: 600;
-  box-shadow: 0 5px 15px rgba(255,140,0,0.4);
-}
-.quote-btn:hover {
-  background: #ff8800;
-}  
-.whatsapp-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-.whatsapp-btn img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  background: #25D366;
-  padding: 8px;
-}
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 95px;
-  padding: 0 40px;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(10px);
-}
-.contact-section {
-  padding: 80px 6%;
-  background: #111;
-  color: white;
-  text-align: center;
-}
-.locations {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
-.location-card {
-  background: #1a1a1a;
-  padding: 25px;
-  border-radius: 12px;
-}
-.social {
-  padding: 80px 6%;
-  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-  color: white;
-  position: relative;
-}
-.social-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-  flex-wrap: wrap;
-}
-.social-left,
-.social-right {
-  width: 300px;
-  flex: 1;
-  text-align: center;
-}
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-.social-icons img {
-  width: 45px;
-  height: 45px;
-  padding: 12px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
-}
-.social-icons img:hover {
-  transform: scale(1.2);
-  background: orange;
-}
-.divider {
-  width: 1px;
-  height: 120px;
-  background: rgba(255,255,255,0.2);
-}
-html {
-  scroll-behavior: smooth;
-}
-.social-right p {
-  margin: 10px 0;
-  font-size: 16px;
-}
-.social::before {
-  content: "";
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: orange;
-  filter: blur(120px);
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0.2;
-} 
-.location-premium {
-  padding: 100px 8%;
-  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-  color: white;
-}
-.feature-strip {
-  padding: 20px;
-  background: transparent;
-}
-.strip-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-  background: #ffffff;
-  color: #111;
-  padding: 20px 30px;
-  border-radius: 14px;
-  max-width: 1200px;
-  margin: auto;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-}
-.strip-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.strip-item h4 {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-}
-.strip-item p {
-  margin: 0;
-  font-size: 12px;
-  color: #555;
-}
-.icon {
-  font-size: 22px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.strip-btn a {
-  background: orange;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-.strip-btn a:hover {
-  background: #ff8800;
-}
-.location-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 50px;
-  flex-wrap: wrap;
-}
-.location-text {
-  flex: 1;
-  animation: slideLeft 1s ease;
-}
-.location-text h2 {
-  font-size: 42px;
-  margin-bottom: 20px;
-}
-.location-text p {
-  color: #ccc;
-  line-height: 1.6;
-  margin-bottom: 25px;
-}
-.map-btn {
-  background: orange;
-  padding: 12px 25px;
-  border-radius: 25px;
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-}
-.map-btn:hover {
-  background: #ff8800;
-  transform: scale(1.05);
-}
-.location-image {
-  flex: 1;
-  text-align: center;
-  animation: slideRight 1s ease;
-}
-.location-image img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 15px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  transition: 0.4s;
-}
-.location-image img:hover {
-  transform: scale(1.05);
-}
-@keyframes slideLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.72);
-  backdrop-filter: blur(14px) saturate(140%);
-  overflow: hidden;
-}
-.types-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-  margin: 30px 0;
-}
-@keyframes popup {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-.location-advanced {
-  padding: 100px 6%;
-  background: linear-gradient(135deg, #0a0a0a, #121212);
-  color: white;
-  text-align: center;
-}
-.details-section {
-  padding: 80px 6%;
-  background: #0f0f0f;
-  color: white;
-  text-align: center;
-  margin-bottom: 40px;
-}
-.details-box {
-  max-width: 600px;
-  margin: auto;
-  padding: 30px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-}
-.footer {
-  background: #000;
-  color: #aaa;
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
-}
-.footer a {
-  color: orange;
-  text-decoration: none;
-  margin: 0 5px;
-}
-.footer a:hover {
-  text-decoration: underline;
-}
-.location-line {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 15px;
-  color: #ccc;
-  max-width: 500px;
-}
-.location-line img {
-  width: 20px;
-  height: 20px;
-}
-.location-line span {
-  font-size: 14px;
-  line-height: 1.5;
-}
-.phone-link {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-.phone-link:hover {
-  color: orange;
-}
-.industry-grid {
-  display: flex;
-  gap: 25px;
-  overflow-x: auto;
-  padding: 0;
-  scroll-behavior: smooth;
-  align-items: stretch;
-}
-.container {
-  padding: 0 40px;
-  max-width: 1400px;
-  margin: auto;
-}
-.industry-grid::-webkit-scrollbar {
-  display: none;
-}
-.scroll-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  opacity: 0.7;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.15);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-  transition: all 0.3s ease;
-}
-.services:hover .scroll-btn,
-.industries:hover .scroll-btn {
-  opacity: 1;
-}
-.scroll-btn:hover {
-  opacity: 1;
-  background: rgba(255,140,0,0.2);
-  border-color: orange;
-  transform: translateY(-50%) scale(1.15);
-}
-.scroll-btn.left {
-  left: 5px;
-}
-.hero .scroll-btn {
-  display: none;
-}
-.scroll-btn.right {
-  right: 5px;
-}
-.industries {
-  padding: 20px 20px 80px;
-  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-  text-align: center;
-  position: relative;
-}
-.services {
-  position: relative;
-}
-.industry-overlay {
-  position: absolute;
-  bottom: 25px;
-  left: 25px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  z-index: 2;
-}
-.industry-overlay h3 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #fff;
-  margin: 0;
-  margin-top: 2px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-}
-.industry-overlay p {
-  font-size: 13px;
-  color: #ccc;
-  margin: 0;
-  margin-top: 2px;
-  line-height: 1.3;
-  max-width: 220px;
-  text-align: left;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
-}
-.feature-icon {
-  width: 38px;
-  height: 38px;
-  background: rgba(0,0,0,0.8);
-  border: 1px solid rgba(255,165,0,0.7);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: none;
-}
-.feature-icon img {
-  width: 65%;
-  height: 65%;
-  object-fit: contain;
-  padding: 6px;
-}
-.feature-logo {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  background: #000;
-  padding: 4px;
-  border-radius: 6px;
-}
-.arrow {
-  width: 12px;
-  height: 12px;
-  border: solid white;
-  border-width: 0 2.5px 2.5px 0;
-}
-.scroll-btn.left .arrow {
-  transform: rotate(135deg);
-}
-.scroll-btn.right .arrow {
-  transform: rotate(-45deg);
-}
-.services::after,
-.industries::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 80px;
-  height: 100%;
-  background: linear-gradient(to left, #0f0f0f, transparent);
-  pointer-events: none;
-}
-.hero-content {
-  position: relative;
-  top: 45%;
-  left: 4%; 
-  z-index: 5;
-  transform: translateY(-50%);
-  color: white;
-  max-width: 720px;
-}
-.btn-main:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 12px 35px rgba(255,140,0,0.6);
-}
-.btn-outline:hover {
-  background: white;
-  color: black;
-}
-.tag {
-  color: #ff8c00;
-  font-size: 12px;
-  letter-spacing: 3px;
-  margin-bottom: 15px;
-  font-weight: 500;
-}
-.hero-content h1 {
-  font-size: 72px;
-  font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: -1.5px;
-  margin: 10px 0;
-}
-.hero-content .dot {
-  color: #ff8c00;
-}
-.hero-sub {
-  color: #cfcfcf;
-  margin: 25px 0;
-  line-height: 1.8;
-  font-size: 16px;
-  max-width: 520px;
-}
-.hero-buttons {
-  display: flex;
-  gap: 18px;
-  margin-top: 30px;
-}
-.btn-main {
-  background: linear-gradient(135deg, #ff8c00, #ff5e00);
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 8px 25px rgba(255,140,0,0.4);
-  transition: all 0.3s ease;
-}
-.hero-buttons .btn-main,
-.hero-buttons .btn-outline {
-  padding: 9px 20px;
-  font-size: 14px;
-  border-radius: 6px;
-  line-height: 1;
-}
-.btn-outline {
-  border: 1px solid rgba(255,255,255,0.6);
-  color: white;
-  backdrop-filter: blur(10px);
-  background: rgba(255,255,255,0.05);
-  transition: all 0.3s ease;
-}
-.btn-main,
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  position: relative;
-}
-.arrow-icon {
-  width: 18px;
-  height: 18px;
-  position: relative;
-}
-.arrow-icon::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 12px;
-  height: 2px;
-  background: currentColor;
-  transform: translateY(-50%);
-}
-.btn-main:hover .arrow-icon,
-.btn-outline:hover .arrow-icon {
-  transform: translateX(4px);
-  transition: 0.3s;
-}
-.arrow-icon::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  width: 6px;
-  height: 6px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  transform: translateY(-50%) rotate(45deg);
-}
-.hero-trust {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-top: 10px;
-  margin-bottom: 40px;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-}
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-.trust-item div {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-.star {
-  color: #ff8c00 !important;
-  font-size: 1.4em;
-  line-height: normal;
-}
-.trust-item img {
-  width: 70px;
-  height: 80px;
-  object-fit: contain;
-  transform: scale(1.7);
-  display: block;
-  margin-right: -20px;
-}
-.contact-btn {
-  background: linear-gradient(135deg, #25D366, #1ebe5d);
-  color: white;
-  padding: 10px 22px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 5px 15px rgba(37,211,102,0.4);
-  transition: 0.3s;
-}
-.contact-btn:hover {
-  background: #1ebe5d;
-  transform: translateY(-2px);
-}
-.trust-item strong {
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  line-height: 1.4;
-}
-.trust-item span {
-  font-size: 12px;
-  color: #aaa;
-  margin-top: 2px;
-}
-.hero-title {
-  font-size: 68px;
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  margin: 10px 0;
-}
-.highlight {
-  position: relative;
-  display: inline-block;
-}
-.dot {
-  color: #ff0080;
-}
-.dot-soft {
-  color: #ffb27a;
-}
-.dot-orange {
-  color: #ff8c00;
-}
-.work-item video {
-  transition: transform 0.4s ease, opacity 0.3s;
-}
-.work-item:hover video {
-  transform: scale(1.05);
-}
-.track-btn{
-  margin-right: 35px;
-}
-.nav-left {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: 10px;
-  height: 95px;
-  overflow: hidden;
-  margin-left: -114px; 
-}
-.rating {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  line-height: 1.4; 
-}
-.our-works {
-  padding: 60px 0;
-  background: #0f0f0f;
-}
-.our-works h2 {
-  color: #fff;
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 32px;
-}
-.works-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, 200px);
-  gap: 0;
-}
-.work-item {
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  background: #111;
-}
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(0.55) contrast(1.05) saturate(1.1);
+}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,
+    rgba(0,0,0,0.95) 0%,
+    rgba(0,0,0,0.85) 25%,
+    rgba(0,0,0,0.55) 55%,
+    rgba(0,0,0,0.2) 80%,
+    transparent 100%);
+}
+.hero-content{
+  position:absolute;top:50%;left:5%;z-index:5;
+  transform:translateY(-50%);max-width:720px;
+}
+.tag{
+  color:#ff8c00;font-size:13px;letter-spacing:3px;
+  margin-bottom:15px;font-weight:500;
+}
+.hero-title{
+  font-size:72px;font-weight:600;line-height:1.05;
+  letter-spacing:-1.5px;margin:10px 0;
+}
+.dot-soft{color:#ffb27a;}
+.dot-orange{color:#ff8c00;}
+.hero-sub{
+  color:#cfcfcf;margin:25px 0;line-height:1.7;
+  font-size:16px;max-width:520px;
+}
+.hero-buttons{display:flex;gap:16px;margin-top:25px;flex-wrap:wrap;}
+.btn-main,.btn-outline{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 24px;font-size:14px;font-weight:600;
+  border-radius:8px;text-decoration:none;
+  transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;border:none;
+}
+.btn-main{
+  background:linear-gradient(135deg,#ff8c00,#ff5e00);
+  color:#fff;box-shadow:0 8px 25px rgba(255,140,0,0.4);
+}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(255,140,0,0.6);}
+.btn-outline{
+  border:1px solid rgba(255,255,255,0.6);color:#fff;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+}
+.btn-outline:hover{background:#fff;color:#000;}
+.arrow-icon{width:18px;height:14px;position:relative;}
+.arrow-icon::before{
+  content:"";position:absolute;top:50%;left:0;
+  width:14px;height:2px;background:currentColor;transform:translateY(-50%);
+}
+.arrow-icon::after{
+  content:"";position:absolute;right:0;top:50%;
+  width:7px;height:7px;
+  border-top:2px solid currentColor;border-right:2px solid currentColor;
+  transform:translateY(-50%) rotate(45deg);
+}
+.hero-trust{
+  display:flex;align-items:center;gap:25px;
+  margin-top:30px;flex-wrap:wrap;
+}
+.trust-item{display:flex;align-items:center;gap:10px;}
+.trust-item img{width:42px;height:42px;object-fit:contain;}
+.trust-item div{display:flex;flex-direction:column;line-height:1.2;}
+.trust-item strong{font-size:16px;font-weight:700;color:#fff;}
+.trust-item span{font-size:11px;color:#aaa;margin-top:2px;}
+.star{color:#ff8c00;font-size:1.1em;}
+.rating{display:inline-flex;align-items:center;gap:3px;}
+
+/* ===== SECTIONS ===== */
+.services,.industries{
+  padding:60px 20px;text-align:center;position:relative;
+  background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
+}
+.services h2,.industries h2{
+  font-size:18px;color:#ff8c00;letter-spacing:2px;
+  margin-bottom:8px;font-weight:500;
+}
+.industries h2{font-size:36px;color:#fff;letter-spacing:0;font-weight:700;}
+.subtitle{
+  color:#aaa;font-size:15px;max-width:600px;
+  margin:0 auto 35px;line-height:1.6;
+}
+.services .subtitle{color:#fff;font-size:17px;margin-bottom:30px;}
+
+.container{padding:0 20px;max-width:1400px;margin:auto;position:relative;}
+.grid,.industry-grid{
+  display:flex;gap:20px;overflow-x:auto;
+  scroll-behavior:smooth;scroll-snap-type:x mandatory;
+  padding:10px 5px 20px;
+  -webkit-overflow-scrolling:touch;
+}
+.grid::-webkit-scrollbar,.industry-grid::-webkit-scrollbar{display:none;}
+.grid,.industry-grid{scrollbar-width:none;}
+
+.card{
+  background:#1a1a1a;border-radius:16px;padding:14px;
+  min-width:200px;flex-shrink:0;cursor:pointer;
+  scroll-snap-align:start;
+  transition:transform 0.3s,box-shadow 0.3s;
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+  position:relative;
+}
+.card img{
+  width:100%;height:150px;object-fit:cover;border-radius:10px;
+  transition:transform 0.3s;
+}
+.card p{
+  margin-top:14px;font-weight:600;font-size:15px;color:#fff;
+  text-align:center;
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(0,0,0,0.5);}
+.card:hover img{transform:scale(1.05);}
+
+/* Industry cards */
+.industry-card{
+  position:relative;height:280px;border-radius:16px;
+  overflow:hidden;cursor:pointer;
+  border:1px solid rgba(255,255,255,0.08);
+  min-width:280px;flex-shrink:0;
+  display:flex;align-items:flex-end;
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.industry-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.4s;
+}
+.industry-card::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,
+    rgba(0,0,0,0.9) 15%,rgba(0,0,0,0.5) 45%,
+    rgba(0,0,0,0.15) 70%,transparent);
+}
+.industry-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(255,140,0,0.15);}
+.industry-card:hover img{transform:scale(1.08);}
+.industry-overlay{
+  position:absolute;bottom:20px;left:20px;right:20px;
+  text-align:left;z-index:2;
+}
+.industry-icon{
+  width:34px;height:34px;background:rgba(0,0,0,0.7);
+  border:1px solid rgba(255,165,0,0.6);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:8px;
+}
+.industry-icon img{width:55%;height:55%;object-fit:contain;}
+.industry-overlay h3{
+  font-size:18px;font-weight:600;color:#fff;margin:0;
+  text-shadow:0 2px 8px rgba(0,0,0,0.6);
+}
+.industry-overlay p{
+  font-size:13px;color:#ccc;margin-top:4px;line-height:1.4;
+  text-shadow:0 1px 6px rgba(0,0,0,0.5);
+}
+
+/* Scroll buttons */
+.scroll-btn{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:10;
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.15);
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+  opacity:0.7;transition:all 0.3s;
+}
+.scroll-btn:hover{
+  opacity:1;background:rgba(255,140,0,0.25);
+  border-color:#ff8c00;transform:translateY(-50%) scale(1.1);
+}
+.scroll-btn.left{left:5px;}
+.scroll-btn.right{right:5px;}
+.arrow{
+  width:11px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;
+}
+.scroll-btn.left .arrow{transform:rotate(135deg);}
+.scroll-btn.right .arrow{transform:rotate(-45deg);}
+
+/* ===== FEATURE STRIP (FIXED HEIGHT) ===== */
+.feature-strip{padding:15px 20px;background:transparent;}
+.strip-container{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  background:#fff;color:#111;
+  padding:14px 24px;border-radius:12px;
+  max-width:1200px;margin:auto;
+  box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+.strip-item{display:flex;align-items:center;gap:10px;}
+.strip-item h4{margin:0;font-size:14px;font-weight:600;}
+.strip-item p{margin:0;font-size:11px;color:#555;line-height:1.3;}
+.strip-icon{
+  width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.strip-icon img{width:30px;height:30px;object-fit:contain;}
+.strip-btn a{
+  background:linear-gradient(135deg,#ff8c00,#ff5e00);
+  color:#fff;padding:10px 18px;border-radius:8px;
+  text-decoration:none;font-weight:600;font-size:13px;
+  transition:transform 0.3s,box-shadow 0.3s;
+  white-space:nowrap;display:inline-block;
+}
+.strip-btn a:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,140,0,0.4);}
+
+/* ===== OUR WORKS ===== */
+.our-works{padding:60px 20px;background:#0f0f0f;}
+.our-works h2{
+  color:#fff;text-align:center;margin-bottom:30px;
+  font-size:32px;font-weight:700;
+}
+.works-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  grid-template-rows:repeat(3,200px);gap:0;
+  max-width:1400px;margin:auto;
+}
+.work-item{
+  position:relative;cursor:pointer;overflow:hidden;background:#111;
+}
+.work-item video{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.4s;
+}
+.work-item:hover video{transform:scale(1.05);}
 .work-item.active::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  border: 2px solid #ff6a00;
-  pointer-events: none;
-  animation: borderGlow 1.5s linear infinite;
-}
-.work-item.active::after{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60px;
-  height: 60px;
-  border-top: 3px solid orange;
-  border-left: 3px solid orange;
-  z-index: 6;
-  animation: cornerMove 2s infinite;
+  content:"";position:absolute;inset:0;z-index:5;
+  border:2px solid #ff6a00;pointer-events:none;
+  animation:borderGlow 1.5s linear infinite;
 }
 @keyframes borderGlow{
-  0%{ box-shadow: 0 0 10px rgba(255,140,0,0.3); }
-  50%{ box-shadow: 0 0 25px rgba(255,140,0,0.8); }
-  100%{ box-shadow: 0 0 10px rgba(255,140,0,0.3); }
-}
-@keyframes cornerMove{
-  0%{ transform: translate(0,0); }
-  50%{ transform: translate(6px,6px); }
-  100%{ transform: translate(0,0); }
-}
-.work-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: 0.4s;
-}
-.work-item:hover img {
-  transform: scale(1.08);
+  0%,100%{box-shadow:0 0 10px rgba(255,140,0,0.3);}
+  50%{box-shadow:0 0 25px rgba(255,140,0,0.8);}
 }
 
-/* ===== MOBILE VIEW ===== */
-@media (max-width: 768px) {
-  header,
-  .navbar {
-    padding: 10px 14px !important;
-    height: auto !important;
-  }
-  .logo img {
-    height: 38px !important;
-  }
-  .hero,
-  .hero-section,
-  .home-banner {
-    min-height: 72vh !important;
-    height: 72vh !important;
-    padding-top: 80px !important;
-    padding-bottom: 30px !important;
-    background-position: center center !important;
-    background-size: cover !important;
-  }
-  .hero::before,
-  .hero-overlay {
-    opacity: 0.55 !important;
-  }
-  .hero-content,
-  .banner-content {
-    padding: 0 18px !important;
-    max-width: 100% !important;
-  }
-  .hero h1,
-  .hero-title {
-    font-size: 42px !important;
-    line-height: 1.05 !important;
-    margin-bottom: 14px !important;
-  }
-  .hero p,
-  .hero-text {
-    font-size: 14px !important;
-    line-height: 1.6 !important;
-    max-width: 95% !important;
-  }
-  .hero-buttons {
-    flex-direction: row !important;
-    gap: 10px !important;
-    margin-top: 18px !important;
-  }
-  .hero-buttons a {
-    font-size: 13px !important;
-    padding: 10px 16px !important;
-  }
-  .stats,
-  .hero-stats {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 14px !important;
-    margin-top: 22px !important;
-  }
-  .whatsapp-float {
-    width: 48px !important;
-    height: 48px !important;
-    bottom: 16px !important;
-    right: 16px !important;
-  }
+/* ===== LOCATION ===== */
+.location-premium{
+  padding:80px 6%;
+  background:linear-gradient(135deg,#0f0f0f,#1c1c1c);
 }
-@media screen and (max-width:768px){
-  .hero{
-    height: 68vh !important;
-    min-height: 68vh !important;
-    overflow: hidden !important;
-  }
-  .hero video{
-    height: 68vh !important;
-    object-fit: cover !important;
-  }
-  .hero-overlay{
-    height: 68vh !important;
-  }
-  .hero-content{
-    position: absolute !important;
-    top: 52% !important;
-    left: 16px !important;
-    right: 16px !important;
-    transform: translateY(-50%) !important;
-    max-width: 90% !important;
-  }
-  .hero-title{
-    font-size: 38px !important;
-    line-height: 1.05 !important;
-    margin-bottom: 10px !important;
-  }
-  .hero-sub{
-    font-size: 13px !important;
-    line-height: 1.5 !important;
-    margin: 12px 0 !important;
-  }
-  .hero-sub br{
-    display:none !important;
-  }
-  .hero-buttons{
-    margin-top: 14px !important;
-    gap: 8px !important;
-  }
-  .hero-buttons a{
-    padding: 9px 14px !important;
-    font-size: 12px !important;
-  }
-  .hero-trust{
-    margin-top: 14px !important;
-    gap: 8px !important;
-  }
-  .trust-item{
-    min-width: 70px !important;
-  }
-  .trust-item strong{
-    font-size: 11px !important;
-  }
-  .trust-item span{
-    font-size: 8px !important;
-  }
-  .trust-item img{
-    width: 30px !important;
-    height: 30px !important;
-  }
-  .navbar{
-    height: 58px !important;
-    padding: 0 8px !important;
-  }
-  .nav-logo{
-    height: 52px !important;
-  }
-  .nav-links a{
-    font-size: 8px !important;
-  }
-  .track-btn{
-    font-size: 8px !important;
-    padding: 6px 8px !important;
-  }
+.location-content{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:50px;flex-wrap:wrap;max-width:1400px;margin:auto;
 }
+.location-text{flex:1;min-width:280px;}
+.location-text h2{font-size:38px;margin-bottom:18px;}
+.location-text p{color:#ccc;line-height:1.6;margin-bottom:20px;}
+.location-line{
+  display:flex;align-items:flex-start;gap:10px;
+  margin-bottom:20px;color:#ccc;
+}
+.location-line img{width:20px;height:20px;flex-shrink:0;margin-top:2px;}
+.location-line span{font-size:14px;line-height:1.5;}
+.map-btn{
+  display:inline-block;
+  background:linear-gradient(135deg,#ff8c00,#ff5e00);
+  padding:12px 25px;border-radius:25px;color:#fff;
+  text-decoration:none;font-weight:600;
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.map-btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(255,140,0,0.4);}
+.location-image{flex:1;min-width:280px;}
+.location-image img{
+  width:100%;height:300px;object-fit:cover;
+  border-radius:15px;box-shadow:0 20px 40px rgba(0,0,0,0.5);
+  transition:transform 0.3s;
+}
+.location-image img:hover{transform:scale(1.02);}
 
-/* ===== PREMIUM QUOTE FORM ===== */
-.premium-quote-form{
-  margin-top:30px;
+/* ===== SOCIAL ===== */
+.social{
+  padding:60px 6%;
+  background:linear-gradient(135deg,#0f0f0f,#1c1c1c);
+  position:relative;
 }
-.form-row{
-  display:flex;
-  gap:18px;
-  margin-bottom:18px;
+.social-container{
+  display:flex;align-items:center;justify-content:center;
+  gap:50px;flex-wrap:wrap;max-width:1200px;margin:auto;
 }
+.social-left,.social-right{flex:1;min-width:260px;text-align:center;}
+.social-left h2,.social-right h2{font-size:28px;margin-bottom:20px;}
+.social-icons{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;}
+.social-icons a{display:inline-block;}
+.social-icons img{
+  width:48px;height:48px;padding:12px;border-radius:50%;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+  transition:transform 0.3s,background 0.3s;
+}
+.social-icons img:hover{transform:scale(1.15);background:#ff8c00;}
+.divider{width:1px;height:120px;background:rgba(255,255,255,0.2);}
+.social-right p{margin:10px 0;font-size:16px;}
+.phone-link{color:#fff;text-decoration:none;font-weight:600;}
+.phone-link:hover{color:#ff8c00;}
+
+/* ===== FOOTER ===== */
+.footer{
+  background:#000;color:#aaa;text-align:center;
+  padding:25px 20px;font-size:13px;
+}
+.footer a{color:#ff8c00;text-decoration:none;margin:0 5px;}
+.footer a:hover{text-decoration:underline;}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-container{
+  position:fixed;bottom:20px;right:20px;z-index:999;
+}
+.whatsapp-btn img{
+  width:42px;height:42px;border-radius:50%;
+  cursor:pointer;background:#25D366;padding:8px;
+  box-shadow:0 5px 15px rgba(37,211,102,0.5);
+  transition:transform 0.3s;
+}
+.whatsapp-btn:hover img{transform:scale(1.1);}
+
+/* ===== MODALS ===== */
+.modal{
+  display:none;position:fixed;z-index:2000;
+  inset:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(10px);
+  overflow-y:auto;padding:20px 0;
+}
+.modal-content{
+  position:relative;margin:3% auto;
+  width:92%;max-width:760px;max-height:88vh;
+  overflow-y:auto;padding:28px;
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(30,30,32,0.97),rgba(10,10,12,0.98));
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 25px 60px rgba(0,0,0,0.7);
+  text-align:center;color:#fff;
+  animation:popup 0.3s ease;
+}
+@keyframes popup{
+  from{transform:scale(0.9);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+.modal-content h2{
+  font-size:30px;margin-bottom:8px;font-weight:600;
+}
+.close{
+  position:absolute;right:18px;top:14px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;cursor:pointer;
+  transition:all 0.3s;
+}
+.close:hover{background:rgba(255,140,0,0.25);color:#ff8c00;transform:rotate(90deg);}
+.modal-content::-webkit-scrollbar{width:5px;}
+.modal-content::-webkit-scrollbar-thumb{
+  background:linear-gradient(#ff8c00,#ff5e00);border-radius:20px;
+}
+.types-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:15px;margin:25px 0;
+}
+.type-box{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:14px;padding:14px;
+  transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;
+}
+.type-box img{
+  width:100%;height:90px;object-fit:contain;border-radius:10px;
+  transition:transform 0.3s;
+}
+.type-box p{margin-top:10px;font-size:14px;font-weight:500;color:#f3f3f3;}
+.type-box:hover{
+  transform:translateY(-5px);
+  border-color:rgba(255,140,0,0.5);
+  box-shadow:0 12px 28px rgba(0,0,0,0.4);
+}
+.type-box:hover img{transform:scale(1.05);}
+
+/* Login modal inputs */
+#loginModal input{
+  width:100%;padding:13px;margin-bottom:12px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;color:#fff;font-size:14px;
+  outline:none;transition:0.3s;
+}
+#loginModal input:focus{
+  border-color:#ff8c00;box-shadow:0 0 12px rgba(255,140,0,0.25);
+}
+#loginModal input::placeholder{color:#aaa;}
+
+/* Quote form */
+.premium-quote-form{margin-top:20px;text-align:left;}
+.form-row{display:flex;gap:14px;margin-bottom:14px;}
+.form-row > div{flex:1;}
+.premium-quote-form label{
+  display:block;font-size:12px;color:#bbb;
+  margin-bottom:6px;font-weight:500;
+}
+.required{color:#ff3b3b;margin-left:3px;}
 .premium-quote-form input,
 .premium-quote-form select,
 .premium-quote-form textarea{
-  width:100%;
-  padding:16px 18px;
-  background:#1a1a1a !important;
-  border:1px solid rgba(255,255,255,0.08) !important;
-  border-radius:14px;
-  color:#fff !important;
-  font-size:15px;
-  font-family:'Poppins',sans-serif;
-  outline:none;
-  transition:0.3s ease;
-  box-sizing:border-box;
-  -webkit-appearance:none;
-  appearance:none;
+  width:100%;padding:13px 16px;
+  background:#1a1a1a;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;color:#fff;font-size:14px;
+  font-family:'Poppins',sans-serif;outline:none;
+  transition:0.3s;
 }
 .premium-quote-form input::placeholder,
-.premium-quote-form textarea::placeholder{
-  color:#8f8f8f !important;
-}
-.premium-quote-form select{
-  cursor:pointer;
-}
-.premium-quote-form select option{
-  background:#111 !important;
-  color:#fff !important;
-}
-.required{
-  color:#ff3b3b;
-  margin-left:4px;
-}
-.premium-quote-form textarea{
-  height:140px;
-  resize:none;
-  line-height:1.6;
-}
+.premium-quote-form textarea::placeholder{color:#888;}
+.premium-quote-form select option{background:#111;color:#fff;}
+.premium-quote-form textarea{height:110px;resize:none;line-height:1.5;}
 .premium-quote-form input:focus,
 .premium-quote-form select:focus,
 .premium-quote-form textarea:focus{
   border-color:#ff8c00;
-  box-shadow:
-    0 0 0 3px rgba(255,140,0,0.10),
-    0 0 25px rgba(255,140,0,0.18);
-  background:rgba(255,255,255,0.06);
+  box-shadow:0 0 0 3px rgba(255,140,0,0.10);
 }
-.quote-actions{
-  display:flex;
-  justify-content:center;
-  gap:16px;
-  margin-top:26px;
-  flex-wrap:wrap;
+.quote-actions{display:flex;justify-content:center;margin-top:20px;}
+.quote-actions .btn{
+  min-width:220px;padding:14px 28px;
+  background:linear-gradient(135deg,#ff8c00,#ff5e00);
+  color:#fff;border:none;border-radius:12px;
+  font-size:15px;font-weight:600;cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,140,0,0.4);
+  transition:transform 0.3s,box-shadow 0.3s;
 }
-.quote-actions .btn,
-.quote-actions .contact-btn{
-  min-width:220px;
-  height:54px;
-  border-radius:14px;
-  font-size:15px;
-  font-weight:600;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-  transition:0.3s ease;
+.quote-actions .btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(255,140,0,0.5);}
+
+/* ===== RESPONSIVE — TABLET ===== */
+@media (max-width:1024px){
+  .hero-title{font-size:56px;}
+  .nav-logo{height:130px;}
+  .navbar{padding:0 20px;}
+  .nav-links{gap:22px;}
+  .works-grid{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,180px);}
 }
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill{
-  -webkit-text-fill-color:#fff !important;
-  -webkit-box-shadow:0 0 0px 1000px #1a1a1a inset !important;
-  transition:background-color 5000s ease-in-out 0s;
+
+/* ===== RESPONSIVE — MOBILE ===== */
+@media (max-width:768px){
+  .navbar{height:64px;padding:0 16px;}
+  .nav-logo{height:90px;}
+  .menu-toggle{display:flex;}
+  .nav-links{
+    position:fixed;top:64px;left:0;right:0;
+    flex-direction:column;gap:0;
+    background:rgba(0,0,0,0.97);
+    backdrop-filter:blur(15px);
+    padding:20px;
+    transform:translateY(-150%);
+    transition:transform 0.3s ease;
+    border-top:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-links.active{transform:translateY(0);}
+  .nav-links a{padding:14px 0;font-size:16px;border-bottom:1px solid rgba(255,255,255,0.05);width:100%;text-align:center;}
+  .nav-links a:last-child{border-bottom:none;}
+  .quote-btn{padding:8px 16px;font-size:12px;}
+
+  /* Hero mobile */
+  .hero{height:auto;min-height:calc(100vh - 64px);padding:90px 0 40px;}
+  .hero video{height:100%;}
+  .hero-content{
+    position:relative;top:auto;left:auto;
+    transform:none;padding:0 20px;max-width:100%;
+  }
+  .tag{font-size:11px;letter-spacing:2px;}
+  .hero-title{font-size:42px;line-height:1.05;}
+  .hero-sub{font-size:14px;line-height:1.6;margin:18px 0;}
+  .hero-sub br{display:none;}
+  .hero-buttons{gap:10px;margin-top:20px;}
+  .btn-main,.btn-outline{padding:11px 18px;font-size:13px;}
+  .hero-trust{
+    display:grid;grid-template-columns:repeat(2,1fr);
+    gap:14px;margin-top:25px;
+  }
+  .trust-item{gap:8px;}
+  .trust-item img{width:36px;height:36px;}
+  .trust-item strong{font-size:14px;}
+  .trust-item span{font-size:10px;}
+
+  /* Sections mobile */
+  .services,.industries{padding:50px 12px;}
+  .services h2,.industries h2{font-size:26px;}
+  .industries h2{font-size:28px;}
+  .services .subtitle,.subtitle{font-size:14px;margin-bottom:25px;}
+  .container{padding:0 8px;}
+  .card{min-width:160px;padding:10px;}
+  .card img{height:120px;}
+  .card p{font-size:13px;margin-top:10px;}
+  .industry-card{min-width:240px;height:240px;}
+  .industry-overlay h3{font-size:16px;}
+  .industry-overlay p{font-size:12px;}
+  .scroll-btn{width:36px;height:36px;}
+
+  /* Feature strip mobile */
+  .feature-strip{padding:15px 12px;}
+  .strip-container{
+    flex-direction:column;align-items:stretch;
+    padding:18px;gap:14px;
+  }
+  .strip-item{justify-content:flex-start;}
+  .strip-btn{text-align:center;}
+  .strip-btn a{display:block;padding:12px;}
+
+  /* Works mobile */
+  .our-works{padding:40px 12px;}
+  .our-works h2{font-size:26px;margin-bottom:20px;}
+  .works-grid{
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:repeat(8,140px);gap:6px;
+  }
+
+  /* Location mobile */
+  .location-premium{padding:50px 20px;}
+  .location-content{flex-direction:column;gap:30px;}
+  .location-text h2{font-size:28px;}
+  .location-text p{font-size:14px;}
+  .location-image img{height:220px;}
+
+  /* Social mobile */
+  .social{padding:50px 20px;}
+  .social-container{gap:30px;flex-direction:column;}
+  .divider{width:80%;height:1px;}
+  .social-left h2,.social-right h2{font-size:24px;}
+  .social-icons img{width:42px;height:42px;padding:10px;}
+
+  /* Modal mobile */
+  .modal-content{width:92%;padding:22px 18px;margin:5% auto;}
+  .modal-content h2{font-size:24px;}
+  .types-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .type-box img{height:75px;}
+  .form-row{flex-direction:column;gap:12px;}
+
+  /* Whatsapp mobile */
+  .whatsapp-btn img{width:48px;height:48px;}
 }
-@media(max-width:768px){
-  .form-row{
-    flex-direction:column;
-    gap:14px;
-  }
-  .quote-actions{
-    flex-direction:column;
-  }
-  .quote-actions .btn,
-  .quote-actions .contact-btn{
-    width:100%;
-  }
-  .modal-content{
-    width:92%;
-    padding:22px;
-  }
-  .modal-content h2{
-    font-size:28px;
-  }
+
+@media (max-width:480px){
+  .hero-title{font-size:36px;}
+  .hero-buttons{flex-direction:column;width:100%;}
+  .btn-main,.btn-outline{width:100%;justify-content:center;}
+  .nav-logo{height:70px;}
+  .quote-btn{padding:7px 12px;font-size:11px;}
+  .works-grid{grid-template-columns:1fr;grid-template-rows:repeat(15,180px);}
+  .industry-card{min-width:220px;}
 }
 </style>
 </head>
@@ -1467,32 +641,33 @@ textarea:-webkit-autofill{
 <header class="navbar">
   <div class="nav-container">
     <div class="nav-left">
-      <img src="eevee_logo.png" class="nav-logo">
+      <img src="eevee_logo.png" class="nav-logo" alt="Eevee Printers Logo">
     </div>
-    <div class="nav-links">
-      <a href="#top">Home</a>
-      <a href="#services">Services</a>
-      <a href="#industries">Industries</a>
-      <a href="#ourworks">Our Work</a>
-      <a href="#contact">Contact Us</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#top" onclick="closeMenu()">Home</a>
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#industries" onclick="closeMenu()">Industries</a>
+      <a href="#ourworks" onclick="closeMenu()">Our Work</a>
+      <a href="#contact" onclick="closeMenu()">Contact Us</a>
+    </nav>
+    <a href="#" onclick="openLogin();return false;" class="quote-btn">Track Order</a>
+    <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
     </div>
-    <a href="#" onclick="openLogin()" class="quote-btn track-btn">
-      Track Order
-    </a>
   </div>
 </header>
 
 <!-- HERO -->
-<div class="hero">
-  <video autoplay muted loop preload="none">
-    <source src="15505103_1080_1920_60fps.mp4">
+<section class="hero">
+  <video autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg">
+    <source src="15505103_1080_1920_60fps.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="tag">PREMIUM PRINTING SOLUTIONS</p>
     <h1 class="hero-title">
-      We Print<span class="dot-soft">.</span>
-      <span class="highlight">You Impress</span><span class="dot-orange">.</span>
+      We Print<span class="dot-soft">.</span><br>
+      You Impress<span class="dot-orange">.</span>
     </h1>
     <p class="hero-sub">
       High-quality printing for businesses,<br>
@@ -1500,89 +675,69 @@ textarea:-webkit-autofill{
       Serving clients across India, USA & worldwide.
     </p>
     <div class="hero-buttons">
-      <a href="#" onclick="openQuoteModal()" class="btn-main">
-        Get a Quote 
-        <span class="arrow-icon"></span>
+      <a href="#" onclick="openQuoteModal();return false;" class="btn-main">
+        Get a Quote <span class="arrow-icon"></span>
       </a>
       <a href="#ourworks" class="btn-outline">
-        View Our Work
-        <span class="arrow-icon"></span>
+        View Our Work <span class="arrow-icon"></span>
       </a>
     </div>
     <div class="hero-trust">
       <div class="trust-item">
-        <img src="clients_logo1.png" loading="lazy">
-        <div>
-          <strong>500+</strong>
-          <span>Happy Clients</span>
-        </div>
+        <img src="clients_logo1.png" loading="lazy" alt="Clients">
+        <div><strong>500+</strong><span>Happy Clients</span></div>
       </div>
       <div class="trust-item">
-        <img src="5_years_logo1.png" loading="lazy">
-        <div>
-          <strong>5+</strong>
-          <span>Years of Excellence</span>
-        </div>
+        <img src="5_years_logo1.png" loading="lazy" alt="5 Years">
+        <div><strong>5+</strong><span>Years of Excellence</span></div>
       </div>
       <div class="trust-item">
-        <img src="rating_logo1.png" loading="lazy">
-        <div>
-          <strong class="rating">5<span class="star">★</span></strong>
-          <span>Google Rating</span>
-        </div>
+        <img src="rating_logo1.png" loading="lazy" alt="Rating">
+        <div><strong class="rating">5<span class="star">★</span></strong><span>Google Rating</span></div>
       </div>
       <div class="trust-item">
-        <img src="word_wide_logo1.png" loading="lazy">
-        <div>
-          <strong>Worldwide</strong>
-          <span>Shipping</span>
-        </div>
+        <img src="word_wide_logo1.png" loading="lazy" alt="Worldwide">
+        <div><strong>Worldwide</strong><span>Shipping</span></div>
       </div>
     </div>
   </div>
-</div> 
+</section>
 
 <!-- SERVICES -->
 <section class="services" id="services">
   <h2>OUR SERVICES</h2>
   <p class="subtitle">Printing Solutions That Speak For Your Brand</p>
-
-  <div class="scroll-btn left" onclick="scrollLeftFunc(this)">
-    <span class="arrow"></span>
-  </div>
-  <div class="scroll-btn right" onclick="scrollRightFunc(this)">
-    <span class="arrow"></span>
-  </div>
-
   <div class="container">
+    <div class="scroll-btn left" onclick="scrollLeftFunc(this)"><span class="arrow"></span></div>
+    <div class="scroll-btn right" onclick="scrollRightFunc(this)"><span class="arrow"></span></div>
     <div class="grid">
-      <div class="card" onclick="openModal('cardModal')"><img src="Business_card_image_Main_Page.png" loading="lazy"><p>Business Cards</p></div>
-      <div class="card" onclick="openModal('letterModal')"><img src="letter_head_main_page.png" loading="lazy"><p>Letter Heads</p></div>
-      <div class="card"><img src="envelops_main_page.png" loading="lazy"><p>Envelopes</p></div>
-      <div class="card"><img src="idcards_main_page.png" loading="lazy"><p>ID Cards & Lanyards</p></div>
-      <div class="card"><img src="paper_bag_main_page.png" loading="lazy"><p>Paper Bags</p></div>
-      <div class="card"><img src="diaries_main_page.png" loading="lazy"><p>Diaries</p></div>
-      <div class="card"><img src="calendar_main_page.png" loading="lazy"><p>Calendars</p></div>
-      <div class="card"><img src="button_badges_main_page.png" loading="lazy"><p>Button Badges</p></div>
-      <div class="card"><img src="stickers_main_page.png" loading="lazy"><p>Shape Sticker & Labels</p></div>
-      <div class="card"><img src="tent_cards.png" loading="lazy"><p>Tent Cards</p></div>
-      <div class="card"><img src="Tshirt_main_page.png" loading="lazy"><p>T-Shirt Printing</p></div>
-      <div class="card"><img src="valet_parking.png" loading="lazy"><p>Valet Parking Coupon</p></div>
-      <div class="card"><img src="covers_main.png" loading="lazy"><p>Covers</p></div>
-      <div class="card"><img src="mugs_botlle_main.png" loading="lazy"><p>Corporate Mugs & Bottles</p></div>
-      <div class="card"><img src="corportae_gift_set.png" loading="lazy"><p>Corporate Gift Set</p></div>
-      <div class="card"><img src="invitation_cards_main.png" loading="lazy"><p>Invitation Cards</p></div>
-      <div class="card" onclick="openModal('boxesModal')"><img src="boxes_main.png" loading="lazy"><p>Boxes</p></div>
-      <div class="card"><img src="coasters_main.png" loading="lazy"><p>Table Coasters</p></div>
-      <div class="card"><img src="SWEETBOX_MAIN.PNG" loading="lazy"><p>Custom Sweet Box</p></div>
-      <div class="card"><img src="BOOKS_MAIN.PNG" loading="lazy"><p>Books Printing</p></div>
-      <div class="card"><img src="BANNER_SIGNNAGE.PNG" loading="lazy"><p>Banner & Signages</p></div>
-      <div class="card"><img src="FOAM_BOARD_MAIN.PNG" loading="lazy"><p>Foam Boards</p></div>
-      <div class="card"><img src="FLUTE_BOARD_MAIN.PNG" loading="lazy"><p>Flute Boards</p></div>
-      <div class="card"><img src="BILLBOOKS_MAIN.PNG" loading="lazy"><p>Bill Books</p></div>
-      <div class="card"><img src="danglers_main.png" loading="lazy"><p>Danglers</p></div>
-      <div class="card"><img src="COUPONS_MAIN.PNG" loading="lazy"><p>Coupons</p></div>
-      <div class="card"><img src="MENU_CARD_MAIN.PNG" loading="lazy"><p>Menu Cards</p></div>
+      <div class="card" onclick="openModal('cardModal')"><img src="Business_card_image_Main_Page.png" loading="lazy" alt="Business Cards"><p>Business Cards</p></div>
+      <div class="card" onclick="openModal('letterModal')"><img src="letter_head_main_page.png" loading="lazy" alt="Letter Heads"><p>Letter Heads</p></div>
+      <div class="card"><img src="envelops_main_page.png" loading="lazy" alt="Envelopes"><p>Envelopes</p></div>
+      <div class="card"><img src="idcards_main_page.png" loading="lazy" alt="ID Cards"><p>ID Cards & Lanyards</p></div>
+      <div class="card"><img src="paper_bag_main_page.png" loading="lazy" alt="Paper Bags"><p>Paper Bags</p></div>
+      <div class="card"><img src="diaries_main_page.png" loading="lazy" alt="Diaries"><p>Diaries</p></div>
+      <div class="card"><img src="calendar_main_page.png" loading="lazy" alt="Calendars"><p>Calendars</p></div>
+      <div class="card"><img src="button_badges_main_page.png" loading="lazy" alt="Badges"><p>Button Badges</p></div>
+      <div class="card"><img src="stickers_main_page.png" loading="lazy" alt="Stickers"><p>Shape Sticker & Labels</p></div>
+      <div class="card"><img src="tent_cards.png" loading="lazy" alt="Tent Cards"><p>Tent Cards</p></div>
+      <div class="card"><img src="Tshirt_main_page.png" loading="lazy" alt="T-Shirt"><p>T-Shirt Printing</p></div>
+      <div class="card"><img src="valet_parking.png" loading="lazy" alt="Valet"><p>Valet Parking Coupon</p></div>
+      <div class="card"><img src="covers_main.png" loading="lazy" alt="Covers"><p>Covers</p></div>
+      <div class="card"><img src="mugs_botlle_main.png" loading="lazy" alt="Mugs"><p>Corporate Mugs & Bottles</p></div>
+      <div class="card"><img src="corportae_gift_set.png" loading="lazy" alt="Gift Set"><p>Corporate Gift Set</p></div>
+      <div class="card"><img src="invitation_cards_main.png" loading="lazy" alt="Invitation"><p>Invitation Cards</p></div>
+      <div class="card" onclick="openModal('boxesModal')"><img src="boxes_main.png" loading="lazy" alt="Boxes"><p>Boxes</p></div>
+      <div class="card"><img src="coasters_main.png" loading="lazy" alt="Coasters"><p>Table Coasters</p></div>
+      <div class="card"><img src="SWEETBOX_MAIN.PNG" loading="lazy" alt="Sweet Box"><p>Custom Sweet Box</p></div>
+      <div class="card"><img src="BOOKS_MAIN.PNG" loading="lazy" alt="Books"><p>Books Printing</p></div>
+      <div class="card"><img src="BANNER_SIGNNAGE.PNG" loading="lazy" alt="Banner"><p>Banner & Signages</p></div>
+      <div class="card"><img src="FOAM_BOARD_MAIN.PNG" loading="lazy" alt="Foam Boards"><p>Foam Boards</p></div>
+      <div class="card"><img src="FLUTE_BOARD_MAIN.PNG" loading="lazy" alt="Flute Boards"><p>Flute Boards</p></div>
+      <div class="card"><img src="BILLBOOKS_MAIN.PNG" loading="lazy" alt="Bill Books"><p>Bill Books</p></div>
+      <div class="card"><img src="danglers_main.png" loading="lazy" alt="Danglers"><p>Danglers</p></div>
+      <div class="card"><img src="COUPONS_MAIN.PNG" loading="lazy" alt="Coupons"><p>Coupons</p></div>
+      <div class="card"><img src="MENU_CARD_MAIN.PNG" loading="lazy" alt="Menu Cards"><p>Menu Cards</p></div>
     </div>
   </div>
 </section>
@@ -1591,34 +746,19 @@ textarea:-webkit-autofill{
 <section class="feature-strip">
   <div class="strip-container">
     <div class="strip-item">
-      <div class="icon">
-        <img src="ship_flight.png" alt="Worldwide Delivery">
-      </div>
-      <div>
-        <h4>Worldwide Delivery</h4>
-        <p>We ship to USA, UK, Canada & more</p>
-      </div>
+      <div class="strip-icon"><img src="ship_flight.png" alt="Worldwide" loading="lazy"></div>
+      <div><h4>Worldwide Delivery</h4><p>We ship to USA, UK, Canada & more</p></div>
     </div>
     <div class="strip-item">
-      <div class="icon">
-        <img src="secure_payments.png" alt="Secure Payments">
-      </div>
-      <div>
-        <h4>Secure Payments</h4>
-        <p>Safe & trusted payment methods</p>
-      </div>
+      <div class="strip-icon"><img src="secure_payments.png" alt="Secure" loading="lazy"></div>
+      <div><h4>Secure Payments</h4><p>Safe & trusted payment methods</p></div>
     </div>
     <div class="strip-item">
-      <div class="icon">
-        <img src="24_7.png" alt="24/7 Support">
-      </div>
-      <div>
-        <h4>24/7 Support</h4>
-        <p>We are always here to help</p>
-      </div>
+      <div class="strip-icon"><img src="24_7.png" alt="24/7" loading="lazy"></div>
+      <div><h4>24/7 Support</h4><p>We are always here to help</p></div>
     </div>
     <div class="strip-btn">
-      <a href="#contact">Let's Print Something Great →</a>
+      <a href="#" onclick="openQuoteModal();return false;">Let's Print Something Great →</a>
     </div>
   </div>
 </section>
@@ -1627,64 +767,48 @@ textarea:-webkit-autofill{
 <section class="industries" id="industries">
   <h2>Industries We Serve</h2>
   <p class="subtitle">Tailored printing solutions for every business type</p>
-
-  <div class="scroll-btn left" onclick="scrollLeftFunc(this)">
-    <span class="arrow"></span>
-  </div>
-  <div class="scroll-btn right" onclick="scrollRightFunc(this)">
-    <span class="arrow"></span>
-  </div>
-
-  <div class="container"> 
+  <div class="container">
+    <div class="scroll-btn left" onclick="scrollLeftFunc(this)"><span class="arrow"></span></div>
+    <div class="scroll-btn right" onclick="scrollRightFunc(this)"><span class="arrow"></span></div>
     <div class="industry-grid">
       <div class="industry-card" onclick="openModal('restaurantModal')">
-        <img src="RESTAURANT_CAT.png" loading="lazy">
+        <img src="RESTAURANT_CAT.png" loading="lazy" alt="Restaurants">
         <div class="industry-overlay">
-          <div class="industry-icon">
-            <img src="RESTAURANT_LOGO.png" loading="lazy">
-          </div>
+          <div class="industry-icon"><img src="RESTAURANT_LOGO.png" loading="lazy" alt=""></div>
           <h3>Restaurants & Cafes</h3>
-          <p>Menus, Parcel Bags & Covers, coasters, Tent Cards & more</p>
+          <p>Menus, Parcel Bags & Covers, Coasters, Tent Cards & more</p>
         </div>
       </div>
       <div class="industry-card" onclick="openModal('foodModal')">
-        <img src="fried_chicken_cat.png" loading="lazy">
+        <img src="fried_chicken_cat.png" loading="lazy" alt="Food Brands">
         <div class="industry-overlay">
-          <div class="industry-icon">
-            <img src="burger_logo.png" loading="lazy">
-          </div>
+          <div class="industry-icon"><img src="burger_logo.png" loading="lazy" alt=""></div>
           <h3>Food Brands</h3>
           <p>Boxes, wraps, stickers & more</p>
         </div>
       </div>
       <div class="industry-card" onclick="openModal('hospitalModal')">
-        <img src="hospital_cat.png" loading="lazy">
+        <img src="hospital_cat.png" loading="lazy" alt="Hospitals">
         <div class="industry-overlay">
-          <div class="industry-icon">
-            <img src="hospital_logo.png" loading="lazy">
-          </div>
+          <div class="industry-icon"><img src="hospital_logo.png" loading="lazy" alt=""></div>
           <h3>Hospitals</h3>
           <p>Patient Files, X-Ray Covers, Letter Heads & More</p>
         </div>
       </div>
       <div class="industry-card" onclick="openModal('corporateModal')">
-        <img src="office_cat.png" loading="lazy">
+        <img src="office_cat.png" loading="lazy" alt="Corporate">
         <div class="industry-overlay">
-          <div class="industry-icon">
-            <img src="corporate.png" loading="lazy">
-          </div>
+          <div class="industry-icon"><img src="corporate.png" loading="lazy" alt=""></div>
           <h3>Corporate Offices</h3>
-          <p>Visting Cards, Branding Gifts, ID Cards & More</p>
+          <p>Visiting Cards, Branding Gifts, ID Cards & More</p>
         </div>
       </div>
       <div class="industry-card" onclick="openModal('eventModal')">
-        <img src="wedding_cat.png" loading="lazy">
+        <img src="wedding_cat.png" loading="lazy" alt="Events">
         <div class="industry-overlay">
-          <div class="industry-icon">
-            <img src="event_logo.png" loading="lazy">
-          </div>
+          <div class="industry-icon"><img src="event_logo.png" loading="lazy" alt=""></div>
           <h3>Events & Weddings</h3>
-          <p>Invitations, gift boxes, Welcome Boards & More</p>
+          <p>Invitations, Gift Boxes, Welcome Boards & More</p>
         </div>
       </div>
     </div>
@@ -1695,37 +819,21 @@ textarea:-webkit-autofill{
 <section class="our-works" id="ourworks">
   <h2>Our Works</h2>
   <div class="works-grid">
-    <div class="work-item">
-      <video muted playsinline preload="metadata" poster="thumb1.jpg">
-        <source src="foam board sample.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="work-item">
-      <video muted playsinline preload="metadata" poster="thumb1.jpg">
-        <source src="VID_20260224_041201_225.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="work-item">
-      <video muted playsinline preload="metadata" poster="thumb1.jpg">
-        <source src="cloth.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="work-item">
-      <video muted playsinline preload="metadata" poster="thumb1.jpg">
-        <source src="rudrabookgit.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="storieswhitegit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="visitingcardsgit1.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="visitingcards1git.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="storiesgreengit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="windowboxgit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="pencilboxgit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="momosgit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="medicalboxgit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="magnetbadgesgit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="tentcard1git.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="tentcardgit.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="foam board sample.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="VID_20260224_041201_225.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="cloth.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="rudrabookgit.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="storieswhitegit.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="visitingcardsgit1.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="visitingcards1git.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="storiesgreengit.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="windowboxgit.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="pencilboxgit.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="momosgit.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="medicalboxgit.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="magnetbadgesgit.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="tentcard1git.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg"><source src="tentcardgit.mp4" type="video/mp4"></video></div>
   </div>
 </section>
 
@@ -1734,22 +842,15 @@ textarea:-webkit-autofill{
   <div class="location-content">
     <div class="location-text">
       <h2>Visit Our Store</h2>
-      <p>
-        Experience premium printing services at Eevee Printers.  
-        We are located in the heart of Hyderabad, delivering quality and speed.
-      </p>
+      <p>Experience premium printing services at Eevee Printers. We are located in the heart of Hyderabad, delivering quality and speed.</p>
       <div class="location-line">
-        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" loading="lazy">
-        <span>
-          FTCCI Marg, Hari Nagar, Red Hills, Lakdikapul, Hyderabad, Telangana 500004, India. 
-        </span>
+        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" loading="lazy" alt="Location">
+        <span>FTCCI Marg, Hari Nagar, Red Hills, Lakdikapul, Hyderabad, Telangana 500004, India.</span>
       </div>
-      <a href="https://maps.google.com/?q=Eevee Printers" target="_blank" class="map-btn">
-        Get Directions
-      </a>
+      <a href="https://maps.google.com/?q=Eevee Printers" target="_blank" rel="noopener" class="map-btn">Get Directions</a>
     </div>
     <div class="location-image">
-      <img src="map.png" alt="Eevee Location">
+      <img src="map.png" loading="lazy" alt="Eevee Location">
     </div>
   </div>
 </section>
@@ -1760,18 +861,10 @@ textarea:-webkit-autofill{
     <div class="social-left">
       <h2>Stay Connected</h2>
       <div class="social-icons">
-        <a href="https://instagram.com/eeveeprinters" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" loading="lazy">
-        </a>
-        <a href="https://youtube.com/@eeveeprinters" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" loading="lazy">
-        </a>
-        <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" loading="lazy">
-        </a>
-        <a href="mailto:eeveeprinters@gmail.com">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" loading="lazy">
-        </a>
+        <a href="https://instagram.com/eeveeprinters" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" loading="lazy" alt="Instagram"></a>
+        <a href="https://youtube.com/@eeveeprinters" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" loading="lazy" alt="YouTube"></a>
+        <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" loading="lazy" alt="LinkedIn"></a>
+        <a href="mailto:eeveeprinters@gmail.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" loading="lazy" alt="Email"></a>
       </div>
     </div>
     <div class="divider"></div>
@@ -1785,86 +878,76 @@ textarea:-webkit-autofill{
 
 <!-- FOOTER -->
 <footer class="footer">
-  <p>
-    © 2026 Eevee Printers. All Rights Reserved. |
-    <a href="#">Privacy Policy</a> |
-    <a href="#">Terms of Use</a>
-  </p>
-</footer> 
+  <p>© 2026 Eevee Printers. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+</footer>
 
 <!-- WHATSAPP BUTTON -->
 <div class="whatsapp-container">
-  <a href="https://wa.me/919014891062" target="_blank" class="whatsapp-btn">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+  <a href="https://wa.me/919014891062" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 </div>
 
-<!-- BUSINESS CARD MODAL -->
+<!-- ===== MODALS ===== -->
 <div id="cardModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('cardModal')">&times;</span>
     <h2>Business Cards</h2>
     <p class="subtitle">Premium finishes for your brand identity</p>
     <div class="types-grid">
-      <div class="type-box"><img src="spotuv.png" loading="lazy"><p>Spot UV</p></div>
-      <div class="type-box"><img src="foilingvisitingcards.png" loading="lazy"><p>Gold Foiling</p></div>
-      <div class="type-box"><img src="matte_lamination.png" loading="lazy"><p>Matte Finish</p></div>
-      <div class="type-box"><img src="gloss_lamination_visitingcard.png" loading="lazy"><p>Glossy Finish</p></div>
-      <div class="type-box"><img src="velvet_visitingcard.png" loading="lazy"><p>Velvet Finish</p></div>
-      <div class="type-box"><img src="nonterable_visitingcards.png" loading="lazy"><p>Non-Terable Cards</p></div>
-      <div class="type-box"><img src="transparant_visiting_cards.png" loading="lazy"><p>Transparent Cards</p></div>
-      <div class="type-box"><img src="normal_cards_visting_cards.png" loading="lazy"><p>Normal Cards</p></div>
+      <div class="type-box"><img src="spotuv.png" loading="lazy" alt=""><p>Spot UV</p></div>
+      <div class="type-box"><img src="foilingvisitingcards.png" loading="lazy" alt=""><p>Gold Foiling</p></div>
+      <div class="type-box"><img src="matte_lamination.png" loading="lazy" alt=""><p>Matte Finish</p></div>
+      <div class="type-box"><img src="gloss_lamination_visitingcard.png" loading="lazy" alt=""><p>Glossy Finish</p></div>
+      <div class="type-box"><img src="velvet_visitingcard.png" loading="lazy" alt=""><p>Velvet Finish</p></div>
+      <div class="type-box"><img src="nonterable_visitingcards.png" loading="lazy" alt=""><p>Non-Terable Cards</p></div>
+      <div class="type-box"><img src="transparant_visiting_cards.png" loading="lazy" alt=""><p>Transparent Cards</p></div>
+      <div class="type-box"><img src="normal_cards_visting_cards.png" loading="lazy" alt=""><p>Normal Cards</p></div>
     </div>
   </div>
-</div> 
+</div>
 
-<!-- LETTER HEAD MODAL -->
 <div id="letterModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('letterModal')">&times;</span>
     <h2>Letter Heads</h2>
     <p class="subtitle">Professional letterheads for your business</p>
     <div class="types-grid">
-      <div class="type-box"><img src="letterhead_inside.png" loading="lazy"><p>Standard Letterhead</p></div>
-      <div class="type-box"><img src="excelbond.png" loading="lazy"><p>Bond Paper Letterheads</p></div>
+      <div class="type-box"><img src="letterhead_inside.png" loading="lazy" alt=""><p>Standard Letterhead</p></div>
+      <div class="type-box"><img src="excelbond.png" loading="lazy" alt=""><p>Bond Paper Letterheads</p></div>
     </div>
-    <a href="https://wa.me/919014891062" target="_blank" class="btn">Request a Quote</a>
   </div>
 </div>
 
-<!-- BOXES MODAL -->
 <div id="boxesModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('boxesModal')">&times;</span>
     <h2>Box Types</h2>
     <p class="subtitle">Choose the perfect box style for your product</p>
     <div class="types-grid">
-      <div class="type-box"><img src="duplex_board.png" loading="lazy"><p>Duplex Boxes</p></div>
-      <div class="type-box"><img src="rigid_boxes.png" loading="lazy"><p>Rigid Boxes</p></div>
-      <div class="type-box"><img src="corrugated_boxes.png" loading="lazy"><p>Corrugated Boxes</p></div>
+      <div class="type-box"><img src="duplex_board.png" loading="lazy" alt=""><p>Duplex Boxes</p></div>
+      <div class="type-box"><img src="rigid_boxes.png" loading="lazy" alt=""><p>Rigid Boxes</p></div>
+      <div class="type-box"><img src="corrugated_boxes.png" loading="lazy" alt=""><p>Corrugated Boxes</p></div>
     </div>
-    <a href="https://wa.me/919014891062" target="_blank" class="btn">Request a Quote</a>
   </div>
 </div>
 
-<!-- RESTAURANT MODAL -->
 <div id="restaurantModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('restaurantModal')">&times;</span>
     <h2>Restaurants & Cafes</h2>
     <div class="types-grid">
-      <div class="type-box"><img src="MENU_CARD_MAIN.PNG" loading="lazy"><p>Menu Cards</p></div>
-      <div class="type-box"><img src="tent_cards.png" loading="lazy"><p>Table Tent Cards</p></div>
-      <div class="type-box"><img src="coasters_main.png" loading="lazy"><p>Table Coasters</p></div>
-      <div class="type-box"><img src="covers_main.png" loading="lazy"><p>Covers</p></div>
-      <div class="type-box"><img src="stickers_main_page.png" loading="lazy"><p>Stickers</p></div>
-      <div class="type-box"><img src="boxes_main.png" loading="lazy"><p>Parcel Boxes</p></div>
-      <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy"><p>Paper Bags</p></div>
+      <div class="type-box"><img src="MENU_CARD_MAIN.PNG" loading="lazy" alt=""><p>Menu Cards</p></div>
+      <div class="type-box"><img src="tent_cards.png" loading="lazy" alt=""><p>Table Tent Cards</p></div>
+      <div class="type-box"><img src="coasters_main.png" loading="lazy" alt=""><p>Table Coasters</p></div>
+      <div class="type-box"><img src="covers_main.png" loading="lazy" alt=""><p>Covers</p></div>
+      <div class="type-box"><img src="stickers_main_page.png" loading="lazy" alt=""><p>Stickers</p></div>
+      <div class="type-box"><img src="boxes_main.png" loading="lazy" alt=""><p>Parcel Boxes</p></div>
+      <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy" alt=""><p>Paper Bags</p></div>
     </div>
   </div>
 </div>
 
-<!-- FOOD MODAL -->
 <div id="foodModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('foodModal')">&times;</span>
@@ -1872,14 +955,13 @@ textarea:-webkit-autofill{
     <div class="types-grid">
       <div class="type-box"><p>Food Boxes</p></div>
       <div class="type-box"><p>Wrappers</p></div>
-      <div class="type-box"><img src="stickers_main_page.png" loading="lazy"><p>Stickers</p></div>
+      <div class="type-box"><img src="stickers_main_page.png" loading="lazy" alt=""><p>Stickers</p></div>
       <div class="type-box"><p>Labels</p></div>
-      <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy"><p>Paper Bags</p></div>
+      <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy" alt=""><p>Paper Bags</p></div>
     </div>
   </div>
 </div>
 
-<!-- HOSPITAL MODAL -->
 <div id="hospitalModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('hospitalModal')">&times;</span>
@@ -1895,15 +977,20 @@ textarea:-webkit-autofill{
   </div>
 </div>
 
-<!-- CORPORATE MODAL -->
 <div id="corporateModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('corporateModal')">&times;</span>
     <h2>Corporate Offices</h2>
+    <div class="types-grid">
+      <div class="type-box"><p>Visiting Cards</p></div>
+      <div class="type-box"><p>ID Cards & Lanyards</p></div>
+      <div class="type-box"><p>Letter Heads</p></div>
+      <div class="type-box"><p>Branding Gifts</p></div>
+      <div class="type-box"><p>Diaries & Calendars</p></div>
+    </div>
   </div>
 </div>
 
-<!-- EVENT MODAL -->
 <div id="eventModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('eventModal')">&times;</span>
@@ -1924,17 +1011,11 @@ textarea:-webkit-autofill{
   <div class="modal-content" style="max-width:400px;">
     <span class="close" onclick="closeLogin()">&times;</span>
     <h2 style="margin-bottom:10px;">Track Your Order</h2>
-    <p style="color:#aaa;font-size:14px;margin-bottom:20px;">
-      Login to view order status, invoices & reorders
-    </p>
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()" style="width:100%;padding:10px;background:orange;color:white;border:none;border-radius:5px;cursor:pointer;">
-      Login
-    </button>
-    <p onclick="resetPassword()" style="margin-top:10px;font-size:12px;color:#aaa;cursor:pointer;">
-      Forgot Password?
-    </p>
+    <p style="color:#aaa;font-size:14px;margin-bottom:20px;">Login to view order status, invoices & reorders</p>
+    <input type="email" id="email" placeholder="Email" autocomplete="email">
+    <input type="password" id="password" placeholder="Password" autocomplete="current-password">
+    <button onclick="login()" style="width:100%;padding:12px;background:linear-gradient(135deg,#ff8c00,#ff5e00);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:14px;">Login</button>
+    <p onclick="resetPassword()" style="margin-top:12px;font-size:12px;color:#aaa;cursor:pointer;">Forgot Password?</p>
   </div>
 </div>
 
@@ -1944,149 +1025,189 @@ textarea:-webkit-autofill{
     <span class="close" onclick="closeQuoteModal()">&times;</span>
     <h2>What Would You Like To Print?</h2>
     <p class="subtitle">Select your requirement to get a faster & accurate quote</p>
-
     <form id="quoteForm" class="premium-quote-form">
       <div class="form-row">
-        <div style="width:100%;">
+        <div>
           <label>Full Name<span class="required">*</span></label>
           <input type="text" name="name" placeholder="Your Name" required>
         </div>
-        <div style="width:100%;">
+        <div>
           <label>WhatsApp Number<span class="required">*</span></label>
           <input type="tel" name="phone" placeholder="WhatsApp Number" required>
         </div>
       </div>
-
       <div class="form-row">
-        <div style="width:100%;">
+        <div>
           <label>Email Address<span class="required">*</span></label>
           <input type="email" name="email" placeholder="Email Address" required>
         </div>
-        <div style="width:100%;">
+        <div>
           <label>Printing Service<span class="required">*</span></label>
           <select name="service" required>
             <option value="">Select Printing Service</option>
             <option>Business Cards</option>
             <option>Packaging Boxes</option>
             <option>Restaurant Printing</option>
+            <option>Banners & Signages</option>
+            <option>Corporate Gifts</option>
+            <option>Other</option>
           </select>
         </div>
       </div>
-
       <div class="form-row">
-        <input type="text" name="quantity" placeholder="Quantity" required>
-        <input type="text" name="dimensions" placeholder="Dimensions / Size" required>
+        <div>
+          <label>Quantity<span class="required">*</span></label>
+          <input type="text" name="quantity" placeholder="Quantity" required>
+        </div>
+        <div>
+          <label>Dimensions / Size</label>
+          <input type="text" name="dimensions" placeholder="Dimensions / Size">
+        </div>
       </div>
-
+      <label>Message<span class="required">*</span></label>
       <textarea name="message" placeholder="Describe your requirement..." required></textarea>
-
       <div class="quote-actions">
         <button type="submit" class="btn">Submit Quote Request</button>
       </div>
-
-      <p id="successMsg" style="display:none;margin-top:15px;color:#32d74b;font-weight:600;">
-        Form Submitted Successfully ✅
-      </p>
     </form>
   </div>
 </div>
 
 <!-- ===== SCRIPTS ===== -->
-
-<!-- SCROLL BUTTONS -->
 <script>
-function scrollLeftFunc(btn) {
-  const container = btn.parentElement.querySelector('.grid, .industry-grid');
-  container.scrollBy({ left: -300, behavior: 'smooth' });
+/* MOBILE MENU */
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("active");
+  document.getElementById("menuToggle").classList.toggle("active");
 }
-function scrollRightFunc(btn) {
-  const container = btn.parentElement.querySelector('.grid, .industry-grid');
-  container.scrollBy({ left: 300, behavior: 'smooth' });
+function closeMenu(){
+  document.getElementById("navLinks").classList.remove("active");
+  document.getElementById("menuToggle").classList.remove("active");
 }
-</script>
 
-<!-- MODALS -->
-<script>
-function openModal(id) {
-  document.getElementById(id).style.display = "block";
+/* SCROLL BUTTONS */
+function scrollLeftFunc(btn){
+  const c = btn.parentElement.querySelector('.grid, .industry-grid');
+  c.scrollBy({left:-300,behavior:'smooth'});
 }
-function closeModal(id) {
-  document.getElementById(id).style.display = "none";
+function scrollRightFunc(btn){
+  const c = btn.parentElement.querySelector('.grid, .industry-grid');
+  c.scrollBy({left:300,behavior:'smooth'});
 }
-function openLogin() {
-  document.getElementById("loginModal").style.display = "block";
+
+/* MODALS */
+function openModal(id){
+  document.getElementById(id).style.display="block";
+  document.body.style.overflow="hidden";
 }
-function closeLogin() {
-  document.getElementById("loginModal").style.display = "none";
+function closeModal(id){
+  document.getElementById(id).style.display="none";
+  document.body.style.overflow="";
 }
-function openQuoteModal() {
-  document.getElementById("quoteModal").style.display = "block";
-}
-function closeQuoteModal() {
-  document.getElementById("quoteModal").style.display = "none";
-}
-window.onclick = function(event) {
-  const modals = document.querySelectorAll(".modal");
-  modals.forEach(modal => {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
+function openLogin(){openModal("loginModal");}
+function closeLogin(){closeModal("loginModal");}
+function openQuoteModal(){openModal("quoteModal");}
+function closeQuoteModal(){closeModal("quoteModal");}
+window.onclick = function(e){
+  document.querySelectorAll(".modal").forEach(m=>{
+    if(e.target==m){m.style.display="none";document.body.style.overflow="";}
   });
-}
-</script>
+};
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    document.querySelectorAll(".modal").forEach(m=>m.style.display="none");
+    document.body.style.overflow="";
+  }
+});
 
-<!-- WORKS VIDEO AUTOPLAY -->
-<script>
-const items = document.querySelectorAll(".work-item");
-const videos = document.querySelectorAll(".work-item video");
+/* WORKS VIDEO — LAZY LOAD + PLAY ONLY WHEN VISIBLE */
+const workItems = document.querySelectorAll(".work-item");
+const workVideos = document.querySelectorAll(".work-item video");
 let currentIndex = 0;
+let videosLoaded = false;
 
-function stopAllVideos(){
-  videos.forEach(video => {
-    video.pause();
-    video.currentTime = 0;
+function loadVideosOnDemand(){
+  if(videosLoaded) return;
+  videosLoaded = true;
+  workVideos.forEach(v=>{
+    const src = v.querySelector('source');
+    if(src && !v.src){
+      v.load();
+    }
   });
-  items.forEach(item => {
-    item.classList.remove("active");
-  });
+  if(workVideos.length > 0) playVideo(0);
 }
 
-function playVideo(index){
-  stopAllVideos();
-  const currentVideo = videos[index];
-  const currentItem = items[index];
-  currentItem.classList.add("active");
-  currentVideo.play();
-  currentVideo.onended = () => {
-    currentIndex++;
-    if(currentIndex >= videos.length){
-      currentIndex = 0;
-    }
+function stopAll(){
+  workVideos.forEach(v=>{try{v.pause();v.currentTime=0;}catch(e){}});
+  workItems.forEach(i=>i.classList.remove("active"));
+}
+function playVideo(i){
+  stopAll();
+  const v = workVideos[i];
+  if(!v) return;
+  workItems[i].classList.add("active");
+  const p = v.play();
+  if(p) p.catch(()=>{});
+  v.onended = ()=>{
+    currentIndex = (i+1) % workVideos.length;
     playVideo(currentIndex);
   };
 }
 
-if (videos.length > 0) {
-  playVideo(0);
-}
+/* Use Intersection Observer to load works videos only when visible */
+const worksObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      loadVideosOnDemand();
+      worksObserver.disconnect();
+    }
+  });
+},{threshold:0.1});
+const worksSection = document.getElementById("ourworks");
+if(worksSection) worksObserver.observe(worksSection);
 
-items.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    currentIndex = index;
+workItems.forEach((item,index)=>{
+  item.addEventListener("click",()=>{
+    currentIndex=index;
     playVideo(index);
   });
 });
+
+/* QUOTE FORM */
+const quoteForm = document.getElementById("quoteForm");
+if(quoteForm){
+  quoteForm.addEventListener("submit", async function(e){
+    e.preventDefault();
+    const fd = new FormData(quoteForm);
+    const btn = quoteForm.querySelector("button[type=submit]");
+    const orig = btn.textContent;
+    btn.textContent = "Sending...";
+    btn.disabled = true;
+    try{
+      const r = await fetch("https://formspree.io/f/xkoypqkq",{
+        method:"POST",body:fd,headers:{'Accept':'application/json'}
+      });
+      if(r.ok){
+        alert("✅ Quote request submitted successfully! We'll contact you shortly.");
+        quoteForm.reset();
+        closeQuoteModal();
+      }else{
+        alert("Form submission failed. Please try WhatsApp instead.");
+      }
+    }catch(err){
+      alert("Network error. Please try again.");
+    }
+    btn.textContent = orig;
+    btn.disabled = false;
+  });
+}
 </script>
 
-<!-- FIREBASE LOGIN -->
+<!-- FIREBASE LOGIN (loaded async, won't block page) -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { 
-  getAuth, 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCSYwthBX2s99OiYJ0pcgr4ha6VfK214fk",
@@ -2096,69 +1217,26 @@ const firebaseConfig = {
   messagingSenderId: "646814066578",
   appId: "1:646814066578:web:0ca3fafa04970791fb834b"
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-window.signup = function () {
+window.login = function(){
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(() => alert("Account Created ✅"))
-    .catch(err => alert(err.message));
-};
-
-window.login = function () {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  if(!email || !password){alert("Please enter email and password");return;}
   signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      if (user.email === "sharangoud4444@gmail.com") {
-        window.location.href = "admin-dashboard.html";
-      } else {
-        window.location.href = "customer.html";
-      }
+    .then(uc=>{
+      window.location.href = uc.user.email==="sharangoud4444@gmail.com" ? "admin-dashboard.html" : "customer.html";
     })
-    .catch(err => alert(err.message));
+    .catch(err=>alert(err.message));
 };
-
-window.resetPassword = function () {
+window.resetPassword = function(){
   const email = document.getElementById("email").value;
+  if(!email){alert("Enter your email first");return;}
   sendPasswordResetEmail(auth, email)
-    .then(() => alert("Reset email sent ✅"))
-    .catch(err => alert(err.message));
+    .then(()=>alert("Reset email sent ✅"))
+    .catch(err=>alert(err.message));
 };
-</script>
-
-<!-- QUOTE FORM SUBMISSION -->
-<script>
-const quoteForm = document.getElementById("quoteForm");
-
-quoteForm.addEventListener("submit", async function(e){
-  e.preventDefault();
-  const formData = new FormData(quoteForm);
-
-  try{
-    const response = await fetch("https://formspree.io/f/xkoypqkq", {
-      method: "POST",
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-
-    if(response.ok){
-      alert("Quote request submitted successfully!");
-      quoteForm.reset();
-      closeQuoteModal();
-    }else{
-      alert("Form submission failed");
-    }
-  }catch(error){
-    alert("Network error");
-  }
-});
 </script>
 
 </body>
