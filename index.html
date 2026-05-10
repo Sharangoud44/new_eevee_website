@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eevee Printers</title>
+
+<!-- PERFORMANCE: Preconnect to external resources -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn-icons-png.flaticon.com">
+<link rel="preconnect" href="https://www.gstatic.com">
+<link rel="dns-prefetch" href="https://upload.wikimedia.org">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet"> 
 <link rel="canonical" href="https://sharangoud44.github.io/new_eevee_website/">
 <style>
@@ -1303,6 +1311,101 @@ textarea:-webkit-autofill{
   transition:background-color 5000s ease-in-out 0s;
 }
 
+/* ===== HAMBURGER MENU (HIDDEN ON DESKTOP) ===== */
+.hamburger-btn{
+  display: none;
+  width: 42px;
+  height: 42px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+  transition: 0.3s;
+}
+.hamburger-btn span{
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+.hamburger-btn.active span:nth-child(1){
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn.active span:nth-child(2){
+  opacity: 0;
+}
+.hamburger-btn.active span:nth-child(3){
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* MOBILE SLIDE-IN MENU */
+.mobile-menu{
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background: linear-gradient(160deg, #1a1a1a 0%, #0a0a0a 100%);
+  border-left: 1px solid rgba(255,140,0,0.2);
+  box-shadow: -10px 0 40px rgba(0,0,0,0.6);
+  z-index: 1050;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 90px 30px 30px;
+  overflow-y: auto;
+}
+.mobile-menu.open{
+  right: 0;
+}
+.mobile-menu a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mobile-menu a:hover,
+.mobile-menu a:active{
+  color: #ff8c00;
+  padding-left: 8px;
+}
+.mobile-menu a::before{
+  content: "›";
+  color: #ff8c00;
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 4px;
+}
+.menu-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  z-index: 1040;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s;
+}
+.menu-overlay.active{
+  opacity: 1;
+  visibility: visible;
+}
+
 /* ============================================= */
 /* ============ MOBILE VIEW ONLY ================ */
 /* ============================================= */
@@ -1316,17 +1419,18 @@ textarea:-webkit-autofill{
   /* ----- NAVBAR ----- */
   .navbar{
     height: 60px !important;
-    padding: 0 10px !important;
+    padding: 0 12px !important;
   }
   .nav-container{
     padding: 0 5px !important;
     padding-right: 5px !important;
-    gap: 5px !important;
+    gap: 8px !important;
   }
   .nav-left{
     height: 60px !important;
     padding-left: 0 !important;
-    margin-left: -30px !important;
+    margin-left: -20px !important;
+    flex: 0 0 auto !important;
   }
   .nav-logo{
     height: 90px !important;
@@ -1338,10 +1442,15 @@ textarea:-webkit-autofill{
   .quote-btn,
   .track-btn{
     margin-right: 0 !important;
-    padding: 8px 12px !important;
-    font-size: 11px !important;
-    border-radius: 20px !important;
+    padding: 7px 11px !important;
+    font-size: 10px !important;
+    border-radius: 18px !important;
     white-space: nowrap !important;
+  }
+
+  /* ----- HAMBURGER VISIBLE ON MOBILE ----- */
+  .hamburger-btn{
+    display: flex !important;
   }
 
   /* ----- HERO ----- */
@@ -1365,20 +1474,23 @@ textarea:-webkit-autofill{
       rgba(0,0,0,0.85) 100%
     ) !important;
   }
+  /* ===== LEFT-ALIGN HERO ON MOBILE (matching desktop) ===== */
   .hero-content{
     position: absolute !important;
     top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    width: 90% !important;
-    max-width: 90% !important;
-    text-align: center !important;
+    left: 22px !important;
+    right: 22px !important;
+    transform: translateY(-50%) !important;
+    width: auto !important;
+    max-width: none !important;
+    text-align: left !important;
     padding: 0 !important;
   }
   .tag{
     font-size: 10px !important;
     letter-spacing: 2px !important;
     margin-bottom: 10px !important;
+    text-align: left !important;
   }
   .hero-content h1,
   .hero-title{
@@ -1386,18 +1498,20 @@ textarea:-webkit-autofill{
     line-height: 1.1 !important;
     margin: 8px 0 !important;
     letter-spacing: -0.5px !important;
+    text-align: left !important;
   }
   .hero-sub{
     font-size: 13px !important;
     line-height: 1.6 !important;
-    margin: 15px auto !important;
+    margin: 15px 0 !important;
     max-width: 100% !important;
+    text-align: left !important;
   }
   .hero-sub br{
     display: none !important;
   }
   .hero-buttons{
-    justify-content: center !important;
+    justify-content: flex-start !important;
     gap: 10px !important;
     margin-top: 18px !important;
     flex-wrap: wrap !important;
@@ -1417,11 +1531,11 @@ textarea:-webkit-autofill{
     margin-top: 25px !important;
     margin-bottom: 0 !important;
     white-space: normal !important;
-    justify-items: center !important;
+    justify-items: start !important;
   }
   .trust-item{
     gap: 6px !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
   }
   .trust-item img{
     width: 35px !important;
@@ -1636,14 +1750,16 @@ textarea:-webkit-autofill{
     line-height: 1.6 !important;
   }
 
-  /* ----- WHATSAPP BUTTON ----- */
+  /* ----- WHATSAPP BUTTON (smaller & professional) ----- */
   .whatsapp-container{
-    bottom: 15px !important;
-    right: 15px !important;
+    bottom: 18px !important;
+    right: 14px !important;
   }
   .whatsapp-btn img{
-    width: 50px !important;
-    height: 50px !important;
+    width: 38px !important;
+    height: 38px !important;
+    padding: 7px !important;
+    box-shadow: 0 4px 12px rgba(37,211,102,0.4) !important;
   }
 
   /* ----- MODALS ----- */
@@ -1755,11 +1871,20 @@ textarea:-webkit-autofill{
   }
   .quote-btn,
   .track-btn{
-    padding: 7px 10px !important;
-    font-size: 10px !important;
+    padding: 6px 9px !important;
+    font-size: 9px !important;
   }
   .work-item{
     height: 150px !important;
+  }
+  .whatsapp-btn img{
+    width: 34px !important;
+    height: 34px !important;
+    padding: 6px !important;
+  }
+  .hamburger-btn{
+    width: 38px !important;
+    height: 38px !important;
   }
 }
 </style>
@@ -1771,7 +1896,7 @@ textarea:-webkit-autofill{
 <header class="navbar">
   <div class="nav-container">
     <div class="nav-left">
-      <img src="eevee_logo.png" class="nav-logo">
+      <img src="eevee_logo.png" class="nav-logo" alt="Eevee Printers">
     </div>
     <div class="nav-links">
       <a href="#top">Home</a>
@@ -1780,16 +1905,33 @@ textarea:-webkit-autofill{
       <a href="#ourworks">Our Work</a>
       <a href="#contact">Contact Us</a>
     </div>
-    <a href="#" onclick="openLogin()" class="quote-btn track-btn">
+    <a href="#" onclick="openLogin();return false;" class="quote-btn track-btn">
       Track Order
     </a>
+    <!-- HAMBURGER (mobile only) -->
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </header>
 
+<!-- MOBILE SLIDE-IN MENU -->
+<div class="menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#top" onclick="closeMobileMenu()">Home</a>
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#industries" onclick="closeMobileMenu()">Industries</a>
+  <a href="#ourworks" onclick="closeMobileMenu()">Our Work</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact Us</a>
+  <a href="#" onclick="closeMobileMenu();openQuoteModal();return false;">Get a Quote</a>
+</nav>
+
 <!-- HERO -->
 <div class="hero">
-  <video autoplay muted loop playsinline preload="none">
-    <source src="15505103_1080_1920_60fps.mp4">
+  <video autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg">
+    <source src="15505103_1080_1920_60fps.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -1804,7 +1946,7 @@ textarea:-webkit-autofill{
       Serving clients across India, USA & worldwide.
     </p>
     <div class="hero-buttons">
-      <a href="#" onclick="openQuoteModal()" class="btn-main">
+      <a href="#" onclick="openQuoteModal();return false;" class="btn-main">
         Get a Quote 
         <span class="arrow-icon"></span>
       </a>
@@ -1815,28 +1957,28 @@ textarea:-webkit-autofill{
     </div>
     <div class="hero-trust">
       <div class="trust-item">
-        <img src="clients_logo1.png" loading="lazy">
+        <img src="clients_logo1.png" loading="lazy" decoding="async" alt="">
         <div>
           <strong>500+</strong>
           <span>Happy Clients</span>
         </div>
       </div>
       <div class="trust-item">
-        <img src="5_years_logo1.png" loading="lazy">
+        <img src="5_years_logo1.png" loading="lazy" decoding="async" alt="">
         <div>
           <strong>5+</strong>
           <span>Years of Excellence</span>
         </div>
       </div>
       <div class="trust-item">
-        <img src="rating_logo1.png" loading="lazy">
+        <img src="rating_logo1.png" loading="lazy" decoding="async" alt="">
         <div>
           <strong class="rating">5<span class="star">★</span></strong>
           <span>Google Rating</span>
         </div>
       </div>
       <div class="trust-item">
-        <img src="word_wide_logo1.png" loading="lazy">
+        <img src="word_wide_logo1.png" loading="lazy" decoding="async" alt="">
         <div>
           <strong>Worldwide</strong>
           <span>Shipping</span>
@@ -1860,33 +2002,33 @@ textarea:-webkit-autofill{
 
   <div class="container">
     <div class="grid">
-      <div class="card" onclick="openModal('cardModal')"><img src="Business_card_image_Main_Page.png" loading="lazy"><p>Business Cards</p></div>
-      <div class="card" onclick="openModal('letterModal')"><img src="letter_head_main_page.png" loading="lazy"><p>Letter Heads</p></div>
-      <div class="card"><img src="envelops_main_page.png" loading="lazy"><p>Envelopes</p></div>
-      <div class="card"><img src="idcards_main_page.png" loading="lazy"><p>ID Cards & Lanyards</p></div>
-      <div class="card"><img src="paper_bag_main_page.png" loading="lazy"><p>Paper Bags</p></div>
-      <div class="card"><img src="diaries_main_page.png" loading="lazy"><p>Diaries</p></div>
-      <div class="card"><img src="calendar_main_page.png" loading="lazy"><p>Calendars</p></div>
-      <div class="card"><img src="button_badges_main_page.png" loading="lazy"><p>Button Badges</p></div>
-      <div class="card"><img src="stickers_main_page.png" loading="lazy"><p>Shape Sticker & Labels</p></div>
-      <div class="card"><img src="tent_cards.png" loading="lazy"><p>Tent Cards</p></div>
-      <div class="card"><img src="Tshirt_main_page.png" loading="lazy"><p>T-Shirt Printing</p></div>
-      <div class="card"><img src="valet_parking.png" loading="lazy"><p>Valet Parking Coupon</p></div>
-      <div class="card"><img src="covers_main.png" loading="lazy"><p>Covers</p></div>
-      <div class="card"><img src="mugs_botlle_main.png" loading="lazy"><p>Corporate Mugs & Bottles</p></div>
-      <div class="card"><img src="corportae_gift_set.png" loading="lazy"><p>Corporate Gift Set</p></div>
-      <div class="card"><img src="invitation_cards_main.png" loading="lazy"><p>Invitation Cards</p></div>
-      <div class="card" onclick="openModal('boxesModal')"><img src="boxes_main.png" loading="lazy"><p>Boxes</p></div>
-      <div class="card"><img src="coasters_main.png" loading="lazy"><p>Table Coasters</p></div>
-      <div class="card"><img src="SWEETBOX_MAIN.PNG" loading="lazy"><p>Custom Sweet Box</p></div>
-      <div class="card"><img src="BOOKS_MAIN.PNG" loading="lazy"><p>Books Printing</p></div>
-      <div class="card"><img src="BANNER_SIGNNAGE.PNG" loading="lazy"><p>Banner & Signages</p></div>
-      <div class="card"><img src="FOAM_BOARD_MAIN.PNG" loading="lazy"><p>Foam Boards</p></div>
-      <div class="card"><img src="FLUTE_BOARD_MAIN.PNG" loading="lazy"><p>Flute Boards</p></div>
-      <div class="card"><img src="BILLBOOKS_MAIN.PNG" loading="lazy"><p>Bill Books</p></div>
-      <div class="card"><img src="danglers_main.png" loading="lazy"><p>Danglers</p></div>
-      <div class="card"><img src="COUPONS_MAIN.PNG" loading="lazy"><p>Coupons</p></div>
-      <div class="card"><img src="MENU_CARD_MAIN.PNG" loading="lazy"><p>Menu Cards</p></div>
+      <div class="card" onclick="openModal('cardModal')"><img src="Business_card_image_Main_Page.png" loading="lazy" decoding="async" alt=""><p>Business Cards</p></div>
+      <div class="card" onclick="openModal('letterModal')"><img src="letter_head_main_page.png" loading="lazy" decoding="async" alt=""><p>Letter Heads</p></div>
+      <div class="card"><img src="envelops_main_page.png" loading="lazy" decoding="async" alt=""><p>Envelopes</p></div>
+      <div class="card"><img src="idcards_main_page.png" loading="lazy" decoding="async" alt=""><p>ID Cards & Lanyards</p></div>
+      <div class="card"><img src="paper_bag_main_page.png" loading="lazy" decoding="async" alt=""><p>Paper Bags</p></div>
+      <div class="card"><img src="diaries_main_page.png" loading="lazy" decoding="async" alt=""><p>Diaries</p></div>
+      <div class="card"><img src="calendar_main_page.png" loading="lazy" decoding="async" alt=""><p>Calendars</p></div>
+      <div class="card"><img src="button_badges_main_page.png" loading="lazy" decoding="async" alt=""><p>Button Badges</p></div>
+      <div class="card"><img src="stickers_main_page.png" loading="lazy" decoding="async" alt=""><p>Shape Sticker & Labels</p></div>
+      <div class="card"><img src="tent_cards.png" loading="lazy" decoding="async" alt=""><p>Tent Cards</p></div>
+      <div class="card"><img src="Tshirt_main_page.png" loading="lazy" decoding="async" alt=""><p>T-Shirt Printing</p></div>
+      <div class="card"><img src="valet_parking.png" loading="lazy" decoding="async" alt=""><p>Valet Parking Coupon</p></div>
+      <div class="card"><img src="covers_main.png" loading="lazy" decoding="async" alt=""><p>Covers</p></div>
+      <div class="card"><img src="mugs_botlle_main.png" loading="lazy" decoding="async" alt=""><p>Corporate Mugs & Bottles</p></div>
+      <div class="card"><img src="corportae_gift_set.png" loading="lazy" decoding="async" alt=""><p>Corporate Gift Set</p></div>
+      <div class="card"><img src="invitation_cards_main.png" loading="lazy" decoding="async" alt=""><p>Invitation Cards</p></div>
+      <div class="card" onclick="openModal('boxesModal')"><img src="boxes_main.png" loading="lazy" decoding="async" alt=""><p>Boxes</p></div>
+      <div class="card"><img src="coasters_main.png" loading="lazy" decoding="async" alt=""><p>Table Coasters</p></div>
+      <div class="card"><img src="SWEETBOX_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Custom Sweet Box</p></div>
+      <div class="card"><img src="BOOKS_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Books Printing</p></div>
+      <div class="card"><img src="BANNER_SIGNNAGE.PNG" loading="lazy" decoding="async" alt=""><p>Banner & Signages</p></div>
+      <div class="card"><img src="FOAM_BOARD_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Foam Boards</p></div>
+      <div class="card"><img src="FLUTE_BOARD_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Flute Boards</p></div>
+      <div class="card"><img src="BILLBOOKS_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Bill Books</p></div>
+      <div class="card"><img src="danglers_main.png" loading="lazy" decoding="async" alt=""><p>Danglers</p></div>
+      <div class="card"><img src="COUPONS_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Coupons</p></div>
+      <div class="card"><img src="MENU_CARD_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Menu Cards</p></div>
     </div>
   </div>
 </section>
@@ -1896,7 +2038,7 @@ textarea:-webkit-autofill{
   <div class="strip-container">
     <div class="strip-item">
       <div class="icon">
-        <img src="ship_flight.png" alt="Worldwide Delivery">
+        <img src="ship_flight.png" alt="Worldwide Delivery" loading="lazy" decoding="async">
       </div>
       <div>
         <h4>Worldwide Delivery</h4>
@@ -1905,7 +2047,7 @@ textarea:-webkit-autofill{
     </div>
     <div class="strip-item">
       <div class="icon">
-        <img src="secure_payments.png" alt="Secure Payments">
+        <img src="secure_payments.png" alt="Secure Payments" loading="lazy" decoding="async">
       </div>
       <div>
         <h4>Secure Payments</h4>
@@ -1914,7 +2056,7 @@ textarea:-webkit-autofill{
     </div>
     <div class="strip-item">
       <div class="icon">
-        <img src="24_7.png" alt="24/7 Support">
+        <img src="24_7.png" alt="24/7 Support" loading="lazy" decoding="async">
       </div>
       <div>
         <h4>24/7 Support</h4>
@@ -1942,50 +2084,50 @@ textarea:-webkit-autofill{
   <div class="container"> 
     <div class="industry-grid">
       <div class="industry-card" onclick="openModal('restaurantModal')">
-        <img src="RESTAURANT_CAT.png" loading="lazy">
+        <img src="RESTAURANT_CAT.png" loading="lazy" decoding="async" alt="">
         <div class="industry-overlay">
           <div class="industry-icon">
-            <img src="RESTAURANT_LOGO.png" loading="lazy">
+            <img src="RESTAURANT_LOGO.png" loading="lazy" decoding="async" alt="">
           </div>
           <h3>Restaurants & Cafes</h3>
           <p>Menus, Parcel Bags & Covers, coasters, Tent Cards & more</p>
         </div>
       </div>
       <div class="industry-card" onclick="openModal('foodModal')">
-        <img src="fried_chicken_cat.png" loading="lazy">
+        <img src="fried_chicken_cat.png" loading="lazy" decoding="async" alt="">
         <div class="industry-overlay">
           <div class="industry-icon">
-            <img src="burger_logo.png" loading="lazy">
+            <img src="burger_logo.png" loading="lazy" decoding="async" alt="">
           </div>
           <h3>Food Brands</h3>
           <p>Boxes, wraps, stickers & more</p>
         </div>
       </div>
       <div class="industry-card" onclick="openModal('hospitalModal')">
-        <img src="hospital_cat.png" loading="lazy">
+        <img src="hospital_cat.png" loading="lazy" decoding="async" alt="">
         <div class="industry-overlay">
           <div class="industry-icon">
-            <img src="hospital_logo.png" loading="lazy">
+            <img src="hospital_logo.png" loading="lazy" decoding="async" alt="">
           </div>
           <h3>Hospitals</h3>
           <p>Patient Files, X-Ray Covers, Letter Heads & More</p>
         </div>
       </div>
       <div class="industry-card" onclick="openModal('corporateModal')">
-        <img src="office_cat.png" loading="lazy">
+        <img src="office_cat.png" loading="lazy" decoding="async" alt="">
         <div class="industry-overlay">
           <div class="industry-icon">
-            <img src="corporate.png" loading="lazy">
+            <img src="corporate.png" loading="lazy" decoding="async" alt="">
           </div>
           <h3>Corporate Offices</h3>
           <p>Visting Cards, Branding Gifts, ID Cards & More</p>
         </div>
       </div>
       <div class="industry-card" onclick="openModal('eventModal')">
-        <img src="wedding_cat.png" loading="lazy">
+        <img src="wedding_cat.png" loading="lazy" decoding="async" alt="">
         <div class="industry-overlay">
           <div class="industry-icon">
-            <img src="event_logo.png" loading="lazy">
+            <img src="event_logo.png" loading="lazy" decoding="async" alt="">
           </div>
           <h3>Events & Weddings</h3>
           <p>Invitations, gift boxes, Welcome Boards & More</p>
@@ -2000,36 +2142,28 @@ textarea:-webkit-autofill{
   <h2>Our Works</h2>
   <div class="works-grid">
     <div class="work-item">
-      <video muted playsinline preload="metadata" poster="thumb1.jpg">
-        <source src="foam board sample.mp4" type="video/mp4">
-      </video>
+      <video muted playsinline preload="none" poster="thumb1.jpg" data-src="foam board sample.mp4"></video>
     </div>
     <div class="work-item">
-      <video muted playsinline preload="metadata" poster="thumb1.jpg">
-        <source src="VID_20260224_041201_225.mp4" type="video/mp4">
-      </video>
+      <video muted playsinline preload="none" poster="thumb1.jpg" data-src="VID_20260224_041201_225.mp4"></video>
     </div>
     <div class="work-item">
-      <video muted playsinline preload="metadata" poster="thumb1.jpg">
-        <source src="cloth.mp4" type="video/mp4">
-      </video>
+      <video muted playsinline preload="none" poster="thumb1.jpg" data-src="cloth.mp4"></video>
     </div>
     <div class="work-item">
-      <video muted playsinline preload="metadata" poster="thumb1.jpg">
-        <source src="rudrabookgit.mp4" type="video/mp4">
-      </video>
+      <video muted playsinline preload="none" poster="thumb1.jpg" data-src="rudrabookgit.mp4"></video>
     </div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="storieswhitegit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="visitingcardsgit1.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="visitingcards1git.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="storiesgreengit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="windowboxgit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="pencilboxgit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="momosgit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="medicalboxgit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="magnetbadgesgit.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="tentcard1git.mp4" type="video/mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="metadata" poster="thumb1.jpg"><source src="tentcardgit.mp4" type="video/mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="storieswhitegit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="visitingcardsgit1.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="visitingcards1git.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="storiesgreengit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="windowboxgit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="pencilboxgit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="momosgit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="medicalboxgit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="magnetbadgesgit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="tentcard1git.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="tentcardgit.mp4"></video></div>
   </div>
 </section>
 
@@ -2043,17 +2177,17 @@ textarea:-webkit-autofill{
         We are located in the heart of Hyderabad, delivering quality and speed.
       </p>
       <div class="location-line">
-        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" loading="lazy">
+        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" loading="lazy" decoding="async" alt="">
         <span>
           FTCCI Marg, Hari Nagar, Red Hills, Lakdikapul, Hyderabad, Telangana 500004, India. 
         </span>
       </div>
-      <a href="https://maps.google.com/?q=Eevee Printers" target="_blank" class="map-btn">
+      <a href="https://maps.google.com/?q=Eevee Printers" target="_blank" rel="noopener" class="map-btn">
         Get Directions
       </a>
     </div>
     <div class="location-image">
-      <img src="map.png" alt="Eevee Location">
+      <img src="map.png" alt="Eevee Location" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -2064,17 +2198,17 @@ textarea:-webkit-autofill{
     <div class="social-left">
       <h2>Stay Connected</h2>
       <div class="social-icons">
-        <a href="https://instagram.com/eeveeprinters" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" loading="lazy">
+        <a href="https://instagram.com/eeveeprinters" target="_blank" rel="noopener">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" loading="lazy" decoding="async" alt="Instagram">
         </a>
-        <a href="https://youtube.com/@eeveeprinters" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" loading="lazy">
+        <a href="https://youtube.com/@eeveeprinters" target="_blank" rel="noopener">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" loading="lazy" decoding="async" alt="YouTube">
         </a>
-        <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" loading="lazy">
+        <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank" rel="noopener">
+          <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" loading="lazy" decoding="async" alt="LinkedIn">
         </a>
         <a href="mailto:eeveeprinters@gmail.com">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" loading="lazy">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" loading="lazy" decoding="async" alt="Email">
         </a>
       </div>
     </div>
@@ -2098,8 +2232,8 @@ textarea:-webkit-autofill{
 
 <!-- WHATSAPP BUTTON -->
 <div class="whatsapp-container">
-  <a href="https://wa.me/919014891062" target="_blank" class="whatsapp-btn">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+  <a href="https://wa.me/919014891062" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" loading="lazy" decoding="async">
   </a>
 </div>
 
@@ -2110,14 +2244,14 @@ textarea:-webkit-autofill{
     <h2>Business Cards</h2>
     <p class="subtitle">Premium finishes for your brand identity</p>
     <div class="types-grid">
-      <div class="type-box"><img src="spotuv.png" loading="lazy"><p>Spot UV</p></div>
-      <div class="type-box"><img src="foilingvisitingcards.png" loading="lazy"><p>Gold Foiling</p></div>
-      <div class="type-box"><img src="matte_lamination.png" loading="lazy"><p>Matte Finish</p></div>
-      <div class="type-box"><img src="gloss_lamination_visitingcard.png" loading="lazy"><p>Glossy Finish</p></div>
-      <div class="type-box"><img src="velvet_visitingcard.png" loading="lazy"><p>Velvet Finish</p></div>
-      <div class="type-box"><img src="nonterable_visitingcards.png" loading="lazy"><p>Non-Terable Cards</p></div>
-      <div class="type-box"><img src="transparant_visiting_cards.png" loading="lazy"><p>Transparent Cards</p></div>
-      <div class="type-box"><img src="normal_cards_visting_cards.png" loading="lazy"><p>Normal Cards</p></div>
+      <div class="type-box"><img src="spotuv.png" loading="lazy" decoding="async" alt=""><p>Spot UV</p></div>
+      <div class="type-box"><img src="foilingvisitingcards.png" loading="lazy" decoding="async" alt=""><p>Gold Foiling</p></div>
+      <div class="type-box"><img src="matte_lamination.png" loading="lazy" decoding="async" alt=""><p>Matte Finish</p></div>
+      <div class="type-box"><img src="gloss_lamination_visitingcard.png" loading="lazy" decoding="async" alt=""><p>Glossy Finish</p></div>
+      <div class="type-box"><img src="velvet_visitingcard.png" loading="lazy" decoding="async" alt=""><p>Velvet Finish</p></div>
+      <div class="type-box"><img src="nonterable_visitingcards.png" loading="lazy" decoding="async" alt=""><p>Non-Terable Cards</p></div>
+      <div class="type-box"><img src="transparant_visiting_cards.png" loading="lazy" decoding="async" alt=""><p>Transparent Cards</p></div>
+      <div class="type-box"><img src="normal_cards_visting_cards.png" loading="lazy" decoding="async" alt=""><p>Normal Cards</p></div>
     </div>
   </div>
 </div> 
@@ -2129,10 +2263,10 @@ textarea:-webkit-autofill{
     <h2>Letter Heads</h2>
     <p class="subtitle">Professional letterheads for your business</p>
     <div class="types-grid">
-      <div class="type-box"><img src="letterhead_inside.png" loading="lazy"><p>Standard Letterhead</p></div>
-      <div class="type-box"><img src="excelbond.png" loading="lazy"><p>Bond Paper Letterheads</p></div>
+      <div class="type-box"><img src="letterhead_inside.png" loading="lazy" decoding="async" alt=""><p>Standard Letterhead</p></div>
+      <div class="type-box"><img src="excelbond.png" loading="lazy" decoding="async" alt=""><p>Bond Paper Letterheads</p></div>
     </div>
-    <a href="https://wa.me/919014891062" target="_blank" class="btn">Request a Quote</a>
+    <a href="https://wa.me/919014891062" target="_blank" rel="noopener" class="btn">Request a Quote</a>
   </div>
 </div>
 
@@ -2143,11 +2277,11 @@ textarea:-webkit-autofill{
     <h2>Box Types</h2>
     <p class="subtitle">Choose the perfect box style for your product</p>
     <div class="types-grid">
-      <div class="type-box"><img src="duplex_board.png" loading="lazy"><p>Duplex Boxes</p></div>
-      <div class="type-box"><img src="rigid_boxes.png" loading="lazy"><p>Rigid Boxes</p></div>
-      <div class="type-box"><img src="corrugated_boxes.png" loading="lazy"><p>Corrugated Boxes</p></div>
+      <div class="type-box"><img src="duplex_board.png" loading="lazy" decoding="async" alt=""><p>Duplex Boxes</p></div>
+      <div class="type-box"><img src="rigid_boxes.png" loading="lazy" decoding="async" alt=""><p>Rigid Boxes</p></div>
+      <div class="type-box"><img src="corrugated_boxes.png" loading="lazy" decoding="async" alt=""><p>Corrugated Boxes</p></div>
     </div>
-    <a href="https://wa.me/919014891062" target="_blank" class="btn">Request a Quote</a>
+    <a href="https://wa.me/919014891062" target="_blank" rel="noopener" class="btn">Request a Quote</a>
   </div>
 </div>
 
@@ -2157,13 +2291,13 @@ textarea:-webkit-autofill{
     <span class="close" onclick="closeModal('restaurantModal')">&times;</span>
     <h2>Restaurants & Cafes</h2>
     <div class="types-grid">
-      <div class="type-box"><img src="MENU_CARD_MAIN.PNG" loading="lazy"><p>Menu Cards</p></div>
-      <div class="type-box"><img src="tent_cards.png" loading="lazy"><p>Table Tent Cards</p></div>
-      <div class="type-box"><img src="coasters_main.png" loading="lazy"><p>Table Coasters</p></div>
-      <div class="type-box"><img src="covers_main.png" loading="lazy"><p>Covers</p></div>
-      <div class="type-box"><img src="stickers_main_page.png" loading="lazy"><p>Stickers</p></div>
-      <div class="type-box"><img src="boxes_main.png" loading="lazy"><p>Parcel Boxes</p></div>
-      <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy"><p>Paper Bags</p></div>
+      <div class="type-box"><img src="MENU_CARD_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Menu Cards</p></div>
+      <div class="type-box"><img src="tent_cards.png" loading="lazy" decoding="async" alt=""><p>Table Tent Cards</p></div>
+      <div class="type-box"><img src="coasters_main.png" loading="lazy" decoding="async" alt=""><p>Table Coasters</p></div>
+      <div class="type-box"><img src="covers_main.png" loading="lazy" decoding="async" alt=""><p>Covers</p></div>
+      <div class="type-box"><img src="stickers_main_page.png" loading="lazy" decoding="async" alt=""><p>Stickers</p></div>
+      <div class="type-box"><img src="boxes_main.png" loading="lazy" decoding="async" alt=""><p>Parcel Boxes</p></div>
+      <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy" decoding="async" alt=""><p>Paper Bags</p></div>
     </div>
   </div>
 </div>
@@ -2176,9 +2310,9 @@ textarea:-webkit-autofill{
     <div class="types-grid">
       <div class="type-box"><p>Food Boxes</p></div>
       <div class="type-box"><p>Wrappers</p></div>
-      <div class="type-box"><img src="stickers_main_page.png" loading="lazy"><p>Stickers</p></div>
+      <div class="type-box"><img src="stickers_main_page.png" loading="lazy" decoding="async" alt=""><p>Stickers</p></div>
       <div class="type-box"><p>Labels</p></div>
-      <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy"><p>Paper Bags</p></div>
+      <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy" decoding="async" alt=""><p>Paper Bags</p></div>
     </div>
   </div>
 </div>
@@ -2297,6 +2431,25 @@ textarea:-webkit-autofill{
 
 <!-- ===== SCRIPTS ===== -->
 
+<!-- HAMBURGER MENU -->
+<script>
+function toggleMobileMenu(){
+  const btn = document.getElementById('hamburgerBtn');
+  const menu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('menuOverlay');
+  btn.classList.toggle('active');
+  menu.classList.toggle('open');
+  overlay.classList.toggle('active');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMobileMenu(){
+  document.getElementById('hamburgerBtn').classList.remove('active');
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('menuOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+</script>
+
 <!-- SCROLL BUTTONS -->
 <script>
 function scrollLeftFunc(btn) {
@@ -2339,47 +2492,82 @@ window.onclick = function(event) {
 }
 </script>
 
-<!-- WORKS VIDEO AUTOPLAY -->
+<!-- OPTIMIZED WORKS VIDEO LAZY-LOAD + AUTOPLAY -->
 <script>
-const items = document.querySelectorAll(".work-item");
-const videos = document.querySelectorAll(".work-item video");
-let currentIndex = 0;
+(function(){
+  const items = document.querySelectorAll(".work-item");
+  const videos = document.querySelectorAll(".work-item video");
+  let currentIndex = 0;
+  let videosLoaded = false;
 
-function stopAllVideos(){
-  videos.forEach(video => {
-    video.pause();
-    video.currentTime = 0;
-  });
-  items.forEach(item => {
-    item.classList.remove("active");
-  });
-}
+  // Lazy-load videos only when "Our Works" section becomes visible
+  function loadVideoSources(){
+    if(videosLoaded) return;
+    videosLoaded = true;
+    videos.forEach(video => {
+      const src = video.getAttribute('data-src');
+      if(src && !video.querySelector('source')){
+        const source = document.createElement('source');
+        source.src = src;
+        source.type = 'video/mp4';
+        video.appendChild(source);
+        video.load();
+      }
+    });
+    if(videos.length > 0) playVideo(0);
+  }
 
-function playVideo(index){
-  stopAllVideos();
-  const currentVideo = videos[index];
-  const currentItem = items[index];
-  currentItem.classList.add("active");
-  currentVideo.play();
-  currentVideo.onended = () => {
-    currentIndex++;
-    if(currentIndex >= videos.length){
-      currentIndex = 0;
+  function stopAllVideos(){
+    videos.forEach(video => {
+      video.pause();
+      video.currentTime = 0;
+    });
+    items.forEach(item => item.classList.remove("active"));
+  }
+
+  function playVideo(index){
+    stopAllVideos();
+    const currentVideo = videos[index];
+    const currentItem = items[index];
+    if(!currentVideo) return;
+    currentItem.classList.add("active");
+    const playPromise = currentVideo.play();
+    if(playPromise !== undefined){
+      playPromise.catch(()=>{ /* silently ignore autoplay block */ });
     }
-    playVideo(currentIndex);
-  };
-}
+    currentVideo.onended = () => {
+      currentIndex = (currentIndex + 1) % videos.length;
+      playVideo(currentIndex);
+    };
+  }
 
-if (videos.length > 0) {
-  playVideo(0);
-}
+  // Use IntersectionObserver to load videos only when needed
+  if('IntersectionObserver' in window){
+    const worksSection = document.querySelector('.our-works');
+    if(worksSection){
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            loadVideoSources();
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: '200px' });
+      observer.observe(worksSection);
+    }
+  } else {
+    // Fallback for old browsers
+    window.addEventListener('load', loadVideoSources);
+  }
 
-items.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    currentIndex = index;
-    playVideo(index);
+  items.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      if(!videosLoaded) loadVideoSources();
+      currentIndex = index;
+      playVideo(index);
+    });
   });
-});
+})();
 </script>
 
 <!-- FIREBASE LOGIN -->
