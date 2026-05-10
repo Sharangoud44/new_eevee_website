@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eevee Printers</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet"> 
 <link rel="canonical" href="https://sharangoud44.github.io/new_eevee_website/">
@@ -10,6 +11,7 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: #0f0f0f;
+  overflow-x: hidden;
 }
 /* PREMIUM MODAL */
 .modal-content {
@@ -55,6 +57,7 @@ body {
   font-size:14px;
   outline:none;
   transition:0.3s;
+  box-sizing:border-box;
 }
 #loginModal input:focus{
   border-color:orange;
@@ -1216,145 +1219,6 @@ html {
   transform: scale(1.08);
 }
 
-/* ===== MOBILE VIEW ===== */
-@media (max-width: 768px) {
-  header,
-  .navbar {
-    padding: 10px 14px !important;
-    height: auto !important;
-  }
-  .logo img {
-    height: 38px !important;
-  }
-  .hero,
-  .hero-section,
-  .home-banner {
-    min-height: 72vh !important;
-    height: 72vh !important;
-    padding-top: 80px !important;
-    padding-bottom: 30px !important;
-    background-position: center center !important;
-    background-size: cover !important;
-  }
-  .hero::before,
-  .hero-overlay {
-    opacity: 0.55 !important;
-  }
-  .hero-content,
-  .banner-content {
-    padding: 0 18px !important;
-    max-width: 100% !important;
-  }
-  .hero h1,
-  .hero-title {
-    font-size: 42px !important;
-    line-height: 1.05 !important;
-    margin-bottom: 14px !important;
-  }
-  .hero p,
-  .hero-text {
-    font-size: 14px !important;
-    line-height: 1.6 !important;
-    max-width: 95% !important;
-  }
-  .hero-buttons {
-    flex-direction: row !important;
-    gap: 10px !important;
-    margin-top: 18px !important;
-  }
-  .hero-buttons a {
-    font-size: 13px !important;
-    padding: 10px 16px !important;
-  }
-  .stats,
-  .hero-stats {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 14px !important;
-    margin-top: 22px !important;
-  }
-  .whatsapp-float {
-    width: 48px !important;
-    height: 48px !important;
-    bottom: 16px !important;
-    right: 16px !important;
-  }
-}
-@media screen and (max-width:768px){
-  .hero{
-    height: 68vh !important;
-    min-height: 68vh !important;
-    overflow: hidden !important;
-  }
-  .hero video{
-    height: 68vh !important;
-    object-fit: cover !important;
-  }
-  .hero-overlay{
-    height: 68vh !important;
-  }
-  .hero-content{
-    position: absolute !important;
-    top: 52% !important;
-    left: 16px !important;
-    right: 16px !important;
-    transform: translateY(-50%) !important;
-    max-width: 90% !important;
-  }
-  .hero-title{
-    font-size: 38px !important;
-    line-height: 1.05 !important;
-    margin-bottom: 10px !important;
-  }
-  .hero-sub{
-    font-size: 13px !important;
-    line-height: 1.5 !important;
-    margin: 12px 0 !important;
-  }
-  .hero-sub br{
-    display:none !important;
-  }
-  .hero-buttons{
-    margin-top: 14px !important;
-    gap: 8px !important;
-  }
-  .hero-buttons a{
-    padding: 9px 14px !important;
-    font-size: 12px !important;
-  }
-  .hero-trust{
-    margin-top: 14px !important;
-    gap: 8px !important;
-  }
-  .trust-item{
-    min-width: 70px !important;
-  }
-  .trust-item strong{
-    font-size: 11px !important;
-  }
-  .trust-item span{
-    font-size: 8px !important;
-  }
-  .trust-item img{
-    width: 30px !important;
-    height: 30px !important;
-  }
-  .navbar{
-    height: 58px !important;
-    padding: 0 8px !important;
-  }
-  .nav-logo{
-    height: 52px !important;
-  }
-  .nav-links a{
-    font-size: 8px !important;
-  }
-  .track-btn{
-    font-size: 8px !important;
-    padding: 6px 8px !important;
-  }
-}
-
 /* ===== PREMIUM QUOTE FORM ===== */
 .premium-quote-form{
   margin-top:30px;
@@ -1438,24 +1302,464 @@ textarea:-webkit-autofill{
   -webkit-box-shadow:0 0 0px 1000px #1a1a1a inset !important;
   transition:background-color 5000s ease-in-out 0s;
 }
-@media(max-width:768px){
+
+/* ============================================= */
+/* ============ MOBILE VIEW ONLY ================ */
+/* ============================================= */
+@media screen and (max-width: 768px){
+
+  /* ----- BODY ----- */
+  body{
+    overflow-x: hidden !important;
+  }
+
+  /* ----- NAVBAR ----- */
+  .navbar{
+    height: 60px !important;
+    padding: 0 10px !important;
+  }
+  .nav-container{
+    padding: 0 5px !important;
+    padding-right: 5px !important;
+    gap: 5px !important;
+  }
+  .nav-left{
+    height: 60px !important;
+    padding-left: 0 !important;
+    margin-left: -30px !important;
+  }
+  .nav-logo{
+    height: 90px !important;
+    transform: translateY(0) !important;
+  }
+  .nav-links{
+    display: none !important;
+  }
+  .quote-btn,
+  .track-btn{
+    margin-right: 0 !important;
+    padding: 8px 12px !important;
+    font-size: 11px !important;
+    border-radius: 20px !important;
+    white-space: nowrap !important;
+  }
+
+  /* ----- HERO ----- */
+  .hero{
+    height: 100vh !important;
+    min-height: 600px !important;
+    padding-top: 60px !important;
+    overflow: hidden !important;
+  }
+  .hero video{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .hero-overlay{
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,0.85) 0%,
+      rgba(0,0,0,0.65) 40%,
+      rgba(0,0,0,0.6) 70%,
+      rgba(0,0,0,0.85) 100%
+    ) !important;
+  }
+  .hero-content{
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+    max-width: 90% !important;
+    text-align: center !important;
+    padding: 0 !important;
+  }
+  .tag{
+    font-size: 10px !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 10px !important;
+  }
+  .hero-content h1,
+  .hero-title{
+    font-size: 38px !important;
+    line-height: 1.1 !important;
+    margin: 8px 0 !important;
+    letter-spacing: -0.5px !important;
+  }
+  .hero-sub{
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    margin: 15px auto !important;
+    max-width: 100% !important;
+  }
+  .hero-sub br{
+    display: none !important;
+  }
+  .hero-buttons{
+    justify-content: center !important;
+    gap: 10px !important;
+    margin-top: 18px !important;
+    flex-wrap: wrap !important;
+  }
+  .hero-buttons a,
+  .btn-main,
+  .btn-outline{
+    padding: 10px 16px !important;
+    font-size: 12px !important;
+  }
+
+  /* ----- HERO TRUST ITEMS ----- */
+  .hero-trust{
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    margin-top: 25px !important;
+    margin-bottom: 0 !important;
+    white-space: normal !important;
+    justify-items: center !important;
+  }
+  .trust-item{
+    gap: 6px !important;
+    justify-content: center !important;
+  }
+  .trust-item img{
+    width: 35px !important;
+    height: 40px !important;
+    transform: scale(1.2) !important;
+    margin-right: -5px !important;
+  }
+  .trust-item strong{
+    font-size: 13px !important;
+  }
+  .trust-item span{
+    font-size: 9px !important;
+  }
+
+  /* ----- SERVICES ----- */
+  .services{
+    padding: 40px 10px !important;
+  }
+  .services h2{
+    font-size: 14px !important;
+  }
+  .services .subtitle{
+    font-size: 14px !important;
+    padding: 0 15px !important;
+    margin-bottom: 20px !important;
+    line-height: 1.4 !important;
+  }
+  .container{
+    padding: 0 15px !important;
+  }
+  .grid{
+    gap: 15px !important;
+    padding: 0 5px !important;
+  }
+  .card{
+    min-width: 160px !important;
+    padding: 10px !important;
+    border-radius: 14px !important;
+  }
+  .card img{
+    height: 110px !important;
+  }
+  .card p{
+    font-size: 13px !important;
+    margin-top: 10px !important;
+  }
+  .scroll-btn{
+    width: 35px !important;
+    height: 35px !important;
+    opacity: 0.85 !important;
+  }
+  .scroll-btn.left{ left: 2px !important; }
+  .scroll-btn.right{ right: 2px !important; }
+
+  /* ----- FEATURE STRIP ----- */
+  .feature-strip{
+    padding: 15px 12px !important;
+  }
+  .strip-container{
+    flex-direction: column !important;
+    gap: 15px !important;
+    padding: 18px 18px !important;
+    border-radius: 12px !important;
+    align-items: flex-start !important;
+  }
+  .strip-item{
+    width: 100% !important;
+    gap: 12px !important;
+  }
+  .strip-item h4{
+    font-size: 14px !important;
+  }
+  .strip-item p{
+    font-size: 11px !important;
+  }
+  .strip-btn{
+    width: 100% !important;
+  }
+  .strip-btn a{
+    display: block !important;
+    text-align: center !important;
+    padding: 12px !important;
+    font-size: 13px !important;
+  }
+
+  /* ----- INDUSTRIES ----- */
+  .industries{
+    padding: 40px 10px !important;
+  }
+  .industries h2{
+    font-size: 26px !important;
+  }
+  .industries .subtitle{
+    font-size: 13px !important;
+    padding: 0 10px !important;
+    margin-bottom: 25px !important;
+  }
+  .industry-grid{
+    gap: 15px !important;
+  }
+  .industry-card{
+    min-width: 240px !important;
+    height: 220px !important;
+    border-radius: 14px !important;
+  }
+  .industry-overlay{
+    bottom: 15px !important;
+    left: 15px !important;
+  }
+  .industry-overlay h3{
+    font-size: 15px !important;
+  }
+  .industry-overlay p{
+    font-size: 11px !important;
+    max-width: 200px !important;
+  }
+  .industry-icon{
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* ----- OUR WORKS ----- */
+  .our-works{
+    padding: 40px 0 !important;
+  }
+  .our-works h2{
+    font-size: 24px !important;
+    margin-bottom: 20px !important;
+  }
+  .works-grid{
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: auto !important;
+    gap: 4px !important;
+    padding: 0 8px !important;
+  }
+  .work-item{
+    height: 180px !important;
+    border-radius: 8px !important;
+  }
+
+  /* ----- LOCATION ----- */
+  .location-premium{
+    padding: 50px 20px !important;
+  }
+  .location-content{
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+  .location-text h2{
+    font-size: 28px !important;
+    text-align: center !important;
+  }
+  .location-text p{
+    font-size: 14px !important;
+    text-align: center !important;
+  }
+  .location-line{
+    margin: 15px auto !important;
+    justify-content: center !important;
+    text-align: left !important;
+  }
+  .location-line span{
+    font-size: 13px !important;
+  }
+  .map-btn{
+    display: block !important;
+    text-align: center !important;
+    margin: 20px auto !important;
+    width: fit-content !important;
+  }
+  .location-image img{
+    height: 220px !important;
+  }
+
+  /* ----- SOCIAL / CONTACT ----- */
+  .social{
+    padding: 50px 20px !important;
+  }
+  .social-container{
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+  .social-left,
+  .social-right{
+    width: 100% !important;
+  }
+  .social-left h2,
+  .social-right h2{
+    font-size: 24px !important;
+    margin-bottom: 15px !important;
+  }
+  .divider{
+    width: 80% !important;
+    height: 1px !important;
+  }
+  .social-icons{
+    gap: 12px !important;
+  }
+  .social-icons img{
+    width: 38px !important;
+    height: 38px !important;
+    padding: 10px !important;
+  }
+  .social-right p{
+    font-size: 14px !important;
+  }
+
+  /* ----- FOOTER ----- */
+  .footer{
+    padding: 18px 12px !important;
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* ----- WHATSAPP BUTTON ----- */
+  .whatsapp-container{
+    bottom: 15px !important;
+    right: 15px !important;
+  }
+  .whatsapp-btn img{
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  /* ----- MODALS ----- */
+  .modal-content{
+    width: 92% !important;
+    max-width: 92% !important;
+    max-height: 85vh !important;
+    padding: 20px !important;
+    margin: 8% auto !important;
+    border-radius: 18px !important;
+  }
+  .modal-content h2{
+    font-size: 24px !important;
+  }
+  .modal-content .subtitle{
+    font-size: 13px !important;
+    margin-bottom: 15px !important;
+  }
+  .types-grid{
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    margin: 20px 0 !important;
+  }
+  .type-box{
+    padding: 10px !important;
+    border-radius: 14px !important;
+  }
+  .type-box img{
+    height: 80px !important;
+  }
+  .type-box p{
+    font-size: 12px !important;
+    margin-top: 8px !important;
+  }
+  .close{
+    width: 32px !important;
+    height: 32px !important;
+    right: 12px !important;
+    top: 12px !important;
+    font-size: 20px !important;
+  }
+
+  /* ----- QUOTE FORM ----- */
+  .premium-quote-form{
+    margin-top: 20px !important;
+  }
   .form-row{
-    flex-direction:column;
-    gap:14px;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-bottom: 12px !important;
+  }
+  .premium-quote-form input,
+  .premium-quote-form select,
+  .premium-quote-form textarea{
+    padding: 12px 14px !important;
+    font-size: 14px !important;
+    border-radius: 10px !important;
+  }
+  .premium-quote-form textarea{
+    height: 110px !important;
+  }
+  .premium-quote-form label{
+    font-size: 12px !important;
+    color: #ccc !important;
+    display: block !important;
+    margin-bottom: 6px !important;
+    text-align: left !important;
   }
   .quote-actions{
-    flex-direction:column;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-top: 18px !important;
   }
   .quote-actions .btn,
   .quote-actions .contact-btn{
-    width:100%;
+    width: 100% !important;
+    min-width: auto !important;
+    height: 48px !important;
+    font-size: 14px !important;
   }
-  .modal-content{
-    width:92%;
-    padding:22px;
+
+  /* ----- LOGIN MODAL ----- */
+  #loginModal .modal-content{
+    max-width: 92% !important;
   }
-  .modal-content h2{
-    font-size:28px;
+  #loginModal input{
+    padding: 12px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* ===== Extra small phones ===== */
+@media screen and (max-width: 380px){
+  .hero-content h1,
+  .hero-title{
+    font-size: 32px !important;
+  }
+  .hero-sub{
+    font-size: 12px !important;
+  }
+  .trust-item strong{
+    font-size: 12px !important;
+  }
+  .trust-item span{
+    font-size: 8px !important;
+  }
+  .nav-logo{
+    height: 75px !important;
+  }
+  .quote-btn,
+  .track-btn{
+    padding: 7px 10px !important;
+    font-size: 10px !important;
+  }
+  .work-item{
+    height: 150px !important;
   }
 }
 </style>
@@ -1484,7 +1788,7 @@ textarea:-webkit-autofill{
 
 <!-- HERO -->
 <div class="hero">
-  <video autoplay muted loop preload="none">
+  <video autoplay muted loop playsinline preload="none">
     <source src="15505103_1080_1920_60fps.mp4">
   </video>
   <div class="hero-overlay"></div>
