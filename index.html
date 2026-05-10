@@ -1708,46 +1708,165 @@ iframe {
   flex-direction: column;
   line-height: 1.2;
 }
- @media (max-width:768px){
+@media (max-width:768px){
 
+/* NAVBAR */
 .navbar{
-  height:58px;
-  padding:0 8px;
+  height:70px;
+  padding:0 12px;
 }
 
 .nav-container{
-  padding:0 6px;
-  gap:6px;
+  padding:0;
+  gap:10px;
 }
 
 /* LOGO */
 .nav-left{
   margin-left:0;
-  height:58px;
+  height:70px;
 }
 
 .nav-logo{
-  height:78px;
-  transform:none;
+  height:90px;
+  width:auto;
 }
 
-/* LINKS */
+/* NAV LINKS */
 .nav-links{
-  gap:8px;
+  gap:10px;
   margin-right:0;
 }
 
 .nav-links a{
-  font-size:8px;
+  font-size:10px;
   font-weight:500;
 }
 
-/* BUTTON */
+/* TRACK BUTTON */
 .track-btn{
-  padding:6px 10px;
-  font-size:9px;
+  padding:8px 12px;
+  font-size:10px;
+  border-radius:8px;
   margin-right:0;
-  border-radius:6px;
+}
+
+/* HERO SECTION */
+.hero{
+  height:100vh;
+  padding-top:70px;
+}
+
+/* VIDEO */
+.hero video{
+  object-fit:cover;
+}
+
+/* HERO CONTENT */
+.hero-content{
+  left:20px;
+  right:20px;
+  top:52%;
+  max-width:100%;
+}
+
+/* SMALL TOP TEXT */
+.tag{
+  font-size:10px;
+  letter-spacing:2px;
+}
+
+/* MAIN TITLE */
+.hero-title{
+  font-size:42px;
+  line-height:1.1;
+  margin-top:12px;
+}
+
+/* SUBTEXT */
+.hero-sub{
+  font-size:14px;
+  line-height:1.7;
+  max-width:100%;
+}
+
+/* BUTTONS */
+.hero-buttons{
+  flex-direction:column;
+  gap:12px;
+  width:100%;
+}
+
+.btn-main,
+.btn-outline{
+  width:100%;
+  justify-content:center;
+  padding:14px;
+  font-size:14px;
+}
+
+/* TRUST ITEMS */
+.hero-trust{
+  margin-top:25px;
+  gap:14px;
+  overflow-x:auto;
+  padding-bottom:10px;
+}
+
+.trust-item{
+  min-width:120px;
+}
+
+.trust-item img{
+  width:45px;
+  height:45px;
+  transform:none;
+  margin-right:0;
+}
+
+.trust-item strong{
+  font-size:14px;
+}
+
+.trust-item span{
+  font-size:10px;
+}
+
+/* SERVICES CARDS */
+.card{
+  min-width:180px;
+}
+
+/* INDUSTRY CARDS */
+.industry-card{
+  min-width:260px;
+  height:220px;
+}
+
+/* WORK GRID */
+.works-grid{
+  grid-template-columns:repeat(2,1fr);
+  grid-template-rows:auto;
+}
+
+/* LOCATION SECTION */
+.location-content{
+  flex-direction:column;
+}
+
+.location-text h2{
+  font-size:32px;
+}
+
+/* SOCIAL */
+.social-container{
+  flex-direction:column;
+  gap:30px;
+}
+
+.divider{
+  width:100%;
+  height:1px;
 }
 
 }
