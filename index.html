@@ -22,27 +22,29 @@ body {
 }
 
 /* ============================================= */
-/* ============ FIX #4: STAR SIZE =============== */
+/* ============ FIX #3: STAR SIZE =============== */
+/* Star now matches the "5" text size for a clean professional look */
 /* ============================================= */
 .rating {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
   line-height: 1;
 }
 .rating .num-five {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
   line-height: 1;
 }
 .star {
   color: #ff8c00 !important;
-  font-size: 26px !important;
+  font-size: 16px !important;       /* SAME SIZE AS THE "5" */
+  font-weight: 700 !important;
   line-height: 1 !important;
   display: inline-block;
-  transform: translateY(1px);
-  text-shadow: 0 0 10px rgba(255,140,0,0.5);
+  transform: translateY(0);
+  text-shadow: 0 0 6px rgba(255,140,0,0.6);
 }
 
 /* PREMIUM MODAL */
@@ -468,17 +470,65 @@ body {
   max-width: 600px;
   margin: 0 auto 50px;
   line-height: 1.6;
-} 
+}
+
+/* ============================================= */
+/* ====== FIX #5: PREMIUM NAV LINK EFFECTS ===== */
+/* ============================================= */
 .nav-links {
   display: flex;
-  gap: 35px;
+  gap: 8px;
   margin-right: 50px;
+  align-items: center;
 }
 .nav-links a {
-  color: white;
+  position: relative;
+  color: #ffffff;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  z-index: 1;
+}
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,140,0,0.15), rgba(255,94,0,0.08));
+  border-radius: 10px;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: all 0.35s ease;
+  z-index: -1;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff8c00, #ff5e00);
+  border-radius: 2px;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 8px rgba(255,140,0,0.6);
+}
+.nav-links a:hover {
+  color: #ff8c00;
+  transform: translateY(-2px);
+  text-shadow: 0 0 12px rgba(255,140,0,0.4);
+}
+.nav-links a:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.nav-links a:hover::after {
+  width: 60%;
 }
 .nav-container {
   width: 100%;
@@ -499,30 +549,6 @@ body {
   transform: scale(1.1);
   transition: 0.3s;
 }
-nav a {
-  margin: 0 15px;
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-  position: relative;
-}
-nav a:hover {
-  color: orange;
-}
-nav a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background: orange;
-  left: 0;
-  bottom: -5px;
-  transition: 0.3s;
-}
-nav a:hover::after {
-  width: 100%;
-}
 .quote-btn {
   background: linear-gradient(135deg, #ff8c00, #ff5e00);
   color: white;
@@ -533,10 +559,27 @@ nav a:hover::after {
   transition: 0.3s;
   font-weight: 600;
   box-shadow: 0 5px 15px rgba(255,140,0,0.4);
+  position: relative;
+  overflow: hidden;
 }
-.quote-btn:hover {
+.quote-btn::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s;
+}
+.quote-btn:hover{
   background: #ff8800;
-}  
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255,140,0,0.55);
+}
+.quote-btn:hover::before{
+  left: 100%;
+}
 .whatsapp-container {
   position: fixed;
   bottom: 20px;
@@ -565,6 +608,7 @@ nav a:hover::after {
   padding: 0 40px;
   background: rgba(0,0,0,0.7);
   backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,140,0,0.08);
 }
 .contact-section {
   padding: 80px 6%;
@@ -1200,14 +1244,55 @@ html {
   overflow: hidden;
   background: #111;
 }
-.work-item.active::before{
+
+/* ============================================= */
+/* ===== FIX #4: VIDEO LOADING PLACEHOLDER ===== */
+/* Shows nice loading state while videos load */
+/* ============================================= */
+.work-item::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 5;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  z-index: 0;
+}
+.work-item .video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  transition: opacity 0.4s;
+}
+.work-item .video-placeholder::before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255,140,0,0.2);
+  border-top-color: #ff8c00;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+.work-item.video-loaded .video-placeholder {
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.work-item video {
+  position: relative;
+  z-index: 2;
+}
+
+.work-item.active::before{
   border: 2px solid #ff6a00;
   pointer-events: none;
   animation: borderGlow 1.5s linear infinite;
+  background: transparent;
+  z-index: 5;
 }
 .work-item.active::after{
   content: "";
@@ -1242,9 +1327,7 @@ html {
   transform: scale(1.08);
 }
 
-/* ============================================= */
-/* ====== FIX #1: PROFESSIONAL QUOTE FORM ======= */
-/* ============================================= */
+/* QUOTE FORM */
 #quoteModal .modal-content{
   width: 90%;
   max-width: 720px;
@@ -1290,19 +1373,14 @@ html {
   margin: 0;
   letter-spacing: 0.3px;
 }
-
-.premium-quote-form{
-  margin-top: 0;
-}
+.premium-quote-form{ margin-top: 0; }
 .premium-quote-form .field-group{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
   margin-bottom: 18px;
 }
-.premium-quote-form .field-full{
-  margin-bottom: 18px;
-}
+.premium-quote-form .field-full{ margin-bottom: 18px; }
 .premium-quote-form label{
   display: block;
   font-size: 12px;
@@ -1312,13 +1390,8 @@ html {
   letter-spacing: 0.4px;
   text-transform: uppercase;
 }
-.required{
-  color: #ff5252;
-  margin-left: 4px;
-}
-.input-wrap{
-  position: relative;
-}
+.required{ color: #ff5252; margin-left: 4px; }
+.input-wrap{ position: relative; }
 .input-wrap .field-icon{
   position: absolute;
   left: 16px;
@@ -1353,10 +1426,7 @@ html {
   line-height: 1.6;
 }
 .premium-quote-form input::placeholder,
-.premium-quote-form textarea::placeholder{
-  color: #6a6a6a !important;
-  font-size: 13px;
-}
+.premium-quote-form textarea::placeholder{ color: #6a6a6a !important; font-size: 13px; }
 .premium-quote-form select{
   cursor: pointer;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23ff8c00' d='M6 8L0 0h12z'/%3E%3C/svg%3E") !important;
@@ -1365,25 +1435,15 @@ html {
   background-size: 10px !important;
   padding-right: 40px;
 }
-.premium-quote-form select option{
-  background: #1a1a1a !important;
-  color: #fff !important;
-  padding: 10px;
-}
+.premium-quote-form select option{ background: #1a1a1a !important; color: #fff !important; padding: 10px; }
 .premium-quote-form input:focus,
 .premium-quote-form select:focus,
 .premium-quote-form textarea:focus{
   border-color: #ff8c00 !important;
   background: rgba(255,140,0,0.04) !important;
-  box-shadow:
-    0 0 0 3px rgba(255,140,0,0.10),
-    0 4px 20px rgba(255,140,0,0.10);
+  box-shadow: 0 0 0 3px rgba(255,140,0,0.10), 0 4px 20px rgba(255,140,0,0.10);
 }
-.premium-quote-form input:focus + .field-icon,
-.input-wrap:focus-within .field-icon{
-  opacity: 1;
-}
-
+.input-wrap:focus-within .field-icon{ opacity: 1; }
 .quote-actions{
   display: flex;
   justify-content: center;
@@ -1412,33 +1472,8 @@ html {
   box-shadow: 0 6px 20px rgba(255,140,0,0.35);
   font-family: 'Poppins', sans-serif;
 }
-.quote-actions .submit-btn:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(255,140,0,0.5);
-}
-.quote-actions .whatsapp-direct{
-  flex: 1;
-  min-width: 200px;
-  height: 52px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  text-decoration: none;
-  transition: 0.3s ease;
-  cursor: pointer;
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  color: #fff;
-  box-shadow: 0 6px 20px rgba(37,211,102,0.3);
-}
-.quote-actions .whatsapp-direct:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(37,211,102,0.45);
-}
+.quote-actions .submit-btn:hover{ transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,140,0,0.5); }
+.quote-actions .submit-btn:disabled{ opacity: 0.7; cursor: not-allowed; transform: none; }
 .form-trust-row{
   display: flex;
   justify-content: center;
@@ -1462,7 +1497,6 @@ html {
   font-weight: 700;
   font-size: 13px;
 }
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -1473,16 +1507,32 @@ textarea:-webkit-autofill{
 }
 
 /* ============================================= */
-/* ===== FIX #3: "PRINT SOMETHING GREAT" POPUP == */
+/* === FIX #1: PRINT GREAT MODAL — SCROLL FIX === */
 /* ============================================= */
 #printGreatModal .modal-content{
   width: 92%;
   max-width: 880px;
   padding: 0;
   border-radius: 24px;
-  overflow: hidden;
+  overflow: hidden;            /* outer keeps round corners */
   background: linear-gradient(160deg, #141416 0%, #0a0a0c 100%);
   border: 1px solid rgba(255,140,0,0.15);
+  max-height: 92vh;            /* allow more screen space */
+  display: flex;
+  flex-direction: column;
+}
+/* Inner scrollable wrapper */
+#printGreatModal .pg-scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 92vh;
+  scrollbar-width: thin;
+  scrollbar-color: #ff8c00 transparent;
+}
+#printGreatModal .pg-scrollable::-webkit-scrollbar { width: 6px; }
+#printGreatModal .pg-scrollable::-webkit-scrollbar-thumb {
+  background: linear-gradient(orange,#ff5e00);
+  border-radius: 20px;
 }
 .pg-hero{
   position: relative;
@@ -1551,9 +1601,8 @@ textarea:-webkit-autofill{
 .pg-hero p{
   color: #b0b0b0;
   font-size: 15px;
-  margin: 0;
-  max-width: 540px;
   margin: 0 auto;
+  max-width: 540px;
   line-height: 1.6;
   position: relative;
   z-index: 2;
@@ -1645,9 +1694,7 @@ textarea:-webkit-autofill{
   border-top: 1px solid rgba(255,255,255,0.06);
   flex-wrap: wrap;
 }
-.pg-stat{
-  text-align: center;
-}
+.pg-stat{ text-align: center; }
 .pg-stat strong{
   display: block;
   font-size: 22px;
@@ -1662,7 +1709,7 @@ textarea:-webkit-autofill{
   text-transform: uppercase;
 }
 
-/* HAMBURGER MENU */
+/* HAMBURGER */
 .hamburger-btn{
   display: none;
   width: 42px;
@@ -1687,15 +1734,9 @@ textarea:-webkit-autofill{
   border-radius: 2px;
   transition: 0.3s ease;
 }
-.hamburger-btn.active span:nth-child(1){
-  transform: translateY(7px) rotate(45deg);
-}
-.hamburger-btn.active span:nth-child(2){
-  opacity: 0;
-}
-.hamburger-btn.active span:nth-child(3){
-  transform: translateY(-7px) rotate(-45deg);
-}
+.hamburger-btn.active span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.hamburger-btn.active span:nth-child(2){ opacity: 0; }
+.hamburger-btn.active span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
 .mobile-menu{
   position: fixed;
   top: 0;
@@ -1713,9 +1754,7 @@ textarea:-webkit-autofill{
   padding: 90px 30px 30px;
   overflow-y: auto;
 }
-.mobile-menu.open{
-  right: 0;
-}
+.mobile-menu.open{ right: 0; }
 .mobile-menu a{
   color: #fff;
   text-decoration: none;
@@ -1750,14 +1789,9 @@ textarea:-webkit-autofill{
   visibility: hidden;
   transition: 0.4s;
 }
-.menu-overlay.active{
-  opacity: 1;
-  visibility: visible;
-}
+.menu-overlay.active{ opacity: 1; visibility: visible; }
 
-/* ============================================= */
-/* ============ MOBILE VIEW ONLY ================ */
-/* ============================================= */
+/* MOBILE */
 @media screen and (max-width: 768px){
   body{ overflow-x: hidden !important; }
   .navbar{ height: 60px !important; padding: 0 12px !important; }
@@ -1782,7 +1816,8 @@ textarea:-webkit-autofill{
   .trust-item img{ width: 35px !important; height: 40px !important; transform: scale(1.2) !important; margin-right: -5px !important; }
   .trust-item strong{ font-size: 13px !important; }
   .trust-item span{ font-size: 9px !important; }
-  .star{ font-size: 22px !important; }
+  .star{ font-size: 13px !important; }
+  .rating .num-five{ font-size: 13px !important; }
   .services{ padding: 40px 10px !important; }
   .services h2{ font-size: 14px !important; }
   .services .subtitle{ font-size: 14px !important; padding: 0 15px !important; margin-bottom: 20px !important; line-height: 1.4 !important; }
@@ -1842,18 +1877,18 @@ textarea:-webkit-autofill{
   .type-box p{ font-size: 12px !important; margin-top: 8px !important; }
   .close{ width: 32px !important; height: 32px !important; right: 12px !important; top: 12px !important; font-size: 20px !important; }
 
-  /* QUOTE FORM MOBILE */
   #quoteModal .modal-content{ padding: 24px 20px !important; }
   #quoteModal h2{ font-size: 22px !important; }
   .premium-quote-form .field-group{ grid-template-columns: 1fr !important; gap: 14px !important; margin-bottom: 14px !important; }
   .premium-quote-form input, .premium-quote-form select, .premium-quote-form textarea{ padding: 12px 14px 12px 38px !important; font-size: 13px !important; }
   .premium-quote-form textarea{ padding: 12px 14px !important; height: 90px !important; }
   .quote-actions{ flex-direction: column !important; gap: 10px !important; }
-  .quote-actions .submit-btn, .quote-actions .whatsapp-direct{ width: 100% !important; min-width: auto !important; height: 48px !important; font-size: 13px !important; }
+  .quote-actions .submit-btn{ width: 100% !important; min-width: auto !important; height: 48px !important; font-size: 13px !important; }
   .form-trust-row{ gap: 12px !important; }
 
-  /* PRINT GREAT MODAL MOBILE */
-  #printGreatModal .modal-content{ padding: 0 !important; }
+  /* Print Great mobile — fully scrollable */
+  #printGreatModal .modal-content{ padding: 0 !important; max-height: 90vh !important; }
+  #printGreatModal .pg-scrollable{ max-height: 90vh !important; }
   .pg-hero{ padding: 35px 22px 25px !important; }
   .pg-hero h2{ font-size: 26px !important; }
   .pg-hero p{ font-size: 13px !important; }
@@ -1878,7 +1913,8 @@ textarea:-webkit-autofill{
   .hero-sub{ font-size: 12px !important; }
   .trust-item strong{ font-size: 12px !important; }
   .trust-item span{ font-size: 8px !important; }
-  .star{ font-size: 20px !important; }
+  .star{ font-size: 12px !important; }
+  .rating .num-five{ font-size: 12px !important; }
   .nav-logo{ height: 75px !important; }
   .quote-btn, .track-btn{ padding: 6px 9px !important; font-size: 9px !important; }
   .work-item{ height: 150px !important; }
@@ -2078,25 +2114,27 @@ textarea:-webkit-autofill{
   </div>
 </section>
 
-<!-- OUR WORKS -->
+<!-- ============================================= -->
+<!-- ====== FIX #4: OUR WORKS WITH PLACEHOLDER ==== -->
+<!-- ============================================= -->
 <section class="our-works" id="ourworks">
   <h2>Our Works</h2>
   <div class="works-grid">
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="foam board sample.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="VID_20260224_041201_225.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="cloth.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="rudrabookgit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="storieswhitegit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="visitingcardsgit1.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="visitingcards1git.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="storiesgreengit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="windowboxgit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="pencilboxgit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="momosgit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="medicalboxgit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="magnetbadgesgit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="tentcard1git.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="tentcardgit.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="foam board sample.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="VID_20260224_041201_225.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="cloth.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="rudrabookgit.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="storieswhitegit.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="visitingcardsgit1.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="visitingcards1git.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="storiesgreengit.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="windowboxgit.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="pencilboxgit.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="momosgit.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="medicalboxgit.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="magnetbadgesgit.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="tentcard1git.mp4"></video></div>
+    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="tentcardgit.mp4"></video></div>
   </div>
 </section>
 
@@ -2151,7 +2189,7 @@ textarea:-webkit-autofill{
   </a>
 </div>
 
-<!-- BUSINESS CARD MODAL -->
+<!-- ALL OTHER MODALS (cardModal, letterModal, etc.) -->
 <div id="cardModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('cardModal')">&times;</span>
@@ -2170,7 +2208,6 @@ textarea:-webkit-autofill{
   </div>
 </div> 
 
-<!-- LETTER HEAD MODAL -->
 <div id="letterModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('letterModal')">&times;</span>
@@ -2184,7 +2221,6 @@ textarea:-webkit-autofill{
   </div>
 </div>
 
-<!-- BOXES MODAL -->
 <div id="boxesModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('boxesModal')">&times;</span>
@@ -2199,7 +2235,6 @@ textarea:-webkit-autofill{
   </div>
 </div>
 
-<!-- RESTAURANT MODAL -->
 <div id="restaurantModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('restaurantModal')">&times;</span>
@@ -2216,7 +2251,6 @@ textarea:-webkit-autofill{
   </div>
 </div>
 
-<!-- FOOD MODAL -->
 <div id="foodModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('foodModal')">&times;</span>
@@ -2231,7 +2265,6 @@ textarea:-webkit-autofill{
   </div>
 </div>
 
-<!-- HOSPITAL MODAL -->
 <div id="hospitalModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('hospitalModal')">&times;</span>
@@ -2247,7 +2280,6 @@ textarea:-webkit-autofill{
   </div>
 </div>
 
-<!-- CORPORATE MODAL -->
 <div id="corporateModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('corporateModal')">&times;</span>
@@ -2255,7 +2287,6 @@ textarea:-webkit-autofill{
   </div>
 </div>
 
-<!-- EVENT MODAL -->
 <div id="eventModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('eventModal')">&times;</span>
@@ -2271,7 +2302,6 @@ textarea:-webkit-autofill{
   </div>
 </div>
 
-<!-- LOGIN MODAL -->
 <div id="loginModal" class="modal">
   <div class="modal-content" style="max-width:400px;">
     <span class="close" onclick="closeLogin()">&times;</span>
@@ -2284,9 +2314,7 @@ textarea:-webkit-autofill{
   </div>
 </div>
 
-<!-- ============================================= -->
-<!-- ===== FIX #1: PROFESSIONAL QUOTE MODAL ====== -->
-<!-- ============================================= -->
+<!-- QUOTE MODAL -->
 <div id="quoteModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeQuoteModal()">&times;</span>
@@ -2370,7 +2398,7 @@ textarea:-webkit-autofill{
       </div>
 
       <div class="quote-actions">
-        <button type="submit" class="submit-btn">
+        <button type="submit" class="submit-btn" id="qf-submit">
           📧 Submit & Send to WhatsApp
         </button>
       </div>
@@ -2385,55 +2413,56 @@ textarea:-webkit-autofill{
 </div>
 
 <!-- ============================================= -->
-<!-- ====== FIX #3: PRINT SOMETHING GREAT MODAL == -->
+<!-- ===== FIX #1: PRINT GREAT MODAL — SCROLL ==== -->
 <!-- ============================================= -->
 <div id="printGreatModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closePrintGreat()">&times;</span>
-
-    <div class="pg-hero">
-      <div class="pg-icon-row">
-        <div class="pg-icon-circle">🎨</div>
-        <div class="pg-icon-circle">🖨️</div>
-        <div class="pg-icon-circle">🚀</div>
-      </div>
-      <h2>Let's Print Something Great!</h2>
-      <p>From concept to delivery — premium quality printing tailored for your brand. Choose how you'd like to start your project.</p>
-    </div>
-
-    <div class="pg-body">
-      <div class="pg-features">
-        <div class="pg-feature">
-          <span class="pg-emoji">⚡</span>
-          <h4>Fast Turnaround</h4>
-          <p>Same-day printing on most orders</p>
+    <div class="pg-scrollable">
+      <div class="pg-hero">
+        <div class="pg-icon-row">
+          <div class="pg-icon-circle">🎨</div>
+          <div class="pg-icon-circle">🖨️</div>
+          <div class="pg-icon-circle">🚀</div>
         </div>
-        <div class="pg-feature">
-          <span class="pg-emoji">💎</span>
-          <h4>Premium Quality</h4>
-          <p>Top-tier paper, ink & finishes</p>
-        </div>
-        <div class="pg-feature">
-          <span class="pg-emoji">🌍</span>
-          <h4>Worldwide Shipping</h4>
-          <p>USA, UK, Canada & 50+ more</p>
-        </div>
+        <h2>Let's Print Something Great!</h2>
+        <p>From concept to delivery — premium quality printing tailored for your brand. Choose how you'd like to start your project.</p>
       </div>
 
-      <div class="pg-cta-row">
-        <button class="pg-btn pg-btn-primary" onclick="closePrintGreat();openQuoteModal();">
-          📝 Get Free Quote
-        </button>
-        <a class="pg-btn pg-btn-whatsapp" href="https://wa.me/919014891062?text=Hi%20Eevee%20Printers%2C%20I'd%20like%20to%20discuss%20a%20printing%20project." target="_blank" rel="noopener">
-          💬 Chat on WhatsApp
-        </a>
-      </div>
+      <div class="pg-body">
+        <div class="pg-features">
+          <div class="pg-feature">
+            <span class="pg-emoji">⚡</span>
+            <h4>Fast Turnaround</h4>
+            <p>Same-day printing on most orders</p>
+          </div>
+          <div class="pg-feature">
+            <span class="pg-emoji">💎</span>
+            <h4>Premium Quality</h4>
+            <p>Top-tier paper, ink & finishes</p>
+          </div>
+          <div class="pg-feature">
+            <span class="pg-emoji">🌍</span>
+            <h4>Worldwide Shipping</h4>
+            <p>USA, UK, Canada & 50+ more</p>
+          </div>
+        </div>
 
-      <div class="pg-stats">
-        <div class="pg-stat"><strong>500+</strong><span>Happy Clients</span></div>
-        <div class="pg-stat"><strong>5+</strong><span>Years Experience</span></div>
-        <div class="pg-stat"><strong>24/7</strong><span>Support</span></div>
-        <div class="pg-stat"><strong>5★</strong><span>Google Rated</span></div>
+        <div class="pg-cta-row">
+          <button class="pg-btn pg-btn-primary" onclick="closePrintGreat();openQuoteModal();">
+            📝 Get Free Quote
+          </button>
+          <a class="pg-btn pg-btn-whatsapp" href="https://wa.me/919014891062?text=Hi%20Eevee%20Printers%2C%20I'd%20like%20to%20discuss%20a%20printing%20project." target="_blank" rel="noopener">
+            💬 Chat on WhatsApp
+          </a>
+        </div>
+
+        <div class="pg-stats">
+          <div class="pg-stat"><strong>500+</strong><span>Happy Clients</span></div>
+          <div class="pg-stat"><strong>5+</strong><span>Years Experience</span></div>
+          <div class="pg-stat"><strong>24/7</strong><span>Support</span></div>
+          <div class="pg-stat"><strong>5★</strong><span>Google Rated</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -2456,7 +2485,6 @@ function closeMobileMenu(){
   document.getElementById('menuOverlay').classList.remove('active');
   document.body.style.overflow = '';
 }
-
 function scrollLeftFunc(btn) {
   const container = btn.parentElement.querySelector('.grid, .industry-grid');
   container.scrollBy({ left: -300, behavior: 'smooth' });
@@ -2465,7 +2493,6 @@ function scrollRightFunc(btn) {
   const container = btn.parentElement.querySelector('.grid, .industry-grid');
   container.scrollBy({ left: 300, behavior: 'smooth' });
 }
-
 function openModal(id) { document.getElementById(id).style.display = "block"; }
 function closeModal(id) { document.getElementById(id).style.display = "none"; }
 function openLogin() { document.getElementById("loginModal").style.display = "block"; }
@@ -2483,7 +2510,9 @@ window.onclick = function(event) {
 }
 </script>
 
-<!-- WORKS VIDEO LAZY-LOAD -->
+<!-- ============================================= -->
+<!-- ====== FIX #4: ROBUST WORKS VIDEO LOADER ==== -->
+<!-- ============================================= -->
 <script>
 (function(){
   const items = document.querySelectorAll(".work-item");
@@ -2494,7 +2523,7 @@ window.onclick = function(event) {
   function loadVideoSources(){
     if(videosLoaded) return;
     videosLoaded = true;
-    videos.forEach(video => {
+    videos.forEach((video, idx) => {
       const src = video.getAttribute('data-src');
       if(src && !video.querySelector('source')){
         const source = document.createElement('source');
@@ -2502,12 +2531,20 @@ window.onclick = function(event) {
         source.type = 'video/mp4';
         video.appendChild(source);
         video.load();
+        // When this video's data is ready, mark as loaded (hides spinner)
+        video.addEventListener('loadeddata', () => {
+          items[idx].classList.add('video-loaded');
+        }, { once: true });
+        // If video errors or takes too long, still hide spinner after 6s
+        setTimeout(() => {
+          items[idx].classList.add('video-loaded');
+        }, 6000);
       }
     });
     if(videos.length > 0) playVideo(0);
   }
   function stopAllVideos(){
-    videos.forEach(video => { video.pause(); video.currentTime = 0; });
+    videos.forEach(video => { try { video.pause(); video.currentTime = 0; } catch(e){} });
     items.forEach(item => item.classList.remove("active"));
   }
   function playVideo(index){
@@ -2523,6 +2560,17 @@ window.onclick = function(event) {
       playVideo(currentIndex);
     };
   }
+
+  // Load videos as soon as page is ready (don't wait for scroll)
+  function startLoading(){
+    loadVideoSources();
+  }
+  if(document.readyState === 'complete' || document.readyState === 'interactive'){
+    setTimeout(startLoading, 100);
+  } else {
+    document.addEventListener('DOMContentLoaded', startLoading);
+  }
+  // Also use IntersectionObserver as backup (for slower connections)
   if('IntersectionObserver' in window){
     const worksSection = document.querySelector('.our-works');
     if(worksSection){
@@ -2530,11 +2578,9 @@ window.onclick = function(event) {
         entries.forEach(entry=>{
           if(entry.isIntersecting){ loadVideoSources(); observer.disconnect(); }
         });
-      }, { rootMargin: '200px' });
+      }, { rootMargin: '300px' });
       observer.observe(worksSection);
     }
-  } else {
-    window.addEventListener('load', loadVideoSources);
   }
   items.forEach((item, index) => {
     item.addEventListener("click", () => {
@@ -2592,26 +2638,28 @@ window.resetPassword = function () {
 </script>
 
 <!-- ============================================= -->
-<!-- ===== FIX #2: QUOTE FORM → EMAIL + WHATSAPP = -->
+<!-- ===== FIX #2: EMAIL + WHATSAPP FULL DETAILS = -->
+<!-- Now WhatsApp gets the SAME full details as email -->
 <!-- ============================================= -->
 <script>
 const quoteForm = document.getElementById("quoteForm");
+const submitBtn = document.getElementById("qf-submit");
 // Your business WhatsApp number (without + or spaces)
 const BUSINESS_WHATSAPP = "919014891062";
 
 quoteForm.addEventListener("submit", async function(e){
   e.preventDefault();
 
-  // Collect form values
-  const name = document.getElementById("qf-name").value.trim();
-  const phone = document.getElementById("qf-phone").value.trim();
-  const email = document.getElementById("qf-email").value.trim();
-  const service = document.getElementById("qf-service").value.trim();
-  const quantity = document.getElementById("qf-quantity").value.trim();
+  // Collect all field values
+  const name       = document.getElementById("qf-name").value.trim();
+  const phone      = document.getElementById("qf-phone").value.trim();
+  const email      = document.getElementById("qf-email").value.trim();
+  const service    = document.getElementById("qf-service").value.trim();
+  const quantity   = document.getElementById("qf-quantity").value.trim();
   const dimensions = document.getElementById("qf-dimensions").value.trim();
-  const message = document.getElementById("qf-message").value.trim();
+  const message    = document.getElementById("qf-message").value.trim();
 
-  // Build a nicely formatted WhatsApp message
+  // ===== Build full WhatsApp message (SAME details as email) =====
   const waText =
 `*🆕 NEW QUOTE REQUEST — Eevee Printers*
 ━━━━━━━━━━━━━━━━━━━━
@@ -2628,11 +2676,21 @@ ${message}
 ━━━━━━━━━━━━━━━━━━━━
 _Sent via eeveeprinters.com_`;
 
-  const formData = new FormData(quoteForm);
+  const waUrl = `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(waText)}`;
 
-  // 1) Send to email (Formspree) in background
+  // Disable button during submission
+  submitBtn.disabled = true;
+  submitBtn.textContent = "⏳ Sending...";
+
+  // ===== Open WhatsApp FIRST (before async email) =====
+  // This is critical: browsers block window.open() if called after async/await
+  // because it loses the "user gesture" context.
+  const waWindow = window.open(waUrl, "_blank");
+
+  // ===== Send to email (Formspree) in background =====
   let emailOk = false;
   try{
+    const formData = new FormData(quoteForm);
     const response = await fetch("https://formspree.io/f/xkoypqkq", {
       method: "POST",
       body: formData,
@@ -2643,19 +2701,24 @@ _Sent via eeveeprinters.com_`;
     emailOk = false;
   }
 
-  // 2) Open WhatsApp with the prefilled message to your business number
-  const waUrl = `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(waText)}`;
-
+  // ===== Show confirmation =====
   if(emailOk){
-    alert("✅ Quote submitted to Email!\n\nClick OK to also send the details to our WhatsApp (+91 9014891062).");
+    alert("✅ Success!\n\n• Email sent to Eevee Printers\n• WhatsApp opened with your full details\n\nPlease press SEND in WhatsApp to deliver your message. We'll reply within 30 minutes!");
   } else {
-    alert("⚠️ Email send failed. We'll forward your details via WhatsApp instead. Click OK to continue.");
+    alert("⚠️ Email could not be sent right now.\n\nDon't worry — WhatsApp has been opened with your full details. Just press SEND in WhatsApp and we'll respond within 30 minutes!");
   }
 
-  // Open WhatsApp in a new tab
-  window.open(waUrl, "_blank");
+  // If WhatsApp window was blocked by popup blocker, give user a fallback
+  if(!waWindow || waWindow.closed){
+    if(confirm("WhatsApp didn't open automatically (popup may be blocked).\n\nClick OK to open WhatsApp now.")){
+      window.location.href = waUrl;
+      return;
+    }
+  }
 
-  // Reset & close
+  // Reset
+  submitBtn.disabled = false;
+  submitBtn.textContent = "📧 Submit & Send to WhatsApp";
   quoteForm.reset();
   closeQuoteModal();
 });
