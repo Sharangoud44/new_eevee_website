@@ -1887,6 +1887,71 @@ iframe {
     padding: 6px 8px !important;
   }
 }
+
+  .premium-quote-form{
+  margin-top:25px;
+}
+
+.form-row{
+  display:flex;
+  gap:15px;
+  margin-bottom:15px;
+}
+
+.premium-quote-form input,
+.premium-quote-form select,
+.premium-quote-form textarea{
+
+  width:100%;
+  padding:15px;
+
+  background:rgba(255,255,255,0.05);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  border-radius:12px;
+
+  color:white;
+
+  font-size:14px;
+
+  outline:none;
+}
+
+.premium-quote-form textarea{
+  height:140px;
+  resize:none;
+}
+
+.premium-quote-form input:focus,
+.premium-quote-form select:focus,
+.premium-quote-form textarea:focus{
+
+  border-color:orange;
+
+  box-shadow:0 0 15px rgba(255,140,0,0.25);
+}
+
+.quote-actions{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+@media(max-width:768px){
+
+  .form-row{
+    flex-direction:column;
+  }
+
+  .quote-actions{
+    flex-direction:column;
+  }
+
+}
+  
 </style>
 </head>
 
@@ -2492,14 +2557,7 @@ iframe {
 
     <h2>Corporate Offices</h2>
 
-    <div class="types-grid">
-      <div class="type-box"><p>Business Cards</p></div>
-      <div class="type-box"><p>ID Cards</p></div>
-      <div class="type-box"><p>Letter Heads</p></div>
-      <div class="type-box"><p>Envelopes</p></div>
-      <div class="type-box"><p>Corporate Gifts</p></div>
-      <div class="type-box"><p>Notebooks / Diaries</p></div>
-    </div>
+ 
   </div>
 </div>
   <div id="eventModal" class="modal">
@@ -2720,39 +2778,49 @@ function closeLogin() {
       Select your requirement to get a faster & accurate quote
     </p>
 
-    <div class="types-grid">
+   <form class="premium-quote-form">
 
-      <div class="type-box">
-        <img src="Business_card_image_Main_Page.png">
-        <p>Business Cards</p>
-      </div>
+  <div class="form-row">
+    <input type="text" placeholder="Your Name">
+    <input type="tel" placeholder="WhatsApp Number">
+  </div>
 
-      <div class="type-box">
-        <img src="boxes_main.png">
-        <p>Packaging Boxes</p>
-      </div>
+  <div class="form-row">
+    <input type="email" placeholder="Email Address">
 
-      <div class="type-box">
-        <img src="MENU_CARD_MAIN.PNG">
-        <p>Restaurant Printing</p>
-      </div>
+    <select>
+      <option>Select Printing Service</option>
+      <option>Business Cards</option>
+      <option>Packaging Boxes</option>
+      <option>Restaurant Printing</option>
+      <option>Stickers & Labels</option>
+      <option>Invitation Cards</option>
+      <option>Banners & Signages</option>
+    </select>
+  </div>
 
-      <div class="type-box">
-        <img src="stickers_main_page.png">
-        <p>Stickers & Labels</p>
-      </div>
+  <div class="form-row">
+    <input type="text" placeholder="Quantity">
+    <input type="text" placeholder="Dimensions / Size">
+  </div>
 
-      <div class="type-box">
-        <img src="invitation_cards_main.png">
-        <p>Invitation Cards</p>
-      </div>
+  <textarea placeholder="Describe your requirement..."></textarea>
 
-      <div class="type-box">
-        <img src="BANNER_SIGNNAGE.PNG">
-        <p>Banners & Signages</p>
-      </div>
+  <div class="quote-actions">
 
-    </div>
+    <button type="submit" class="btn">
+      Submit Quote Request
+    </button>
+
+    <a href="https://wa.me/919014891062"
+       target="_blank"
+       class="contact-btn">
+       Quick WhatsApp Quote
+    </a>
+
+  </div>
+
+</form>
 
     <!-- FORM -->
     <div style="margin-top:30px;">
