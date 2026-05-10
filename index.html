@@ -1890,8 +1890,7 @@ iframe {
 </style>
 </head>
 
-<body>
-
+<body id="top">
 <!-- NAVBAR -->
 <header class="navbar">
 
@@ -1902,7 +1901,7 @@ iframe {
     </div>
 
     <div class="nav-links">
-  <a href="/">Home</a>
+  <a href="#top">Home</a>
   <a href="#services">Services</a>
   <a href="#industries">Industries</a>
   <a href="#ourworks">Our Work</a>
@@ -2305,24 +2304,15 @@ iframe {
 <!-- WHATSAPP BUTTON -->
 <div class="whatsapp-container">
 
-  <div class="whatsapp-options">
-    <a href="https://wa.me/919014891062" target="_blank">SHARAN</a>
-    <a href="https://wa.me/919010929471" target="_blank">SMARAN</a>
-    <a href="https://wa.me/918074718326" target="_blank">SRINIVAS</a>
-  </div>
 
-  <div class="whatsapp-btn" onclick="toggleWhatsApp()">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+
+<a href="https://wa.me/919014891062" target="_blank" class="whatsapp-btn">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+  </a>
   </div>
 
 </div>
-<script>
-function toggleWhatsApp() {
-  const menu = document.querySelector(".whatsapp-options");
-  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-}
-</script> 
-  
+
  <!-- BUSINESS CARD POPUP -->
 <div id="cardModal" class="modal">
 
