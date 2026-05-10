@@ -5,14 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eevee Printers</title>
 
-<!-- PERFORMANCE: Preconnect to external resources -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn-icons-png.flaticon.com">
 <link rel="preconnect" href="https://www.gstatic.com">
 <link rel="dns-prefetch" href="https://upload.wikimedia.org">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
 <link rel="canonical" href="https://sharangoud44.github.io/new_eevee_website/">
 <style>
 body {
@@ -21,6 +20,31 @@ body {
   background: #0f0f0f;
   overflow-x: hidden;
 }
+
+/* ============================================= */
+/* ============ FIX #4: STAR SIZE =============== */
+/* ============================================= */
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1;
+}
+.rating .num-five {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+}
+.star {
+  color: #ff8c00 !important;
+  font-size: 26px !important;
+  line-height: 1 !important;
+  display: inline-block;
+  transform: translateY(1px);
+  text-shadow: 0 0 10px rgba(255,140,0,0.5);
+}
+
 /* PREMIUM MODAL */
 .modal-content {
   position: relative;
@@ -138,6 +162,7 @@ body {
   font-size: 24px;
   transition: 0.3s;
   cursor: pointer;
+  z-index: 10;
 }
 .close:hover {
   background: rgba(255,140,0,0.2);
@@ -672,6 +697,7 @@ html {
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s;
+  cursor: pointer;
 }
 .strip-btn a:hover {
   background: #ff8800;
@@ -1080,11 +1106,6 @@ html {
   flex-direction: column;
   line-height: 1.2;
 }
-.star {
-  color: #ff8c00 !important;
-  font-size: 1.4em;
-  line-height: normal;
-}
 .trust-item img {
   width: 70px;
   height: 80px;
@@ -1157,12 +1178,6 @@ html {
   overflow: hidden;
   margin-left: -114px; 
 }
-.rating {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  line-height: 1.4; 
-}
 .our-works {
   padding: 60px 0;
   background: #0f0f0f;
@@ -1227,91 +1242,427 @@ html {
   transform: scale(1.08);
 }
 
-/* ===== PREMIUM QUOTE FORM ===== */
-.premium-quote-form{
-  margin-top:30px;
+/* ============================================= */
+/* ====== FIX #1: PROFESSIONAL QUOTE FORM ======= */
+/* ============================================= */
+#quoteModal .modal-content{
+  width: 90%;
+  max-width: 720px;
+  padding: 38px 42px;
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at top left, rgba(255,140,0,0.10), transparent 40%),
+    radial-gradient(ellipse at bottom right, rgba(255,80,0,0.08), transparent 40%),
+    linear-gradient(160deg, #1a1a1c 0%, #0d0d0f 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  text-align: left;
 }
-.form-row{
-  display:flex;
-  gap:18px;
-  margin-bottom:18px;
+#quoteModal .quote-header{
+  text-align: center;
+  margin-bottom: 28px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+#quoteModal .quote-badge{
+  display: inline-block;
+  background: rgba(255,140,0,0.12);
+  color: #ff8c00;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255,140,0,0.25);
+}
+#quoteModal h2{
+  font-size: 28px;
+  margin: 0 0 8px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff, #ff8c00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+#quoteModal .quote-subtitle{
+  color: #9a9a9a;
+  font-size: 14px;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.premium-quote-form{
+  margin-top: 0;
+}
+.premium-quote-form .field-group{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.premium-quote-form .field-full{
+  margin-bottom: 18px;
+}
+.premium-quote-form label{
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.required{
+  color: #ff5252;
+  margin-left: 4px;
+}
+.input-wrap{
+  position: relative;
+}
+.input-wrap .field-icon{
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff8c00;
+  font-size: 14px;
+  pointer-events: none;
+  opacity: 0.7;
 }
 .premium-quote-form input,
 .premium-quote-form select,
 .premium-quote-form textarea{
-  width:100%;
-  padding:16px 18px;
-  background:#1a1a1a !important;
-  border:1px solid rgba(255,255,255,0.08) !important;
-  border-radius:14px;
-  color:#fff !important;
-  font-size:15px;
-  font-family:'Poppins',sans-serif;
-  outline:none;
-  transition:0.3s ease;
-  box-sizing:border-box;
-  -webkit-appearance:none;
-  appearance:none;
+  width: 100%;
+  padding: 14px 16px 14px 42px;
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 10px;
+  color: #fff !important;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.premium-quote-form textarea{
+  padding: 14px 16px;
+  height: 110px;
+  resize: none;
+  line-height: 1.6;
 }
 .premium-quote-form input::placeholder,
 .premium-quote-form textarea::placeholder{
-  color:#8f8f8f !important;
+  color: #6a6a6a !important;
+  font-size: 13px;
 }
 .premium-quote-form select{
-  cursor:pointer;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23ff8c00' d='M6 8L0 0h12z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  background-size: 10px !important;
+  padding-right: 40px;
 }
 .premium-quote-form select option{
-  background:#111 !important;
-  color:#fff !important;
-}
-.required{
-  color:#ff3b3b;
-  margin-left:4px;
-}
-.premium-quote-form textarea{
-  height:140px;
-  resize:none;
-  line-height:1.6;
+  background: #1a1a1a !important;
+  color: #fff !important;
+  padding: 10px;
 }
 .premium-quote-form input:focus,
 .premium-quote-form select:focus,
 .premium-quote-form textarea:focus{
-  border-color:#ff8c00;
+  border-color: #ff8c00 !important;
+  background: rgba(255,140,0,0.04) !important;
   box-shadow:
     0 0 0 3px rgba(255,140,0,0.10),
-    0 0 25px rgba(255,140,0,0.18);
-  background:rgba(255,255,255,0.06);
+    0 4px 20px rgba(255,140,0,0.10);
 }
+.premium-quote-form input:focus + .field-icon,
+.input-wrap:focus-within .field-icon{
+  opacity: 1;
+}
+
 .quote-actions{
-  display:flex;
-  justify-content:center;
-  gap:16px;
-  margin-top:26px;
-  flex-wrap:wrap;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 26px;
+  flex-wrap: wrap;
 }
-.quote-actions .btn,
-.quote-actions .contact-btn{
-  min-width:220px;
-  height:54px;
-  border-radius:14px;
-  font-size:15px;
-  font-weight:600;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-  transition:0.3s ease;
+.quote-actions .submit-btn{
+  flex: 1;
+  min-width: 200px;
+  height: 52px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(135deg, #ff8c00, #ff5e00);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(255,140,0,0.35);
+  font-family: 'Poppins', sans-serif;
 }
+.quote-actions .submit-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(255,140,0,0.5);
+}
+.quote-actions .whatsapp-direct{
+  flex: 1;
+  min-width: 200px;
+  height: 52px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  cursor: pointer;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.3);
+}
+.quote-actions .whatsapp-direct:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(37,211,102,0.45);
+}
+.form-trust-row{
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  flex-wrap: wrap;
+}
+.form-trust-row .trust-mini{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #9a9a9a;
+  font-size: 11px;
+  font-weight: 500;
+}
+.form-trust-row .trust-mini::before{
+  content: "✓";
+  color: #25D366;
+  font-weight: 700;
+  font-size: 13px;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill{
-  -webkit-text-fill-color:#fff !important;
-  -webkit-box-shadow:0 0 0px 1000px #1a1a1a inset !important;
-  transition:background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
-/* ===== HAMBURGER MENU (HIDDEN ON DESKTOP) ===== */
+/* ============================================= */
+/* ===== FIX #3: "PRINT SOMETHING GREAT" POPUP == */
+/* ============================================= */
+#printGreatModal .modal-content{
+  width: 92%;
+  max-width: 880px;
+  padding: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #141416 0%, #0a0a0c 100%);
+  border: 1px solid rgba(255,140,0,0.15);
+}
+.pg-hero{
+  position: relative;
+  padding: 50px 40px 35px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,140,0,0.20), transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(255,80,0,0.15), transparent 50%),
+    linear-gradient(135deg, rgba(255,140,0,0.08), transparent 60%);
+  border-bottom: 1px solid rgba(255,140,0,0.12);
+  overflow: hidden;
+}
+.pg-hero::before{
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 120%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,140,0,0.06), transparent 60%);
+  animation: pgGlow 8s ease-in-out infinite;
+}
+@keyframes pgGlow{
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(20px, 20px) scale(1.1); }
+}
+.pg-icon-row{
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+}
+.pg-icon-circle{
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, #ff8c00, #ff5e00);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 8px 22px rgba(255,140,0,0.4);
+  animation: float 3s ease-in-out infinite;
+}
+.pg-icon-circle:nth-child(2){ animation-delay: 0.3s; }
+.pg-icon-circle:nth-child(3){ animation-delay: 0.6s; }
+@keyframes float{
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.pg-hero h2{
+  font-size: 38px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: #fff;
+  letter-spacing: -1px;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, #fff 0%, #ff8c00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.pg-hero p{
+  color: #b0b0b0;
+  font-size: 15px;
+  margin: 0;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+.pg-body{
+  padding: 35px 40px 40px;
+}
+.pg-features{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.pg-feature{
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 18px 14px;
+  border-radius: 14px;
+  text-align: center;
+  transition: 0.3s ease;
+  cursor: default;
+}
+.pg-feature:hover{
+  background: rgba(255,140,0,0.06);
+  border-color: rgba(255,140,0,0.3);
+  transform: translateY(-4px);
+}
+.pg-feature .pg-emoji{
+  font-size: 26px;
+  display: block;
+  margin-bottom: 8px;
+}
+.pg-feature h4{
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+.pg-feature p{
+  margin: 0;
+  font-size: 11px;
+  color: #888;
+  line-height: 1.4;
+}
+.pg-cta-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.pg-btn{
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+}
+.pg-btn-primary{
+  background: linear-gradient(135deg, #ff8c00, #ff5e00);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(255,140,0,0.4);
+}
+.pg-btn-primary:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(255,140,0,0.55);
+}
+.pg-btn-whatsapp{
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(37,211,102,0.35);
+}
+.pg-btn-whatsapp:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(37,211,102,0.5);
+}
+.pg-stats{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  flex-wrap: wrap;
+}
+.pg-stat{
+  text-align: center;
+}
+.pg-stat strong{
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ff8c00;
+  line-height: 1;
+}
+.pg-stat span{
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* HAMBURGER MENU */
 .hamburger-btn{
   display: none;
   width: 42px;
@@ -1345,8 +1696,6 @@ textarea:-webkit-autofill{
 .hamburger-btn.active span:nth-child(3){
   transform: translateY(-7px) rotate(-45deg);
 }
-
-/* MOBILE SLIDE-IN MENU */
 .mobile-menu{
   position: fixed;
   top: 0;
@@ -1410,482 +1759,131 @@ textarea:-webkit-autofill{
 /* ============ MOBILE VIEW ONLY ================ */
 /* ============================================= */
 @media screen and (max-width: 768px){
-
-  /* ----- BODY ----- */
-  body{
-    overflow-x: hidden !important;
-  }
-
-  /* ----- NAVBAR ----- */
-  .navbar{
-    height: 60px !important;
-    padding: 0 12px !important;
-  }
-  .nav-container{
-    padding: 0 5px !important;
-    padding-right: 5px !important;
-    gap: 8px !important;
-  }
-  .nav-left{
-    height: 60px !important;
-    padding-left: 0 !important;
-    margin-left: -20px !important;
-    flex: 0 0 auto !important;
-  }
-  .nav-logo{
-    height: 90px !important;
-    transform: translateY(0) !important;
-  }
-  .nav-links{
-    display: none !important;
-  }
-  .quote-btn,
-  .track-btn{
-    margin-right: 0 !important;
-    padding: 7px 11px !important;
-    font-size: 10px !important;
-    border-radius: 18px !important;
-    white-space: nowrap !important;
-  }
-
-  /* ----- HAMBURGER VISIBLE ON MOBILE ----- */
-  .hamburger-btn{
-    display: flex !important;
-  }
-
-  /* ----- HERO ----- */
-  .hero{
-    height: 100vh !important;
-    min-height: 600px !important;
-    padding-top: 60px !important;
-    overflow: hidden !important;
-  }
-  .hero video{
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-  }
-  .hero-overlay{
-    background: linear-gradient(
-      180deg,
-      rgba(0,0,0,0.85) 0%,
-      rgba(0,0,0,0.65) 40%,
-      rgba(0,0,0,0.6) 70%,
-      rgba(0,0,0,0.85) 100%
-    ) !important;
-  }
-  /* ===== LEFT-ALIGN HERO ON MOBILE (matching desktop) ===== */
-  .hero-content{
-    position: absolute !important;
-    top: 50% !important;
-    left: 22px !important;
-    right: 22px !important;
-    transform: translateY(-50%) !important;
-    width: auto !important;
-    max-width: none !important;
-    text-align: left !important;
-    padding: 0 !important;
-  }
-  .tag{
-    font-size: 10px !important;
-    letter-spacing: 2px !important;
-    margin-bottom: 10px !important;
-    text-align: left !important;
-  }
-  .hero-content h1,
-  .hero-title{
-    font-size: 38px !important;
-    line-height: 1.1 !important;
-    margin: 8px 0 !important;
-    letter-spacing: -0.5px !important;
-    text-align: left !important;
-  }
-  .hero-sub{
-    font-size: 13px !important;
-    line-height: 1.6 !important;
-    margin: 15px 0 !important;
-    max-width: 100% !important;
-    text-align: left !important;
-  }
-  .hero-sub br{
-    display: none !important;
-  }
-  .hero-buttons{
-    justify-content: flex-start !important;
-    gap: 10px !important;
-    margin-top: 18px !important;
-    flex-wrap: wrap !important;
-  }
-  .hero-buttons a,
-  .btn-main,
-  .btn-outline{
-    padding: 10px 16px !important;
-    font-size: 12px !important;
-  }
-
-  /* ----- HERO TRUST ITEMS ----- */
-  .hero-trust{
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-    margin-top: 25px !important;
-    margin-bottom: 0 !important;
-    white-space: normal !important;
-    justify-items: start !important;
-  }
-  .trust-item{
-    gap: 6px !important;
-    justify-content: flex-start !important;
-  }
-  .trust-item img{
-    width: 35px !important;
-    height: 40px !important;
-    transform: scale(1.2) !important;
-    margin-right: -5px !important;
-  }
-  .trust-item strong{
-    font-size: 13px !important;
-  }
-  .trust-item span{
-    font-size: 9px !important;
-  }
-
-  /* ----- SERVICES ----- */
-  .services{
-    padding: 40px 10px !important;
-  }
-  .services h2{
-    font-size: 14px !important;
-  }
-  .services .subtitle{
-    font-size: 14px !important;
-    padding: 0 15px !important;
-    margin-bottom: 20px !important;
-    line-height: 1.4 !important;
-  }
-  .container{
-    padding: 0 15px !important;
-  }
-  .grid{
-    gap: 15px !important;
-    padding: 0 5px !important;
-  }
-  .card{
-    min-width: 160px !important;
-    padding: 10px !important;
-    border-radius: 14px !important;
-  }
-  .card img{
-    height: 110px !important;
-  }
-  .card p{
-    font-size: 13px !important;
-    margin-top: 10px !important;
-  }
-  .scroll-btn{
-    width: 35px !important;
-    height: 35px !important;
-    opacity: 0.85 !important;
-  }
+  body{ overflow-x: hidden !important; }
+  .navbar{ height: 60px !important; padding: 0 12px !important; }
+  .nav-container{ padding: 0 5px !important; padding-right: 5px !important; gap: 8px !important; }
+  .nav-left{ height: 60px !important; padding-left: 0 !important; margin-left: -20px !important; flex: 0 0 auto !important; }
+  .nav-logo{ height: 90px !important; transform: translateY(0) !important; }
+  .nav-links{ display: none !important; }
+  .quote-btn, .track-btn{ margin-right: 0 !important; padding: 7px 11px !important; font-size: 10px !important; border-radius: 18px !important; white-space: nowrap !important; }
+  .hamburger-btn{ display: flex !important; }
+  .hero{ height: 100vh !important; min-height: 600px !important; padding-top: 60px !important; overflow: hidden !important; }
+  .hero video{ width: 100% !important; height: 100% !important; object-fit: cover !important; }
+  .hero-overlay{ background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.65) 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.85) 100%) !important; }
+  .hero-content{ position: absolute !important; top: 50% !important; left: 22px !important; right: 22px !important; transform: translateY(-50%) !important; width: auto !important; max-width: none !important; text-align: left !important; padding: 0 !important; }
+  .tag{ font-size: 10px !important; letter-spacing: 2px !important; margin-bottom: 10px !important; text-align: left !important; }
+  .hero-content h1, .hero-title{ font-size: 38px !important; line-height: 1.1 !important; margin: 8px 0 !important; letter-spacing: -0.5px !important; text-align: left !important; }
+  .hero-sub{ font-size: 13px !important; line-height: 1.6 !important; margin: 15px 0 !important; max-width: 100% !important; text-align: left !important; }
+  .hero-sub br{ display: none !important; }
+  .hero-buttons{ justify-content: flex-start !important; gap: 10px !important; margin-top: 18px !important; flex-wrap: wrap !important; }
+  .hero-buttons a, .btn-main, .btn-outline{ padding: 10px 16px !important; font-size: 12px !important; }
+  .hero-trust{ display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; margin-top: 25px !important; margin-bottom: 0 !important; white-space: normal !important; justify-items: start !important; }
+  .trust-item{ gap: 6px !important; justify-content: flex-start !important; }
+  .trust-item img{ width: 35px !important; height: 40px !important; transform: scale(1.2) !important; margin-right: -5px !important; }
+  .trust-item strong{ font-size: 13px !important; }
+  .trust-item span{ font-size: 9px !important; }
+  .star{ font-size: 22px !important; }
+  .services{ padding: 40px 10px !important; }
+  .services h2{ font-size: 14px !important; }
+  .services .subtitle{ font-size: 14px !important; padding: 0 15px !important; margin-bottom: 20px !important; line-height: 1.4 !important; }
+  .container{ padding: 0 15px !important; }
+  .grid{ gap: 15px !important; padding: 0 5px !important; }
+  .card{ min-width: 160px !important; padding: 10px !important; border-radius: 14px !important; }
+  .card img{ height: 110px !important; }
+  .card p{ font-size: 13px !important; margin-top: 10px !important; }
+  .scroll-btn{ width: 35px !important; height: 35px !important; opacity: 0.85 !important; }
   .scroll-btn.left{ left: 2px !important; }
   .scroll-btn.right{ right: 2px !important; }
+  .feature-strip{ padding: 15px 12px !important; }
+  .strip-container{ flex-direction: column !important; gap: 15px !important; padding: 18px 18px !important; border-radius: 12px !important; align-items: flex-start !important; }
+  .strip-item{ width: 100% !important; gap: 12px !important; }
+  .strip-item h4{ font-size: 14px !important; }
+  .strip-item p{ font-size: 11px !important; }
+  .strip-btn{ width: 100% !important; }
+  .strip-btn a{ display: block !important; text-align: center !important; padding: 12px !important; font-size: 13px !important; }
+  .industries{ padding: 40px 10px !important; }
+  .industries h2{ font-size: 26px !important; }
+  .industries .subtitle{ font-size: 13px !important; padding: 0 10px !important; margin-bottom: 25px !important; }
+  .industry-grid{ gap: 15px !important; }
+  .industry-card{ min-width: 240px !important; height: 220px !important; border-radius: 14px !important; }
+  .industry-overlay{ bottom: 15px !important; left: 15px !important; }
+  .industry-overlay h3{ font-size: 15px !important; }
+  .industry-overlay p{ font-size: 11px !important; max-width: 200px !important; }
+  .industry-icon{ width: 28px !important; height: 28px !important; }
+  .our-works{ padding: 40px 0 !important; }
+  .our-works h2{ font-size: 24px !important; margin-bottom: 20px !important; }
+  .works-grid{ grid-template-columns: repeat(2, 1fr) !important; grid-template-rows: auto !important; gap: 4px !important; padding: 0 8px !important; }
+  .work-item{ height: 180px !important; border-radius: 8px !important; }
+  .location-premium{ padding: 50px 20px !important; }
+  .location-content{ flex-direction: column !important; gap: 30px !important; }
+  .location-text h2{ font-size: 28px !important; text-align: center !important; }
+  .location-text p{ font-size: 14px !important; text-align: center !important; }
+  .location-line{ margin: 15px auto !important; justify-content: center !important; text-align: left !important; }
+  .location-line span{ font-size: 13px !important; }
+  .map-btn{ display: block !important; text-align: center !important; margin: 20px auto !important; width: fit-content !important; }
+  .location-image img{ height: 220px !important; }
+  .social{ padding: 50px 20px !important; }
+  .social-container{ flex-direction: column !important; gap: 30px !important; }
+  .social-left, .social-right{ width: 100% !important; }
+  .social-left h2, .social-right h2{ font-size: 24px !important; margin-bottom: 15px !important; }
+  .divider{ width: 80% !important; height: 1px !important; }
+  .social-icons{ gap: 12px !important; }
+  .social-icons img{ width: 38px !important; height: 38px !important; padding: 10px !important; }
+  .social-right p{ font-size: 14px !important; }
+  .footer{ padding: 18px 12px !important; font-size: 12px !important; line-height: 1.6 !important; }
+  .whatsapp-container{ bottom: 18px !important; right: 14px !important; }
+  .whatsapp-btn img{ width: 38px !important; height: 38px !important; padding: 7px !important; box-shadow: 0 4px 12px rgba(37,211,102,0.4) !important; }
+  .modal-content{ width: 92% !important; max-width: 92% !important; max-height: 85vh !important; padding: 20px !important; margin: 8% auto !important; border-radius: 18px !important; }
+  .modal-content h2{ font-size: 24px !important; }
+  .modal-content .subtitle{ font-size: 13px !important; margin-bottom: 15px !important; }
+  .types-grid{ grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; margin: 20px 0 !important; }
+  .type-box{ padding: 10px !important; border-radius: 14px !important; }
+  .type-box img{ height: 80px !important; }
+  .type-box p{ font-size: 12px !important; margin-top: 8px !important; }
+  .close{ width: 32px !important; height: 32px !important; right: 12px !important; top: 12px !important; font-size: 20px !important; }
 
-  /* ----- FEATURE STRIP ----- */
-  .feature-strip{
-    padding: 15px 12px !important;
-  }
-  .strip-container{
-    flex-direction: column !important;
-    gap: 15px !important;
-    padding: 18px 18px !important;
-    border-radius: 12px !important;
-    align-items: flex-start !important;
-  }
-  .strip-item{
-    width: 100% !important;
-    gap: 12px !important;
-  }
-  .strip-item h4{
-    font-size: 14px !important;
-  }
-  .strip-item p{
-    font-size: 11px !important;
-  }
-  .strip-btn{
-    width: 100% !important;
-  }
-  .strip-btn a{
-    display: block !important;
-    text-align: center !important;
-    padding: 12px !important;
-    font-size: 13px !important;
-  }
+  /* QUOTE FORM MOBILE */
+  #quoteModal .modal-content{ padding: 24px 20px !important; }
+  #quoteModal h2{ font-size: 22px !important; }
+  .premium-quote-form .field-group{ grid-template-columns: 1fr !important; gap: 14px !important; margin-bottom: 14px !important; }
+  .premium-quote-form input, .premium-quote-form select, .premium-quote-form textarea{ padding: 12px 14px 12px 38px !important; font-size: 13px !important; }
+  .premium-quote-form textarea{ padding: 12px 14px !important; height: 90px !important; }
+  .quote-actions{ flex-direction: column !important; gap: 10px !important; }
+  .quote-actions .submit-btn, .quote-actions .whatsapp-direct{ width: 100% !important; min-width: auto !important; height: 48px !important; font-size: 13px !important; }
+  .form-trust-row{ gap: 12px !important; }
 
-  /* ----- INDUSTRIES ----- */
-  .industries{
-    padding: 40px 10px !important;
-  }
-  .industries h2{
-    font-size: 26px !important;
-  }
-  .industries .subtitle{
-    font-size: 13px !important;
-    padding: 0 10px !important;
-    margin-bottom: 25px !important;
-  }
-  .industry-grid{
-    gap: 15px !important;
-  }
-  .industry-card{
-    min-width: 240px !important;
-    height: 220px !important;
-    border-radius: 14px !important;
-  }
-  .industry-overlay{
-    bottom: 15px !important;
-    left: 15px !important;
-  }
-  .industry-overlay h3{
-    font-size: 15px !important;
-  }
-  .industry-overlay p{
-    font-size: 11px !important;
-    max-width: 200px !important;
-  }
-  .industry-icon{
-    width: 28px !important;
-    height: 28px !important;
-  }
+  /* PRINT GREAT MODAL MOBILE */
+  #printGreatModal .modal-content{ padding: 0 !important; }
+  .pg-hero{ padding: 35px 22px 25px !important; }
+  .pg-hero h2{ font-size: 26px !important; }
+  .pg-hero p{ font-size: 13px !important; }
+  .pg-icon-circle{ width: 44px !important; height: 44px !important; font-size: 20px !important; }
+  .pg-body{ padding: 25px 22px 30px !important; }
+  .pg-features{ grid-template-columns: 1fr !important; gap: 10px !important; }
+  .pg-feature{ display: flex !important; align-items: center !important; text-align: left !important; gap: 12px !important; padding: 14px !important; }
+  .pg-feature .pg-emoji{ margin: 0 !important; font-size: 22px !important; }
+  .pg-feature h4{ margin-bottom: 2px !important; }
+  .pg-cta-row{ grid-template-columns: 1fr !important; gap: 10px !important; }
+  .pg-btn{ height: 50px !important; font-size: 14px !important; }
+  .pg-stats{ gap: 18px !important; }
+  .pg-stat strong{ font-size: 18px !important; }
+  .pg-stat span{ font-size: 10px !important; }
 
-  /* ----- OUR WORKS ----- */
-  .our-works{
-    padding: 40px 0 !important;
-  }
-  .our-works h2{
-    font-size: 24px !important;
-    margin-bottom: 20px !important;
-  }
-  .works-grid{
-    grid-template-columns: repeat(2, 1fr) !important;
-    grid-template-rows: auto !important;
-    gap: 4px !important;
-    padding: 0 8px !important;
-  }
-  .work-item{
-    height: 180px !important;
-    border-radius: 8px !important;
-  }
-
-  /* ----- LOCATION ----- */
-  .location-premium{
-    padding: 50px 20px !important;
-  }
-  .location-content{
-    flex-direction: column !important;
-    gap: 30px !important;
-  }
-  .location-text h2{
-    font-size: 28px !important;
-    text-align: center !important;
-  }
-  .location-text p{
-    font-size: 14px !important;
-    text-align: center !important;
-  }
-  .location-line{
-    margin: 15px auto !important;
-    justify-content: center !important;
-    text-align: left !important;
-  }
-  .location-line span{
-    font-size: 13px !important;
-  }
-  .map-btn{
-    display: block !important;
-    text-align: center !important;
-    margin: 20px auto !important;
-    width: fit-content !important;
-  }
-  .location-image img{
-    height: 220px !important;
-  }
-
-  /* ----- SOCIAL / CONTACT ----- */
-  .social{
-    padding: 50px 20px !important;
-  }
-  .social-container{
-    flex-direction: column !important;
-    gap: 30px !important;
-  }
-  .social-left,
-  .social-right{
-    width: 100% !important;
-  }
-  .social-left h2,
-  .social-right h2{
-    font-size: 24px !important;
-    margin-bottom: 15px !important;
-  }
-  .divider{
-    width: 80% !important;
-    height: 1px !important;
-  }
-  .social-icons{
-    gap: 12px !important;
-  }
-  .social-icons img{
-    width: 38px !important;
-    height: 38px !important;
-    padding: 10px !important;
-  }
-  .social-right p{
-    font-size: 14px !important;
-  }
-
-  /* ----- FOOTER ----- */
-  .footer{
-    padding: 18px 12px !important;
-    font-size: 12px !important;
-    line-height: 1.6 !important;
-  }
-
-  /* ----- WHATSAPP BUTTON (smaller & professional) ----- */
-  .whatsapp-container{
-    bottom: 18px !important;
-    right: 14px !important;
-  }
-  .whatsapp-btn img{
-    width: 38px !important;
-    height: 38px !important;
-    padding: 7px !important;
-    box-shadow: 0 4px 12px rgba(37,211,102,0.4) !important;
-  }
-
-  /* ----- MODALS ----- */
-  .modal-content{
-    width: 92% !important;
-    max-width: 92% !important;
-    max-height: 85vh !important;
-    padding: 20px !important;
-    margin: 8% auto !important;
-    border-radius: 18px !important;
-  }
-  .modal-content h2{
-    font-size: 24px !important;
-  }
-  .modal-content .subtitle{
-    font-size: 13px !important;
-    margin-bottom: 15px !important;
-  }
-  .types-grid{
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-    margin: 20px 0 !important;
-  }
-  .type-box{
-    padding: 10px !important;
-    border-radius: 14px !important;
-  }
-  .type-box img{
-    height: 80px !important;
-  }
-  .type-box p{
-    font-size: 12px !important;
-    margin-top: 8px !important;
-  }
-  .close{
-    width: 32px !important;
-    height: 32px !important;
-    right: 12px !important;
-    top: 12px !important;
-    font-size: 20px !important;
-  }
-
-  /* ----- QUOTE FORM ----- */
-  .premium-quote-form{
-    margin-top: 20px !important;
-  }
-  .form-row{
-    flex-direction: column !important;
-    gap: 12px !important;
-    margin-bottom: 12px !important;
-  }
-  .premium-quote-form input,
-  .premium-quote-form select,
-  .premium-quote-form textarea{
-    padding: 12px 14px !important;
-    font-size: 14px !important;
-    border-radius: 10px !important;
-  }
-  .premium-quote-form textarea{
-    height: 110px !important;
-  }
-  .premium-quote-form label{
-    font-size: 12px !important;
-    color: #ccc !important;
-    display: block !important;
-    margin-bottom: 6px !important;
-    text-align: left !important;
-  }
-  .quote-actions{
-    flex-direction: column !important;
-    gap: 12px !important;
-    margin-top: 18px !important;
-  }
-  .quote-actions .btn,
-  .quote-actions .contact-btn{
-    width: 100% !important;
-    min-width: auto !important;
-    height: 48px !important;
-    font-size: 14px !important;
-  }
-
-  /* ----- LOGIN MODAL ----- */
-  #loginModal .modal-content{
-    max-width: 92% !important;
-  }
-  #loginModal input{
-    padding: 12px !important;
-    font-size: 13px !important;
-  }
+  #loginModal .modal-content{ max-width: 92% !important; }
+  #loginModal input{ padding: 12px !important; font-size: 13px !important; }
 }
 
-/* ===== Extra small phones ===== */
 @media screen and (max-width: 380px){
-  .hero-content h1,
-  .hero-title{
-    font-size: 32px !important;
-  }
-  .hero-sub{
-    font-size: 12px !important;
-  }
-  .trust-item strong{
-    font-size: 12px !important;
-  }
-  .trust-item span{
-    font-size: 8px !important;
-  }
-  .nav-logo{
-    height: 75px !important;
-  }
-  .quote-btn,
-  .track-btn{
-    padding: 6px 9px !important;
-    font-size: 9px !important;
-  }
-  .work-item{
-    height: 150px !important;
-  }
-  .whatsapp-btn img{
-    width: 34px !important;
-    height: 34px !important;
-    padding: 6px !important;
-  }
-  .hamburger-btn{
-    width: 38px !important;
-    height: 38px !important;
-  }
+  .hero-content h1, .hero-title{ font-size: 32px !important; }
+  .hero-sub{ font-size: 12px !important; }
+  .trust-item strong{ font-size: 12px !important; }
+  .trust-item span{ font-size: 8px !important; }
+  .star{ font-size: 20px !important; }
+  .nav-logo{ height: 75px !important; }
+  .quote-btn, .track-btn{ padding: 6px 9px !important; font-size: 9px !important; }
+  .work-item{ height: 150px !important; }
+  .whatsapp-btn img{ width: 34px !important; height: 34px !important; padding: 6px !important; }
+  .hamburger-btn{ width: 38px !important; height: 38px !important; }
 }
 </style>
 </head>
@@ -1905,19 +1903,14 @@ textarea:-webkit-autofill{
       <a href="#ourworks">Our Work</a>
       <a href="#contact">Contact Us</a>
     </div>
-    <a href="#" onclick="openLogin();return false;" class="quote-btn track-btn">
-      Track Order
-    </a>
-    <!-- HAMBURGER (mobile only) -->
+    <a href="#" onclick="openLogin();return false;" class="quote-btn track-btn">Track Order</a>
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" onclick="toggleMobileMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<!-- MOBILE SLIDE-IN MENU -->
+<!-- MOBILE MENU -->
 <div class="menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
 <nav class="mobile-menu" id="mobileMenu">
   <a href="#top" onclick="closeMobileMenu()">Home</a>
@@ -1946,43 +1939,28 @@ textarea:-webkit-autofill{
       Serving clients across India, USA & worldwide.
     </p>
     <div class="hero-buttons">
-      <a href="#" onclick="openQuoteModal();return false;" class="btn-main">
-        Get a Quote 
-        <span class="arrow-icon"></span>
-      </a>
-      <a href="#ourworks" class="btn-outline">
-        View Our Work
-        <span class="arrow-icon"></span>
-      </a>
+      <a href="#" onclick="openQuoteModal();return false;" class="btn-main">Get a Quote <span class="arrow-icon"></span></a>
+      <a href="#ourworks" class="btn-outline">View Our Work <span class="arrow-icon"></span></a>
     </div>
     <div class="hero-trust">
       <div class="trust-item">
         <img src="clients_logo1.png" loading="lazy" decoding="async" alt="">
-        <div>
-          <strong>500+</strong>
-          <span>Happy Clients</span>
-        </div>
+        <div><strong>500+</strong><span>Happy Clients</span></div>
       </div>
       <div class="trust-item">
         <img src="5_years_logo1.png" loading="lazy" decoding="async" alt="">
-        <div>
-          <strong>5+</strong>
-          <span>Years of Excellence</span>
-        </div>
+        <div><strong>5+</strong><span>Years of Excellence</span></div>
       </div>
       <div class="trust-item">
         <img src="rating_logo1.png" loading="lazy" decoding="async" alt="">
         <div>
-          <strong class="rating">5<span class="star">★</span></strong>
+          <strong class="rating"><span class="num-five">5</span><span class="star">★</span></strong>
           <span>Google Rating</span>
         </div>
       </div>
       <div class="trust-item">
         <img src="word_wide_logo1.png" loading="lazy" decoding="async" alt="">
-        <div>
-          <strong>Worldwide</strong>
-          <span>Shipping</span>
-        </div>
+        <div><strong>Worldwide</strong><span>Shipping</span></div>
       </div>
     </div>
   </div>
@@ -1992,43 +1970,37 @@ textarea:-webkit-autofill{
 <section class="services" id="services">
   <h2>OUR SERVICES</h2>
   <p class="subtitle">Printing Solutions That Speak For Your Brand</p>
-
-  <div class="scroll-btn left" onclick="scrollLeftFunc(this)">
-    <span class="arrow"></span>
-  </div>
-  <div class="scroll-btn right" onclick="scrollRightFunc(this)">
-    <span class="arrow"></span>
-  </div>
-
+  <div class="scroll-btn left" onclick="scrollLeftFunc(this)"><span class="arrow"></span></div>
+  <div class="scroll-btn right" onclick="scrollRightFunc(this)"><span class="arrow"></span></div>
   <div class="container">
     <div class="grid">
-      <div class="card" onclick="openModal('cardModal')"><img src="Business_card_image_Main_Page.png" loading="lazy" decoding="async" alt=""><p>Business Cards</p></div>
-      <div class="card" onclick="openModal('letterModal')"><img src="letter_head_main_page.png" loading="lazy" decoding="async" alt=""><p>Letter Heads</p></div>
-      <div class="card"><img src="envelops_main_page.png" loading="lazy" decoding="async" alt=""><p>Envelopes</p></div>
-      <div class="card"><img src="idcards_main_page.png" loading="lazy" decoding="async" alt=""><p>ID Cards & Lanyards</p></div>
-      <div class="card"><img src="paper_bag_main_page.png" loading="lazy" decoding="async" alt=""><p>Paper Bags</p></div>
-      <div class="card"><img src="diaries_main_page.png" loading="lazy" decoding="async" alt=""><p>Diaries</p></div>
-      <div class="card"><img src="calendar_main_page.png" loading="lazy" decoding="async" alt=""><p>Calendars</p></div>
-      <div class="card"><img src="button_badges_main_page.png" loading="lazy" decoding="async" alt=""><p>Button Badges</p></div>
-      <div class="card"><img src="stickers_main_page.png" loading="lazy" decoding="async" alt=""><p>Shape Sticker & Labels</p></div>
-      <div class="card"><img src="tent_cards.png" loading="lazy" decoding="async" alt=""><p>Tent Cards</p></div>
-      <div class="card"><img src="Tshirt_main_page.png" loading="lazy" decoding="async" alt=""><p>T-Shirt Printing</p></div>
-      <div class="card"><img src="valet_parking.png" loading="lazy" decoding="async" alt=""><p>Valet Parking Coupon</p></div>
-      <div class="card"><img src="covers_main.png" loading="lazy" decoding="async" alt=""><p>Covers</p></div>
-      <div class="card"><img src="mugs_botlle_main.png" loading="lazy" decoding="async" alt=""><p>Corporate Mugs & Bottles</p></div>
-      <div class="card"><img src="corportae_gift_set.png" loading="lazy" decoding="async" alt=""><p>Corporate Gift Set</p></div>
-      <div class="card"><img src="invitation_cards_main.png" loading="lazy" decoding="async" alt=""><p>Invitation Cards</p></div>
-      <div class="card" onclick="openModal('boxesModal')"><img src="boxes_main.png" loading="lazy" decoding="async" alt=""><p>Boxes</p></div>
-      <div class="card"><img src="coasters_main.png" loading="lazy" decoding="async" alt=""><p>Table Coasters</p></div>
-      <div class="card"><img src="SWEETBOX_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Custom Sweet Box</p></div>
-      <div class="card"><img src="BOOKS_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Books Printing</p></div>
-      <div class="card"><img src="BANNER_SIGNNAGE.PNG" loading="lazy" decoding="async" alt=""><p>Banner & Signages</p></div>
-      <div class="card"><img src="FOAM_BOARD_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Foam Boards</p></div>
-      <div class="card"><img src="FLUTE_BOARD_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Flute Boards</p></div>
-      <div class="card"><img src="BILLBOOKS_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Bill Books</p></div>
-      <div class="card"><img src="danglers_main.png" loading="lazy" decoding="async" alt=""><p>Danglers</p></div>
-      <div class="card"><img src="COUPONS_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Coupons</p></div>
-      <div class="card"><img src="MENU_CARD_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Menu Cards</p></div>
+      <div class="card" onclick="openModal('cardModal')"><img src="Business_card_image_Main_Page.png" loading="lazy" alt=""><p>Business Cards</p></div>
+      <div class="card" onclick="openModal('letterModal')"><img src="letter_head_main_page.png" loading="lazy" alt=""><p>Letter Heads</p></div>
+      <div class="card"><img src="envelops_main_page.png" loading="lazy" alt=""><p>Envelopes</p></div>
+      <div class="card"><img src="idcards_main_page.png" loading="lazy" alt=""><p>ID Cards & Lanyards</p></div>
+      <div class="card"><img src="paper_bag_main_page.png" loading="lazy" alt=""><p>Paper Bags</p></div>
+      <div class="card"><img src="diaries_main_page.png" loading="lazy" alt=""><p>Diaries</p></div>
+      <div class="card"><img src="calendar_main_page.png" loading="lazy" alt=""><p>Calendars</p></div>
+      <div class="card"><img src="button_badges_main_page.png" loading="lazy" alt=""><p>Button Badges</p></div>
+      <div class="card"><img src="stickers_main_page.png" loading="lazy" alt=""><p>Shape Sticker & Labels</p></div>
+      <div class="card"><img src="tent_cards.png" loading="lazy" alt=""><p>Tent Cards</p></div>
+      <div class="card"><img src="Tshirt_main_page.png" loading="lazy" alt=""><p>T-Shirt Printing</p></div>
+      <div class="card"><img src="valet_parking.png" loading="lazy" alt=""><p>Valet Parking Coupon</p></div>
+      <div class="card"><img src="covers_main.png" loading="lazy" alt=""><p>Covers</p></div>
+      <div class="card"><img src="mugs_botlle_main.png" loading="lazy" alt=""><p>Corporate Mugs & Bottles</p></div>
+      <div class="card"><img src="corportae_gift_set.png" loading="lazy" alt=""><p>Corporate Gift Set</p></div>
+      <div class="card"><img src="invitation_cards_main.png" loading="lazy" alt=""><p>Invitation Cards</p></div>
+      <div class="card" onclick="openModal('boxesModal')"><img src="boxes_main.png" loading="lazy" alt=""><p>Boxes</p></div>
+      <div class="card"><img src="coasters_main.png" loading="lazy" alt=""><p>Table Coasters</p></div>
+      <div class="card"><img src="SWEETBOX_MAIN.PNG" loading="lazy" alt=""><p>Custom Sweet Box</p></div>
+      <div class="card"><img src="BOOKS_MAIN.PNG" loading="lazy" alt=""><p>Books Printing</p></div>
+      <div class="card"><img src="BANNER_SIGNNAGE.PNG" loading="lazy" alt=""><p>Banner & Signages</p></div>
+      <div class="card"><img src="FOAM_BOARD_MAIN.PNG" loading="lazy" alt=""><p>Foam Boards</p></div>
+      <div class="card"><img src="FLUTE_BOARD_MAIN.PNG" loading="lazy" alt=""><p>Flute Boards</p></div>
+      <div class="card"><img src="BILLBOOKS_MAIN.PNG" loading="lazy" alt=""><p>Bill Books</p></div>
+      <div class="card"><img src="danglers_main.png" loading="lazy" alt=""><p>Danglers</p></div>
+      <div class="card"><img src="COUPONS_MAIN.PNG" loading="lazy" alt=""><p>Coupons</p></div>
+      <div class="card"><img src="MENU_CARD_MAIN.PNG" loading="lazy" alt=""><p>Menu Cards</p></div>
     </div>
   </div>
 </section>
@@ -2037,34 +2009,19 @@ textarea:-webkit-autofill{
 <section class="feature-strip">
   <div class="strip-container">
     <div class="strip-item">
-      <div class="icon">
-        <img src="ship_flight.png" alt="Worldwide Delivery" loading="lazy" decoding="async">
-      </div>
-      <div>
-        <h4>Worldwide Delivery</h4>
-        <p>We ship to USA, UK, Canada & more</p>
-      </div>
+      <div class="icon"><img src="ship_flight.png" alt="Worldwide Delivery" loading="lazy"></div>
+      <div><h4>Worldwide Delivery</h4><p>We ship to USA, UK, Canada & more</p></div>
     </div>
     <div class="strip-item">
-      <div class="icon">
-        <img src="secure_payments.png" alt="Secure Payments" loading="lazy" decoding="async">
-      </div>
-      <div>
-        <h4>Secure Payments</h4>
-        <p>Safe & trusted payment methods</p>
-      </div>
+      <div class="icon"><img src="secure_payments.png" alt="Secure Payments" loading="lazy"></div>
+      <div><h4>Secure Payments</h4><p>Safe & trusted payment methods</p></div>
     </div>
     <div class="strip-item">
-      <div class="icon">
-        <img src="24_7.png" alt="24/7 Support" loading="lazy" decoding="async">
-      </div>
-      <div>
-        <h4>24/7 Support</h4>
-        <p>We are always here to help</p>
-      </div>
+      <div class="icon"><img src="24_7.png" alt="24/7 Support" loading="lazy"></div>
+      <div><h4>24/7 Support</h4><p>We are always here to help</p></div>
     </div>
     <div class="strip-btn">
-      <a href="#contact">Let's Print Something Great →</a>
+      <a href="#" onclick="openPrintGreat();return false;">Let's Print Something Great →</a>
     </div>
   </div>
 </section>
@@ -2073,62 +2030,46 @@ textarea:-webkit-autofill{
 <section class="industries" id="industries">
   <h2>Industries We Serve</h2>
   <p class="subtitle">Tailored printing solutions for every business type</p>
-
-  <div class="scroll-btn left" onclick="scrollLeftFunc(this)">
-    <span class="arrow"></span>
-  </div>
-  <div class="scroll-btn right" onclick="scrollRightFunc(this)">
-    <span class="arrow"></span>
-  </div>
-
+  <div class="scroll-btn left" onclick="scrollLeftFunc(this)"><span class="arrow"></span></div>
+  <div class="scroll-btn right" onclick="scrollRightFunc(this)"><span class="arrow"></span></div>
   <div class="container"> 
     <div class="industry-grid">
       <div class="industry-card" onclick="openModal('restaurantModal')">
-        <img src="RESTAURANT_CAT.png" loading="lazy" decoding="async" alt="">
+        <img src="RESTAURANT_CAT.png" loading="lazy" alt="">
         <div class="industry-overlay">
-          <div class="industry-icon">
-            <img src="RESTAURANT_LOGO.png" loading="lazy" decoding="async" alt="">
-          </div>
+          <div class="industry-icon"><img src="RESTAURANT_LOGO.png" loading="lazy" alt=""></div>
           <h3>Restaurants & Cafes</h3>
           <p>Menus, Parcel Bags & Covers, coasters, Tent Cards & more</p>
         </div>
       </div>
       <div class="industry-card" onclick="openModal('foodModal')">
-        <img src="fried_chicken_cat.png" loading="lazy" decoding="async" alt="">
+        <img src="fried_chicken_cat.png" loading="lazy" alt="">
         <div class="industry-overlay">
-          <div class="industry-icon">
-            <img src="burger_logo.png" loading="lazy" decoding="async" alt="">
-          </div>
+          <div class="industry-icon"><img src="burger_logo.png" loading="lazy" alt=""></div>
           <h3>Food Brands</h3>
           <p>Boxes, wraps, stickers & more</p>
         </div>
       </div>
       <div class="industry-card" onclick="openModal('hospitalModal')">
-        <img src="hospital_cat.png" loading="lazy" decoding="async" alt="">
+        <img src="hospital_cat.png" loading="lazy" alt="">
         <div class="industry-overlay">
-          <div class="industry-icon">
-            <img src="hospital_logo.png" loading="lazy" decoding="async" alt="">
-          </div>
+          <div class="industry-icon"><img src="hospital_logo.png" loading="lazy" alt=""></div>
           <h3>Hospitals</h3>
           <p>Patient Files, X-Ray Covers, Letter Heads & More</p>
         </div>
       </div>
       <div class="industry-card" onclick="openModal('corporateModal')">
-        <img src="office_cat.png" loading="lazy" decoding="async" alt="">
+        <img src="office_cat.png" loading="lazy" alt="">
         <div class="industry-overlay">
-          <div class="industry-icon">
-            <img src="corporate.png" loading="lazy" decoding="async" alt="">
-          </div>
+          <div class="industry-icon"><img src="corporate.png" loading="lazy" alt=""></div>
           <h3>Corporate Offices</h3>
           <p>Visting Cards, Branding Gifts, ID Cards & More</p>
         </div>
       </div>
       <div class="industry-card" onclick="openModal('eventModal')">
-        <img src="wedding_cat.png" loading="lazy" decoding="async" alt="">
+        <img src="wedding_cat.png" loading="lazy" alt="">
         <div class="industry-overlay">
-          <div class="industry-icon">
-            <img src="event_logo.png" loading="lazy" decoding="async" alt="">
-          </div>
+          <div class="industry-icon"><img src="event_logo.png" loading="lazy" alt=""></div>
           <h3>Events & Weddings</h3>
           <p>Invitations, gift boxes, Welcome Boards & More</p>
         </div>
@@ -2141,18 +2082,10 @@ textarea:-webkit-autofill{
 <section class="our-works" id="ourworks">
   <h2>Our Works</h2>
   <div class="works-grid">
-    <div class="work-item">
-      <video muted playsinline preload="none" poster="thumb1.jpg" data-src="foam board sample.mp4"></video>
-    </div>
-    <div class="work-item">
-      <video muted playsinline preload="none" poster="thumb1.jpg" data-src="VID_20260224_041201_225.mp4"></video>
-    </div>
-    <div class="work-item">
-      <video muted playsinline preload="none" poster="thumb1.jpg" data-src="cloth.mp4"></video>
-    </div>
-    <div class="work-item">
-      <video muted playsinline preload="none" poster="thumb1.jpg" data-src="rudrabookgit.mp4"></video>
-    </div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="foam board sample.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="VID_20260224_041201_225.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="cloth.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="rudrabookgit.mp4"></video></div>
     <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="storieswhitegit.mp4"></video></div>
     <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="visitingcardsgit1.mp4"></video></div>
     <div class="work-item"><video muted playsinline preload="none" poster="thumb1.jpg" data-src="visitingcards1git.mp4"></video></div>
@@ -2172,22 +2105,15 @@ textarea:-webkit-autofill{
   <div class="location-content">
     <div class="location-text">
       <h2>Visit Our Store</h2>
-      <p>
-        Experience premium printing services at Eevee Printers.  
-        We are located in the heart of Hyderabad, delivering quality and speed.
-      </p>
+      <p>Experience premium printing services at Eevee Printers. We are located in the heart of Hyderabad, delivering quality and speed.</p>
       <div class="location-line">
-        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" loading="lazy" decoding="async" alt="">
-        <span>
-          FTCCI Marg, Hari Nagar, Red Hills, Lakdikapul, Hyderabad, Telangana 500004, India. 
-        </span>
+        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" loading="lazy" alt="">
+        <span>FTCCI Marg, Hari Nagar, Red Hills, Lakdikapul, Hyderabad, Telangana 500004, India.</span>
       </div>
-      <a href="https://maps.google.com/?q=Eevee Printers" target="_blank" rel="noopener" class="map-btn">
-        Get Directions
-      </a>
+      <a href="https://maps.google.com/?q=Eevee Printers" target="_blank" rel="noopener" class="map-btn">Get Directions</a>
     </div>
     <div class="location-image">
-      <img src="map.png" alt="Eevee Location" loading="lazy" decoding="async">
+      <img src="map.png" alt="Eevee Location" loading="lazy">
     </div>
   </div>
 </section>
@@ -2198,18 +2124,10 @@ textarea:-webkit-autofill{
     <div class="social-left">
       <h2>Stay Connected</h2>
       <div class="social-icons">
-        <a href="https://instagram.com/eeveeprinters" target="_blank" rel="noopener">
-          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" loading="lazy" decoding="async" alt="Instagram">
-        </a>
-        <a href="https://youtube.com/@eeveeprinters" target="_blank" rel="noopener">
-          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" loading="lazy" decoding="async" alt="YouTube">
-        </a>
-        <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank" rel="noopener">
-          <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" loading="lazy" decoding="async" alt="LinkedIn">
-        </a>
-        <a href="mailto:eeveeprinters@gmail.com">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" loading="lazy" decoding="async" alt="Email">
-        </a>
+        <a href="https://instagram.com/eeveeprinters" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" loading="lazy" alt="Instagram"></a>
+        <a href="https://youtube.com/@eeveeprinters" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" loading="lazy" alt="YouTube"></a>
+        <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank" rel="noopener"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" loading="lazy" alt="LinkedIn"></a>
+        <a href="mailto:eeveeprinters@gmail.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" loading="lazy" alt="Email"></a>
       </div>
     </div>
     <div class="divider"></div>
@@ -2223,17 +2141,13 @@ textarea:-webkit-autofill{
 
 <!-- FOOTER -->
 <footer class="footer">
-  <p>
-    © 2026 Eevee Printers. All Rights Reserved. |
-    <a href="#">Privacy Policy</a> |
-    <a href="#">Terms of Use</a>
-  </p>
+  <p>© 2026 Eevee Printers. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
 </footer> 
 
 <!-- WHATSAPP BUTTON -->
 <div class="whatsapp-container">
   <a href="https://wa.me/919014891062" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Chat on WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" loading="lazy" decoding="async">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" loading="lazy">
   </a>
 </div>
 
@@ -2244,14 +2158,14 @@ textarea:-webkit-autofill{
     <h2>Business Cards</h2>
     <p class="subtitle">Premium finishes for your brand identity</p>
     <div class="types-grid">
-      <div class="type-box"><img src="spotuv.png" loading="lazy" decoding="async" alt=""><p>Spot UV</p></div>
-      <div class="type-box"><img src="foilingvisitingcards.png" loading="lazy" decoding="async" alt=""><p>Gold Foiling</p></div>
-      <div class="type-box"><img src="matte_lamination.png" loading="lazy" decoding="async" alt=""><p>Matte Finish</p></div>
-      <div class="type-box"><img src="gloss_lamination_visitingcard.png" loading="lazy" decoding="async" alt=""><p>Glossy Finish</p></div>
-      <div class="type-box"><img src="velvet_visitingcard.png" loading="lazy" decoding="async" alt=""><p>Velvet Finish</p></div>
-      <div class="type-box"><img src="nonterable_visitingcards.png" loading="lazy" decoding="async" alt=""><p>Non-Terable Cards</p></div>
-      <div class="type-box"><img src="transparant_visiting_cards.png" loading="lazy" decoding="async" alt=""><p>Transparent Cards</p></div>
-      <div class="type-box"><img src="normal_cards_visting_cards.png" loading="lazy" decoding="async" alt=""><p>Normal Cards</p></div>
+      <div class="type-box"><img src="spotuv.png" loading="lazy" alt=""><p>Spot UV</p></div>
+      <div class="type-box"><img src="foilingvisitingcards.png" loading="lazy" alt=""><p>Gold Foiling</p></div>
+      <div class="type-box"><img src="matte_lamination.png" loading="lazy" alt=""><p>Matte Finish</p></div>
+      <div class="type-box"><img src="gloss_lamination_visitingcard.png" loading="lazy" alt=""><p>Glossy Finish</p></div>
+      <div class="type-box"><img src="velvet_visitingcard.png" loading="lazy" alt=""><p>Velvet Finish</p></div>
+      <div class="type-box"><img src="nonterable_visitingcards.png" loading="lazy" alt=""><p>Non-Terable Cards</p></div>
+      <div class="type-box"><img src="transparant_visiting_cards.png" loading="lazy" alt=""><p>Transparent Cards</p></div>
+      <div class="type-box"><img src="normal_cards_visting_cards.png" loading="lazy" alt=""><p>Normal Cards</p></div>
     </div>
   </div>
 </div> 
@@ -2263,8 +2177,8 @@ textarea:-webkit-autofill{
     <h2>Letter Heads</h2>
     <p class="subtitle">Professional letterheads for your business</p>
     <div class="types-grid">
-      <div class="type-box"><img src="letterhead_inside.png" loading="lazy" decoding="async" alt=""><p>Standard Letterhead</p></div>
-      <div class="type-box"><img src="excelbond.png" loading="lazy" decoding="async" alt=""><p>Bond Paper Letterheads</p></div>
+      <div class="type-box"><img src="letterhead_inside.png" loading="lazy" alt=""><p>Standard Letterhead</p></div>
+      <div class="type-box"><img src="excelbond.png" loading="lazy" alt=""><p>Bond Paper Letterheads</p></div>
     </div>
     <a href="https://wa.me/919014891062" target="_blank" rel="noopener" class="btn">Request a Quote</a>
   </div>
@@ -2277,9 +2191,9 @@ textarea:-webkit-autofill{
     <h2>Box Types</h2>
     <p class="subtitle">Choose the perfect box style for your product</p>
     <div class="types-grid">
-      <div class="type-box"><img src="duplex_board.png" loading="lazy" decoding="async" alt=""><p>Duplex Boxes</p></div>
-      <div class="type-box"><img src="rigid_boxes.png" loading="lazy" decoding="async" alt=""><p>Rigid Boxes</p></div>
-      <div class="type-box"><img src="corrugated_boxes.png" loading="lazy" decoding="async" alt=""><p>Corrugated Boxes</p></div>
+      <div class="type-box"><img src="duplex_board.png" loading="lazy" alt=""><p>Duplex Boxes</p></div>
+      <div class="type-box"><img src="rigid_boxes.png" loading="lazy" alt=""><p>Rigid Boxes</p></div>
+      <div class="type-box"><img src="corrugated_boxes.png" loading="lazy" alt=""><p>Corrugated Boxes</p></div>
     </div>
     <a href="https://wa.me/919014891062" target="_blank" rel="noopener" class="btn">Request a Quote</a>
   </div>
@@ -2291,13 +2205,13 @@ textarea:-webkit-autofill{
     <span class="close" onclick="closeModal('restaurantModal')">&times;</span>
     <h2>Restaurants & Cafes</h2>
     <div class="types-grid">
-      <div class="type-box"><img src="MENU_CARD_MAIN.PNG" loading="lazy" decoding="async" alt=""><p>Menu Cards</p></div>
-      <div class="type-box"><img src="tent_cards.png" loading="lazy" decoding="async" alt=""><p>Table Tent Cards</p></div>
-      <div class="type-box"><img src="coasters_main.png" loading="lazy" decoding="async" alt=""><p>Table Coasters</p></div>
-      <div class="type-box"><img src="covers_main.png" loading="lazy" decoding="async" alt=""><p>Covers</p></div>
-      <div class="type-box"><img src="stickers_main_page.png" loading="lazy" decoding="async" alt=""><p>Stickers</p></div>
-      <div class="type-box"><img src="boxes_main.png" loading="lazy" decoding="async" alt=""><p>Parcel Boxes</p></div>
-      <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy" decoding="async" alt=""><p>Paper Bags</p></div>
+      <div class="type-box"><img src="MENU_CARD_MAIN.PNG" loading="lazy" alt=""><p>Menu Cards</p></div>
+      <div class="type-box"><img src="tent_cards.png" loading="lazy" alt=""><p>Table Tent Cards</p></div>
+      <div class="type-box"><img src="coasters_main.png" loading="lazy" alt=""><p>Table Coasters</p></div>
+      <div class="type-box"><img src="covers_main.png" loading="lazy" alt=""><p>Covers</p></div>
+      <div class="type-box"><img src="stickers_main_page.png" loading="lazy" alt=""><p>Stickers</p></div>
+      <div class="type-box"><img src="boxes_main.png" loading="lazy" alt=""><p>Parcel Boxes</p></div>
+      <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy" alt=""><p>Paper Bags</p></div>
     </div>
   </div>
 </div>
@@ -2310,9 +2224,9 @@ textarea:-webkit-autofill{
     <div class="types-grid">
       <div class="type-box"><p>Food Boxes</p></div>
       <div class="type-box"><p>Wrappers</p></div>
-      <div class="type-box"><img src="stickers_main_page.png" loading="lazy" decoding="async" alt=""><p>Stickers</p></div>
+      <div class="type-box"><img src="stickers_main_page.png" loading="lazy" alt=""><p>Stickers</p></div>
       <div class="type-box"><p>Labels</p></div>
-      <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy" decoding="async" alt=""><p>Paper Bags</p></div>
+      <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy" alt=""><p>Paper Bags</p></div>
     </div>
   </div>
 </div>
@@ -2362,76 +2276,170 @@ textarea:-webkit-autofill{
   <div class="modal-content" style="max-width:400px;">
     <span class="close" onclick="closeLogin()">&times;</span>
     <h2 style="margin-bottom:10px;">Track Your Order</h2>
-    <p style="color:#aaa;font-size:14px;margin-bottom:20px;">
-      Login to view order status, invoices & reorders
-    </p>
+    <p style="color:#aaa;font-size:14px;margin-bottom:20px;">Login to view order status, invoices & reorders</p>
     <input type="email" id="email" placeholder="Email">
     <input type="password" id="password" placeholder="Password">
-    <button onclick="login()" style="width:100%;padding:10px;background:orange;color:white;border:none;border-radius:5px;cursor:pointer;">
-      Login
-    </button>
-    <p onclick="resetPassword()" style="margin-top:10px;font-size:12px;color:#aaa;cursor:pointer;">
-      Forgot Password?
-    </p>
+    <button onclick="login()" style="width:100%;padding:10px;background:orange;color:white;border:none;border-radius:5px;cursor:pointer;">Login</button>
+    <p onclick="resetPassword()" style="margin-top:10px;font-size:12px;color:#aaa;cursor:pointer;">Forgot Password?</p>
   </div>
 </div>
 
-<!-- QUOTE MODAL -->
+<!-- ============================================= -->
+<!-- ===== FIX #1: PROFESSIONAL QUOTE MODAL ====== -->
+<!-- ============================================= -->
 <div id="quoteModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeQuoteModal()">&times;</span>
-    <h2>What Would You Like To Print?</h2>
-    <p class="subtitle">Select your requirement to get a faster & accurate quote</p>
+
+    <div class="quote-header">
+      <span class="quote-badge">⚡ INSTANT QUOTE</span>
+      <h2>Get Your Custom Quote</h2>
+      <p class="quote-subtitle">Tell us your requirements — we'll respond within 30 minutes</p>
+    </div>
 
     <form id="quoteForm" class="premium-quote-form">
-      <div class="form-row">
-        <div style="width:100%;">
+      <div class="field-group">
+        <div>
           <label>Full Name<span class="required">*</span></label>
-          <input type="text" name="name" placeholder="Your Name" required>
+          <div class="input-wrap">
+            <span class="field-icon">👤</span>
+            <input type="text" name="name" id="qf-name" placeholder="Your full name" required>
+          </div>
         </div>
-        <div style="width:100%;">
+        <div>
           <label>WhatsApp Number<span class="required">*</span></label>
-          <input type="tel" name="phone" placeholder="WhatsApp Number" required>
+          <div class="input-wrap">
+            <span class="field-icon">📱</span>
+            <input type="tel" name="phone" id="qf-phone" placeholder="+91 98765 43210" required>
+          </div>
         </div>
       </div>
 
-      <div class="form-row">
-        <div style="width:100%;">
+      <div class="field-group">
+        <div>
           <label>Email Address<span class="required">*</span></label>
-          <input type="email" name="email" placeholder="Email Address" required>
+          <div class="input-wrap">
+            <span class="field-icon">✉️</span>
+            <input type="email" name="email" id="qf-email" placeholder="you@example.com" required>
+          </div>
         </div>
-        <div style="width:100%;">
+        <div>
           <label>Printing Service<span class="required">*</span></label>
-          <select name="service" required>
-            <option value="">Select Printing Service</option>
-            <option>Business Cards</option>
-            <option>Packaging Boxes</option>
-            <option>Restaurant Printing</option>
-          </select>
+          <div class="input-wrap">
+            <span class="field-icon">🎨</span>
+            <select name="service" id="qf-service" required>
+              <option value="">Select a service</option>
+              <option>Business Cards</option>
+              <option>Letter Heads</option>
+              <option>Envelopes</option>
+              <option>ID Cards & Lanyards</option>
+              <option>Paper Bags</option>
+              <option>Boxes / Packaging</option>
+              <option>Brochures & Flyers</option>
+              <option>T-Shirt Printing</option>
+              <option>Stickers & Labels</option>
+              <option>Banners & Signages</option>
+              <option>Menu Cards</option>
+              <option>Invitation Cards</option>
+              <option>Other</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      <div class="form-row">
-        <input type="text" name="quantity" placeholder="Quantity" required>
-        <input type="text" name="dimensions" placeholder="Dimensions / Size" required>
+      <div class="field-group">
+        <div>
+          <label>Quantity<span class="required">*</span></label>
+          <div class="input-wrap">
+            <span class="field-icon">#</span>
+            <input type="text" name="quantity" id="qf-quantity" placeholder="e.g. 500" required>
+          </div>
+        </div>
+        <div>
+          <label>Dimensions / Size<span class="required">*</span></label>
+          <div class="input-wrap">
+            <span class="field-icon">📐</span>
+            <input type="text" name="dimensions" id="qf-dimensions" placeholder='e.g. 3.5" x 2"' required>
+          </div>
+        </div>
       </div>
 
-      <textarea name="message" placeholder="Describe your requirement..." required></textarea>
+      <div class="field-full">
+        <label>Project Details<span class="required">*</span></label>
+        <textarea name="message" id="qf-message" placeholder="Describe your design, finish (matte / glossy / spot UV), paper type, deadline, and any other specifics..." required></textarea>
+      </div>
 
       <div class="quote-actions">
-        <button type="submit" class="btn">Submit Quote Request</button>
+        <button type="submit" class="submit-btn">
+          📧 Submit & Send to WhatsApp
+        </button>
       </div>
 
-      <p id="successMsg" style="display:none;margin-top:15px;color:#32d74b;font-weight:600;">
-        Form Submitted Successfully ✅
-      </p>
+      <div class="form-trust-row">
+        <div class="trust-mini">Reply in 30 min</div>
+        <div class="trust-mini">Free design support</div>
+        <div class="trust-mini">Worldwide shipping</div>
+      </div>
     </form>
   </div>
 </div>
 
-<!-- ===== SCRIPTS ===== -->
+<!-- ============================================= -->
+<!-- ====== FIX #3: PRINT SOMETHING GREAT MODAL == -->
+<!-- ============================================= -->
+<div id="printGreatModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closePrintGreat()">&times;</span>
 
-<!-- HAMBURGER MENU -->
+    <div class="pg-hero">
+      <div class="pg-icon-row">
+        <div class="pg-icon-circle">🎨</div>
+        <div class="pg-icon-circle">🖨️</div>
+        <div class="pg-icon-circle">🚀</div>
+      </div>
+      <h2>Let's Print Something Great!</h2>
+      <p>From concept to delivery — premium quality printing tailored for your brand. Choose how you'd like to start your project.</p>
+    </div>
+
+    <div class="pg-body">
+      <div class="pg-features">
+        <div class="pg-feature">
+          <span class="pg-emoji">⚡</span>
+          <h4>Fast Turnaround</h4>
+          <p>Same-day printing on most orders</p>
+        </div>
+        <div class="pg-feature">
+          <span class="pg-emoji">💎</span>
+          <h4>Premium Quality</h4>
+          <p>Top-tier paper, ink & finishes</p>
+        </div>
+        <div class="pg-feature">
+          <span class="pg-emoji">🌍</span>
+          <h4>Worldwide Shipping</h4>
+          <p>USA, UK, Canada & 50+ more</p>
+        </div>
+      </div>
+
+      <div class="pg-cta-row">
+        <button class="pg-btn pg-btn-primary" onclick="closePrintGreat();openQuoteModal();">
+          📝 Get Free Quote
+        </button>
+        <a class="pg-btn pg-btn-whatsapp" href="https://wa.me/919014891062?text=Hi%20Eevee%20Printers%2C%20I'd%20like%20to%20discuss%20a%20printing%20project." target="_blank" rel="noopener">
+          💬 Chat on WhatsApp
+        </a>
+      </div>
+
+      <div class="pg-stats">
+        <div class="pg-stat"><strong>500+</strong><span>Happy Clients</span></div>
+        <div class="pg-stat"><strong>5+</strong><span>Years Experience</span></div>
+        <div class="pg-stat"><strong>24/7</strong><span>Support</span></div>
+        <div class="pg-stat"><strong>5★</strong><span>Google Rated</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
 <script>
 function toggleMobileMenu(){
   const btn = document.getElementById('hamburgerBtn');
@@ -2448,10 +2456,7 @@ function closeMobileMenu(){
   document.getElementById('menuOverlay').classList.remove('active');
   document.body.style.overflow = '';
 }
-</script>
 
-<!-- SCROLL BUTTONS -->
-<script>
 function scrollLeftFunc(btn) {
   const container = btn.parentElement.querySelector('.grid, .industry-grid');
   container.scrollBy({ left: -300, behavior: 'smooth' });
@@ -2460,39 +2465,25 @@ function scrollRightFunc(btn) {
   const container = btn.parentElement.querySelector('.grid, .industry-grid');
   container.scrollBy({ left: 300, behavior: 'smooth' });
 }
-</script>
 
-<!-- MODALS -->
-<script>
-function openModal(id) {
-  document.getElementById(id).style.display = "block";
-}
-function closeModal(id) {
-  document.getElementById(id).style.display = "none";
-}
-function openLogin() {
-  document.getElementById("loginModal").style.display = "block";
-}
-function closeLogin() {
-  document.getElementById("loginModal").style.display = "none";
-}
-function openQuoteModal() {
-  document.getElementById("quoteModal").style.display = "block";
-}
-function closeQuoteModal() {
-  document.getElementById("quoteModal").style.display = "none";
-}
+function openModal(id) { document.getElementById(id).style.display = "block"; }
+function closeModal(id) { document.getElementById(id).style.display = "none"; }
+function openLogin() { document.getElementById("loginModal").style.display = "block"; }
+function closeLogin() { document.getElementById("loginModal").style.display = "none"; }
+function openQuoteModal() { document.getElementById("quoteModal").style.display = "block"; }
+function closeQuoteModal() { document.getElementById("quoteModal").style.display = "none"; }
+function openPrintGreat() { document.getElementById("printGreatModal").style.display = "block"; }
+function closePrintGreat() { document.getElementById("printGreatModal").style.display = "none"; }
+
 window.onclick = function(event) {
   const modals = document.querySelectorAll(".modal");
   modals.forEach(modal => {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
+    if (event.target == modal) modal.style.display = "none";
   });
 }
 </script>
 
-<!-- OPTIMIZED WORKS VIDEO LAZY-LOAD + AUTOPLAY -->
+<!-- WORKS VIDEO LAZY-LOAD -->
 <script>
 (function(){
   const items = document.querySelectorAll(".work-item");
@@ -2500,7 +2491,6 @@ window.onclick = function(event) {
   let currentIndex = 0;
   let videosLoaded = false;
 
-  // Lazy-load videos only when "Our Works" section becomes visible
   function loadVideoSources(){
     if(videosLoaded) return;
     videosLoaded = true;
@@ -2516,15 +2506,10 @@ window.onclick = function(event) {
     });
     if(videos.length > 0) playVideo(0);
   }
-
   function stopAllVideos(){
-    videos.forEach(video => {
-      video.pause();
-      video.currentTime = 0;
-    });
+    videos.forEach(video => { video.pause(); video.currentTime = 0; });
     items.forEach(item => item.classList.remove("active"));
   }
-
   function playVideo(index){
     stopAllVideos();
     const currentVideo = videos[index];
@@ -2532,34 +2517,25 @@ window.onclick = function(event) {
     if(!currentVideo) return;
     currentItem.classList.add("active");
     const playPromise = currentVideo.play();
-    if(playPromise !== undefined){
-      playPromise.catch(()=>{ /* silently ignore autoplay block */ });
-    }
+    if(playPromise !== undefined){ playPromise.catch(()=>{}); }
     currentVideo.onended = () => {
       currentIndex = (currentIndex + 1) % videos.length;
       playVideo(currentIndex);
     };
   }
-
-  // Use IntersectionObserver to load videos only when needed
   if('IntersectionObserver' in window){
     const worksSection = document.querySelector('.our-works');
     if(worksSection){
       const observer = new IntersectionObserver((entries)=>{
         entries.forEach(entry=>{
-          if(entry.isIntersecting){
-            loadVideoSources();
-            observer.disconnect();
-          }
+          if(entry.isIntersecting){ loadVideoSources(); observer.disconnect(); }
         });
       }, { rootMargin: '200px' });
       observer.observe(worksSection);
     }
   } else {
-    // Fallback for old browsers
     window.addEventListener('load', loadVideoSources);
   }
-
   items.forEach((item, index) => {
     item.addEventListener("click", () => {
       if(!videosLoaded) loadVideoSources();
@@ -2573,12 +2549,7 @@ window.onclick = function(event) {
 <!-- FIREBASE LOGIN -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { 
-  getAuth, 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCSYwthBX2s99OiYJ0pcgr4ha6VfK214fk",
@@ -2588,7 +2559,6 @@ const firebaseConfig = {
   messagingSenderId: "646814066578",
   appId: "1:646814066578:web:0ca3fafa04970791fb834b"
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
@@ -2599,7 +2569,6 @@ window.signup = function () {
     .then(() => alert("Account Created ✅"))
     .catch(err => alert(err.message));
 };
-
 window.login = function () {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -2614,7 +2583,6 @@ window.login = function () {
     })
     .catch(err => alert(err.message));
 };
-
 window.resetPassword = function () {
   const email = document.getElementById("email").value;
   sendPasswordResetEmail(auth, email)
@@ -2623,33 +2591,73 @@ window.resetPassword = function () {
 };
 </script>
 
-<!-- QUOTE FORM SUBMISSION -->
+<!-- ============================================= -->
+<!-- ===== FIX #2: QUOTE FORM → EMAIL + WHATSAPP = -->
+<!-- ============================================= -->
 <script>
 const quoteForm = document.getElementById("quoteForm");
+// Your business WhatsApp number (without + or spaces)
+const BUSINESS_WHATSAPP = "919014891062";
 
 quoteForm.addEventListener("submit", async function(e){
   e.preventDefault();
+
+  // Collect form values
+  const name = document.getElementById("qf-name").value.trim();
+  const phone = document.getElementById("qf-phone").value.trim();
+  const email = document.getElementById("qf-email").value.trim();
+  const service = document.getElementById("qf-service").value.trim();
+  const quantity = document.getElementById("qf-quantity").value.trim();
+  const dimensions = document.getElementById("qf-dimensions").value.trim();
+  const message = document.getElementById("qf-message").value.trim();
+
+  // Build a nicely formatted WhatsApp message
+  const waText =
+`*🆕 NEW QUOTE REQUEST — Eevee Printers*
+━━━━━━━━━━━━━━━━━━━━
+👤 *Name:* ${name}
+📱 *WhatsApp:* ${phone}
+✉️ *Email:* ${email}
+━━━━━━━━━━━━━━━━━━━━
+🎨 *Service:* ${service}
+📦 *Quantity:* ${quantity}
+📐 *Dimensions:* ${dimensions}
+━━━━━━━━━━━━━━━━━━━━
+📝 *Project Details:*
+${message}
+━━━━━━━━━━━━━━━━━━━━
+_Sent via eeveeprinters.com_`;
+
   const formData = new FormData(quoteForm);
 
+  // 1) Send to email (Formspree) in background
+  let emailOk = false;
   try{
     const response = await fetch("https://formspree.io/f/xkoypqkq", {
       method: "POST",
       body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
+      headers: { 'Accept': 'application/json' }
     });
-
-    if(response.ok){
-      alert("Quote request submitted successfully!");
-      quoteForm.reset();
-      closeQuoteModal();
-    }else{
-      alert("Form submission failed");
-    }
+    emailOk = response.ok;
   }catch(error){
-    alert("Network error");
+    emailOk = false;
   }
+
+  // 2) Open WhatsApp with the prefilled message to your business number
+  const waUrl = `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(waText)}`;
+
+  if(emailOk){
+    alert("✅ Quote submitted to Email!\n\nClick OK to also send the details to our WhatsApp (+91 9014891062).");
+  } else {
+    alert("⚠️ Email send failed. We'll forward your details via WhatsApp instead. Click OK to continue.");
+  }
+
+  // Open WhatsApp in a new tab
+  window.open(waUrl, "_blank");
+
+  // Reset & close
+  quoteForm.reset();
+  closeQuoteModal();
 });
 </script>
 
