@@ -1936,7 +1936,7 @@ iframe {
 </p>
 
     <div class="hero-buttons">
-      <a href="#contact" class="btn-main">
+      <a href="#" onclick="openQuoteModal()" class="btn-main">
   Get a Quote 
   <span class="arrow-icon"></span>
 </a>
@@ -2707,6 +2707,134 @@ function closeLogin() {
   document.getElementById("loginModal").style.display = "none";
 }
 </script>
- 
+ <!-- PREMIUM QUOTE MODAL -->
+<div id="quoteModal" class="modal">
+
+  <div class="modal-content">
+
+    <span class="close" onclick="closeQuoteModal()">&times;</span>
+
+    <h2>What Would You Like To Print?</h2>
+
+    <p class="subtitle">
+      Select your requirement to get a faster & accurate quote
+    </p>
+
+    <div class="types-grid">
+
+      <div class="type-box">
+        <img src="Business_card_image_Main_Page.png">
+        <p>Business Cards</p>
+      </div>
+
+      <div class="type-box">
+        <img src="boxes_main.png">
+        <p>Packaging Boxes</p>
+      </div>
+
+      <div class="type-box">
+        <img src="MENU_CARD_MAIN.PNG">
+        <p>Restaurant Printing</p>
+      </div>
+
+      <div class="type-box">
+        <img src="stickers_main_page.png">
+        <p>Stickers & Labels</p>
+      </div>
+
+      <div class="type-box">
+        <img src="invitation_cards_main.png">
+        <p>Invitation Cards</p>
+      </div>
+
+      <div class="type-box">
+        <img src="BANNER_SIGNNAGE.PNG">
+        <p>Banners & Signages</p>
+      </div>
+
+    </div>
+
+    <!-- FORM -->
+    <div style="margin-top:30px;">
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="tel" placeholder="WhatsApp Number">
+
+      <input type="text" placeholder="Product Requirement">
+
+      <textarea 
+        placeholder="Describe your requirement..."
+        style="
+          width:100%;
+          height:120px;
+          padding:14px;
+          border-radius:12px;
+          border:1px solid rgba(255,255,255,0.08);
+          background:rgba(255,255,255,0.06);
+          color:white;
+          resize:none;
+          margin-bottom:15px;
+        "
+      ></textarea>
+
+      <a href="https://wa.me/919014891062" 
+         target="_blank" 
+         class="btn"
+         style="
+           display:inline-block;
+           text-decoration:none;
+           font-weight:600;
+         ">
+         Request Quote On WhatsApp
+      </a>
+
+    </div>
+
+    <!-- TRUST -->
+    <div class="hero-trust" style="justify-content:center; margin-top:35px;">
+
+      <div class="trust-item">
+        <div>
+          <strong>Fast Delivery</strong>
+          <span>Across India & Worldwide</span>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div>
+          <strong>Premium Quality</strong>
+          <span>Professional Printing</span>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div>
+          <strong>Quick Support</strong>
+          <span>WhatsApp Response</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+  <script>
+function openQuoteModal() {
+  document.getElementById("quoteModal").style.display = "block";
+}
+
+function closeQuoteModal() {
+  document.getElementById("quoteModal").style.display = "none";
+}
+
+window.onclick = function(event) {
+  let modal = document.getElementById("quoteModal");
+
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>
