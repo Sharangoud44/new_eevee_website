@@ -51,6 +51,7 @@ body { font-family: 'Poppins', sans-serif; background: #0a0a0c; color: #fff; min
 .stat-icon.green { background: rgba(37,211,102,0.15); color: #25D366; }
 .stat-icon.blue { background: rgba(0,150,255,0.15); color: #0096ff; }
 .stat-icon.purple { background: rgba(180,100,255,0.15); color: #b464ff; }
+.stat-icon.pink { background: rgba(255,100,180,0.15); color: #ff64b4; }
 .stat-card h3 { font-size: 13px; color: #888; font-weight: 500; margin-bottom: 6px; }
 .stat-card .stat-value { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
 .stat-card .stat-trend { font-size: 12px; color: #25D366; }
@@ -73,6 +74,8 @@ body { font-family: 'Poppins', sans-serif; background: #0a0a0c; color: #fff; min
 .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
 .btn-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 10px 16px; border-radius: 10px; font-size: 13px; cursor: pointer; font-family: 'Poppins'; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
 .btn-secondary:hover { background: rgba(255,140,0,0.1); border-color: #ff8c00; }
+.btn-danger { background: rgba(255,80,80,0.1); color: #ff5252; border: 1px solid rgba(255,80,80,0.2); padding: 10px 16px; border-radius: 10px; font-size: 13px; cursor: pointer; font-family: 'Poppins'; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-danger:hover { background: rgba(255,80,80,0.2); }
 
 .filters { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; align-items: center; }
 .filter-pill { padding: 8px 16px; border-radius: 20px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); cursor: pointer; font-size: 12px; transition: 0.3s; color: #aaa; }
@@ -101,6 +104,13 @@ tbody td { padding: 14px; color: #ddd; }
 .status-ready { background: rgba(180,100,255,0.15); color: #b464ff; }
 .status-delivered { background: rgba(37,211,102,0.15); color: #25D366; }
 .status-dispatched { background: rgba(255,200,0,0.15); color: #ffc800; }
+.status-pending { background: rgba(150,150,150,0.15); color: #aaa; }
+.status-accepted { background: rgba(37,211,102,0.15); color: #25D366; }
+.status-rejected { background: rgba(255,80,80,0.15); color: #ff5252; }
+.status-converted { background: rgba(180,100,255,0.15); color: #b464ff; }
+.status-paid { background: rgba(37,211,102,0.15); color: #25D366; }
+.status-partial { background: rgba(255,200,0,0.15); color: #ffc800; }
+.status-unpaid { background: rgba(255,80,80,0.15); color: #ff5252; }
 .payment-cell .amount-paid { color: #25D366; font-weight: 600; }
 .payment-cell .amount-total { color: #888; font-size: 11px; }
 .progress-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.05); border-radius: 4px; margin-top: 4px; overflow: hidden; }
@@ -109,12 +119,14 @@ tbody td { padding: 14px; color: #ddd; }
 .icon-btn { width: 30px; height: 30px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #aaa; transition: 0.3s; font-size: 12px; text-decoration: none; }
 .icon-btn:hover { background: rgba(255,140,0,0.15); color: #ff8c00; }
 .icon-btn.danger:hover { background: rgba(255,80,80,0.15); color: #ff5252; }
+.icon-btn.success:hover { background: rgba(37,211,102,0.15); color: #25D366; }
 
 /* MODAL */
 .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); z-index: 1000; align-items: flex-start; justify-content: center; padding: 30px 15px; overflow-y: auto; }
 .modal.show { display: flex; }
 .modal-box { background: linear-gradient(160deg, #1a1a1d, #0d0d0f); border: 1px solid rgba(255,140,0,0.15); border-radius: 20px; width: 100%; max-width: 600px; padding: 30px; position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.7); }
-.modal-box.large { max-width: 800px; }
+.modal-box.large { max-width: 850px; }
+.modal-box.xlarge { max-width: 1000px; }
 .modal-box h2 { font-size: 22px; margin-bottom: 6px; background: linear-gradient(135deg, #fff, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .modal-box .modal-sub { color: #888; font-size: 13px; margin-bottom: 22px; }
 .modal-close { position: absolute; top: 18px; right: 18px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.06); border: none; cursor: pointer; color: #fff; font-size: 18px; transition: 0.3s; z-index: 10; }
@@ -124,17 +136,33 @@ tbody td { padding: 14px; color: #ddd; }
 .form-field label { display: block; font-size: 11px; color: #aaa; font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
 .form-field input, .form-field select, .form-field textarea { width: 100%; padding: 11px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; color: #fff; font-size: 13px; font-family: 'Poppins'; outline: none; transition: 0.3s; }
 .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: #ff8c00; background: rgba(255,140,0,0.04); box-shadow: 0 0 0 3px rgba(255,140,0,0.1); }
+.form-field input:read-only { background: rgba(255,140,0,0.05); color: #ff8c00; cursor: not-allowed; font-weight: 600; }
 .form-field select option { background: #1a1a1d; }
 .form-field small.hint { color: #666; font-size: 11px; margin-top: 4px; display: block; }
+.form-field small.error-hint { color: #ff5252; font-size: 11px; margin-top: 4px; display: block; }
 .modal-actions { display: flex; gap: 10px; margin-top: 22px; justify-content: flex-end; }
 
 /* DETAIL VIEW */
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 20px; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
 .detail-item { background: rgba(255,255,255,0.03); padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
 .detail-item .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
 .detail-item .value { font-size: 14px; color: #fff; font-weight: 500; word-break: break-word; }
 .detail-item .value.big { font-size: 18px; color: #ff8c00; font-weight: 700; }
-.detail-section-title { font-size: 14px; color: #ff8c00; font-weight: 600; margin: 20px 0 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,140,0,0.15); }
+.detail-section-title { font-size: 14px; color: #ff8c00; font-weight: 600; margin: 20px 0 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,140,0,0.15); display: flex; justify-content: space-between; align-items: center; }
+.detail-section-title button { padding: 6px 12px; font-size: 11px; }
+
+/* PAYMENT LIST inside order detail */
+.payment-list { display: flex; flex-direction: column; gap: 10px; }
+.payment-row { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.payment-info { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 140px; }
+.payment-info .pmt-id { font-size: 12px; color: #ff8c00; font-weight: 600; }
+.payment-info .pmt-meta { font-size: 11px; color: #888; }
+.payment-amount { font-size: 16px; color: #25D366; font-weight: 700; }
+
+/* INVOICE VIEWER */
+.invoice-viewer { background: #0a0a0c; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; min-height: 500px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.invoice-viewer iframe { width: 100%; height: 600px; border: 0; background: white; }
+.invoice-viewer img { max-width: 100%; max-height: 600px; object-fit: contain; }
 
 /* PAGES */
 .page-section { display: none; }
@@ -145,7 +173,7 @@ tbody td { padding: 14px; color: #ddd; }
 .empty-state h3 { color: #aaa; margin-bottom: 8px; }
 .empty-state p { font-size: 13px; }
 
-.toast { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #16161a, #0a0a0c); border: 1px solid rgba(37,211,102,0.4); padding: 14px 20px; border-radius: 12px; color: #fff; font-size: 13px; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 2000; transform: translateX(400px); transition: 0.4s; }
+.toast { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #16161a, #0a0a0c); border: 1px solid rgba(37,211,102,0.4); padding: 14px 20px; border-radius: 12px; color: #fff; font-size: 13px; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 2000; transform: translateX(400px); transition: 0.4s; max-width: 400px; }
 .toast.show { transform: translateX(0); }
 .toast.error { border-color: rgba(255,80,80,0.4); }
 .toast i { color: #25D366; font-size: 18px; }
@@ -178,6 +206,7 @@ tbody td { padding: 14px; color: #ddd; }
     <div class="menu-label">Main</div>
     <div class="menu-item active" data-page="dashboard"><i class="fa-solid fa-gauge-high"></i> Dashboard</div>
     <div class="menu-item" data-page="orders"><i class="fa-solid fa-box"></i> Orders</div>
+    <div class="menu-item" data-page="quotations"><i class="fa-solid fa-file-lines"></i> Quotations</div>
     <div class="menu-item" data-page="customers"><i class="fa-solid fa-users"></i> Customers</div>
     <div class="menu-item" data-page="revenue"><i class="fa-solid fa-chart-line"></i> Revenue</div>
     <div class="menu-item" data-page="invoices"><i class="fa-solid fa-file-invoice"></i> Invoices</div>
@@ -219,10 +248,11 @@ tbody td { padding: 14px; color: #ddd; }
     <div class="charts-row">
       <div class="chart-card">
         <div class="chart-header"><h3>Revenue Overview</h3>
-          <select id="revenueRange" onchange="updateRevenueChart()">
+          <select id="revenueRange" onchange="renderDashboardChart()">
             <option value="7">Last 7 Days</option>
             <option value="30" selected>Last 30 Days</option>
             <option value="90">Last 90 Days</option>
+            <option value="365">Last 1 Year</option>
           </select>
         </div>
         <div class="chart-container"><canvas id="revenueChart"></canvas></div>
@@ -267,6 +297,34 @@ tbody td { padding: 14px; color: #ddd; }
     </div>
   </section>
 
+  <!-- QUOTATIONS -->
+  <section class="page-section" id="page-quotations">
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-icon pink"><i class="fa-solid fa-file-lines"></i></div><h3>Total Quotations</h3><div class="stat-value" id="quo-total">0</div><div class="stat-trend">All time</div></div>
+      <div class="stat-card"><div class="stat-icon blue"><i class="fa-solid fa-hourglass-half"></i></div><h3>Pending</h3><div class="stat-value" id="quo-pending">0</div><div class="stat-trend">Awaiting reply</div></div>
+      <div class="stat-card"><div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div><h3>Converted</h3><div class="stat-value" id="quo-converted">0</div><div class="stat-trend">Became orders</div></div>
+      <div class="stat-card"><div class="stat-icon purple"><i class="fa-solid fa-percent"></i></div><h3>Conversion Rate</h3><div class="stat-value" id="quo-rate">0%</div><div class="stat-trend">Quotes → Orders</div></div>
+    </div>
+    <div class="section-card">
+      <div class="section-header"><h2>All Quotations</h2>
+        <div class="section-actions">
+          <button class="btn-primary" onclick="openQuotationModal()"><i class="fa-solid fa-plus"></i> Add Quotation</button>
+        </div>
+      </div>
+      <div class="filters" id="quoFilters">
+        <div class="filter-pill active" data-filter="all">All</div>
+        <div class="filter-pill" data-filter="Pending">Pending</div>
+        <div class="filter-pill" data-filter="Accepted">Accepted</div>
+        <div class="filter-pill" data-filter="Rejected">Rejected</div>
+        <div class="filter-pill" data-filter="Converted">Converted</div>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Quotation ID</th><th>Customer</th><th>Job</th><th>Amount</th><th>Status</th><th>Valid Until</th><th>Actions</th></tr></thead>
+        <tbody id="quotationsTable"></tbody>
+      </table></div>
+    </div>
+  </section>
+
   <!-- CUSTOMERS -->
   <section class="page-section" id="page-customers">
     <div class="section-card">
@@ -282,7 +340,7 @@ tbody td { padding: 14px; color: #ddd; }
   <section class="page-section" id="page-revenue">
     <div class="stats-grid">
       <div class="stat-card"><div class="stat-icon green"><i class="fa-solid fa-sack-dollar"></i></div><h3>Total Revenue</h3><div class="stat-value" id="rev-total">₹0</div></div>
-      <div class="stat-card"><div class="stat-icon orange"><i class="fa-solid fa-wallet"></i></div><h3>Advance Collected</h3><div class="stat-value" id="rev-advance">₹0</div></div>
+      <div class="stat-card"><div class="stat-icon orange"><i class="fa-solid fa-wallet"></i></div><h3>Total Paid</h3><div class="stat-value" id="rev-advance">₹0</div></div>
       <div class="stat-card"><div class="stat-icon blue"><i class="fa-solid fa-hourglass-half"></i></div><h3>Pending Payments</h3><div class="stat-value" id="rev-pending">₹0</div></div>
       <div class="stat-card"><div class="stat-icon purple"><i class="fa-solid fa-chart-pie"></i></div><h3>Avg Order Value</h3><div class="stat-value" id="rev-aov">₹0</div></div>
     </div>
@@ -291,17 +349,17 @@ tbody td { padding: 14px; color: #ddd; }
         <h2>Revenue Trend</h2>
         <div class="section-actions">
           <select id="revGrouping" onchange="renderRevenueChart()">
-            <option value="day">Daily</option>
+            <option value="day" selected>Daily</option>
             <option value="week">Weekly</option>
-            <option value="month" selected>Monthly</option>
+            <option value="month">Monthly</option>
             <option value="year">Yearly</option>
           </select>
           <select id="revPreset" onchange="applyRevPreset()">
-            <option value="all" selected>All Time</option>
+            <option value="30" selected>Last 30 Days</option>
             <option value="7">Last 7 Days</option>
-            <option value="30">Last 30 Days</option>
             <option value="90">Last 90 Days</option>
             <option value="365">Last 1 Year</option>
+            <option value="all">All Time</option>
             <option value="custom">Custom Range</option>
           </select>
           <div class="date-range-inputs" id="revCustomRange">
@@ -319,9 +377,9 @@ tbody td { padding: 14px; color: #ddd; }
   <!-- INVOICES -->
   <section class="page-section" id="page-invoices">
     <div class="section-card">
-      <div class="section-header"><h2>Invoices</h2></div>
+      <div class="section-header"><h2>Invoices</h2><p style="color:#888;font-size:12px">All payment invoices across orders</p></div>
       <div class="table-wrap"><table>
-        <thead><tr><th>Order ID</th><th>Customer</th><th>Amount</th><th>Date</th><th>Invoice</th></tr></thead>
+        <thead><tr><th>Invoice ID</th><th>Order ID</th><th>Customer</th><th>Type</th><th>Amount</th><th>Date</th><th>Invoice File</th></tr></thead>
         <tbody id="invoicesTable"></tbody>
       </table></div>
     </div>
@@ -336,26 +394,96 @@ tbody td { padding: 14px; color: #ddd; }
     <p class="modal-sub">Fill in customer & order details below</p>
     <form id="orderForm" onsubmit="saveOrder(event)">
       <div class="form-grid">
-        <div class="form-field"><label>Customer Email *</label><input type="email" id="f-email" required placeholder="customer@email.com"></div>
-        <div class="form-field"><label>Customer Name *</label><input type="text" id="f-name" required placeholder="Full name"></div>
-        <div class="form-field"><label>Order ID *</label><input type="text" id="f-orderId" required placeholder="eve0001"></div>
-        <div class="form-field"><label>Job Name *</label><input type="text" id="f-job" required placeholder="Business Cards"></div>
-        <div class="form-field"><label>Quantity</label><input type="text" id="f-qty" placeholder="500"></div>
+        <div class="form-field"><label>Order ID (auto)</label><input type="text" id="f-orderId" readonly placeholder="EVE-ORD-00001"></div>
         <div class="form-field"><label>Status</label>
           <select id="f-status"><option>New Order</option><option>Printing</option><option>Ready</option><option>Dispatched</option><option>Delivered</option></select>
         </div>
-        <div class="form-field"><label>Total Amount (₹)</label><input type="number" id="f-total" placeholder="10000"></div>
-        <div class="form-field"><label>Advance Paid (₹)</label><input type="number" id="f-advance" placeholder="5000"></div>
+        <div class="form-field"><label>Customer Email *</label><input type="email" id="f-email" required placeholder="customer@email.com"></div>
+        <div class="form-field"><label>Customer Name *</label><input type="text" id="f-name" required placeholder="Full name"></div>
+        <div class="form-field"><label>Job Name *</label><input type="text" id="f-job" required placeholder="Business Cards"></div>
+        <div class="form-field"><label>Quantity</label><input type="text" id="f-qty" placeholder="500"></div>
+        <div class="form-field"><label>Total Amount (₹) *</label><input type="number" id="f-total" min="0" step="1" required placeholder="10000"></div>
         <div class="form-field"><label>Delivery Date</label><input type="date" id="f-delivery"></div>
-        <div class="form-field"><label>Invoice File (max 800KB)</label>
+        <div class="form-field full"><label>Initial Advance Paid (₹) — optional</label><input type="number" id="f-advance" min="0" step="1" placeholder="0 (you can add payments later from order details)"><small class="hint">Must be ≤ Total Amount. Leave blank/0 if no advance taken yet. You can add more payments later.</small></div>
+        <div class="form-field full"><label>Initial Invoice File (max 800KB) — optional</label>
           <input type="file" id="f-invoice" accept=".pdf,image/*">
-          <small class="hint">PDF or image. Files larger than 800KB will be skipped.</small>
+          <small class="hint">PDF or image for the initial payment. Add more invoices from order details later.</small>
         </div>
         <div class="form-field full"><label>Notes (optional)</label><textarea id="f-notes" rows="2" placeholder="Any special instructions..."></textarea></div>
       </div>
       <div class="modal-actions">
         <button type="button" class="btn-secondary" onclick="closeOrderModal()">Cancel</button>
         <button type="submit" class="btn-primary" id="saveBtn"><i class="fa-solid fa-check"></i> Save Order</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ADD PAYMENT MODAL (for existing orders) -->
+<div class="modal" id="paymentModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closePaymentModal()">×</button>
+    <h2>Add Payment</h2>
+    <p class="modal-sub" id="paymentModalSub">Record an additional payment for this order</p>
+    <form id="paymentForm" onsubmit="addPayment(event)">
+      <div class="form-grid">
+        <div class="form-field"><label>Invoice ID (auto)</label><input type="text" id="p-invoiceId" readonly></div>
+        <div class="form-field"><label>Payment Type *</label>
+          <select id="p-type" required>
+            <option>Advance</option>
+            <option>Partial</option>
+            <option>Balance</option>
+            <option>Final</option>
+            <option>Refund</option>
+          </select>
+        </div>
+        <div class="form-field"><label>Amount (₹) *</label><input type="number" id="p-amount" min="0" step="1" required placeholder="5000"></div>
+        <div class="form-field"><label>Payment Date *</label><input type="date" id="p-date" required></div>
+        <div class="form-field full"><label>Invoice File (max 800KB) — optional</label>
+          <input type="file" id="p-file" accept=".pdf,image/*">
+          <small class="hint">Upload invoice/receipt for this specific payment.</small>
+        </div>
+        <div class="form-field full"><label>Note (optional)</label><textarea id="p-note" rows="2" placeholder="e.g., Paid via UPI..."></textarea></div>
+      </div>
+      <div class="form-field full" style="margin-top:14px;background:rgba(255,140,0,0.06);padding:12px 14px;border-radius:10px;border:1px solid rgba(255,140,0,0.15)">
+        <div style="font-size:11px;color:#aaa;margin-bottom:4px">Order Summary</div>
+        <div id="p-summary" style="font-size:13px"></div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" onclick="closePaymentModal()">Cancel</button>
+        <button type="submit" class="btn-primary" id="payBtn"><i class="fa-solid fa-check"></i> Add Payment</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ADD/EDIT QUOTATION MODAL -->
+<div class="modal" id="quotationModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeQuotationModal()">×</button>
+    <h2 id="quoModalTitle">Add Quotation</h2>
+    <p class="modal-sub">Create a new price quotation for a potential customer</p>
+    <form id="quotationForm" onsubmit="saveQuotation(event)">
+      <div class="form-grid">
+        <div class="form-field"><label>Quotation ID (auto)</label><input type="text" id="q-quoId" readonly placeholder="EVE-QUO-00001"></div>
+        <div class="form-field"><label>Status</label>
+          <select id="q-status">
+            <option>Pending</option>
+            <option>Accepted</option>
+            <option>Rejected</option>
+          </select>
+        </div>
+        <div class="form-field"><label>Customer Email *</label><input type="email" id="q-email" required></div>
+        <div class="form-field"><label>Customer Name *</label><input type="text" id="q-name" required></div>
+        <div class="form-field"><label>Job Name *</label><input type="text" id="q-job" required placeholder="Business Cards"></div>
+        <div class="form-field"><label>Quantity</label><input type="text" id="q-qty" placeholder="500"></div>
+        <div class="form-field"><label>Estimated Amount (₹) *</label><input type="number" id="q-amount" min="0" step="1" required></div>
+        <div class="form-field"><label>Valid Until</label><input type="date" id="q-validUntil"></div>
+        <div class="form-field full"><label>Notes / Description</label><textarea id="q-notes" rows="3" placeholder="Job specifications, materials, etc..."></textarea></div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" onclick="closeQuotationModal()">Cancel</button>
+        <button type="submit" class="btn-primary" id="quoSaveBtn"><i class="fa-solid fa-check"></i> Save Quotation</button>
       </div>
     </form>
   </div>
@@ -373,7 +501,7 @@ tbody td { padding: 14px; color: #ddd; }
       <div class="detail-item"><div class="label">Total Value</div><div class="value" id="custTotalValue">₹0</div></div>
       <div class="detail-item"><div class="label">Pending Amount</div><div class="value" id="custPending">₹0</div></div>
     </div>
-    <div class="detail-section-title">All Orders <small style="color:#666;font-weight:400">(click any to view details)</small></div>
+    <div class="detail-section-title"><span>All Orders</span><small style="color:#666;font-weight:400">click any to view details</small></div>
     <div class="table-wrap"><table>
       <thead><tr><th>Order ID</th><th>Job</th><th>Status</th><th>Payment</th><th>Delivery</th></tr></thead>
       <tbody id="custOrdersTable"></tbody>
@@ -383,14 +511,36 @@ tbody td { padding: 14px; color: #ddd; }
 
 <!-- ORDER DETAIL MODAL -->
 <div class="modal" id="orderDetailModal">
-  <div class="modal-box">
+  <div class="modal-box large">
     <button class="modal-close" onclick="closeOrderDetailModal()">×</button>
     <h2 id="orderDetailTitle">Order Details</h2>
     <p class="modal-sub" id="orderDetailSub">—</p>
     <div class="detail-grid" id="orderDetailGrid"></div>
+
+    <div class="detail-section-title">
+      <span>Payment History</span>
+      <button class="btn-primary" id="addPaymentBtn"><i class="fa-solid fa-plus"></i> Add Payment</button>
+    </div>
+    <div id="orderPaymentList" class="payment-list"></div>
+
     <div class="modal-actions">
       <button class="btn-secondary" onclick="closeOrderDetailModal()">Close</button>
+      <button class="btn-danger" id="orderDetailDeleteBtn"><i class="fa-solid fa-trash"></i> Delete</button>
       <button class="btn-primary" id="orderDetailEditBtn"><i class="fa-solid fa-pen"></i> Edit Order</button>
+    </div>
+  </div>
+</div>
+
+<!-- INVOICE VIEWER MODAL (fixes blank page bug) -->
+<div class="modal" id="invoiceViewerModal">
+  <div class="modal-box xlarge">
+    <button class="modal-close" onclick="closeInvoiceViewer()">×</button>
+    <h2 id="invViewerTitle">Invoice</h2>
+    <p class="modal-sub" id="invViewerSub">—</p>
+    <div class="invoice-viewer" id="invViewerBody"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeInvoiceViewer()">Close</button>
+      <button class="btn-primary" id="invDownloadBtn"><i class="fa-solid fa-download"></i> Download</button>
     </div>
   </div>
 </div>
@@ -417,20 +567,98 @@ const db = getFirestore(app);
 const ADMIN_EMAIL = "sharangoud4444@gmail.com";
 
 let allOrders = [];
+let allQuotations = [];
 let currentFilter = "all";
+let currentQuoFilter = "all";
 let revenueChart, statusChart, monthlyChart;
 let editId = null;
+let editQuoId = null;
+let activeOrderId = null;   // for payment modal
 
-// AUTH
+// =================== HELPERS ===================
+function todayStr() { return new Date().toISOString().split("T")[0]; }
+function fmtINR(n) { return "₹" + (Number(n)||0).toLocaleString('en-IN'); }
+function initials(name) { if (!name) return "?"; return name.split(" ").map(s=>s[0]).join("").toUpperCase().slice(0,2); }
+function statusClass(s) {
+  const m = {
+    "New Order":"status-new","Printing":"status-printing","Ready":"status-ready","Dispatched":"status-dispatched","Delivered":"status-delivered",
+    "Pending":"status-pending","Accepted":"status-accepted","Rejected":"status-rejected","Converted":"status-converted"
+  };
+  return m[s] || "status-new";
+}
+function paymentStatusClass(p) {
+  if (p === "Paid") return "status-paid";
+  if (p === "Partial") return "status-partial";
+  return "status-unpaid";
+}
+
+// ========== Backward-compatible payment normalization ==========
+// Old schema: { advancePaid: number, invoice: base64, invoiceName: string }
+// New schema: { payments: [{ invoiceId, type, amount, date, file, fileName, note }] }
+function normalizeOrder(o) {
+  if (!o.payments || !Array.isArray(o.payments)) o.payments = [];
+  // Migrate legacy advancePaid → payment entry on the fly
+  if ((!o.payments.length) && Number(o.advancePaid) > 0) {
+    o.payments = [{
+      invoiceId: o.invoiceId || "",   // may be empty for very old data — will assign on next save
+      type: "Advance",
+      amount: Number(o.advancePaid) || 0,
+      date: o.createdAt || todayStr(),
+      file: o.invoice || null,
+      fileName: o.invoiceName || "",
+      note: "Migrated from legacy field"
+    }];
+  }
+  return o;
+}
+function totalPaid(o) { return (o.payments||[]).filter(p=>p.type!=="Refund").reduce((s,p)=>s+(Number(p.amount)||0),0) - (o.payments||[]).filter(p=>p.type==="Refund").reduce((s,p)=>s+(Number(p.amount)||0),0); }
+function paymentStatus(o) {
+  const paid = totalPaid(o);
+  const total = Number(o.totalAmount) || 0;
+  if (total <= 0) return "Unpaid";
+  if (paid >= total) return "Paid";
+  if (paid > 0) return "Partial";
+  return "Unpaid";
+}
+
+// ========== Auto-ID generators ==========
+function nextOrderId() {
+  let max = 0;
+  allOrders.forEach(o => {
+    const m = /EVE-ORD-(\d+)/.exec(o.orderId || "");
+    if (m) max = Math.max(max, parseInt(m[1]));
+  });
+  return "EVE-ORD-" + String(max + 1).padStart(5, "0");
+}
+function nextInvoiceId() {
+  let max = 0;
+  allOrders.forEach(o => {
+    (o.payments||[]).forEach(p => {
+      const m = /EVE-INV-(\d+)/.exec(p.invoiceId || "");
+      if (m) max = Math.max(max, parseInt(m[1]));
+    });
+  });
+  return "EVE-INV-" + String(max + 1).padStart(5, "0");
+}
+function nextQuotationId() {
+  let max = 0;
+  allQuotations.forEach(q => {
+    const m = /EVE-QUO-(\d+)/.exec(q.quotationId || "");
+    if (m) max = Math.max(max, parseInt(m[1]));
+  });
+  return "EVE-QUO-" + String(max + 1).padStart(5, "0");
+}
+
+// ========== AUTH ==========
 onAuthStateChanged(auth, (user) => {
   if (!user) { window.location.href = "index.html"; return; }
   if (user.email !== ADMIN_EMAIL) { alert("Not authorized ❌"); window.location.href = "index.html"; return; }
   document.getElementById("userName").innerText = user.email.split("@")[0];
   document.getElementById("userAvatar").innerText = user.email[0].toUpperCase();
-  loadOrders();
+  loadAll();
 });
 
-// TOAST
+// ========== TOAST ==========
 function toast(msg, isError = false) {
   const t = document.getElementById("toast");
   const m = document.getElementById("toastMsg");
@@ -438,59 +666,62 @@ function toast(msg, isError = false) {
   t.querySelector("i").className = isError ? "fa-solid fa-circle-exclamation" : "fa-solid fa-circle-check";
   m.innerText = msg;
   t.classList.add("show");
-  setTimeout(() => t.classList.remove("show"), 3000);
+  setTimeout(() => t.classList.remove("show"), 3500);
 }
+window.toast = toast;
 
-// LOAD
-async function loadOrders() {
+// ========== LOAD ==========
+async function loadAll() {
   try {
-    const snap = await getDocs(collection(db, "orders"));
+    const [oSnap, qSnap] = await Promise.all([
+      getDocs(collection(db, "orders")),
+      getDocs(collection(db, "quotations"))
+    ]);
     allOrders = [];
-    snap.forEach(d => allOrders.push({ id: d.id, ...d.data() }));
+    oSnap.forEach(d => allOrders.push(normalizeOrder({ id: d.id, ...d.data() })));
+    allQuotations = [];
+    qSnap.forEach(d => allQuotations.push({ id: d.id, ...d.data() }));
     renderAll();
   } catch (e) {
-    console.error("Load orders failed:", e);
-    toast("Failed to load orders", true);
+    console.error("Load failed:", e);
+    toast("Failed to load data: " + e.message, true);
   }
 }
 
 function renderAll() {
   renderStats(); renderRecentOrders(); renderOrdersTable();
-  renderCustomers(); renderRevenue(); renderInvoices(); renderCharts();
+  renderCustomers(); renderRevenue(); renderInvoices();
+  renderQuotations(); renderQuotationStats();
+  renderCharts();
 }
 
 function renderStats() {
   const total = allOrders.length;
-  const revenue = allOrders.reduce((s, o) => s + (Number(o.advancePaid) || 0), 0);
+  const revenue = allOrders.reduce((s, o) => s + totalPaid(o), 0);
   const pending = allOrders.filter(o => o.status !== "Delivered").length;
   const customers = new Set(allOrders.map(o => o.email).filter(Boolean)).size;
   document.getElementById("stat-total-orders").innerText = total;
-  document.getElementById("stat-revenue").innerText = "₹" + revenue.toLocaleString('en-IN');
+  document.getElementById("stat-revenue").innerText = fmtINR(revenue);
   document.getElementById("stat-pending").innerText = pending;
   document.getElementById("stat-customers").innerText = customers;
 }
 
-function statusClass(s) {
-  return { "New Order":"status-new","Printing":"status-printing","Ready":"status-ready","Dispatched":"status-dispatched","Delivered":"status-delivered" }[s] || "status-new";
-}
-function initials(name) { if (!name) return "?"; return name.split(" ").map(s=>s[0]).join("").toUpperCase().slice(0,2); }
-
 function orderRow(o, showActions = false) {
-  const paid = Number(o.advancePaid) || 0;
+  const paid = totalPaid(o);
   const total = Number(o.totalAmount) || 0;
   const pct = total > 0 ? Math.min(100, (paid/total)*100) : 0;
   return `
     <tr class="clickable" onclick="window.viewOrderDetail('${o.id}')">
-      <td><span class="order-id">#${o.orderId || "-"}</span></td>
+      <td><span class="order-id">${o.orderId || "-"}</span></td>
       <td><div class="cust-cell"><div class="cust-avatar">${initials(o.customerName)}</div><div class="cust-info"><strong>${o.customerName||"-"}</strong><small>${o.email||""}</small></div></div></td>
       <td>${o.jobName || "-"}<br><small style="color:#666">Qty: ${o.quantity || "-"}</small></td>
       <td><span class="status-badge ${statusClass(o.status)}">${o.status || "-"}</span></td>
-      <td class="payment-cell"><span class="amount-paid">₹${paid.toLocaleString('en-IN')}</span><span class="amount-total"> / ₹${total.toLocaleString('en-IN')}</span><div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div></td>
+      <td class="payment-cell"><span class="amount-paid">${fmtINR(paid)}</span><span class="amount-total"> / ${fmtINR(total)}</span><div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div></td>
       <td>${o.deliveryDate || "-"}</td>
       ${showActions ? `<td onclick="event.stopPropagation()">
         <div class="action-btns">
-          ${o.invoice ? `<a href="${o.invoice}" target="_blank" class="icon-btn" title="View Invoice"><i class="fa-solid fa-file-pdf"></i></a>` : ""}
-          <button class="icon-btn" onclick="window.editOrder('${o.id}')" title="Edit"><i class="fa-solid fa-pen"></i></button>
+          <button class="icon-btn success" onclick="window.openPaymentModal('${o.id}')" title="Add Payment"><i class="fa-solid fa-plus"></i></button>
+          <button class="icon-btn" onclick="window.editOrder('${o.id}')" title="Edit Order"><i class="fa-solid fa-pen"></i></button>
           <button class="icon-btn danger" onclick="window.deleteOrder('${o.id}')" title="Delete"><i class="fa-solid fa-trash"></i></button>
         </div>
       </td>` : ""}
@@ -498,7 +729,7 @@ function orderRow(o, showActions = false) {
 }
 
 function renderRecentOrders() {
-  const recent = [...allOrders].slice(0, 5);
+  const recent = [...allOrders].sort((a,b)=>(b.createdAt||"").localeCompare(a.createdAt||"")).slice(0, 5);
   document.getElementById("recentOrdersTable").innerHTML = recent.length
     ? recent.map(o => orderRow(o,false)).join("")
     : `<tr><td colspan="6"><div class="empty-state"><i class="fa-solid fa-inbox"></i><h3>No orders yet</h3><p>Add your first order to get started</p></div></td></tr>`;
@@ -512,6 +743,7 @@ function renderOrdersTable() {
     (o.customerName||"").toLowerCase().includes(search) ||
     (o.email||"").toLowerCase().includes(search) ||
     (o.jobName||"").toLowerCase().includes(search));
+  filtered = filtered.sort((a,b)=>(b.createdAt||"").localeCompare(a.createdAt||""));
   document.getElementById("ordersTable").innerHTML = filtered.length
     ? filtered.map(o => orderRow(o,true)).join("")
     : `<tr><td colspan="7"><div class="empty-state"><i class="fa-solid fa-inbox"></i><h3>No orders found</h3><p>Try changing filters</p></div></td></tr>`;
@@ -524,7 +756,7 @@ function renderCustomers() {
     if (!key) return;
     if (!map[key]) map[key] = { name: o.customerName, email: o.email, orders: 0, spent: 0, last: "" };
     map[key].orders++;
-    map[key].spent += Number(o.advancePaid) || 0;
+    map[key].spent += totalPaid(o);
     if (o.deliveryDate && o.deliveryDate > map[key].last) map[key].last = o.deliveryDate;
   });
   const rows = Object.values(map);
@@ -534,7 +766,7 @@ function renderCustomers() {
         <td><div class="cust-cell"><div class="cust-avatar">${initials(c.name)}</div><div class="cust-info"><strong>${c.name||"-"}</strong></div></div></td>
         <td>${c.email||"-"}</td>
         <td><strong>${c.orders}</strong></td>
-        <td style="color:#25D366;font-weight:600">₹${c.spent.toLocaleString('en-IN')}</td>
+        <td style="color:#25D366;font-weight:600">${fmtINR(c.spent)}</td>
         <td>${c.last||"-"}</td>
       </tr>`).join("")
     : `<tr><td colspan="5"><div class="empty-state"><i class="fa-solid fa-users"></i><h3>No customers yet</h3></div></td></tr>`;
@@ -542,51 +774,255 @@ function renderCustomers() {
 
 function renderRevenue() {
   const total = allOrders.reduce((s,o)=>s+(Number(o.totalAmount)||0), 0);
-  const advance = allOrders.reduce((s,o)=>s+(Number(o.advancePaid)||0), 0);
-  const pending = total - advance;
+  const paid = allOrders.reduce((s,o)=>s+totalPaid(o), 0);
+  const pending = total - paid;
   const aov = allOrders.length > 0 ? total / allOrders.length : 0;
-  document.getElementById("rev-total").innerText = "₹" + total.toLocaleString('en-IN');
-  document.getElementById("rev-advance").innerText = "₹" + advance.toLocaleString('en-IN');
-  document.getElementById("rev-pending").innerText = "₹" + pending.toLocaleString('en-IN');
-  document.getElementById("rev-aov").innerText = "₹" + Math.round(aov).toLocaleString('en-IN');
+  document.getElementById("rev-total").innerText = fmtINR(total);
+  document.getElementById("rev-advance").innerText = fmtINR(paid);
+  document.getElementById("rev-pending").innerText = fmtINR(pending);
+  document.getElementById("rev-aov").innerText = fmtINR(Math.round(aov));
 }
 
 function renderInvoices() {
-  const withInv = allOrders.filter(o => o.invoice);
-  document.getElementById("invoicesTable").innerHTML = withInv.length
-    ? withInv.map(o => `
+  const rows = [];
+  allOrders.forEach(o => {
+    (o.payments||[]).forEach((p, idx) => {
+      rows.push({ ...p, idx, order: o });
+    });
+  });
+  rows.sort((a,b) => (b.date||"").localeCompare(a.date||""));
+  document.getElementById("invoicesTable").innerHTML = rows.length
+    ? rows.map(p => `
       <tr>
-        <td><span class="order-id">#${o.orderId}</span></td>
-        <td>${o.customerName||"-"}</td>
-        <td style="color:#25D366;font-weight:600">₹${(Number(o.totalAmount)||0).toLocaleString('en-IN')}</td>
-        <td>${o.createdAt||"-"}</td>
-        <td><a href="${o.invoice}" target="_blank" class="btn-secondary"><i class="fa-solid fa-eye"></i> View</a></td>
+        <td><span class="order-id">${p.invoiceId || "—"}</span></td>
+        <td>${p.order.orderId || "-"}</td>
+        <td>${p.order.customerName || "-"}</td>
+        <td><span class="status-badge ${p.type==="Refund"?"status-rejected":"status-accepted"}">${p.type||"-"}</span></td>
+        <td style="color:#25D366;font-weight:600">${fmtINR(p.amount)}</td>
+        <td>${p.date||"-"}</td>
+        <td>${p.file ? `<button class="btn-secondary" onclick="window.viewInvoice('${p.order.id}', ${p.idx})"><i class="fa-solid fa-eye"></i> View</button>` : '<span style="color:#666">No file</span>'}</td>
       </tr>`).join("")
-    : `<tr><td colspan="5"><div class="empty-state"><i class="fa-solid fa-file-invoice"></i><h3>No invoices uploaded</h3></div></td></tr>`;
+    : `<tr><td colspan="7"><div class="empty-state"><i class="fa-solid fa-file-invoice"></i><h3>No invoices yet</h3><p>Invoices will appear here when payments are added</p></div></td></tr>`;
 }
 
-// CHARTS
-function renderCharts() {
-  // Daily revenue line
-  const days = parseInt(document.getElementById("revenueRange").value);
-  const labels = [], data = [];
-  for (let i = days-1; i >= 0; i--) {
-    const d = new Date(); d.setDate(d.getDate()-i);
-    const key = d.toISOString().split("T")[0];
-    labels.push(d.toLocaleDateString('en-IN', {month:'short', day:'numeric'}));
-    data.push(allOrders.filter(o => o.createdAt === key).reduce((s,o)=>s+(Number(o.advancePaid)||0), 0));
+// ========== INVOICE VIEWER (fixes blank page bug) ==========
+window.viewInvoice = function(orderId, paymentIdx) {
+  const o = allOrders.find(x => x.id === orderId);
+  if (!o) return;
+  const p = (o.payments||[])[paymentIdx];
+  if (!p || !p.file) { toast("Invoice file not found", true); return; }
+
+  document.getElementById("invViewerTitle").innerText = p.invoiceId || "Invoice";
+  document.getElementById("invViewerSub").innerText = `${p.type} payment of ${fmtINR(p.amount)} for ${o.orderId} · ${o.customerName||""}`;
+
+  const body = document.getElementById("invViewerBody");
+  const isPdf = (p.file||"").startsWith("data:application/pdf") || (p.fileName||"").toLowerCase().endsWith(".pdf");
+  const isImg = (p.file||"").startsWith("data:image/");
+
+  if (isPdf) {
+    body.innerHTML = `<iframe src="${p.file}" title="Invoice PDF"></iframe>`;
+  } else if (isImg) {
+    body.innerHTML = `<img src="${p.file}" alt="Invoice image">`;
+  } else {
+    body.innerHTML = `<div style="padding:40px;text-align:center;color:#aaa"><i class="fa-solid fa-file" style="font-size:50px;color:#666;margin-bottom:15px;display:block"></i>Preview not available for this file type.<br>Click Download below to save.</div>`;
   }
+
+  // Setup download button — works around base64-in-new-tab blocking
+  document.getElementById("invDownloadBtn").onclick = () => {
+    try {
+      const a = document.createElement("a");
+      a.href = p.file;
+      a.download = p.fileName || (p.invoiceId + (isPdf?".pdf":isImg?".png":""));
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    } catch(e) { toast("Download failed: " + e.message, true); }
+  };
+
+  document.getElementById("invoiceViewerModal").classList.add("show");
+};
+window.closeInvoiceViewer = () => document.getElementById("invoiceViewerModal").classList.remove("show");
+
+// ========== QUOTATIONS ==========
+function renderQuotationStats() {
+  const total = allQuotations.length;
+  const pending = allQuotations.filter(q => q.status === "Pending").length;
+  const converted = allQuotations.filter(q => q.status === "Converted").length;
+  const rate = total > 0 ? Math.round((converted/total)*100) : 0;
+  document.getElementById("quo-total").innerText = total;
+  document.getElementById("quo-pending").innerText = pending;
+  document.getElementById("quo-converted").innerText = converted;
+  document.getElementById("quo-rate").innerText = rate + "%";
+}
+
+function renderQuotations() {
+  let rows = currentQuoFilter === "all" ? allQuotations : allQuotations.filter(q => q.status === currentQuoFilter);
+  rows = rows.sort((a,b)=>(b.createdAt||"").localeCompare(a.createdAt||""));
+  document.getElementById("quotationsTable").innerHTML = rows.length
+    ? rows.map(q => `
+      <tr>
+        <td><span class="order-id">${q.quotationId || "-"}</span></td>
+        <td><div class="cust-cell"><div class="cust-avatar">${initials(q.customerName)}</div><div class="cust-info"><strong>${q.customerName||"-"}</strong><small>${q.email||""}</small></div></div></td>
+        <td>${q.jobName || "-"}<br><small style="color:#666">Qty: ${q.quantity || "-"}</small></td>
+        <td style="color:#ff8c00;font-weight:600">${fmtINR(q.estimatedAmount)}</td>
+        <td><span class="status-badge ${statusClass(q.status)}">${q.status || "-"}</span></td>
+        <td>${q.validUntil || "-"}</td>
+        <td>
+          <div class="action-btns">
+            ${q.status !== "Converted" ? `<button class="icon-btn success" onclick="window.convertQuotation('${q.id}')" title="Convert to Order"><i class="fa-solid fa-arrow-right"></i></button>` : ''}
+            <button class="icon-btn" onclick="window.editQuotation('${q.id}')" title="Edit"><i class="fa-solid fa-pen"></i></button>
+            <button class="icon-btn danger" onclick="window.deleteQuotation('${q.id}')" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </td>
+      </tr>`).join("")
+    : `<tr><td colspan="7"><div class="empty-state"><i class="fa-solid fa-file-lines"></i><h3>No quotations yet</h3><p>Create your first quotation</p></div></td></tr>`;
+}
+
+window.openQuotationModal = () => {
+  editQuoId = null;
+  document.getElementById("quoModalTitle").innerText = "Add Quotation";
+  document.getElementById("quotationForm").reset();
+  document.getElementById("q-quoId").value = nextQuotationId();
+  document.getElementById("q-status").value = "Pending";
+  document.getElementById("quotationModal").classList.add("show");
+};
+window.closeQuotationModal = () => document.getElementById("quotationModal").classList.remove("show");
+
+window.editQuotation = (id) => {
+  const q = allQuotations.find(x => x.id === id);
+  if (!q) return;
+  editQuoId = id;
+  document.getElementById("quoModalTitle").innerText = "Edit Quotation";
+  document.getElementById("q-quoId").value = q.quotationId || "";
+  document.getElementById("q-status").value = q.status || "Pending";
+  document.getElementById("q-email").value = q.email || "";
+  document.getElementById("q-name").value = q.customerName || "";
+  document.getElementById("q-job").value = q.jobName || "";
+  document.getElementById("q-qty").value = q.quantity || "";
+  document.getElementById("q-amount").value = q.estimatedAmount || "";
+  document.getElementById("q-validUntil").value = q.validUntil || "";
+  document.getElementById("q-notes").value = q.notes || "";
+  document.getElementById("quotationModal").classList.add("show");
+};
+
+window.saveQuotation = async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById("quoSaveBtn");
+  btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
+  try {
+    const data = {
+      quotationId: document.getElementById("q-quoId").value,
+      status: document.getElementById("q-status").value,
+      email: document.getElementById("q-email").value.trim(),
+      customerName: document.getElementById("q-name").value.trim(),
+      jobName: document.getElementById("q-job").value.trim(),
+      quantity: document.getElementById("q-qty").value.trim(),
+      estimatedAmount: Number(document.getElementById("q-amount").value) || 0,
+      validUntil: document.getElementById("q-validUntil").value,
+      notes: document.getElementById("q-notes").value.trim(),
+      createdAt: editQuoId ? (allQuotations.find(x=>x.id===editQuoId)?.createdAt || todayStr()) : todayStr()
+    };
+    if (editQuoId) await updateDoc(doc(db, "quotations", editQuoId), data);
+    else await addDoc(collection(db, "quotations"), data);
+    closeQuotationModal();
+    await loadAll();
+    toast(editQuoId ? "Quotation updated ✅" : "Quotation added ✅");
+  } catch(err) {
+    console.error(err);
+    toast("Error: " + err.message, true);
+  } finally {
+    btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-check"></i> Save Quotation';
+  }
+};
+
+window.deleteQuotation = async (id) => {
+  if (!confirm("Delete this quotation?")) return;
+  try { await deleteDoc(doc(db, "quotations", id)); await loadAll(); toast("Quotation deleted"); }
+  catch(e) { toast("Delete failed: " + e.message, true); }
+};
+
+window.convertQuotation = async (id) => {
+  const q = allQuotations.find(x => x.id === id);
+  if (!q) return;
+  if (!confirm(`Convert "${q.quotationId}" into a new order?`)) return;
+  try {
+    const newOrderId = nextOrderId();
+    const orderData = {
+      orderId: newOrderId,
+      email: q.email,
+      customerName: q.customerName,
+      jobName: q.jobName,
+      quantity: q.quantity,
+      status: "New Order",
+      totalAmount: Number(q.estimatedAmount) || 0,
+      payments: [],
+      deliveryDate: "",
+      notes: "Converted from " + (q.quotationId||""),
+      createdAt: todayStr()
+    };
+    await addDoc(collection(db, "orders"), orderData);
+    await updateDoc(doc(db, "quotations", id), { status: "Converted", convertedToOrderId: newOrderId });
+    await loadAll();
+    toast(`Converted to ${newOrderId} ✅`);
+  } catch(e) {
+    toast("Convert failed: " + e.message, true);
+  }
+};
+
+// ========== CHARTS ==========
+function renderCharts() {
+  renderDashboardChart();
+  renderStatusChart();
+  renderRevenueChart();
+}
+
+// Build continuous date range (FIXES dashboard chart showing only days with orders)
+function buildDailyData(daysBack) {
+  const labels = [], data = [], keys = [];
+  const today = new Date(); today.setHours(0,0,0,0);
+  for (let i = daysBack-1; i >= 0; i--) {
+    const d = new Date(today); d.setDate(d.getDate()-i);
+    const key = d.toISOString().split("T")[0];
+    keys.push(key);
+    labels.push(d.toLocaleDateString('en-IN', { month:'short', day:'numeric' }));
+    data.push(0);
+  }
+  // Sum all payments by their date
+  allOrders.forEach(o => {
+    (o.payments||[]).forEach(p => {
+      if (!p.date) return;
+      const idx = keys.indexOf(p.date);
+      if (idx !== -1) {
+        const amt = (p.type === "Refund" ? -1 : 1) * (Number(p.amount)||0);
+        data[idx] += amt;
+      }
+    });
+  });
+  return { labels, data };
+}
+
+window.renderDashboardChart = function() {
+  const days = parseInt(document.getElementById("revenueRange").value);
+  const { labels, data } = buildDailyData(days);
   if (revenueChart) revenueChart.destroy();
   const ctx = document.getElementById("revenueChart").getContext("2d");
   const grad = ctx.createLinearGradient(0,0,0,280);
   grad.addColorStop(0,"rgba(255,140,0,0.4)"); grad.addColorStop(1,"rgba(255,140,0,0)");
   revenueChart = new Chart(ctx, {
     type:'line',
-    data:{ labels, datasets:[{ label:'Revenue (₹)', data, borderColor:'#ff8c00', backgroundColor:grad, fill:true, tension:0.4, borderWidth:2.5, pointBackgroundColor:'#ff8c00', pointRadius:3 }] },
-    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ y:{grid:{color:'rgba(255,255,255,0.05)'},ticks:{color:'#888'}}, x:{grid:{display:false},ticks:{color:'#888'}} } }
+    data:{ labels, datasets:[{ label:'Revenue (₹)', data, borderColor:'#ff8c00', backgroundColor:grad, fill:true, tension:0.35, borderWidth:2.5, pointBackgroundColor:'#ff8c00', pointRadius: days <= 30 ? 3 : 0, pointHoverRadius: 5 }] },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: c => fmtINR(c.raw) } } },
+      scales:{
+        y:{ beginAtZero:true, grid:{color:'rgba(255,255,255,0.05)'}, ticks:{ color:'#888', callback: v => fmtINR(v) } },
+        x:{ grid:{display:false}, ticks:{ color:'#888', maxRotation: 0, autoSkip: true, maxTicksLimit: 12 } }
+      }
+    }
   });
+};
 
-  // Status doughnut
+function renderStatusChart() {
   const statuses = ["New Order","Printing","Ready","Dispatched","Delivered"];
   const counts = statuses.map(s => allOrders.filter(o=>o.status===s).length);
   if (statusChart) statusChart.destroy();
@@ -595,54 +1031,88 @@ function renderCharts() {
     data:{ labels:statuses, datasets:[{ data:counts, backgroundColor:['#0096ff','#ff8c00','#b464ff','#ffc800','#25D366'], borderWidth:0 }] },
     options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom', labels:{color:'#aaa', font:{size:11}, padding:10}}}, cutout:'65%' }
   });
-
-  renderRevenueChart();
 }
 
-// REVENUE CHART with filters
 window.renderRevenueChart = function() {
   const grouping = document.getElementById("revGrouping").value;
   const preset = document.getElementById("revPreset").value;
   let from = null, to = null;
   const today = new Date();
   if (preset === "custom") {
-    const f = document.getElementById("revFrom").value;
-    const t = document.getElementById("revTo").value;
-    if (f) from = f; if (t) to = t;
+    from = document.getElementById("revFrom").value || null;
+    to   = document.getElementById("revTo").value   || null;
   } else if (preset !== "all") {
-    const d = new Date(); d.setDate(d.getDate() - parseInt(preset));
+    const d = new Date(); d.setDate(d.getDate() - parseInt(preset) + 1);
     from = d.toISOString().split("T")[0];
     to = today.toISOString().split("T")[0];
   }
-  const filtered = allOrders.filter(o => {
-    if (!o.createdAt) return false;
-    if (from && o.createdAt < from) return false;
-    if (to && o.createdAt > to) return false;
-    return true;
-  });
+
+  // For daily grouping, build a CONTINUOUS date range with zeros
+  if (grouping === "day") {
+    let startDate, endDate;
+    if (from && to) { startDate = new Date(from); endDate = new Date(to); }
+    else {
+      // all time -> from earliest payment to today
+      let earliest = todayStr();
+      allOrders.forEach(o => (o.payments||[]).forEach(p => { if (p.date && p.date < earliest) earliest = p.date; }));
+      startDate = new Date(earliest); endDate = new Date();
+    }
+    startDate.setHours(0,0,0,0); endDate.setHours(0,0,0,0);
+    const labels = [], data = [], keys = [];
+    const d = new Date(startDate);
+    while (d <= endDate) {
+      const k = d.toISOString().split("T")[0];
+      keys.push(k);
+      labels.push(d.toLocaleDateString('en-IN', { month:'short', day:'numeric' }));
+      data.push(0);
+      d.setDate(d.getDate()+1);
+    }
+    allOrders.forEach(o => (o.payments||[]).forEach(p => {
+      if (!p.date) return;
+      const idx = keys.indexOf(p.date);
+      if (idx !== -1) data[idx] += (p.type==="Refund"?-1:1) * (Number(p.amount)||0);
+    }));
+    drawBarChart(labels, data);
+    return;
+  }
+
+  // Other groupings — aggregate
   const map = {};
-  filtered.forEach(o => {
+  allOrders.forEach(o => (o.payments||[]).forEach(p => {
+    if (!p.date) return;
+    if (from && p.date < from) return;
+    if (to && p.date > to) return;
     let key;
-    const d = new Date(o.createdAt);
-    if (grouping === "day") key = o.createdAt;
-    else if (grouping === "week") {
+    const d = new Date(p.date);
+    if (grouping === "week") {
       const onejan = new Date(d.getFullYear(),0,1);
       const week = Math.ceil((((d - onejan)/86400000)+onejan.getDay()+1)/7);
       key = d.getFullYear()+"-W"+String(week).padStart(2,"0");
-    }
-    else if (grouping === "year") key = String(d.getFullYear());
-    else key = o.createdAt.slice(0,7);
-    map[key] = (map[key]||0) + (Number(o.advancePaid)||0);
-  });
+    } else if (grouping === "year") key = String(d.getFullYear());
+    else key = p.date.slice(0,7); // month
+    const amt = (p.type==="Refund"?-1:1) * (Number(p.amount)||0);
+    map[key] = (map[key]||0) + amt;
+  }));
   const lbls = Object.keys(map).sort();
   const vals = lbls.map(k => map[k]);
+  drawBarChart(lbls.length?lbls:["No data"], vals.length?vals:[0]);
+};
+
+function drawBarChart(labels, values) {
   if (monthlyChart) monthlyChart.destroy();
   monthlyChart = new Chart(document.getElementById("monthlyChart"), {
     type:'bar',
-    data:{ labels: lbls.length ? lbls : ["No data"], datasets:[{ label:'Revenue (₹)', data: vals.length ? vals : [0], backgroundColor:'rgba(255,140,0,0.7)', borderRadius:8 }] },
-    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}, tooltip:{callbacks:{label:(c)=>'₹'+c.raw.toLocaleString('en-IN')}}}, scales:{ y:{grid:{color:'rgba(255,255,255,0.05)'},ticks:{color:'#888',callback:v=>'₹'+v.toLocaleString('en-IN')}}, x:{grid:{display:false},ticks:{color:'#888'}} } }
+    data:{ labels, datasets:[{ label:'Revenue (₹)', data: values, backgroundColor:'rgba(255,140,0,0.75)', borderRadius:6, maxBarThickness: 40 }] },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: c => fmtINR(c.raw) } } },
+      scales:{
+        y:{ beginAtZero:true, grid:{color:'rgba(255,255,255,0.05)'}, ticks:{ color:'#888', callback: v => fmtINR(v) } },
+        x:{ grid:{display:false}, ticks:{ color:'#888', maxRotation: 45, autoSkip: true, maxTicksLimit: 20 } }
+      }
+    }
   });
-};
+}
 
 window.applyRevPreset = function() {
   const preset = document.getElementById("revPreset").value;
@@ -651,28 +1121,26 @@ window.applyRevPreset = function() {
   else { range.classList.remove("show"); renderRevenueChart(); }
 };
 
-window.updateRevenueChart = renderCharts;
-
-// CUSTOMER DETAIL
+// ========== CUSTOMER DETAIL ==========
 window.viewCustomer = function(key) {
   const orders = allOrders.filter(o => (o.email||o.customerName) === key);
   if (!orders.length) return;
   const c = orders[0];
-  const totalSpent = orders.reduce((s,o)=>s+(Number(o.advancePaid)||0), 0);
+  const totalSpent = orders.reduce((s,o)=>s+totalPaid(o), 0);
   const totalValue = orders.reduce((s,o)=>s+(Number(o.totalAmount)||0), 0);
   document.getElementById("custDetailName").innerText = c.customerName || "Customer";
   document.getElementById("custDetailEmail").innerText = c.email || "—";
   document.getElementById("custTotalOrders").innerText = orders.length;
-  document.getElementById("custTotalSpent").innerText = "₹" + totalSpent.toLocaleString('en-IN');
-  document.getElementById("custTotalValue").innerText = "₹" + totalValue.toLocaleString('en-IN');
-  document.getElementById("custPending").innerText = "₹" + (totalValue - totalSpent).toLocaleString('en-IN');
+  document.getElementById("custTotalSpent").innerText = fmtINR(totalSpent);
+  document.getElementById("custTotalValue").innerText = fmtINR(totalValue);
+  document.getElementById("custPending").innerText = fmtINR(totalValue - totalSpent);
   document.getElementById("custOrdersTable").innerHTML = orders.map(o => {
-    const paid = Number(o.advancePaid)||0, total = Number(o.totalAmount)||0;
+    const paid = totalPaid(o), total = Number(o.totalAmount)||0;
     return `<tr class="clickable" onclick="window.viewOrderDetail('${o.id}'); window.closeCustomerModal();">
-      <td><span class="order-id">#${o.orderId||"-"}</span></td>
+      <td><span class="order-id">${o.orderId||"-"}</span></td>
       <td>${o.jobName||"-"}</td>
       <td><span class="status-badge ${statusClass(o.status)}">${o.status||"-"}</span></td>
-      <td><span class="amount-paid">₹${paid.toLocaleString('en-IN')}</span><span class="amount-total"> / ₹${total.toLocaleString('en-IN')}</span></td>
+      <td><span class="amount-paid">${fmtINR(paid)}</span><span class="amount-total"> / ${fmtINR(total)}</span></td>
       <td>${o.deliveryDate||"-"}</td>
     </tr>`;
   }).join("");
@@ -680,39 +1148,149 @@ window.viewCustomer = function(key) {
 };
 window.closeCustomerModal = () => document.getElementById("customerModal").classList.remove("show");
 
-// ORDER DETAIL
+// ========== ORDER DETAIL ==========
 window.viewOrderDetail = function(id) {
   const o = allOrders.find(x => x.id === id);
   if (!o) return;
-  const paid = Number(o.advancePaid)||0, total = Number(o.totalAmount)||0;
-  document.getElementById("orderDetailTitle").innerText = "Order #" + (o.orderId || "—");
+  activeOrderId = id;
+  const paid = totalPaid(o), total = Number(o.totalAmount)||0;
+  const pStatus = paymentStatus(o);
+  document.getElementById("orderDetailTitle").innerText = "Order " + (o.orderId || "—");
   document.getElementById("orderDetailSub").innerText = (o.jobName || "") + " · " + (o.customerName || "");
   const items = [
     ["Customer", o.customerName || "-"],
     ["Email", o.email || "-"],
     ["Job Name", o.jobName || "-"],
     ["Quantity", o.quantity || "-"],
-    ["Status", `<span class="status-badge ${statusClass(o.status)}">${o.status||"-"}</span>`],
+    ["Order Status", `<span class="status-badge ${statusClass(o.status)}">${o.status||"-"}</span>`],
+    ["Payment Status", `<span class="status-badge ${paymentStatusClass(pStatus)}">${pStatus}</span>`],
+    ["Total Amount", `<span style="color:#ff8c00;font-weight:700">${fmtINR(total)}</span>`],
+    ["Total Paid", `<span style="color:#25D366;font-weight:700">${fmtINR(paid)}</span>`],
+    ["Pending", `<span style="color:#ff5252;font-weight:700">${fmtINR(total-paid)}</span>`],
     ["Delivery Date", o.deliveryDate || "-"],
-    ["Total Amount", `<span style="color:#ff8c00;font-weight:700">₹${total.toLocaleString('en-IN')}</span>`],
-    ["Advance Paid", `<span style="color:#25D366;font-weight:700">₹${paid.toLocaleString('en-IN')}</span>`],
-    ["Pending", `<span style="color:#ff5252;font-weight:700">₹${(total-paid).toLocaleString('en-IN')}</span>`],
     ["Created On", o.createdAt || "-"],
-    ["Notes", o.notes || "—"],
-    ["Invoice", o.invoice ? `<a href="${o.invoice}" target="_blank" style="color:#ff8c00"><i class="fa-solid fa-file-pdf"></i> View Invoice</a>` : "—"]
+    ["Notes", o.notes || "—"]
   ];
   document.getElementById("orderDetailGrid").innerHTML = items.map(([l,v]) =>
     `<div class="detail-item"><div class="label">${l}</div><div class="value">${v}</div></div>`).join("");
+
+  // Payment list
+  const pl = document.getElementById("orderPaymentList");
+  if (!(o.payments||[]).length) {
+    pl.innerHTML = `<div class="empty-state" style="padding:30px"><i class="fa-solid fa-receipt"></i><h3>No payments yet</h3><p>Click "Add Payment" above to record one</p></div>`;
+  } else {
+    pl.innerHTML = (o.payments||[]).map((p, idx) => `
+      <div class="payment-row">
+        <div class="payment-info">
+          <span class="pmt-id">${p.invoiceId||"—"} · ${p.type||"-"}</span>
+          <span class="pmt-meta">${p.date||"-"}${p.note? " · "+p.note: ""}</span>
+        </div>
+        <div class="payment-amount">${p.type==="Refund"?"-":""}${fmtINR(p.amount)}</div>
+        <div class="action-btns">
+          ${p.file ? `<button class="icon-btn" onclick="window.viewInvoice('${o.id}', ${idx})" title="View Invoice"><i class="fa-solid fa-eye"></i></button>` : ""}
+          <button class="icon-btn danger" onclick="window.deletePayment('${o.id}', ${idx})" title="Remove Payment"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  document.getElementById("addPaymentBtn").onclick = () => openPaymentModal(id);
   document.getElementById("orderDetailEditBtn").onclick = () => { closeOrderDetailModal(); window.editOrder(id); };
+  document.getElementById("orderDetailDeleteBtn").onclick = () => { window.deleteOrder(id); };
   document.getElementById("orderDetailModal").classList.add("show");
 };
 window.closeOrderDetailModal = () => document.getElementById("orderDetailModal").classList.remove("show");
 
-// CRUD
+// ========== PAYMENT MODAL ==========
+window.openPaymentModal = function(orderId) {
+  const o = allOrders.find(x => x.id === orderId);
+  if (!o) return;
+  activeOrderId = orderId;
+  const paid = totalPaid(o), total = Number(o.totalAmount)||0, pending = total - paid;
+  document.getElementById("paymentModalSub").innerText = `For ${o.orderId} · ${o.customerName||""}`;
+  document.getElementById("p-invoiceId").value = nextInvoiceId();
+  document.getElementById("p-type").value = paid === 0 ? "Advance" : (pending > 0 ? "Balance" : "Partial");
+  document.getElementById("p-amount").value = pending > 0 ? pending : "";
+  document.getElementById("p-date").value = todayStr();
+  document.getElementById("p-file").value = "";
+  document.getElementById("p-note").value = "";
+  document.getElementById("p-summary").innerHTML =
+    `Total: <b style="color:#ff8c00">${fmtINR(total)}</b> · Paid: <b style="color:#25D366">${fmtINR(paid)}</b> · Pending: <b style="color:#ff5252">${fmtINR(pending)}</b>`;
+  document.getElementById("paymentModal").classList.add("show");
+};
+window.closePaymentModal = () => document.getElementById("paymentModal").classList.remove("show");
+
+window.addPayment = async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById("payBtn");
+  btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
+  try {
+    const o = allOrders.find(x => x.id === activeOrderId);
+    if (!o) throw new Error("Order not found");
+    const type = document.getElementById("p-type").value;
+    const amount = Number(document.getElementById("p-amount").value) || 0;
+    if (amount <= 0) throw new Error("Amount must be greater than 0");
+    // Validation: paid (excluding this) + amount cannot exceed totalAmount (unless Refund)
+    const currentPaid = totalPaid(o);
+    const total = Number(o.totalAmount) || 0;
+    if (type !== "Refund" && (currentPaid + amount) > total) {
+      throw new Error(`Payment exceeds total. Already paid ${fmtINR(currentPaid)}, total is ${fmtINR(total)}. Max allowed: ${fmtINR(total - currentPaid)}`);
+    }
+    if (type === "Refund" && amount > currentPaid) {
+      throw new Error(`Refund cannot exceed already paid ${fmtINR(currentPaid)}`);
+    }
+    const file = document.getElementById("p-file").files[0];
+    let fileData = null, fileName = "";
+    if (file) {
+      if (file.size > 800 * 1024) {
+        toast("File too large (max 800KB). Payment saved without invoice file.", true);
+      } else {
+        fileData = await fileToBase64(file);
+        fileName = file.name;
+      }
+    }
+    const newPayment = {
+      invoiceId: document.getElementById("p-invoiceId").value,
+      type, amount,
+      date: document.getElementById("p-date").value,
+      file: fileData, fileName,
+      note: document.getElementById("p-note").value.trim()
+    };
+    const updatedPayments = [...(o.payments||[]), newPayment];
+    await updateDoc(doc(db, "orders", o.id), { payments: updatedPayments });
+    closePaymentModal();
+    await loadAll();
+    // Reopen order detail
+    if (activeOrderId) window.viewOrderDetail(activeOrderId);
+    toast(`Payment added · ${newPayment.invoiceId} ✅`);
+  } catch(err) {
+    console.error(err);
+    toast(err.message || "Failed to add payment", true);
+  } finally {
+    btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-check"></i> Add Payment';
+  }
+};
+
+window.deletePayment = async (orderId, idx) => {
+  if (!confirm("Remove this payment entry? This cannot be undone.")) return;
+  try {
+    const o = allOrders.find(x => x.id === orderId);
+    if (!o) return;
+    const updated = (o.payments||[]).filter((_,i) => i !== idx);
+    await updateDoc(doc(db, "orders", orderId), { payments: updated });
+    await loadAll();
+    if (activeOrderId) window.viewOrderDetail(activeOrderId);
+    toast("Payment removed");
+  } catch(e) { toast("Failed: " + e.message, true); }
+};
+
+// ========== ORDER CRUD ==========
 window.openOrderModal = () => {
   editId = null;
   document.getElementById("modalTitle").innerText = "Add New Order";
   document.getElementById("orderForm").reset();
+  document.getElementById("f-orderId").value = nextOrderId();
+  document.getElementById("f-status").value = "New Order";
   document.getElementById("orderModal").classList.add("show");
 };
 window.closeOrderModal = () => document.getElementById("orderModal").classList.remove("show");
@@ -722,26 +1300,32 @@ window.editOrder = (id) => {
   if (!o) return;
   editId = id;
   document.getElementById("modalTitle").innerText = "Edit Order";
+  document.getElementById("f-orderId").value = o.orderId || "";
   document.getElementById("f-email").value = o.email || "";
   document.getElementById("f-name").value = o.customerName || "";
-  document.getElementById("f-orderId").value = o.orderId || "";
   document.getElementById("f-job").value = o.jobName || "";
   document.getElementById("f-qty").value = o.quantity || "";
   document.getElementById("f-status").value = o.status || "New Order";
   document.getElementById("f-total").value = o.totalAmount || "";
-  document.getElementById("f-advance").value = o.advancePaid || "";
+  document.getElementById("f-advance").value = ""; // do NOT pre-fill advance — payments already exist
+  document.getElementById("f-advance").placeholder = "Use 'Add Payment' for new payments";
+  document.getElementById("f-advance").disabled = true;
+  document.getElementById("f-invoice").disabled = true;
   document.getElementById("f-delivery").value = o.deliveryDate || "";
   document.getElementById("f-notes").value = o.notes || "";
   document.getElementById("orderModal").classList.add("show");
 };
 
 window.deleteOrder = async (id) => {
-  if (!confirm("Delete this order? This cannot be undone.")) return;
-  try { await deleteDoc(doc(db, "orders", id)); await loadOrders(); toast("Order deleted"); }
-  catch(e) { toast("Delete failed: " + e.message, true); }
+  if (!confirm("Delete this order and ALL its payments? This cannot be undone.")) return;
+  try {
+    await deleteDoc(doc(db, "orders", id));
+    document.getElementById("orderDetailModal").classList.remove("show");
+    await loadAll();
+    toast("Order deleted");
+  } catch(e) { toast("Delete failed: " + e.message, true); }
 };
 
-// Convert file to base64 (no Firebase Storage needed!)
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
     const r = new FileReader();
@@ -757,85 +1341,109 @@ window.saveOrder = async (e) => {
   btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
   try {
     const orderId = document.getElementById("f-orderId").value.trim();
+    const totalAmount = Number(document.getElementById("f-total").value) || 0;
+    const advance = Number(document.getElementById("f-advance").value) || 0;
+
+    // ✅ HARD VALIDATION: advance cannot exceed total
+    if (advance > totalAmount) {
+      throw new Error(`Advance ${fmtINR(advance)} cannot exceed Total ${fmtINR(totalAmount)}`);
+    }
+    if (totalAmount < 0) throw new Error("Total amount cannot be negative");
+    if (advance < 0) throw new Error("Advance cannot be negative");
+
     if (!editId) {
+      // Duplicate check (extra safety)
       const q = query(collection(db, "orders"), where("orderId", "==", orderId));
       const snap = await getDocs(q);
       if (!snap.empty) {
-        toast("Order ID already exists ❌", true);
-        btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-check"></i> Save Order';
-        return;
+        throw new Error("Order ID already exists. Please refresh and try again.");
       }
     }
-    const data = {
+
+    const baseData = {
+      orderId,
       email: document.getElementById("f-email").value.trim(),
       customerName: document.getElementById("f-name").value.trim(),
-      orderId,
       jobName: document.getElementById("f-job").value.trim(),
       quantity: document.getElementById("f-qty").value.trim(),
       status: document.getElementById("f-status").value,
-      totalAmount: Number(document.getElementById("f-total").value) || 0,
-      advancePaid: Number(document.getElementById("f-advance").value) || 0,
+      totalAmount,
       deliveryDate: document.getElementById("f-delivery").value,
       notes: document.getElementById("f-notes").value.trim(),
-      createdAt: editId ? (allOrders.find(x=>x.id===editId)?.createdAt || new Date().toISOString().split("T")[0]) : new Date().toISOString().split("T")[0]
+      createdAt: editId ? (allOrders.find(x=>x.id===editId)?.createdAt || todayStr()) : todayStr()
     };
 
-    // Handle invoice as base64 (NO Firebase Storage)
-    const file = document.getElementById("f-invoice").files[0];
-    if (file) {
-      if (file.size > 800 * 1024) {
-        toast("File too large (max 800KB). Saving order without invoice.", true);
-      } else {
-        try {
-          const base64 = await fileToBase64(file);
-          data.invoice = base64;
-          data.invoiceName = file.name;
-        } catch(fe) {
-          console.warn("File read failed:", fe);
-        }
-      }
-    }
-
     if (editId) {
-      await updateDoc(doc(db, "orders", editId), data);
+      // Edit: do NOT touch payments array (managed via Add Payment)
+      await updateDoc(doc(db, "orders", editId), baseData);
+      toast("Order updated ✅");
     } else {
-      await addDoc(collection(db, "orders"), data);
+      // New order: optional initial advance creates first payment
+      const payments = [];
+      if (advance > 0) {
+        const file = document.getElementById("f-invoice").files[0];
+        let fileData = null, fileName = "";
+        if (file) {
+          if (file.size > 800 * 1024) {
+            toast("Invoice file too large (max 800KB) — order saved without file.", true);
+          } else {
+            fileData = await fileToBase64(file);
+            fileName = file.name;
+          }
+        }
+        payments.push({
+          invoiceId: nextInvoiceId(),
+          type: "Advance",
+          amount: advance,
+          date: todayStr(),
+          file: fileData, fileName,
+          note: "Initial advance"
+        });
+      }
+      await addDoc(collection(db, "orders"), { ...baseData, payments });
+      toast("Order added ✅");
     }
     closeOrderModal();
-    await loadOrders();
-    toast(editId ? "Order Updated ✅" : "Order Added ✅");
+    // Re-enable advance/file for next add
+    document.getElementById("f-advance").disabled = false;
+    document.getElementById("f-invoice").disabled = false;
+    await loadAll();
   } catch (err) {
     console.error(err);
-    toast("Error: " + (err.message || "Failed to save"), true);
+    toast(err.message || "Failed to save", true);
   } finally {
     btn.disabled = false;
     btn.innerHTML = '<i class="fa-solid fa-check"></i> Save Order';
   }
 };
 
-// EXPORT
+// ========== EXPORT ==========
 window.exportCSV = () => {
   if (!allOrders.length) { toast("No orders to export", true); return; }
-  const headers = ["Order ID","Customer","Email","Job","Qty","Status","Total","Paid","Delivery","Created"];
-  const rows = allOrders.map(o => [o.orderId,o.customerName,o.email,o.jobName,o.quantity,o.status,o.totalAmount,o.advancePaid,o.deliveryDate,o.createdAt]);
-  const csv = [headers, ...rows].map(r => r.map(v => `"${(v||"").toString().replace(/"/g,'""')}"`).join(",")).join("\n");
+  const headers = ["Order ID","Customer","Email","Job","Qty","Status","Total","Paid","Pending","Payment Status","Delivery","Created"];
+  const rows = allOrders.map(o => {
+    const paid = totalPaid(o), total = Number(o.totalAmount)||0;
+    return [o.orderId,o.customerName,o.email,o.jobName,o.quantity,o.status,total,paid,(total-paid),paymentStatus(o),o.deliveryDate,o.createdAt];
+  });
+  const csv = [headers, ...rows].map(r => r.map(v => `"${(v??"").toString().replace(/"/g,'""')}"`).join(",")).join("\n");
   const blob = new Blob([csv], { type:"text/csv" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = "eevee-orders-" + new Date().toISOString().split("T")[0] + ".csv";
+  link.download = "eevee-orders-" + todayStr() + ".csv";
   link.click();
 };
 
-// NAV
+// ========== NAV ==========
 window.goToPage = (page) => {
   document.querySelectorAll(".menu-item").forEach(m => m.classList.toggle("active", m.dataset.page === page));
   document.querySelectorAll(".page-section").forEach(s => s.classList.toggle("active", s.id === "page-"+page));
   const titles = {
     dashboard:["Dashboard Overview","Welcome back, here's what's happening today"],
     orders:["Orders Management","Manage all your customer orders"],
+    quotations:["Quotations","Price quotes & conversion tracking"],
     customers:["Customers","All your valued clients · click to view details"],
     revenue:["Revenue Analytics","Track your business growth"],
-    invoices:["Invoices","All uploaded invoices"]
+    invoices:["Invoices","All payment invoices across orders"]
   };
   if (titles[page]) {
     document.getElementById("pageTitle").innerText = titles[page][0];
@@ -852,6 +1460,13 @@ document.getElementById("orderFilters").addEventListener("click", e => {
   currentFilter = e.target.dataset.filter;
   renderOrdersTable();
 });
+document.getElementById("quoFilters").addEventListener("click", e => {
+  if (!e.target.classList.contains("filter-pill")) return;
+  document.querySelectorAll("#quoFilters .filter-pill").forEach(p => p.classList.remove("active"));
+  e.target.classList.add("active");
+  currentQuoFilter = e.target.dataset.filter;
+  renderQuotations();
+});
 document.getElementById("globalSearch").addEventListener("input", renderOrdersTable);
 window.logout = () => signOut(auth).then(() => window.location.href = "index.html");
 window.toggleSidebar = () => document.getElementById("sidebar").classList.toggle("open");
@@ -859,5 +1474,6 @@ window.toggleSidebar = () => document.getElementById("sidebar").classList.toggle
 // Close modals on outside click
 document.querySelectorAll(".modal").forEach(m => m.addEventListener("click", e => { if (e.target === m) m.classList.remove("show"); }));
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
