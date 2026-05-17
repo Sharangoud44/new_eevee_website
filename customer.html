@@ -1,120 +1,453 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Orders</title>
-  <style>
-    body {
-      font-family: Arial;
-      background: #f5f5f5;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Orders — Eevee Printers</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Poppins', sans-serif; background: #0a0a0c; color: #fff; min-height: 100vh; padding-bottom: 40px; }
 
-    h2 {
-      text-align: center;
-    }
+.header { background: linear-gradient(135deg, #16161a, #0d0d0f); border-bottom: 1px solid rgba(255,140,0,0.15); padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #ff8c00, #ff5e00); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 0 6px 18px rgba(255,140,0,0.4); }
+.brand h1 { font-size: 20px; font-weight: 700; }
+.brand p { font-size: 11px; color: #888; letter-spacing: 1.5px; }
+.user-info { display: flex; align-items: center; gap: 12px; }
+.user-chip { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 8px 14px; border-radius: 10px; display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.user-avatar { width: 32px; height: 32px; background: linear-gradient(135deg, #ff8c00, #ff5e00); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+.btn-logout { background: rgba(255,80,80,0.1); color: #ff5252; border: 1px solid rgba(255,80,80,0.2); padding: 9px 16px; border-radius: 10px; cursor: pointer; font-size: 13px; font-family: 'Poppins'; transition: 0.3s; }
+.btn-logout:hover { background: rgba(255,80,80,0.2); }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-    }
+.container { max-width: 1200px; margin: 0 auto; padding: 30px 25px; }
+.page-title { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+.page-sub { color: #888; font-size: 13px; margin-bottom: 30px; }
 
-    th, td {
-      padding: 12px;
-      border: 1px solid #ddd;
-      text-align: center;
-    }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 30px; }
+.stat-card { background: linear-gradient(145deg, #16161a, #111114); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 22px; position: relative; overflow: hidden; }
+.stat-card::before { content: ""; position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: radial-gradient(circle, rgba(255,140,0,0.12), transparent 70%); border-radius: 50%; filter: blur(20px); }
+.stat-icon { width: 44px; height: 44px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 12px; }
+.stat-icon.orange { background: rgba(255,140,0,0.15); color: #ff8c00; }
+.stat-icon.green { background: rgba(37,211,102,0.15); color: #25D366; }
+.stat-icon.blue { background: rgba(0,150,255,0.15); color: #0096ff; }
+.stat-card h3 { font-size: 12px; color: #888; font-weight: 500; margin-bottom: 6px; }
+.stat-value { font-size: 24px; font-weight: 700; }
 
-    th {
-      background: #333;
-      color: white;
-    }
+.section-card { background: linear-gradient(145deg, #16161a, #111114); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 22px; margin-bottom: 25px; }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+.section-header h2 { font-size: 18px; font-weight: 600; }
 
-    tr:hover {
-      background: #f1f1f1;
-    }
+.filters { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+.filter-pill { padding: 7px 14px; border-radius: 20px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); cursor: pointer; font-size: 12px; transition: 0.3s; color: #aaa; }
+.filter-pill:hover { color: #fff; border-color: rgba(255,140,0,0.3); }
+.filter-pill.active { background: linear-gradient(135deg, #ff8c00, #ff5e00); color: white; border-color: transparent; }
 
-    .status {
-      font-weight: bold;
-      color: orange;
-    }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead tr { background: rgba(255,255,255,0.03); }
+thead th { padding: 14px; text-align: left; font-weight: 600; color: #888; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.06); white-space: nowrap; }
+tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: 0.2s; cursor: pointer; }
+tbody tr:hover { background: rgba(255,140,0,0.04); }
+tbody td { padding: 14px; color: #ddd; }
 
-    .btn {
-      padding: 5px 10px;
-      background: green;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-    }
-  </style>
+.order-id { font-weight: 600; color: #ff8c00; }
+.amount { font-weight: 600; color: #fff; }
+.status-badge { padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; display: inline-block; white-space: nowrap; }
+.status-new { background: rgba(0,150,255,0.15); color: #0096ff; }
+.status-printing { background: rgba(255,140,0,0.15); color: #ff8c00; }
+.status-ready { background: rgba(180,100,255,0.15); color: #b464ff; }
+.status-delivered { background: rgba(37,211,102,0.15); color: #25D366; }
+.status-dispatched { background: rgba(255,200,0,0.15); color: #ffc800; }
+.status-paid { background: rgba(37,211,102,0.15); color: #25D366; }
+.status-partial { background: rgba(255,200,0,0.15); color: #ffc800; }
+.status-unpaid { background: rgba(255,80,80,0.15); color: #ff5252; }
+
+.empty-state { text-align: center; padding: 60px 20px; color: #666; }
+.empty-state i { font-size: 50px; color: #333; margin-bottom: 15px; }
+.empty-state h3 { color: #aaa; margin-bottom: 8px; }
+.empty-state p { font-size: 13px; }
+
+/* MODAL */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); z-index: 1000; align-items: flex-start; justify-content: center; padding: 30px 15px; overflow-y: auto; }
+.modal.show { display: flex; }
+.modal-box { background: linear-gradient(160deg, #1a1a1d, #0d0d0f); border: 1px solid rgba(255,140,0,0.15); border-radius: 20px; width: 100%; max-width: 700px; padding: 30px; position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.7); }
+.modal-box.xlarge { max-width: 1000px; }
+.modal-box h2 { font-size: 22px; margin-bottom: 6px; background: linear-gradient(135deg, #fff, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.modal-box .modal-sub { color: #888; font-size: 13px; margin-bottom: 22px; }
+.modal-close { position: absolute; top: 18px; right: 18px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.06); border: none; cursor: pointer; color: #fff; font-size: 18px; transition: 0.3s; z-index: 10; }
+.modal-close:hover { background: rgba(255,80,80,0.2); transform: rotate(90deg); }
+
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+.detail-item { background: rgba(255,255,255,0.03); padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
+.detail-item .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.detail-item .value { font-size: 14px; color: #fff; font-weight: 500; word-break: break-word; }
+.detail-item .value.big { font-size: 20px; color: #ff8c00; font-weight: 700; }
+
+.invoice-section-title { font-size: 14px; color: #ff8c00; font-weight: 600; margin: 20px 0 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,140,0,0.15); }
+.invoice-list { display: flex; flex-direction: column; gap: 10px; }
+.invoice-row { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.invoice-info { flex: 1; min-width: 200px; }
+.invoice-info .inv-id { font-size: 13px; color: #ff8c00; font-weight: 600; margin-bottom: 2px; }
+.invoice-info .inv-meta { font-size: 11px; color: #888; }
+.btn-view { background: rgba(255,140,0,0.1); color: #ff8c00; border: 1px solid rgba(255,140,0,0.2); padding: 7px 14px; border-radius: 8px; font-size: 12px; cursor: pointer; font-family: 'Poppins'; transition: 0.3s; display: inline-flex; align-items: center; gap: 6px; }
+.btn-view:hover { background: rgba(255,140,0,0.2); }
+
+.invoice-viewer { background: #0a0a0c; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; min-height: 500px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.invoice-viewer iframe { width: 100%; height: 600px; border: 0; background: white; }
+.invoice-viewer img { max-width: 100%; max-height: 600px; object-fit: contain; }
+
+.modal-actions { display: flex; gap: 10px; margin-top: 22px; justify-content: flex-end; flex-wrap: wrap; }
+.btn-primary { background: linear-gradient(135deg, #ff8c00, #ff5e00); color: white; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: 13px; cursor: pointer; font-family: 'Poppins'; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255,140,0,0.5); }
+.btn-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 10px 16px; border-radius: 10px; font-size: 13px; cursor: pointer; font-family: 'Poppins'; transition: 0.3s; }
+.btn-secondary:hover { background: rgba(255,140,0,0.1); border-color: #ff8c00; }
+
+.loading { text-align: center; padding: 60px 20px; color: #888; }
+.loading i { font-size: 40px; color: #ff8c00; margin-bottom: 15px; }
+
+@media (max-width: 768px) {
+  .header { padding: 15px 20px; }
+  .brand h1 { font-size: 16px; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .detail-grid { grid-template-columns: 1fr; }
+  .page-title { font-size: 22px; }
+}
+</style>
 </head>
-
 <body>
 
-<h2>My Orders</h2>
+<header class="header">
+  <div class="brand">
+    <div class="brand-icon">🖨️</div>
+    <div><h1>Eevee Printers</h1><p>CUSTOMER PORTAL</p></div>
+  </div>
+  <div class="user-info">
+    <div class="user-chip">
+      <div class="user-avatar" id="userAvatar">U</div>
+      <span id="userName">User</span>
+    </div>
+    <button class="btn-logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+  </div>
+</header>
 
-<table>
-  <thead>
-    <tr>
-      <th>Order ID</th>
-      <th>Job Name</th>
-      <th>Status</th>
-      <th>Payment</th>
-      <th>Delivery</th>
-      <th>Invoice</th>
-    </tr>
-  </thead>
-  <tbody id="ordersTable"></tbody>
-</table>
+<div class="container">
+  <h2 class="page-title">My Orders</h2>
+  <p class="page-sub">Welcome back! Here are all your orders and quotations with Eevee Printers</p>
+
+  <div class="stats-grid" id="statsGrid">
+    <div class="stat-card"><div class="stat-icon orange"><i class="fa-solid fa-box"></i></div><h3>Total Orders</h3><div class="stat-value" id="stat-orders">0</div></div>
+    <div class="stat-card"><div class="stat-icon blue"><i class="fa-solid fa-clock"></i></div><h3>In Progress</h3><div class="stat-value" id="stat-progress">0</div></div>
+    <div class="stat-card"><div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div><h3>Delivered</h3><div class="stat-value" id="stat-delivered">0</div></div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><h2><i class="fa-solid fa-box" style="color:#ff8c00;margin-right:8px"></i>Your Orders</h2></div>
+    <div class="filters" id="orderFilters">
+      <div class="filter-pill active" data-filter="all">All</div>
+      <div class="filter-pill" data-filter="New Order">New</div>
+      <div class="filter-pill" data-filter="Printing">Printing</div>
+      <div class="filter-pill" data-filter="Ready">Ready</div>
+      <div class="filter-pill" data-filter="Dispatched">Dispatched</div>
+      <div class="filter-pill" data-filter="Delivered">Delivered</div>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Order ID</th><th>Job Name</th><th>Status</th><th>Payment</th><th>Total</th><th>Delivery</th><th>Created</th></tr></thead>
+      <tbody id="ordersTable"><tr><td colspan="7"><div class="loading"><i class="fa-solid fa-spinner fa-spin"></i><p>Loading your orders...</p></div></td></tr></tbody>
+    </table></div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><h2><i class="fa-solid fa-file-lines" style="color:#ff8c00;margin-right:8px"></i>Your Quotations</h2></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Quotation ID</th><th>Job</th><th>Amount</th><th>Status</th><th>Valid Until</th><th>Created</th></tr></thead>
+      <tbody id="quotesTable"></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ORDER DETAIL MODAL -->
+<div class="modal" id="orderDetailModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeOrderDetail()">×</button>
+    <h2 id="odTitle">Order Details</h2>
+    <p class="modal-sub" id="odSub">—</p>
+    <div class="detail-grid" id="odGrid"></div>
+    <div class="invoice-section-title"><i class="fa-solid fa-file-invoice"></i> Your Invoices</div>
+    <div id="odInvoices" class="invoice-list"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeOrderDetail()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- INVOICE VIEWER MODAL -->
+<div class="modal" id="invoiceViewerModal">
+  <div class="modal-box xlarge">
+    <button class="modal-close" onclick="closeInvoiceViewer()">×</button>
+    <h2 id="invViewerTitle">Invoice</h2>
+    <p class="modal-sub" id="invViewerSub">—</p>
+    <div class="invoice-viewer" id="invViewerBody"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeInvoiceViewer()">Close</button>
+      <button class="btn-primary" id="invDownloadBtn"><i class="fa-solid fa-download"></i> Download</button>
+    </div>
+  </div>
+</div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
-import { getAuth, onAuthStateChanged } 
+import { getAuth, onAuthStateChanged, signOut }
 from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
-import { getFirestore, collection, getDocs } 
+import { getFirestore, collection, getDocs, query, where }
 from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
+// ✅ FIXED firebase config (was "YOUR_API_KEY" placeholder before — broke everything!)
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyCSYwthBX2s99OiYJ0pcgr4ha6VfK214fk",
   authDomain: "eevee-printers.firebaseapp.com",
-  projectId: "eevee-printers"
+  projectId: "eevee-printers",
+  storageBucket: "eevee-printers.firebasestorage.app",
+  messagingSenderId: "646814066578",
+  appId: "1:646814066578:web:0ca3fafa04970791fb834b"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const ADMIN_EMAIL = "sharangoud4444@gmail.com";
 
+let myOrders = [];
+let myQuotes = [];
+let currentFilter = "all";
+
+// HELPERS
+function fmtINR(n) { return "₹" + (Number(n)||0).toLocaleString('en-IN'); }
+function fmtDate(s) {
+  if (!s) return "-";
+  try {
+    const d = new Date(s);
+    if (isNaN(d)) return s;
+    return d.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+  } catch { return s; }
+}
+function statusClass(s) {
+  const m = { "New Order":"status-new","Printing":"status-printing","Ready":"status-ready","Dispatched":"status-dispatched","Delivered":"status-delivered" };
+  return m[s] || "status-new";
+}
+
+// 🔒 PRIVACY-FIRST: Customer sees ONLY payment STATUS BADGE, never actual paid amounts
+function paymentStatus(o) {
+  const total = Number(o.totalAmount) || 0;
+  if (total <= 0) return "Unpaid";
+  let paid = 0;
+  if (o.payments && Array.isArray(o.payments)) {
+    paid = o.payments.filter(p=>p.type!=="Refund").reduce((s,p)=>s+(Number(p.amount)||0),0)
+         - o.payments.filter(p=>p.type==="Refund").reduce((s,p)=>s+(Number(p.amount)||0),0);
+  } else if (o.advancePaid) {
+    paid = Number(o.advancePaid) || 0;  // legacy support
+  }
+  if (paid >= total) return "Paid";
+  if (paid > 0) return "Partial";
+  return "Unpaid";
+}
+function paymentStatusClass(p) {
+  if (p === "Paid") return "status-paid";
+  if (p === "Partial") return "status-partial";
+  return "status-unpaid";
+}
+
+// AUTH GUARD
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     window.location.href = "index.html";
     return;
   }
-
-  const userEmail = user.email;
-  const querySnapshot = await getDocs(collection(db, "orders"));
-
-  let html = "";
-
-  querySnapshot.forEach((doc) => {
-    const d = doc.data();
-
-    // 🔥 FILTER HERE
-    if (d.email === userEmail) {
-      html += `
-        <tr>
-          <td>${d.orderId}</td>
-          <td>${d.jobName}</td>
-          <td style="color:orange;font-weight:bold">${d.status}</td>
-          <td>₹${d.advancePaid} / ₹${d.totalAmount}</td>
-          <td>${d.deliveryDate}</td>
-          <td><a href="${d.invoice}" target="_blank">View</a></td>
-        </tr>
-      `;
-    }
-  });
-
-  document.getElementById("ordersTable").innerHTML = html;
+  // Admin should not be here — redirect them
+  if (user.email === ADMIN_EMAIL) {
+    window.location.href = "admin-dashboard.html";
+    return;
+  }
+  document.getElementById("userName").innerText = user.email.split("@")[0];
+  document.getElementById("userAvatar").innerText = user.email[0].toUpperCase();
+  await loadMyData(user.email);
 });
+
+async function loadMyData(email) {
+  try {
+    // Fetch only this customer's orders & quotations
+    const [oSnap, qSnap] = await Promise.all([
+      getDocs(query(collection(db, "orders"), where("email", "==", email))),
+      getDocs(query(collection(db, "quotations"), where("email", "==", email)))
+    ]);
+    myOrders = []; oSnap.forEach(d => myOrders.push({ id: d.id, ...d.data() }));
+    myQuotes = []; qSnap.forEach(d => myQuotes.push({ id: d.id, ...d.data() }));
+    renderStats();
+    renderOrders();
+    renderQuotes();
+  } catch (e) {
+    console.error(e);
+    document.getElementById("ordersTable").innerHTML = `<tr><td colspan="7"><div class="empty-state"><i class="fa-solid fa-circle-exclamation"></i><h3>Failed to load</h3><p>${e.message}</p></div></td></tr>`;
+  }
+}
+
+function renderStats() {
+  document.getElementById("stat-orders").innerText = myOrders.length;
+  document.getElementById("stat-progress").innerText = myOrders.filter(o => o.status && o.status !== "Delivered").length;
+  document.getElementById("stat-delivered").innerText = myOrders.filter(o => o.status === "Delivered").length;
+}
+
+function renderOrders() {
+  let rows = currentFilter === "all" ? myOrders : myOrders.filter(o => o.status === currentFilter);
+  rows = rows.sort((a,b)=>(b.createdAt||"").localeCompare(a.createdAt||""));
+  const tbody = document.getElementById("ordersTable");
+  if (!rows.length) {
+    tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state"><i class="fa-solid fa-box-open"></i><h3>No orders yet</h3><p>You don't have any orders in this category yet.</p></div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = rows.map(o => {
+    const pStatus = paymentStatus(o);
+    return `<tr onclick="window.viewOrder('${o.id}')">
+      <td><span class="order-id">${o.orderId||"-"}</span></td>
+      <td>${o.jobName||"-"}<br><small style="color:#666">Qty: ${o.quantity||"-"}</small></td>
+      <td><span class="status-badge ${statusClass(o.status)}">${o.status||"-"}</span></td>
+      <td><span class="status-badge ${paymentStatusClass(pStatus)}">${pStatus}</span></td>
+      <td class="amount">${fmtINR(o.totalAmount)}</td>
+      <td>${fmtDate(o.deliveryDate)}</td>
+      <td style="color:#aaa;font-size:12px">${fmtDate(o.createdAt)}</td>
+    </tr>`;
+  }).join("");
+}
+
+function renderQuotes() {
+  const rows = myQuotes.sort((a,b)=>(b.createdAt||"").localeCompare(a.createdAt||""));
+  const tbody = document.getElementById("quotesTable");
+  if (!rows.length) {
+    tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><i class="fa-solid fa-file-circle-question"></i><h3>No quotations</h3><p>Request a quote and it will appear here</p></div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = rows.map(q => {
+    let cls = "status-new";
+    if (q.status === "Accepted") cls = "status-paid";
+    else if (q.status === "Rejected") cls = "status-unpaid";
+    else if (q.status === "Converted") cls = "status-ready";
+    return `<tr style="cursor:default">
+      <td><span class="order-id">${q.quotationId||"-"}</span></td>
+      <td>${q.jobName||"-"}<br><small style="color:#666">Qty: ${q.quantity||"-"}</small></td>
+      <td class="amount">${fmtINR(q.estimatedAmount)}</td>
+      <td><span class="status-badge ${cls}">${q.status||"-"}</span></td>
+      <td>${fmtDate(q.validUntil)}</td>
+      <td style="color:#aaa;font-size:12px">${fmtDate(q.createdAt)}</td>
+    </tr>`;
+  }).join("");
+}
+
+// VIEW ORDER DETAIL (still no exact paid amounts shown)
+window.viewOrder = function(id) {
+  const o = myOrders.find(x => x.id === id);
+  if (!o) return;
+  const pStatus = paymentStatus(o);
+  document.getElementById("odTitle").innerText = "Order " + (o.orderId||"");
+  document.getElementById("odSub").innerText = o.jobName||"";
+
+  // 🔒 Customer view: total amount + payment status badge only, NO paid/pending amounts
+  const items = [
+    ["Order ID", o.orderId||"-"],
+    ["Job Name", o.jobName||"-"],
+    ["Quantity", o.quantity||"-"],
+    ["Order Status", `<span class="status-badge ${statusClass(o.status)}">${o.status||"-"}</span>`],
+    ["Payment Status", `<span class="status-badge ${paymentStatusClass(pStatus)}">${pStatus}</span>`],
+    ["Total Amount", `<span class="value big">${fmtINR(o.totalAmount)}</span>`],
+    ["Delivery Date", fmtDate(o.deliveryDate)],
+    ["Order Date", fmtDate(o.createdAt)]
+  ];
+  document.getElementById("odGrid").innerHTML = items.map(([l,v]) =>
+    `<div class="detail-item"><div class="label">${l}</div><div class="value">${v}</div></div>`
+  ).join("");
+
+  // Show invoices (customer CAN see their own invoice files — they need them!)
+  const invList = document.getElementById("odInvoices");
+  const payments = o.payments || [];
+  const invoicesWithFiles = payments.filter(p => p.file);
+  if (!invoicesWithFiles.length && !o.invoice) {
+    invList.innerHTML = `<div style="padding:20px;text-align:center;color:#666;font-size:13px"><i class="fa-solid fa-file-circle-xmark" style="font-size:30px;color:#444;display:block;margin-bottom:8px"></i>No invoice files available yet</div>`;
+  } else {
+    // New schema
+    let html = invoicesWithFiles.map((p, idx) => {
+      const realIdx = payments.indexOf(p);
+      return `<div class="invoice-row">
+        <div class="invoice-info">
+          <div class="inv-id">${p.invoiceId||"Invoice"}</div>
+          <div class="inv-meta">${p.type||"Payment"} · ${fmtDate(p.date)}</div>
+        </div>
+        <button class="btn-view" onclick="window.viewInvoice('${o.id}', ${realIdx})"><i class="fa-solid fa-eye"></i> View Invoice</button>
+      </div>`;
+    }).join("");
+    // Legacy invoice support
+    if (o.invoice && !invoicesWithFiles.length) {
+      html = `<div class="invoice-row">
+        <div class="invoice-info">
+          <div class="inv-id">Invoice</div>
+          <div class="inv-meta">${fmtDate(o.createdAt)}</div>
+        </div>
+        <button class="btn-view" onclick="window.viewLegacyInvoice('${o.id}')"><i class="fa-solid fa-eye"></i> View Invoice</button>
+      </div>`;
+    }
+    invList.innerHTML = html;
+  }
+
+  document.getElementById("orderDetailModal").classList.add("show");
+};
+window.closeOrderDetail = () => document.getElementById("orderDetailModal").classList.remove("show");
+
+// INVOICE VIEWER
+window.viewInvoice = function(orderId, paymentIdx) {
+  const o = myOrders.find(x => x.id === orderId);
+  if (!o) return;
+  const p = (o.payments||[])[paymentIdx];
+  if (!p || !p.file) return;
+  openViewer(p.invoiceId||"Invoice", `${p.type||"Payment"} · ${fmtDate(p.date)}`, p.file, p.fileName);
+};
+window.viewLegacyInvoice = function(orderId) {
+  const o = myOrders.find(x => x.id === orderId);
+  if (!o || !o.invoice) return;
+  openViewer("Invoice", fmtDate(o.createdAt), o.invoice, o.invoiceName||"");
+};
+function openViewer(title, sub, file, fileName) {
+  document.getElementById("invViewerTitle").innerText = title;
+  document.getElementById("invViewerSub").innerText = sub;
+  const body = document.getElementById("invViewerBody");
+  const isPdf = (file||"").startsWith("data:application/pdf") || (fileName||"").toLowerCase().endsWith(".pdf");
+  const isImg = (file||"").startsWith("data:image/");
+  if (isPdf) body.innerHTML = `<iframe src="${file}" title="Invoice PDF"></iframe>`;
+  else if (isImg) body.innerHTML = `<img src="${file}" alt="Invoice">`;
+  else body.innerHTML = `<div style="padding:40px;text-align:center;color:#aaa"><i class="fa-solid fa-file" style="font-size:50px;color:#666;margin-bottom:15px;display:block"></i>Preview not available.<br>Click Download below.</div>`;
+  document.getElementById("invDownloadBtn").onclick = () => {
+    try {
+      const a = document.createElement("a");
+      a.href = file;
+      a.download = fileName || (title + (isPdf?".pdf":isImg?".png":""));
+      document.body.appendChild(a); a.click(); a.remove();
+    } catch(e) { alert("Download failed: " + e.message); }
+  };
+  document.getElementById("invoiceViewerModal").classList.add("show");
+}
+window.closeInvoiceViewer = () => document.getElementById("invoiceViewerModal").classList.remove("show");
+
+// FILTERS
+document.getElementById("orderFilters").addEventListener("click", e => {
+  if (!e.target.classList.contains("filter-pill")) return;
+  document.querySelectorAll("#orderFilters .filter-pill").forEach(p => p.classList.remove("active"));
+  e.target.classList.add("active");
+  currentFilter = e.target.dataset.filter;
+  renderOrders();
+});
+
+window.logout = () => signOut(auth).then(() => window.location.href = "index.html");
+
+// Close modals on outside click
+document.querySelectorAll(".modal").forEach(m => m.addEventListener("click", e => { if (e.target === m) m.classList.remove("show"); }));
 </script>
 
 </body>
