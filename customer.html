@@ -12,28 +12,36 @@ body { font-family: 'Poppins', sans-serif; background: #0a0a0c; color: #fff; min
 
 .header { background: linear-gradient(135deg, #16161a, #0d0d0f); border-bottom: 1px solid rgba(255,140,0,0.15); padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
 .brand { display: flex; align-items: center; gap: 14px; }
-.brand-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #ff8c00, #ff5e00); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 0 6px 18px rgba(255,140,0,0.4); }
-.brand h1 { font-size: 20px; font-weight: 700; }
+.brand-logo { width: 52px; height: 52px; border-radius: 12px; object-fit: cover; box-shadow: 0 6px 18px rgba(255,140,0,0.4); background: linear-gradient(135deg, #ff8c00, #ff5e00); padding: 4px; }
+.brand h1 { font-size: 22px; font-weight: 700; }
 .brand p { font-size: 11px; color: #888; letter-spacing: 1.5px; }
-.user-info { display: flex; align-items: center; gap: 12px; }
+.header-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+/* ✨ NEW: Currency toggle in header */
+.currency-toggle { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 4px; border-radius: 10px; }
+.currency-pill { padding: 6px 14px; border-radius: 8px; font-size: 12px; cursor: pointer; color: #aaa; transition: 0.3s; font-weight: 600; }
+.currency-pill.active { background: linear-gradient(135deg, #ff8c00, #ff5e00); color: white; }
+.currency-pill:hover:not(.active) { color: #fff; }
+
 .user-chip { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 8px 14px; border-radius: 10px; display: flex; align-items: center; gap: 10px; font-size: 13px; }
 .user-avatar { width: 32px; height: 32px; background: linear-gradient(135deg, #ff8c00, #ff5e00); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
 .btn-logout { background: rgba(255,80,80,0.1); color: #ff5252; border: 1px solid rgba(255,80,80,0.2); padding: 9px 16px; border-radius: 10px; cursor: pointer; font-size: 13px; font-family: 'Poppins'; transition: 0.3s; }
 .btn-logout:hover { background: rgba(255,80,80,0.2); }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 30px 25px; }
-.page-title { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
-.page-sub { color: #888; font-size: 13px; margin-bottom: 30px; }
+.page-title { font-size: 30px; font-weight: 700; margin-bottom: 6px; background: linear-gradient(135deg, #fff, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
+.page-sub { color: #888; font-size: 14px; margin-bottom: 30px; }
 
 .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 30px; }
-.stat-card { background: linear-gradient(145deg, #16161a, #111114); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 22px; position: relative; overflow: hidden; }
+.stat-card { background: linear-gradient(145deg, #16161a, #111114); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 22px; position: relative; overflow: hidden; transition: 0.3s; }
+.stat-card:hover { transform: translateY(-4px); border-color: rgba(255,140,0,0.25); }
 .stat-card::before { content: ""; position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: radial-gradient(circle, rgba(255,140,0,0.12), transparent 70%); border-radius: 50%; filter: blur(20px); }
 .stat-icon { width: 44px; height: 44px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 12px; }
 .stat-icon.orange { background: rgba(255,140,0,0.15); color: #ff8c00; }
 .stat-icon.green { background: rgba(37,211,102,0.15); color: #25D366; }
 .stat-icon.blue { background: rgba(0,150,255,0.15); color: #0096ff; }
 .stat-card h3 { font-size: 12px; color: #888; font-weight: 500; margin-bottom: 6px; }
-.stat-value { font-size: 24px; font-weight: 700; }
+.stat-value { font-size: 26px; font-weight: 700; }
 
 .section-card { background: linear-gradient(145deg, #16161a, #111114); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 22px; margin-bottom: 25px; }
 .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
@@ -44,16 +52,19 @@ body { font-family: 'Poppins', sans-serif; background: #0a0a0c; color: #fff; min
 .filter-pill:hover { color: #fff; border-color: rgba(255,140,0,0.3); }
 .filter-pill.active { background: linear-gradient(135deg, #ff8c00, #ff5e00); color: white; border-color: transparent; }
 
-.table-wrap { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-thead tr { background: rgba(255,255,255,0.03); }
-thead th { padding: 14px; text-align: left; font-weight: 600; color: #888; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.06); white-space: nowrap; }
-tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: 0.2s; cursor: pointer; }
-tbody tr:hover { background: rgba(255,140,0,0.04); }
-tbody td { padding: 14px; color: #ddd; }
+/* ✨ STICKY COLUMNS */
+.table-wrap { overflow-x: auto; position: relative; }
+table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; }
+thead tr { background: #1a1a1d; }
+thead th { padding: 14px; text-align: left; font-weight: 600; color: #888; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.06); white-space: nowrap; background: #1a1a1d; }
+tbody tr { transition: 0.2s; cursor: pointer; }
+tbody td { padding: 14px; color: #ddd; border-bottom: 1px solid rgba(255,255,255,0.04); background: #16161a; }
+tbody tr:hover td { background: #1d1715; }
+
+th.sticky-right, td.sticky-right { position: sticky; right: 0; z-index: 5; box-shadow: -8px 0 12px -6px rgba(0,0,0,0.5); }
 
 .order-id { font-weight: 600; color: #ff8c00; }
-.amount { font-weight: 600; color: #fff; }
+.amount { font-weight: 600; color: #fff; white-space: nowrap; }
 .status-badge { padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; display: inline-block; white-space: nowrap; }
 .status-new { background: rgba(0,150,255,0.15); color: #0096ff; }
 .status-printing { background: rgba(255,140,0,0.15); color: #ff8c00; }
@@ -107,12 +118,15 @@ tbody td { padding: 14px; color: #ddd; }
 .loading { text-align: center; padding: 60px 20px; color: #888; }
 .loading i { font-size: 40px; color: #ff8c00; margin-bottom: 15px; }
 
+.fx-note { font-size: 10px; color: #888; display: block; margin-top: 2px; font-weight: 400; }
+
 @media (max-width: 768px) {
   .header { padding: 15px 20px; }
   .brand h1 { font-size: 16px; }
   .stats-grid { grid-template-columns: 1fr; }
   .detail-grid { grid-template-columns: 1fr; }
   .page-title { font-size: 22px; }
+  th.sticky-right, td.sticky-right { position: static; box-shadow: none; }
 }
 </style>
 </head>
@@ -120,10 +134,16 @@ tbody td { padding: 14px; color: #ddd; }
 
 <header class="header">
   <div class="brand">
-    <div class="brand-icon">🖨️</div>
+    <!-- ✨ REPLACE src WITH YOUR LOGO URL -->
+    <img class="brand-logo" id="brandLogo" src="https://via.placeholder.com/100x100/ff8c00/ffffff?text=EP" alt="Eevee Printers Logo">
     <div><h1>Eevee Printers</h1><p>CUSTOMER PORTAL</p></div>
   </div>
-  <div class="user-info">
+  <div class="header-actions">
+    <!-- ✨ NEW: Currency toggle for customers -->
+    <div class="currency-toggle">
+      <span class="currency-pill active" data-cur="USD" onclick="setDisplayCurrency('USD')">$ USD</span>
+      <span class="currency-pill" data-cur="INR" onclick="setDisplayCurrency('INR')">₹ INR</span>
+    </div>
     <div class="user-chip">
       <div class="user-avatar" id="userAvatar">U</div>
       <span id="userName">User</span>
@@ -153,7 +173,11 @@ tbody td { padding: 14px; color: #ddd; }
       <div class="filter-pill" data-filter="Delivered">Delivered</div>
     </div>
     <div class="table-wrap"><table>
-      <thead><tr><th>Order ID</th><th>Job Name</th><th>Status</th><th>Payment</th><th>Total</th><th>Delivery</th><th>Created</th></tr></thead>
+      <thead><tr>
+        <th>Order ID</th><th>Job Name</th><th>Status</th><th>Delivery</th><th>Created</th>
+        <th class="sticky-right" style="right:120px; min-width:130px">Payment</th>
+        <th class="sticky-right" style="right:0; min-width:120px; background:#1a1a1d">Total</th>
+      </tr></thead>
       <tbody id="ordersTable"><tr><td colspan="7"><div class="loading"><i class="fa-solid fa-spinner fa-spin"></i><p>Loading your orders...</p></div></td></tr></tbody>
     </table></div>
   </div>
@@ -161,7 +185,10 @@ tbody td { padding: 14px; color: #ddd; }
   <div class="section-card">
     <div class="section-header"><h2><i class="fa-solid fa-file-lines" style="color:#ff8c00;margin-right:8px"></i>Your Quotations</h2></div>
     <div class="table-wrap"><table>
-      <thead><tr><th>Quotation ID</th><th>Job</th><th>Amount</th><th>Status</th><th>Valid Until</th><th>Created</th></tr></thead>
+      <thead><tr>
+        <th>Quotation ID</th><th>Job</th><th>Status</th><th>Valid Until</th><th>Created</th>
+        <th class="sticky-right" style="right:0; min-width:140px; background:#1a1a1d">Amount</th>
+      </tr></thead>
       <tbody id="quotesTable"></tbody>
     </table></div>
   </div>
@@ -203,7 +230,6 @@ from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
 import { getFirestore, collection, getDocs, query, where }
 from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
-// ✅ FIXED firebase config (was "YOUR_API_KEY" placeholder before — broke everything!)
 const firebaseConfig = {
   apiKey: "AIzaSyCSYwthBX2s99OiYJ0pcgr4ha6VfK214fk",
   authDomain: "eevee-printers.firebaseapp.com",
@@ -218,18 +244,40 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const ADMIN_EMAIL = "sharangoud4444@gmail.com";
 
+// ✨ CURRENCY
+const EXCHANGE_RATE = { USD_TO_INR: 83.5, INR_TO_USD: 1/83.5 };
+let displayCurrency = localStorage.getItem("eevee_customer_currency") || "USD"; // default USD for US
+
+function convert(amount, fromCurrency, toCurrency) {
+  if (!amount) return 0;
+  if (fromCurrency === toCurrency) return Number(amount);
+  if (fromCurrency === "USD" && toCurrency === "INR") return Number(amount) * EXCHANGE_RATE.USD_TO_INR;
+  if (fromCurrency === "INR" && toCurrency === "USD") return Number(amount) * EXCHANGE_RATE.INR_TO_USD;
+  return Number(amount);
+}
+function fmtMoney(amount, currency, targetCurrency) {
+  const target = targetCurrency || displayCurrency;
+  const converted = convert(amount, currency || "USD", target);
+  const symbol = target === "USD" ? "$" : "₹";
+  const locale = target === "USD" ? "en-US" : "en-IN";
+  const fixed = target === "USD" ? converted.toFixed(2) : Math.round(converted);
+  return symbol + Number(fixed).toLocaleString(locale, target === "USD" ? { minimumFractionDigits: 2, maximumFractionDigits: 2 } : {});
+}
+function fmtMoneyOrig(amount, currency) {
+  return fmtMoney(amount, currency, currency || "USD");
+}
+
 let myOrders = [];
 let myQuotes = [];
 let currentFilter = "all";
 
 // HELPERS
-function fmtINR(n) { return "₹" + (Number(n)||0).toLocaleString('en-IN'); }
 function fmtDate(s) {
   if (!s) return "-";
   try {
     const d = new Date(s);
     if (isNaN(d)) return s;
-    return d.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+    return d.toLocaleDateString('en-US', { day:'2-digit', month:'short', year:'numeric' });
   } catch { return s; }
 }
 function statusClass(s) {
@@ -237,7 +285,6 @@ function statusClass(s) {
   return m[s] || "status-new";
 }
 
-// 🔒 PRIVACY-FIRST: Customer sees ONLY payment STATUS BADGE, never actual paid amounts
 function paymentStatus(o) {
   const total = Number(o.totalAmount) || 0;
   if (total <= 0) return "Unpaid";
@@ -246,7 +293,7 @@ function paymentStatus(o) {
     paid = o.payments.filter(p=>p.type!=="Refund").reduce((s,p)=>s+(Number(p.amount)||0),0)
          - o.payments.filter(p=>p.type==="Refund").reduce((s,p)=>s+(Number(p.amount)||0),0);
   } else if (o.advancePaid) {
-    paid = Number(o.advancePaid) || 0;  // legacy support
+    paid = Number(o.advancePaid) || 0;
   }
   if (paid >= total) return "Paid";
   if (paid > 0) return "Partial";
@@ -258,31 +305,79 @@ function paymentStatusClass(p) {
   return "status-unpaid";
 }
 
+window.setDisplayCurrency = function(cur) {
+  displayCurrency = cur;
+  localStorage.setItem("eevee_customer_currency", cur);
+  document.querySelectorAll(".currency-pill").forEach(p => {
+    p.classList.toggle("active", p.dataset.cur === cur);
+  });
+  renderOrders();
+  renderQuotes();
+};
+
 // AUTH GUARD
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     window.location.href = "index.html";
     return;
   }
-  // Admin should not be here — redirect them
   if (user.email === ADMIN_EMAIL) {
     window.location.href = "admin-dashboard.html";
     return;
   }
   document.getElementById("userName").innerText = user.email.split("@")[0];
   document.getElementById("userAvatar").innerText = user.email[0].toUpperCase();
+  // Init currency pills
+  document.querySelectorAll(".currency-pill").forEach(p => {
+    p.classList.toggle("active", p.dataset.cur === displayCurrency);
+  });
   await loadMyData(user.email);
 });
 
 async function loadMyData(email) {
   try {
-    // Fetch only this customer's orders & quotations
-    const [oSnap, qSnap] = await Promise.all([
-      getDocs(query(collection(db, "orders"), where("email", "==", email))),
-      getDocs(query(collection(db, "quotations"), where("email", "==", email)))
+    // ✨ CRITICAL FIX: lowercase the email for matching (admin now stores lowercase)
+    const emailLower = email.toLowerCase().trim();
+
+    // First try lowercase match (new orders)
+    const [oSnapLower, qSnapLower, oSnapOrig, qSnapOrig] = await Promise.all([
+      getDocs(query(collection(db, "orders"), where("email", "==", emailLower))),
+      getDocs(query(collection(db, "quotations"), where("email", "==", emailLower))),
+      // Also try original case for backward compat with old data
+      emailLower !== email ? getDocs(query(collection(db, "orders"), where("email", "==", email))) : Promise.resolve({forEach:()=>{}}),
+      emailLower !== email ? getDocs(query(collection(db, "quotations"), where("email", "==", email))) : Promise.resolve({forEach:()=>{}})
     ]);
-    myOrders = []; oSnap.forEach(d => myOrders.push({ id: d.id, ...d.data() }));
-    myQuotes = []; qSnap.forEach(d => myQuotes.push({ id: d.id, ...d.data() }));
+
+    const seenOrders = new Set();
+    const seenQuotes = new Set();
+    myOrders = [];
+    myQuotes = [];
+
+    oSnapLower.forEach(d => { if (!seenOrders.has(d.id)) { seenOrders.add(d.id); myOrders.push({ id: d.id, ...d.data() }); }});
+    oSnapOrig.forEach(d => { if (!seenOrders.has(d.id)) { seenOrders.add(d.id); myOrders.push({ id: d.id, ...d.data() }); }});
+    qSnapLower.forEach(d => { if (!seenQuotes.has(d.id)) { seenQuotes.add(d.id); myQuotes.push({ id: d.id, ...d.data() }); }});
+    qSnapOrig.forEach(d => { if (!seenQuotes.has(d.id)) { seenQuotes.add(d.id); myQuotes.push({ id: d.id, ...d.data() }); }});
+
+    // Also fallback: fetch ALL and filter case-insensitively (handles mixed-case legacy data)
+    if (myOrders.length === 0 && myQuotes.length === 0) {
+      const [allO, allQ] = await Promise.all([
+        getDocs(collection(db, "orders")),
+        getDocs(collection(db, "quotations"))
+      ]);
+      allO.forEach(d => {
+        const data = d.data();
+        if ((data.email || "").toLowerCase().trim() === emailLower) {
+          myOrders.push({ id: d.id, ...data });
+        }
+      });
+      allQ.forEach(d => {
+        const data = d.data();
+        if ((data.email || "").toLowerCase().trim() === emailLower) {
+          myQuotes.push({ id: d.id, ...data });
+        }
+      });
+    }
+
     renderStats();
     renderOrders();
     renderQuotes();
@@ -308,14 +403,17 @@ function renderOrders() {
   }
   tbody.innerHTML = rows.map(o => {
     const pStatus = paymentStatus(o);
+    const cur = o.currency || "INR";
+    const totalDisplay = fmtMoney(o.totalAmount, cur);
+    const showOrig = cur !== displayCurrency;
     return `<tr onclick="window.viewOrder('${o.id}')">
       <td><span class="order-id">${o.orderId||"-"}</span></td>
       <td>${o.jobName||"-"}<br><small style="color:#666">Qty: ${o.quantity||"-"}</small></td>
       <td><span class="status-badge ${statusClass(o.status)}">${o.status||"-"}</span></td>
-      <td><span class="status-badge ${paymentStatusClass(pStatus)}">${pStatus}</span></td>
-      <td class="amount">${fmtINR(o.totalAmount)}</td>
       <td>${fmtDate(o.deliveryDate)}</td>
       <td style="color:#aaa;font-size:12px">${fmtDate(o.createdAt)}</td>
+      <td class="sticky-right" style="right:120px; min-width:130px"><span class="status-badge ${paymentStatusClass(pStatus)}">${pStatus}</span></td>
+      <td class="sticky-right amount" style="right:0; min-width:120px">${totalDisplay}${showOrig ? `<span class="fx-note">(${fmtMoneyOrig(o.totalAmount, cur)})</span>` : ""}</td>
     </tr>`;
   }).join("");
 }
@@ -332,33 +430,35 @@ function renderQuotes() {
     if (q.status === "Accepted") cls = "status-paid";
     else if (q.status === "Rejected") cls = "status-unpaid";
     else if (q.status === "Converted") cls = "status-ready";
+    const cur = q.currency || "INR";
+    const showOrig = cur !== displayCurrency;
     return `<tr style="cursor:default">
       <td><span class="order-id">${q.quotationId||"-"}</span></td>
       <td>${q.jobName||"-"}<br><small style="color:#666">Qty: ${q.quantity||"-"}</small></td>
-      <td class="amount">${fmtINR(q.estimatedAmount)}</td>
       <td><span class="status-badge ${cls}">${q.status||"-"}</span></td>
       <td>${fmtDate(q.validUntil)}</td>
       <td style="color:#aaa;font-size:12px">${fmtDate(q.createdAt)}</td>
+      <td class="sticky-right amount" style="right:0; min-width:140px">${fmtMoney(q.estimatedAmount, cur)}${showOrig?`<span class="fx-note">(${fmtMoneyOrig(q.estimatedAmount, cur)})</span>`:""}</td>
     </tr>`;
   }).join("");
 }
 
-// VIEW ORDER DETAIL (still no exact paid amounts shown)
+// VIEW ORDER DETAIL
 window.viewOrder = function(id) {
   const o = myOrders.find(x => x.id === id);
   if (!o) return;
   const pStatus = paymentStatus(o);
+  const cur = o.currency || "INR";
   document.getElementById("odTitle").innerText = "Order " + (o.orderId||"");
   document.getElementById("odSub").innerText = o.jobName||"";
 
-  // 🔒 Customer view: total amount + payment status badge only, NO paid/pending amounts
   const items = [
     ["Order ID", o.orderId||"-"],
     ["Job Name", o.jobName||"-"],
     ["Quantity", o.quantity||"-"],
     ["Order Status", `<span class="status-badge ${statusClass(o.status)}">${o.status||"-"}</span>`],
     ["Payment Status", `<span class="status-badge ${paymentStatusClass(pStatus)}">${pStatus}</span>`],
-    ["Total Amount", `<span class="value big">${fmtINR(o.totalAmount)}</span>`],
+    ["Total Amount", `<span class="value big">${fmtMoney(o.totalAmount, cur)}</span>${cur!==displayCurrency?`<br><small style="color:#888">Billed in ${fmtMoneyOrig(o.totalAmount, cur)}</small>`:""}`],
     ["Delivery Date", fmtDate(o.deliveryDate)],
     ["Order Date", fmtDate(o.createdAt)]
   ];
@@ -366,15 +466,13 @@ window.viewOrder = function(id) {
     `<div class="detail-item"><div class="label">${l}</div><div class="value">${v}</div></div>`
   ).join("");
 
-  // Show invoices (customer CAN see their own invoice files — they need them!)
   const invList = document.getElementById("odInvoices");
   const payments = o.payments || [];
   const invoicesWithFiles = payments.filter(p => p.file);
   if (!invoicesWithFiles.length && !o.invoice) {
     invList.innerHTML = `<div style="padding:20px;text-align:center;color:#666;font-size:13px"><i class="fa-solid fa-file-circle-xmark" style="font-size:30px;color:#444;display:block;margin-bottom:8px"></i>No invoice files available yet</div>`;
   } else {
-    // New schema
-    let html = invoicesWithFiles.map((p, idx) => {
+    let html = invoicesWithFiles.map((p) => {
       const realIdx = payments.indexOf(p);
       return `<div class="invoice-row">
         <div class="invoice-info">
@@ -384,7 +482,6 @@ window.viewOrder = function(id) {
         <button class="btn-view" onclick="window.viewInvoice('${o.id}', ${realIdx})"><i class="fa-solid fa-eye"></i> View Invoice</button>
       </div>`;
     }).join("");
-    // Legacy invoice support
     if (o.invoice && !invoicesWithFiles.length) {
       html = `<div class="invoice-row">
         <div class="invoice-info">
@@ -446,9 +543,9 @@ document.getElementById("orderFilters").addEventListener("click", e => {
 
 window.logout = () => signOut(auth).then(() => window.location.href = "index.html");
 
-// Close modals on outside click
 document.querySelectorAll(".modal").forEach(m => m.addEventListener("click", e => { if (e.target === m) m.classList.remove("show"); }));
 </script>
 
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
