@@ -16,7 +16,7 @@ body { font-family: 'Poppins', sans-serif; background: #0a0a0c; color: #fff; min
 
 .sidebar { position: fixed; top: 0; left: 0; width: 260px; height: 100vh; background: linear-gradient(180deg, #111114 0%, #0a0a0c 100%); border-right: 1px solid rgba(255,140,0,0.1); padding: 25px 0; z-index: 100; transition: 0.3s; overflow-y: auto; }
 .sidebar-logo { padding: 0 25px 25px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 12px; }
-.sidebar-logo .logo-icon { width: 42px; height: 42px; background: linear-gradient(135deg, #ff8c00, #ff5e00); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 6px 18px rgba(255,140,0,0.4); }
+.sidebar-logo .logo-img { width: 46px; height: 46px; border-radius: 12px; object-fit: cover; box-shadow: 0 6px 18px rgba(255,140,0,0.4); background: linear-gradient(135deg, #ff8c00, #ff5e00); padding: 4px; }
 .sidebar-logo h2 { font-size: 18px; font-weight: 700; }
 .sidebar-logo p { font-size: 11px; color: #888; letter-spacing: 1px; }
 .sidebar-menu { padding: 20px 15px; }
@@ -53,6 +53,16 @@ body { font-family: 'Poppins', sans-serif; background: #0a0a0c; color: #fff; min
 .stat-card .stat-value { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
 .stat-card .stat-trend { font-size: 12px; color: #25D366; }
 
+/* ✨ NEW: Dashboard date range bar */
+.dashboard-date-bar { background: linear-gradient(145deg, #16161a, #111114); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 14px 20px; margin-bottom: 22px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.dashboard-date-bar i { color: #ff8c00; font-size: 16px; }
+.dashboard-date-bar label { font-size: 13px; color: #aaa; font-weight: 500; }
+.dashboard-date-bar select, .dashboard-date-bar input[type="date"] { background: #0a0a0c; color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 8px; font-size: 12px; font-family: 'Poppins'; cursor: pointer; }
+.dashboard-date-bar .today-pill { background: rgba(37,211,102,0.1); color: #25D366; border: 1px solid rgba(37,211,102,0.25); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.dashboard-date-bar .currency-toggle { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.currency-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 6px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; color: #aaa; transition: 0.3s; }
+.currency-pill.active { background: linear-gradient(135deg, #ff8c00, #ff5e00); color: white; border-color: transparent; }
+
 .charts-row { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 30px; }
 .chart-card { background: linear-gradient(145deg, #16161a, #111114); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 22px; }
 .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
@@ -85,14 +95,21 @@ body { font-family: 'Poppins', sans-serif; background: #0a0a0c; color: #fff; min
 .date-range-inputs.show { display: flex; }
 .date-range-inputs input { background: #0a0a0c; color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 7px 10px; border-radius: 8px; font-size: 12px; font-family: 'Poppins'; }
 
-.table-wrap { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-thead tr { background: rgba(255,255,255,0.03); }
-thead th { padding: 14px; text-align: left; font-weight: 600; color: #888; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.06); white-space: nowrap; }
-tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: 0.2s; }
+/* ✨ STICKY COLUMNS — payment & actions columns freeze on right when scrolling */
+.table-wrap { overflow-x: auto; position: relative; }
+table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; }
+thead tr { background: #1a1a1d; }
+thead th { padding: 14px; text-align: left; font-weight: 600; color: #888; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.06); white-space: nowrap; background: #1a1a1d; }
+tbody tr { transition: 0.2s; }
 tbody tr:hover { background: rgba(255,140,0,0.04); }
 tbody tr.clickable { cursor: pointer; }
-tbody td { padding: 14px; color: #ddd; }
+tbody td { padding: 14px; color: #ddd; border-bottom: 1px solid rgba(255,255,255,0.04); background: #16161a; }
+tbody tr:hover td { background: #1d1715; }
+
+/* Sticky right columns */
+th.sticky-right, td.sticky-right { position: sticky; right: 0; z-index: 5; box-shadow: -8px 0 12px -6px rgba(0,0,0,0.5); }
+th.sticky-right-2, td.sticky-right-2 { position: sticky; z-index: 5; }
+
 .order-id { font-weight: 600; color: #ff8c00; }
 .cust-cell { display: flex; align-items: center; gap: 10px; }
 .cust-avatar { width: 32px; height: 32px; background: linear-gradient(135deg, #ff8c00, #ff5e00); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 12px; }
@@ -112,8 +129,8 @@ tbody td { padding: 14px; color: #ddd; }
 .status-paid { background: rgba(37,211,102,0.15); color: #25D366; }
 .status-partial { background: rgba(255,200,0,0.15); color: #ffc800; }
 .status-unpaid { background: rgba(255,80,80,0.15); color: #ff5252; }
-.payment-cell .amount-paid { color: #25D366; font-weight: 600; }
-.payment-cell .amount-total { color: #888; font-size: 11px; }
+.payment-cell .amount-paid { color: #25D366; font-weight: 600; white-space: nowrap; }
+.payment-cell .amount-total { color: #888; font-size: 11px; white-space: nowrap; }
 .progress-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.05); border-radius: 4px; margin-top: 4px; overflow: hidden; }
 .progress-fill { height: 100%; background: linear-gradient(90deg, #25D366, #1ebe5d); border-radius: 4px; }
 .action-btns { display: flex; gap: 6px; }
@@ -121,6 +138,8 @@ tbody td { padding: 14px; color: #ddd; }
 .icon-btn:hover { background: rgba(255,140,0,0.15); color: #ff8c00; }
 .icon-btn.danger:hover { background: rgba(255,80,80,0.15); color: #ff5252; }
 .icon-btn.success:hover { background: rgba(37,211,102,0.15); color: #25D366; }
+
+.currency-flag { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: #888; margin-left: 4px; }
 
 .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); z-index: 1000; align-items: flex-start; justify-content: center; padding: 30px 15px; overflow-y: auto; }
 .modal.show { display: flex; }
@@ -186,6 +205,7 @@ tbody td { padding: 14px; color: #ddd; }
   .stat-card { padding: 16px; } .stat-card .stat-value { font-size: 22px; }
   .form-grid, .detail-grid { grid-template-columns: 1fr; }
   .topbar-left h1 { font-size: 20px; }
+  th.sticky-right, td.sticky-right { position: static; box-shadow: none; }
 }
 @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
 </style>
@@ -194,7 +214,8 @@ tbody td { padding: 14px; color: #ddd; }
 
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
-    <div class="logo-icon">🖨️</div>
+    <!-- ✨ REPLACE THE src BELOW WITH YOUR LOGO URL -->
+    <img class="logo-img" id="brandLogo" src="https://via.placeholder.com/100x100/ff8c00/ffffff?text=EP" alt="Logo">
     <div><h2>Eevee Admin</h2><p>PRINTERS</p></div>
   </div>
   <div class="sidebar-menu">
@@ -234,9 +255,37 @@ tbody td { padding: 14px; color: #ddd; }
 
   <!-- DASHBOARD -->
   <section class="page-section active" id="page-dashboard">
+    <!-- ✨ NEW: Dashboard date filter bar -->
+    <div class="dashboard-date-bar">
+      <i class="fa-solid fa-calendar-day"></i>
+      <label>Period:</label>
+      <select id="dashPeriod" onchange="applyDashPeriod()">
+        <option value="today">Today</option>
+        <option value="7">Last 7 Days</option>
+        <option value="30" selected>Last 30 Days</option>
+        <option value="90">Last 90 Days</option>
+        <option value="365">Last 1 Year</option>
+        <option value="all">All Time</option>
+        <option value="custom">Custom Range</option>
+      </select>
+      <div class="date-range-inputs" id="dashCustomRange">
+        <input type="date" id="dashFrom">
+        <span style="color:#666">to</span>
+        <input type="date" id="dashTo">
+        <button class="btn-secondary" onclick="renderAll()" style="padding:7px 12px"><i class="fa-solid fa-filter"></i></button>
+      </div>
+      <span class="today-pill"><i class="fa-solid fa-clock"></i> Today: <span id="todayLabel"></span></span>
+
+      <div class="currency-toggle">
+        <span style="font-size:12px;color:#888">View in:</span>
+        <span class="currency-pill" data-cur="USD" onclick="setDisplayCurrency('USD')">$ USD</span>
+        <span class="currency-pill active" data-cur="INR" onclick="setDisplayCurrency('INR')">₹ INR</span>
+      </div>
+    </div>
+
     <div class="stats-grid">
-      <div class="stat-card"><div class="stat-icon orange"><i class="fa-solid fa-box"></i></div><h3>Total Orders</h3><div class="stat-value" id="stat-total-orders">0</div><div class="stat-trend"><i class="fa-solid fa-arrow-up"></i> All time</div></div>
-      <div class="stat-card"><div class="stat-icon green"><i class="fa-solid fa-indian-rupee-sign"></i></div><h3>Total Revenue</h3><div class="stat-value" id="stat-revenue">₹0</div><div class="stat-trend"><i class="fa-solid fa-arrow-up"></i> From payments</div></div>
+      <div class="stat-card"><div class="stat-icon orange"><i class="fa-solid fa-box"></i></div><h3>Total Orders</h3><div class="stat-value" id="stat-total-orders">0</div><div class="stat-trend"><i class="fa-solid fa-arrow-up"></i> <span id="stat-orders-period">Selected period</span></div></div>
+      <div class="stat-card"><div class="stat-icon green"><i class="fa-solid fa-dollar-sign"></i></div><h3>Total Revenue</h3><div class="stat-value" id="stat-revenue">$0</div><div class="stat-trend"><i class="fa-solid fa-arrow-up"></i> From payments</div></div>
       <div class="stat-card"><div class="stat-icon blue"><i class="fa-solid fa-clock"></i></div><h3>Pending Orders</h3><div class="stat-value" id="stat-pending">0</div><div class="stat-trend">Awaiting completion</div></div>
       <div class="stat-card"><div class="stat-icon purple"><i class="fa-solid fa-users"></i></div><h3>Customers</h3><div class="stat-value" id="stat-customers">0</div><div class="stat-trend">Unique clients</div></div>
     </div>
@@ -264,7 +313,7 @@ tbody td { padding: 14px; color: #ddd; }
         <button class="btn-secondary" onclick="goToPage('orders')">View All <i class="fa-solid fa-arrow-right"></i></button>
       </div>
       <div class="table-wrap"><table>
-        <thead><tr><th>Order ID</th><th>Customer</th><th>Job</th><th>Status</th><th>Payment</th><th>Delivery</th><th>Created</th></tr></thead>
+        <thead><tr><th>Order ID</th><th>Customer</th><th>Job</th><th>Status</th><th class="sticky-right">Payment</th></tr></thead>
         <tbody id="recentOrdersTable"></tbody>
       </table></div>
     </div>
@@ -288,7 +337,12 @@ tbody td { padding: 14px; color: #ddd; }
         <div class="filter-pill" data-filter="Delivered">Delivered</div>
       </div>
       <div class="table-wrap"><table>
-        <thead><tr><th>Order ID</th><th>Customer</th><th>Job</th><th>Status</th><th>Payment</th><th>Delivery</th><th>Created</th><th>Actions</th></tr></thead>
+        <thead><tr>
+          <th>Order ID</th><th>Customer</th><th>Job</th><th>Status</th>
+          <th>Delivery</th><th>Created</th>
+          <th class="sticky-right" style="right:140px; min-width:180px">Payment</th>
+          <th class="sticky-right" style="right:0; min-width:140px; background:#1a1a1d">Actions</th>
+        </tr></thead>
         <tbody id="ordersTable"></tbody>
       </table></div>
     </div>
@@ -316,7 +370,11 @@ tbody td { padding: 14px; color: #ddd; }
         <div class="filter-pill" data-filter="Converted">Converted</div>
       </div>
       <div class="table-wrap"><table>
-        <thead><tr><th>Quotation ID</th><th>Customer</th><th>Job</th><th>Amount</th><th>Status</th><th>Valid Until</th><th>Created</th><th>Actions</th></tr></thead>
+        <thead><tr>
+          <th>Quotation ID</th><th>Customer</th><th>Job</th><th>Status</th><th>Valid Until</th><th>Created</th>
+          <th class="sticky-right" style="right:140px; min-width:130px">Amount</th>
+          <th class="sticky-right" style="right:0; min-width:140px; background:#1a1a1d">Actions</th>
+        </tr></thead>
         <tbody id="quotationsTable"></tbody>
       </table></div>
     </div>
@@ -327,7 +385,10 @@ tbody td { padding: 14px; color: #ddd; }
     <div class="section-card">
       <div class="section-header"><h2>Customers</h2><p style="color:#888;font-size:12px">Click a customer to see all their orders</p></div>
       <div class="table-wrap"><table>
-        <thead><tr><th>Customer</th><th>Email</th><th>Orders</th><th>Total Spent</th><th>Last Order</th><th>First Seen</th></tr></thead>
+        <thead><tr>
+          <th>Customer</th><th>Email</th><th>Orders</th><th>Last Order</th><th>First Seen</th>
+          <th class="sticky-right" style="right:0; min-width:160px; background:#1a1a1d">Total Spent</th>
+        </tr></thead>
         <tbody id="customersTable"></tbody>
       </table></div>
     </div>
@@ -336,10 +397,10 @@ tbody td { padding: 14px; color: #ddd; }
   <!-- REVENUE -->
   <section class="page-section" id="page-revenue">
     <div class="stats-grid">
-      <div class="stat-card"><div class="stat-icon green"><i class="fa-solid fa-sack-dollar"></i></div><h3>Total Revenue</h3><div class="stat-value" id="rev-total">₹0</div></div>
-      <div class="stat-card"><div class="stat-icon orange"><i class="fa-solid fa-wallet"></i></div><h3>Total Paid</h3><div class="stat-value" id="rev-advance">₹0</div></div>
-      <div class="stat-card"><div class="stat-icon blue"><i class="fa-solid fa-hourglass-half"></i></div><h3>Pending Payments</h3><div class="stat-value" id="rev-pending">₹0</div></div>
-      <div class="stat-card"><div class="stat-icon purple"><i class="fa-solid fa-chart-pie"></i></div><h3>Avg Order Value</h3><div class="stat-value" id="rev-aov">₹0</div></div>
+      <div class="stat-card"><div class="stat-icon green"><i class="fa-solid fa-sack-dollar"></i></div><h3>Total Revenue</h3><div class="stat-value" id="rev-total">$0</div></div>
+      <div class="stat-card"><div class="stat-icon orange"><i class="fa-solid fa-wallet"></i></div><h3>Total Paid</h3><div class="stat-value" id="rev-advance">$0</div></div>
+      <div class="stat-card"><div class="stat-icon blue"><i class="fa-solid fa-hourglass-half"></i></div><h3>Pending Payments</h3><div class="stat-value" id="rev-pending">$0</div></div>
+      <div class="stat-card"><div class="stat-icon purple"><i class="fa-solid fa-chart-pie"></i></div><h3>Avg Order Value</h3><div class="stat-value" id="rev-aov">$0</div></div>
     </div>
     <div class="section-card">
       <div class="section-header">
@@ -378,7 +439,11 @@ tbody td { padding: 14px; color: #ddd; }
     <div class="section-card">
       <div class="section-header"><h2>Invoices</h2><p style="color:#888;font-size:12px">All payment invoices across orders</p></div>
       <div class="table-wrap"><table>
-        <thead><tr><th>Invoice ID</th><th>Order ID</th><th>Customer</th><th>Type</th><th>Amount</th><th>Date</th><th>Invoice File</th></tr></thead>
+        <thead><tr>
+          <th>Invoice ID</th><th>Order ID</th><th>Customer</th><th>Type</th><th>Date</th>
+          <th class="sticky-right" style="right:130px; min-width:130px">Amount</th>
+          <th class="sticky-right" style="right:0; min-width:130px; background:#1a1a1d">Invoice File</th>
+        </tr></thead>
         <tbody id="invoicesTable"></tbody>
       </table></div>
     </div>
@@ -401,9 +466,16 @@ tbody td { padding: 14px; color: #ddd; }
         <div class="form-field"><label>Customer Name *</label><input type="text" id="f-name" required placeholder="Full name"></div>
         <div class="form-field"><label>Job Name *</label><input type="text" id="f-job" required placeholder="Business Cards"></div>
         <div class="form-field"><label>Quantity</label><input type="text" id="f-qty" placeholder="500"></div>
-        <div class="form-field"><label>Total Amount (₹) *</label><input type="number" id="f-total" min="0" step="1" required placeholder="10000"></div>
+        <!-- ✨ NEW: Currency selector -->
+        <div class="form-field"><label>Currency *</label>
+          <select id="f-currency" required>
+            <option value="USD">$ USD — US Dollar</option>
+            <option value="INR">₹ INR — Indian Rupee</option>
+          </select>
+        </div>
+        <div class="form-field"><label>Total Amount *</label><input type="number" id="f-total" min="0" step="0.01" required placeholder="500"></div>
         <div class="form-field"><label>Delivery Date</label><input type="date" id="f-delivery"></div>
-        <div class="form-field full"><label>Initial Advance Paid (₹) — optional</label><input type="number" id="f-advance" min="0" step="1" placeholder="0 (you can add payments later from order details)"><small class="hint">Must be ≤ Total Amount. Leave blank/0 if no advance taken yet.</small></div>
+        <div class="form-field"><label>Initial Advance Paid — optional</label><input type="number" id="f-advance" min="0" step="0.01" placeholder="0"></div>
         <div class="form-field full"><label>Initial Invoice File (max 800KB) — optional</label>
           <input type="file" id="f-invoice" accept=".pdf,image/*">
           <small class="hint">PDF or image for the initial payment.</small>
@@ -436,13 +508,12 @@ tbody td { padding: 14px; color: #ddd; }
             <option>Refund</option>
           </select>
         </div>
-        <div class="form-field"><label>Amount (₹) *</label><input type="number" id="p-amount" min="0" step="1" required placeholder="5000"></div>
+        <div class="form-field"><label>Amount * <span id="p-currencyLabel" style="color:#ff8c00">($)</span></label><input type="number" id="p-amount" min="0" step="0.01" required></div>
         <div class="form-field"><label>Payment Date *</label><input type="date" id="p-date" required></div>
         <div class="form-field full"><label>Invoice File (max 800KB) — optional</label>
           <input type="file" id="p-file" accept=".pdf,image/*">
-          <small class="hint">Upload invoice/receipt for this specific payment.</small>
         </div>
-        <div class="form-field full"><label>Note (optional)</label><textarea id="p-note" rows="2" placeholder="e.g., Paid via UPI..."></textarea></div>
+        <div class="form-field full"><label>Note (optional)</label><textarea id="p-note" rows="2"></textarea></div>
       </div>
       <div class="form-field full" style="margin-top:14px;background:rgba(255,140,0,0.06);padding:12px 14px;border-radius:10px;border:1px solid rgba(255,140,0,0.15)">
         <div style="font-size:11px;color:#aaa;margin-bottom:4px">Order Summary</div>
@@ -476,7 +547,13 @@ tbody td { padding: 14px; color: #ddd; }
         <div class="form-field"><label>Customer Name *</label><input type="text" id="q-name" required></div>
         <div class="form-field"><label>Job Name *</label><input type="text" id="q-job" required placeholder="Business Cards"></div>
         <div class="form-field"><label>Quantity</label><input type="text" id="q-qty" placeholder="500"></div>
-        <div class="form-field"><label>Estimated Amount (₹) *</label><input type="number" id="q-amount" min="0" step="1" required></div>
+        <div class="form-field"><label>Currency *</label>
+          <select id="q-currency" required>
+            <option value="USD">$ USD</option>
+            <option value="INR">₹ INR</option>
+          </select>
+        </div>
+        <div class="form-field"><label>Estimated Amount *</label><input type="number" id="q-amount" min="0" step="0.01" required></div>
         <div class="form-field"><label>Valid Until</label><input type="date" id="q-validUntil"></div>
         <div class="form-field full"><label>Notes / Description</label><textarea id="q-notes" rows="3" placeholder="Job specifications, materials, etc..."></textarea></div>
       </div>
@@ -496,9 +573,9 @@ tbody td { padding: 14px; color: #ddd; }
     <p class="modal-sub" id="custDetailEmail">—</p>
     <div class="detail-grid">
       <div class="detail-item"><div class="label">Total Orders</div><div class="value big" id="custTotalOrders">0</div></div>
-      <div class="detail-item"><div class="label">Total Spent (Paid)</div><div class="value big" id="custTotalSpent">₹0</div></div>
-      <div class="detail-item"><div class="label">Total Value</div><div class="value" id="custTotalValue">₹0</div></div>
-      <div class="detail-item"><div class="label">Pending Amount</div><div class="value" id="custPending">₹0</div></div>
+      <div class="detail-item"><div class="label">Total Spent (Paid)</div><div class="value big" id="custTotalSpent">$0</div></div>
+      <div class="detail-item"><div class="label">Total Value</div><div class="value" id="custTotalValue">$0</div></div>
+      <div class="detail-item"><div class="label">Pending Amount</div><div class="value" id="custPending">$0</div></div>
     </div>
     <div class="detail-section-title"><span>All Orders</span><small style="color:#666;font-weight:400">click any to view details</small></div>
     <div class="table-wrap"><table>
@@ -565,6 +642,31 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const ADMIN_EMAIL = "sharangoud4444@gmail.com";
 
+// ✨ CURRENCY SYSTEM
+// Exchange rate — UPDATE THIS PERIODICALLY or fetch from API
+const EXCHANGE_RATE = { USD_TO_INR: 83.5, INR_TO_USD: 1/83.5 };
+let displayCurrency = localStorage.getItem("eevee_display_currency") || "USD"; // Admin display preference
+
+function convert(amount, fromCurrency, toCurrency) {
+  if (!amount) return 0;
+  if (fromCurrency === toCurrency) return Number(amount);
+  if (fromCurrency === "USD" && toCurrency === "INR") return Number(amount) * EXCHANGE_RATE.USD_TO_INR;
+  if (fromCurrency === "INR" && toCurrency === "USD") return Number(amount) * EXCHANGE_RATE.INR_TO_USD;
+  return Number(amount);
+}
+function fmtMoney(amount, currency, targetCurrency) {
+  const target = targetCurrency || displayCurrency;
+  const converted = convert(amount, currency || "USD", target);
+  const symbol = target === "USD" ? "$" : "₹";
+  const locale = target === "USD" ? "en-US" : "en-IN";
+  const fixed = target === "USD" ? converted.toFixed(2) : Math.round(converted);
+  return symbol + Number(fixed).toLocaleString(locale, target === "USD" ? { minimumFractionDigits: 2, maximumFractionDigits: 2 } : {});
+}
+// Original currency display (for tooltips/details)
+function fmtMoneyOrig(amount, currency) {
+  return fmtMoney(amount, currency, currency || "USD");
+}
+
 let allOrders = [];
 let allQuotations = [];
 let currentFilter = "all";
@@ -573,6 +675,8 @@ let revenueChart, statusChart, monthlyChart;
 let editId = null;
 let editQuoId = null;
 let activeOrderId = null;
+let currentDashPeriod = "30";
+let currentDashCustom = { from: null, to: null };
 
 // =================== HELPERS ===================
 function todayStr() {
@@ -582,13 +686,12 @@ function todayStr() {
   const day = String(d.getDate()).padStart(2,"0");
   return `${y}-${m}-${day}`;
 }
-function fmtINR(n) { return "₹" + (Number(n)||0).toLocaleString('en-IN'); }
 function fmtDate(s) {
   if (!s) return "-";
   try {
     const d = new Date(s);
     if (isNaN(d)) return s;
-    return d.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+    return d.toLocaleDateString('en-US', { day:'2-digit', month:'short', year:'numeric' });
   } catch { return s; }
 }
 function initials(name) { if (!name) return "?"; return name.split(" ").map(s=>s[0]).join("").toUpperCase().slice(0,2); }
@@ -607,6 +710,7 @@ function paymentStatusClass(p) {
 
 function normalizeOrder(o) {
   if (!o.payments || !Array.isArray(o.payments)) o.payments = [];
+  if (!o.currency) o.currency = "INR"; // legacy orders default to INR
   if ((!o.payments.length) && Number(o.advancePaid) > 0) {
     o.payments = [{
       invoiceId: o.invoiceId || "",
@@ -619,6 +723,8 @@ function normalizeOrder(o) {
     }];
   }
   if (!o.createdAt) o.createdAt = todayStr();
+  // ✨ Normalize email to lowercase for matching
+  if (o.email) o.email = o.email.toLowerCase().trim();
   return o;
 }
 function totalPaid(o) {
@@ -661,12 +767,43 @@ function nextQuotationId() {
   return "EVE-QUO-" + String(max + 1).padStart(5, "0");
 }
 
+// Get orders filtered by dashboard period
+function getOrdersInPeriod() {
+  if (currentDashPeriod === "all") return allOrders;
+  const today = new Date(); today.setHours(0,0,0,0);
+  let fromDate, toDate;
+  if (currentDashPeriod === "custom") {
+    fromDate = currentDashCustom.from ? new Date(currentDashCustom.from) : null;
+    toDate = currentDashCustom.to ? new Date(currentDashCustom.to) : today;
+    if (!fromDate) return allOrders;
+  } else if (currentDashPeriod === "today") {
+    fromDate = new Date(today);
+    toDate = new Date(today);
+  } else {
+    toDate = new Date(today);
+    fromDate = new Date(today);
+    fromDate.setDate(fromDate.getDate() - parseInt(currentDashPeriod) + 1);
+  }
+  fromDate.setHours(0,0,0,0); toDate.setHours(23,59,59,999);
+  return allOrders.filter(o => {
+    if (!o.createdAt) return false;
+    const d = new Date(o.createdAt);
+    return d >= fromDate && d <= toDate;
+  });
+}
+
 // ========== AUTH ==========
 onAuthStateChanged(auth, (user) => {
   if (!user) { window.location.href = "index.html"; return; }
   if (user.email !== ADMIN_EMAIL) { alert("Not authorized ❌"); window.location.href = "customer.html"; return; }
   document.getElementById("userName").innerText = user.email.split("@")[0];
   document.getElementById("userAvatar").innerText = user.email[0].toUpperCase();
+  // Init currency pills
+  document.querySelectorAll(".currency-pill").forEach(p => {
+    p.classList.toggle("active", p.dataset.cur === displayCurrency);
+  });
+  // Today label
+  document.getElementById("todayLabel").innerText = new Date().toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' });
   loadAll();
 });
 
@@ -681,6 +818,27 @@ function toast(msg, isError = false) {
 }
 window.toast = toast;
 
+window.setDisplayCurrency = function(cur) {
+  displayCurrency = cur;
+  localStorage.setItem("eevee_display_currency", cur);
+  document.querySelectorAll(".currency-pill").forEach(p => {
+    p.classList.toggle("active", p.dataset.cur === cur);
+  });
+  renderAll();
+  toast(`Display switched to ${cur === "USD" ? "$ USD" : "₹ INR"}`);
+};
+
+window.applyDashPeriod = function() {
+  currentDashPeriod = document.getElementById("dashPeriod").value;
+  const range = document.getElementById("dashCustomRange");
+  if (currentDashPeriod === "custom") {
+    range.classList.add("show");
+  } else {
+    range.classList.remove("show");
+    renderAll();
+  }
+};
+
 async function loadAll() {
   try {
     const [oSnap, qSnap] = await Promise.all([
@@ -690,46 +848,68 @@ async function loadAll() {
     allOrders = [];
     oSnap.forEach(d => allOrders.push(normalizeOrder({ id: d.id, ...d.data() })));
     allQuotations = [];
-    qSnap.forEach(d => allQuotations.push({ id: d.id, createdAt: todayStr(), ...d.data() }));
+    qSnap.forEach(d => {
+      const q = { id: d.id, createdAt: todayStr(), ...d.data() };
+      if (!q.currency) q.currency = "INR";
+      if (q.email) q.email = q.email.toLowerCase().trim();
+      allQuotations.push(q);
+    });
     renderAll();
   } catch (e) {
     console.error("Load failed:", e);
     toast("Failed to load data: " + e.message, true);
   }
 }
-
-function renderAll() {
+window.renderAll = function() {
+  // Update custom dates if needed
+  if (currentDashPeriod === "custom") {
+    currentDashCustom.from = document.getElementById("dashFrom").value;
+    currentDashCustom.to = document.getElementById("dashTo").value;
+  }
   renderStats(); renderRecentOrders(); renderOrdersTable();
   renderCustomers(); renderRevenue(); renderInvoices();
   renderQuotations(); renderQuotationStats();
   renderCharts();
-}
+};
 
 function renderStats() {
-  const total = allOrders.length;
-  const revenue = allOrders.reduce((s, o) => s + totalPaid(o), 0);
-  const pending = allOrders.filter(o => o.status !== "Delivered").length;
-  const customers = new Set(allOrders.map(o => o.email).filter(Boolean)).size;
+  const periodOrders = getOrdersInPeriod();
+  const total = periodOrders.length;
+  // Revenue in display currency (convert each payment from its order's currency)
+  const revenue = periodOrders.reduce((s, o) => {
+    const paid = totalPaid(o);
+    return s + convert(paid, o.currency || "INR", displayCurrency);
+  }, 0);
+  const pending = periodOrders.filter(o => o.status !== "Delivered").length;
+  const customers = new Set(periodOrders.map(o => o.email).filter(Boolean)).size;
   document.getElementById("stat-total-orders").innerText = total;
-  document.getElementById("stat-revenue").innerText = fmtINR(revenue);
+  document.getElementById("stat-revenue").innerText = fmtMoney(revenue, displayCurrency);
   document.getElementById("stat-pending").innerText = pending;
   document.getElementById("stat-customers").innerText = customers;
+  const periodLabels = { "today":"Today", "7":"Last 7 days", "30":"Last 30 days", "90":"Last 90 days", "365":"Last year", "all":"All time", "custom":"Custom range" };
+  document.getElementById("stat-orders-period").innerText = periodLabels[currentDashPeriod] || "Period";
 }
 
 function orderRow(o, showActions = false) {
   const paid = totalPaid(o);
   const total = Number(o.totalAmount) || 0;
   const pct = total > 0 ? Math.min(100, (paid/total)*100) : 0;
+  const cur = o.currency || "INR";
   return `
     <tr class="clickable" onclick="window.viewOrderDetail('${o.id}')">
       <td><span class="order-id">${o.orderId || "-"}</span></td>
       <td><div class="cust-cell"><div class="cust-avatar">${initials(o.customerName)}</div><div class="cust-info"><strong>${o.customerName||"-"}</strong><small>${o.email||""}</small></div></div></td>
       <td>${o.jobName || "-"}<br><small style="color:#666">Qty: ${o.quantity || "-"}</small></td>
       <td><span class="status-badge ${statusClass(o.status)}">${o.status || "-"}</span></td>
-      <td class="payment-cell"><span class="amount-paid">${fmtINR(paid)}</span><span class="amount-total"> / ${fmtINR(total)}</span><div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div></td>
-      <td>${fmtDate(o.deliveryDate)}</td>
-      <td class="created-cell">${fmtDate(o.createdAt)}</td>
-      ${showActions ? `<td onclick="event.stopPropagation()">
+      ${showActions ? `
+        <td>${fmtDate(o.deliveryDate)}</td>
+        <td class="created-cell">${fmtDate(o.createdAt)}</td>` : ""}
+      <td class="payment-cell sticky-right" style="${showActions ? 'right:140px; min-width:180px;' : 'right:0; min-width:160px;'}">
+        <span class="amount-paid">${fmtMoney(paid, cur)}</span><span class="amount-total"> / ${fmtMoney(total, cur)}</span>
+        ${cur !== displayCurrency ? `<span class="currency-flag">(${cur === "USD" ? "$" : "₹"}${cur})</span>` : ""}
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+      </td>
+      ${showActions ? `<td class="sticky-right" style="right:0; min-width:140px;" onclick="event.stopPropagation()">
         <div class="action-btns">
           <button class="icon-btn success" onclick="window.openPaymentModal('${o.id}')" title="Add Payment"><i class="fa-solid fa-plus"></i></button>
           <button class="icon-btn" onclick="window.editOrder('${o.id}')" title="Edit Order"><i class="fa-solid fa-pen"></i></button>
@@ -740,10 +920,10 @@ function orderRow(o, showActions = false) {
 }
 
 function renderRecentOrders() {
-  const recent = [...allOrders].sort((a,b)=>(b.createdAt||"").localeCompare(a.createdAt||"")).slice(0, 5);
+  const recent = [...getOrdersInPeriod()].sort((a,b)=>(b.createdAt||"").localeCompare(a.createdAt||"")).slice(0, 5);
   document.getElementById("recentOrdersTable").innerHTML = recent.length
     ? recent.map(o => orderRow(o,false)).join("")
-    : `<tr><td colspan="7"><div class="empty-state"><i class="fa-solid fa-inbox"></i><h3>No orders yet</h3><p>Add your first order to get started</p></div></td></tr>`;
+    : `<tr><td colspan="5"><div class="empty-state"><i class="fa-solid fa-inbox"></i><h3>No orders in this period</h3><p>Try changing the date range</p></div></td></tr>`;
 }
 
 function renderOrdersTable() {
@@ -765,9 +945,9 @@ function renderCustomers() {
   allOrders.forEach(o => {
     const key = o.email || o.customerName;
     if (!key) return;
-    if (!map[key]) map[key] = { name: o.customerName, email: o.email, orders: 0, spent: 0, last: "", first: o.createdAt || "" };
+    if (!map[key]) map[key] = { name: o.customerName, email: o.email, orders: 0, spentInDisplay: 0, last: "", first: o.createdAt || "" };
     map[key].orders++;
-    map[key].spent += totalPaid(o);
+    map[key].spentInDisplay += convert(totalPaid(o), o.currency || "INR", displayCurrency);
     if (o.deliveryDate && o.deliveryDate > map[key].last) map[key].last = o.deliveryDate;
     if (o.createdAt && (!map[key].first || o.createdAt < map[key].first)) map[key].first = o.createdAt;
   });
@@ -778,22 +958,22 @@ function renderCustomers() {
         <td><div class="cust-cell"><div class="cust-avatar">${initials(c.name)}</div><div class="cust-info"><strong>${c.name||"-"}</strong></div></div></td>
         <td>${c.email||"-"}</td>
         <td><strong>${c.orders}</strong></td>
-        <td style="color:#25D366;font-weight:600">${fmtINR(c.spent)}</td>
         <td>${fmtDate(c.last)}</td>
         <td class="created-cell">${fmtDate(c.first)}</td>
+        <td class="sticky-right" style="right:0; min-width:160px; color:#25D366;font-weight:600">${fmtMoney(c.spentInDisplay, displayCurrency)}</td>
       </tr>`).join("")
     : `<tr><td colspan="6"><div class="empty-state"><i class="fa-solid fa-users"></i><h3>No customers yet</h3></div></td></tr>`;
 }
 
 function renderRevenue() {
-  const total = allOrders.reduce((s,o)=>s+(Number(o.totalAmount)||0), 0);
-  const paid = allOrders.reduce((s,o)=>s+totalPaid(o), 0);
+  const total = allOrders.reduce((s,o)=>s+convert(Number(o.totalAmount)||0, o.currency||"INR", displayCurrency), 0);
+  const paid = allOrders.reduce((s,o)=>s+convert(totalPaid(o), o.currency||"INR", displayCurrency), 0);
   const pending = total - paid;
   const aov = allOrders.length > 0 ? total / allOrders.length : 0;
-  document.getElementById("rev-total").innerText = fmtINR(total);
-  document.getElementById("rev-advance").innerText = fmtINR(paid);
-  document.getElementById("rev-pending").innerText = fmtINR(pending);
-  document.getElementById("rev-aov").innerText = fmtINR(Math.round(aov));
+  document.getElementById("rev-total").innerText = fmtMoney(total, displayCurrency);
+  document.getElementById("rev-advance").innerText = fmtMoney(paid, displayCurrency);
+  document.getElementById("rev-pending").innerText = fmtMoney(pending, displayCurrency);
+  document.getElementById("rev-aov").innerText = fmtMoney(aov, displayCurrency);
 }
 
 function renderInvoices() {
@@ -805,16 +985,19 @@ function renderInvoices() {
   });
   rows.sort((a,b) => (b.date||"").localeCompare(a.date||""));
   document.getElementById("invoicesTable").innerHTML = rows.length
-    ? rows.map(p => `
+    ? rows.map(p => {
+      const cur = p.order.currency || "INR";
+      return `
       <tr>
         <td><span class="order-id">${p.invoiceId || "—"}</span></td>
         <td>${p.order.orderId || "-"}</td>
         <td>${p.order.customerName || "-"}</td>
         <td><span class="status-badge ${p.type==="Refund"?"status-rejected":"status-accepted"}">${p.type||"-"}</span></td>
-        <td style="color:#25D366;font-weight:600">${fmtINR(p.amount)}</td>
         <td>${fmtDate(p.date)}</td>
-        <td>${p.file ? `<button class="btn-secondary" onclick="window.viewInvoice('${p.order.id}', ${p.idx})"><i class="fa-solid fa-eye"></i> View</button>` : '<span style="color:#666">No file</span>'}</td>
-      </tr>`).join("")
+        <td class="sticky-right" style="right:130px; min-width:130px; color:#25D366;font-weight:600">${fmtMoney(p.amount, cur)}${cur!==displayCurrency?`<small style="color:#888;display:block;font-size:10px">${fmtMoneyOrig(p.amount, cur)}</small>`:""}</td>
+        <td class="sticky-right" style="right:0; min-width:130px;">${p.file ? `<button class="btn-secondary" onclick="window.viewInvoice('${p.order.id}', ${p.idx})"><i class="fa-solid fa-eye"></i> View</button>` : '<span style="color:#666">No file</span>'}</td>
+      </tr>`;
+    }).join("")
     : `<tr><td colspan="7"><div class="empty-state"><i class="fa-solid fa-file-invoice"></i><h3>No invoices yet</h3><p>Invoices will appear here when payments are added</p></div></td></tr>`;
 }
 
@@ -825,8 +1008,9 @@ window.viewInvoice = function(orderId, paymentIdx) {
   const p = (o.payments||[])[paymentIdx];
   if (!p || !p.file) { toast("Invoice file not found", true); return; }
 
+  const cur = o.currency || "INR";
   document.getElementById("invViewerTitle").innerText = p.invoiceId || "Invoice";
-  document.getElementById("invViewerSub").innerText = `${p.type} payment of ${fmtINR(p.amount)} for ${o.orderId} · ${o.customerName||""}`;
+  document.getElementById("invViewerSub").innerText = `${p.type} payment of ${fmtMoneyOrig(p.amount, cur)} for ${o.orderId} · ${o.customerName||""}`;
 
   const body = document.getElementById("invViewerBody");
   const isPdf = (p.file||"").startsWith("data:application/pdf") || (p.fileName||"").toLowerCase().endsWith(".pdf");
@@ -864,23 +1048,26 @@ function renderQuotations() {
   let rows = currentQuoFilter === "all" ? allQuotations : allQuotations.filter(q => q.status === currentQuoFilter);
   rows = rows.sort((a,b)=>(b.createdAt||"").localeCompare(a.createdAt||""));
   document.getElementById("quotationsTable").innerHTML = rows.length
-    ? rows.map(q => `
+    ? rows.map(q => {
+      const cur = q.currency || "INR";
+      return `
       <tr>
         <td><span class="order-id">${q.quotationId || "-"}</span></td>
         <td><div class="cust-cell"><div class="cust-avatar">${initials(q.customerName)}</div><div class="cust-info"><strong>${q.customerName||"-"}</strong><small>${q.email||""}</small></div></div></td>
         <td>${q.jobName || "-"}<br><small style="color:#666">Qty: ${q.quantity || "-"}</small></td>
-        <td style="color:#ff8c00;font-weight:600">${fmtINR(q.estimatedAmount)}</td>
         <td><span class="status-badge ${statusClass(q.status)}">${q.status || "-"}</span></td>
         <td>${fmtDate(q.validUntil)}</td>
         <td class="created-cell">${fmtDate(q.createdAt)}</td>
-        <td>
+        <td class="sticky-right" style="right:140px; min-width:130px; color:#ff8c00;font-weight:600">${fmtMoney(q.estimatedAmount, cur)}${cur!==displayCurrency?`<small style="color:#888;display:block;font-size:10px">${fmtMoneyOrig(q.estimatedAmount, cur)}</small>`:""}</td>
+        <td class="sticky-right" style="right:0; min-width:140px;">
           <div class="action-btns">
             ${q.status !== "Converted" ? `<button class="icon-btn success" onclick="window.convertQuotation('${q.id}')" title="Convert to Order"><i class="fa-solid fa-arrow-right"></i></button>` : ''}
             <button class="icon-btn" onclick="window.editQuotation('${q.id}')" title="Edit"><i class="fa-solid fa-pen"></i></button>
             <button class="icon-btn danger" onclick="window.deleteQuotation('${q.id}')" title="Delete"><i class="fa-solid fa-trash"></i></button>
           </div>
         </td>
-      </tr>`).join("")
+      </tr>`;
+    }).join("")
     : `<tr><td colspan="8"><div class="empty-state"><i class="fa-solid fa-file-lines"></i><h3>No quotations yet</h3><p>Create your first quotation</p></div></td></tr>`;
 }
 
@@ -890,6 +1077,7 @@ window.openQuotationModal = () => {
   document.getElementById("quotationForm").reset();
   document.getElementById("q-quoId").value = nextQuotationId();
   document.getElementById("q-status").value = "Pending";
+  document.getElementById("q-currency").value = "USD";
   document.getElementById("quotationModal").classList.add("show");
 };
 window.closeQuotationModal = () => document.getElementById("quotationModal").classList.remove("show");
@@ -905,6 +1093,7 @@ window.editQuotation = (id) => {
   document.getElementById("q-name").value = q.customerName || "";
   document.getElementById("q-job").value = q.jobName || "";
   document.getElementById("q-qty").value = q.quantity || "";
+  document.getElementById("q-currency").value = q.currency || "INR";
   document.getElementById("q-amount").value = q.estimatedAmount || "";
   document.getElementById("q-validUntil").value = q.validUntil || "";
   document.getElementById("q-notes").value = q.notes || "";
@@ -919,10 +1108,11 @@ window.saveQuotation = async (e) => {
     const data = {
       quotationId: document.getElementById("q-quoId").value,
       status: document.getElementById("q-status").value,
-      email: document.getElementById("q-email").value.trim(),
+      email: document.getElementById("q-email").value.trim().toLowerCase(), // ✨ LOWERCASE
       customerName: document.getElementById("q-name").value.trim(),
       jobName: document.getElementById("q-job").value.trim(),
       quantity: document.getElementById("q-qty").value.trim(),
+      currency: document.getElementById("q-currency").value,
       estimatedAmount: Number(document.getElementById("q-amount").value) || 0,
       validUntil: document.getElementById("q-validUntil").value,
       notes: document.getElementById("q-notes").value.trim(),
@@ -951,9 +1141,10 @@ window.convertQuotation = async (id) => {
     const newOrderId = nextOrderId();
     const orderData = {
       orderId: newOrderId,
-      email: q.email, customerName: q.customerName,
+      email: (q.email||"").toLowerCase(), customerName: q.customerName,
       jobName: q.jobName, quantity: q.quantity,
       status: "New Order",
+      currency: q.currency || "INR",
       totalAmount: Number(q.estimatedAmount) || 0,
       payments: [], deliveryDate: "",
       notes: "Converted from " + (q.quotationId||""),
@@ -969,7 +1160,6 @@ window.convertQuotation = async (id) => {
 // ========== CHARTS ==========
 function renderCharts() { renderDashboardChart(); renderStatusChart(); renderRevenueChart(); }
 
-// ✨ FIXED: builds continuous date range that ALWAYS ends at TODAY
 function buildDailyData(startDate, endDate) {
   const labels = [], data = [], keys = [];
   const d = new Date(startDate); d.setHours(0,0,0,0);
@@ -978,16 +1168,18 @@ function buildDailyData(startDate, endDate) {
     const y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,"0"), day = String(d.getDate()).padStart(2,"0");
     const key = `${y}-${m}-${day}`;
     keys.push(key);
-    labels.push(d.toLocaleDateString('en-IN', { month:'short', day:'numeric' }));
+    labels.push(d.toLocaleDateString('en-US', { month:'short', day:'numeric' }));
     data.push(0);
     d.setDate(d.getDate()+1);
   }
   allOrders.forEach(o => {
+    const cur = o.currency || "INR";
     (o.payments||[]).forEach(p => {
       if (!p.date) return;
       const idx = keys.indexOf(p.date);
       if (idx !== -1) {
-        const amt = (p.type === "Refund" ? -1 : 1) * (Number(p.amount)||0);
+        const sign = p.type === "Refund" ? -1 : 1;
+        const amt = sign * convert(Number(p.amount)||0, cur, displayCurrency);
         data[idx] += amt;
       }
     });
@@ -999,10 +1191,8 @@ window.renderDashboardChart = function() {
   const days = parseInt(document.getElementById("revenueRange").value);
   const today = new Date(); today.setHours(0,0,0,0);
   const start = new Date(today); start.setDate(start.getDate() - days + 1);
-
   const { labels, data } = buildDailyData(start, today);
 
-  // ✨ FIX: dynamically widen container so ALL dates are visible (scroll if too many)
   const container = document.getElementById("revenueChartContainer");
   const minWidthPerLabel = 50;
   const requiredWidth = Math.max(labels.length * minWidthPerLabel, 600);
@@ -1013,14 +1203,15 @@ window.renderDashboardChart = function() {
   const ctx = document.getElementById("revenueChart").getContext("2d");
   const grad = ctx.createLinearGradient(0,0,0,280);
   grad.addColorStop(0,"rgba(255,140,0,0.4)"); grad.addColorStop(1,"rgba(255,140,0,0)");
+  const symbol = displayCurrency === "USD" ? "$" : "₹";
   revenueChart = new Chart(ctx, {
     type:'line',
-    data:{ labels, datasets:[{ label:'Revenue (₹)', data, borderColor:'#ff8c00', backgroundColor:grad, fill:true, tension:0.35, borderWidth:2.5, pointBackgroundColor:'#ff8c00', pointRadius: 3, pointHoverRadius: 6 }] },
+    data:{ labels, datasets:[{ label:`Revenue (${symbol})`, data, borderColor:'#ff8c00', backgroundColor:grad, fill:true, tension:0.35, borderWidth:2.5, pointBackgroundColor:'#ff8c00', pointRadius: 3, pointHoverRadius: 6 }] },
     options:{
       responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: c => fmtINR(c.raw) } } },
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: c => fmtMoney(c.raw, displayCurrency) } } },
       scales:{
-        y:{ beginAtZero:true, grid:{color:'rgba(255,255,255,0.05)'}, ticks:{ color:'#888', callback: v => fmtINR(v) } },
+        y:{ beginAtZero:true, grid:{color:'rgba(255,255,255,0.05)'}, ticks:{ color:'#888', callback: v => symbol + (displayCurrency === "USD" ? v.toFixed(0) : v) } },
         x:{ grid:{display:false}, ticks:{ color:'#888', maxRotation: 45, minRotation: 0, autoSkip: false } }
       }
     }
@@ -1038,7 +1229,6 @@ function renderStatusChart() {
   });
 }
 
-// ✨ FIXED: Monthly/Weekly/Yearly now build CONTINUOUS ranges with zeros
 window.renderRevenueChart = function() {
   const grouping = document.getElementById("revGrouping").value;
   const preset = document.getElementById("revPreset").value;
@@ -1055,7 +1245,6 @@ window.renderRevenueChart = function() {
     fromDate = new Date(today); fromDate.setDate(fromDate.getDate() - parseInt(preset) + 1);
   }
 
-  // For "all time" — auto-derive from earliest payment
   if (preset === "all" || (!fromDate && !toDate)) {
     let earliest = todayStr();
     allOrders.forEach(o => (o.payments||[]).forEach(p => { if (p.date && p.date < earliest) earliest = p.date; }));
@@ -1068,27 +1257,28 @@ window.renderRevenueChart = function() {
 
   let labels = [], values = [];
 
+  const addPayment = (vals, idx, p, cur) => {
+    if (idx !== -1) vals[idx] += (p.type==="Refund"?-1:1) * convert(Number(p.amount)||0, cur, displayCurrency);
+  };
+
   if (grouping === "day") {
     const result = buildDailyData(fromDate, toDate);
     labels = result.labels; values = result.data;
   }
   else if (grouping === "month") {
-    // Build continuous list of months
     const months = [], keys = [];
     const d = new Date(fromDate.getFullYear(), fromDate.getMonth(), 1);
     const end = new Date(toDate.getFullYear(), toDate.getMonth(), 1);
     while (d <= end) {
       const y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,"0");
       keys.push(`${y}-${m}`);
-      months.push(d.toLocaleDateString('en-IN', { month:'short', year:'numeric' }));
+      months.push(d.toLocaleDateString('en-US', { month:'short', year:'numeric' }));
       d.setMonth(d.getMonth()+1);
     }
     const vals = keys.map(()=>0);
     allOrders.forEach(o => (o.payments||[]).forEach(p => {
       if (!p.date) return;
-      const k = p.date.slice(0,7);
-      const idx = keys.indexOf(k);
-      if (idx !== -1) vals[idx] += (p.type==="Refund"?-1:1)*(Number(p.amount)||0);
+      addPayment(vals, keys.indexOf(p.date.slice(0,7)), p, o.currency || "INR");
     }));
     labels = months; values = vals;
   }
@@ -1100,9 +1290,7 @@ window.renderRevenueChart = function() {
     const vals = keys.map(()=>0);
     allOrders.forEach(o => (o.payments||[]).forEach(p => {
       if (!p.date) return;
-      const k = p.date.slice(0,4);
-      const idx = keys.indexOf(k);
-      if (idx !== -1) vals[idx] += (p.type==="Refund"?-1:1)*(Number(p.amount)||0);
+      addPayment(vals, keys.indexOf(p.date.slice(0,4)), p, o.currency || "INR");
     }));
     labels = years; values = vals;
   }
@@ -1110,7 +1298,6 @@ window.renderRevenueChart = function() {
     const weeks = [], keys = [];
     const d = new Date(fromDate);
     while (d <= toDate) {
-      const wkStart = new Date(d);
       const onejan = new Date(d.getFullYear(),0,1);
       const week = Math.ceil((((d - onejan)/86400000)+onejan.getDay()+1)/7);
       const k = d.getFullYear()+"-W"+String(week).padStart(2,"0");
@@ -1127,13 +1314,11 @@ window.renderRevenueChart = function() {
       const onejan = new Date(pd.getFullYear(),0,1);
       const week = Math.ceil((((pd - onejan)/86400000)+onejan.getDay()+1)/7);
       const k = pd.getFullYear()+"-W"+String(week).padStart(2,"0");
-      const idx = keys.indexOf(k);
-      if (idx !== -1) vals[idx] += (p.type==="Refund"?-1:1)*(Number(p.amount)||0);
+      addPayment(vals, keys.indexOf(k), p, o.currency || "INR");
     }));
     labels = weeks; values = vals;
   }
 
-  // Dynamic width — scroll if needed
   const container = document.getElementById("monthlyChartContainer");
   const minWidthPerLabel = grouping === "day" ? 50 : 80;
   const requiredWidth = Math.max(labels.length * minWidthPerLabel, 700);
@@ -1145,14 +1330,15 @@ window.renderRevenueChart = function() {
 
 function drawBarChart(labels, values) {
   if (monthlyChart) monthlyChart.destroy();
+  const symbol = displayCurrency === "USD" ? "$" : "₹";
   monthlyChart = new Chart(document.getElementById("monthlyChart"), {
     type:'bar',
-    data:{ labels, datasets:[{ label:'Revenue (₹)', data: values, backgroundColor:'rgba(255,140,0,0.75)', borderRadius:6, maxBarThickness: 40 }] },
+    data:{ labels, datasets:[{ label:`Revenue (${symbol})`, data: values, backgroundColor:'rgba(255,140,0,0.75)', borderRadius:6, maxBarThickness: 40 }] },
     options:{
       responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: c => fmtINR(c.raw) } } },
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: c => fmtMoney(c.raw, displayCurrency) } } },
       scales:{
-        y:{ beginAtZero:true, grid:{color:'rgba(255,255,255,0.05)'}, ticks:{ color:'#888', callback: v => fmtINR(v) } },
+        y:{ beginAtZero:true, grid:{color:'rgba(255,255,255,0.05)'}, ticks:{ color:'#888', callback: v => symbol + (displayCurrency === "USD" ? v.toFixed(0) : v) } },
         x:{ grid:{display:false}, ticks:{ color:'#888', maxRotation: 45, autoSkip: false } }
       }
     }
@@ -1171,21 +1357,22 @@ window.viewCustomer = function(key) {
   const orders = allOrders.filter(o => (o.email||o.customerName) === key);
   if (!orders.length) return;
   const c = orders[0];
-  const totalSpent = orders.reduce((s,o)=>s+totalPaid(o), 0);
-  const totalValue = orders.reduce((s,o)=>s+(Number(o.totalAmount)||0), 0);
+  const totalSpent = orders.reduce((s,o)=>s+convert(totalPaid(o), o.currency||"INR", displayCurrency), 0);
+  const totalValue = orders.reduce((s,o)=>s+convert(Number(o.totalAmount)||0, o.currency||"INR", displayCurrency), 0);
   document.getElementById("custDetailName").innerText = c.customerName || "Customer";
   document.getElementById("custDetailEmail").innerText = c.email || "—";
   document.getElementById("custTotalOrders").innerText = orders.length;
-  document.getElementById("custTotalSpent").innerText = fmtINR(totalSpent);
-  document.getElementById("custTotalValue").innerText = fmtINR(totalValue);
-  document.getElementById("custPending").innerText = fmtINR(totalValue - totalSpent);
+  document.getElementById("custTotalSpent").innerText = fmtMoney(totalSpent, displayCurrency);
+  document.getElementById("custTotalValue").innerText = fmtMoney(totalValue, displayCurrency);
+  document.getElementById("custPending").innerText = fmtMoney(totalValue - totalSpent, displayCurrency);
   document.getElementById("custOrdersTable").innerHTML = orders.sort((a,b)=>(b.createdAt||"").localeCompare(a.createdAt||"")).map(o => {
     const paid = totalPaid(o), total = Number(o.totalAmount)||0;
+    const cur = o.currency || "INR";
     return `<tr class="clickable" onclick="window.viewOrderDetail('${o.id}'); window.closeCustomerModal();">
       <td><span class="order-id">${o.orderId||"-"}</span></td>
       <td>${o.jobName||"-"}</td>
       <td><span class="status-badge ${statusClass(o.status)}">${o.status||"-"}</span></td>
-      <td><span class="amount-paid">${fmtINR(paid)}</span><span class="amount-total"> / ${fmtINR(total)}</span></td>
+      <td><span class="amount-paid">${fmtMoney(paid, cur)}</span><span class="amount-total"> / ${fmtMoney(total, cur)}</span></td>
       <td>${fmtDate(o.deliveryDate)}</td>
       <td class="created-cell">${fmtDate(o.createdAt)}</td>
     </tr>`;
@@ -1201,6 +1388,7 @@ window.viewOrderDetail = function(id) {
   activeOrderId = id;
   const paid = totalPaid(o), total = Number(o.totalAmount)||0;
   const pStatus = paymentStatus(o);
+  const cur = o.currency || "INR";
   document.getElementById("orderDetailTitle").innerText = "Order " + (o.orderId || "—");
   document.getElementById("orderDetailSub").innerText = (o.jobName || "") + " · " + (o.customerName || "");
   const items = [
@@ -1210,9 +1398,10 @@ window.viewOrderDetail = function(id) {
     ["Quantity", o.quantity || "-"],
     ["Order Status", `<span class="status-badge ${statusClass(o.status)}">${o.status||"-"}</span>`],
     ["Payment Status", `<span class="status-badge ${paymentStatusClass(pStatus)}">${pStatus}</span>`],
-    ["Total Amount", `<span style="color:#ff8c00;font-weight:700">${fmtINR(total)}</span>`],
-    ["Total Paid", `<span style="color:#25D366;font-weight:700">${fmtINR(paid)}</span>`],
-    ["Pending", `<span style="color:#ff5252;font-weight:700">${fmtINR(total-paid)}</span>`],
+    ["Currency", `<span style="color:#ff8c00;font-weight:700">${cur === "USD" ? "$ USD" : "₹ INR"}</span>`],
+    ["Total Amount", `<span style="color:#ff8c00;font-weight:700">${fmtMoneyOrig(total, cur)}</span>${cur!==displayCurrency?`<br><small style="color:#888">≈ ${fmtMoney(total, cur)}</small>`:""}`],
+    ["Total Paid", `<span style="color:#25D366;font-weight:700">${fmtMoneyOrig(paid, cur)}</span>`],
+    ["Pending", `<span style="color:#ff5252;font-weight:700">${fmtMoneyOrig(total-paid, cur)}</span>`],
     ["Delivery Date", fmtDate(o.deliveryDate)],
     ["Created On", fmtDate(o.createdAt)],
     ["Notes", o.notes || "—"]
@@ -1230,7 +1419,7 @@ window.viewOrderDetail = function(id) {
           <span class="pmt-id">${p.invoiceId||"—"} · ${p.type||"-"}</span>
           <span class="pmt-meta">${fmtDate(p.date)}${p.note? " · "+p.note: ""}</span>
         </div>
-        <div class="payment-amount">${p.type==="Refund"?"-":""}${fmtINR(p.amount)}</div>
+        <div class="payment-amount">${p.type==="Refund"?"-":""}${fmtMoneyOrig(p.amount, cur)}</div>
         <div class="action-btns">
           ${p.file ? `<button class="icon-btn" onclick="window.viewInvoice('${o.id}', ${idx})" title="View Invoice"><i class="fa-solid fa-eye"></i></button>` : ""}
           <button class="icon-btn danger" onclick="window.deletePayment('${o.id}', ${idx})" title="Remove Payment"><i class="fa-solid fa-trash"></i></button>
@@ -1252,7 +1441,10 @@ window.openPaymentModal = function(orderId) {
   if (!o) return;
   activeOrderId = orderId;
   const paid = totalPaid(o), total = Number(o.totalAmount)||0, pending = total - paid;
-  document.getElementById("paymentModalSub").innerText = `For ${o.orderId} · ${o.customerName||""}`;
+  const cur = o.currency || "INR";
+  const sym = cur === "USD" ? "$" : "₹";
+  document.getElementById("paymentModalSub").innerText = `For ${o.orderId} · ${o.customerName||""} (${cur})`;
+  document.getElementById("p-currencyLabel").innerText = `(${sym} ${cur})`;
   document.getElementById("p-invoiceId").value = nextInvoiceId();
   document.getElementById("p-type").value = paid === 0 ? "Advance" : (pending > 0 ? "Balance" : "Partial");
   document.getElementById("p-amount").value = pending > 0 ? pending : "";
@@ -1260,7 +1452,7 @@ window.openPaymentModal = function(orderId) {
   document.getElementById("p-file").value = "";
   document.getElementById("p-note").value = "";
   document.getElementById("p-summary").innerHTML =
-    `Total: <b style="color:#ff8c00">${fmtINR(total)}</b> · Paid: <b style="color:#25D366">${fmtINR(paid)}</b> · Pending: <b style="color:#ff5252">${fmtINR(pending)}</b>`;
+    `Total: <b style="color:#ff8c00">${fmtMoneyOrig(total, cur)}</b> · Paid: <b style="color:#25D366">${fmtMoneyOrig(paid, cur)}</b> · Pending: <b style="color:#ff5252">${fmtMoneyOrig(pending, cur)}</b>`;
   document.getElementById("paymentModal").classList.add("show");
 };
 window.closePaymentModal = () => document.getElementById("paymentModal").classList.remove("show");
@@ -1272,16 +1464,17 @@ window.addPayment = async (e) => {
   try {
     const o = allOrders.find(x => x.id === activeOrderId);
     if (!o) throw new Error("Order not found");
+    const cur = o.currency || "INR";
     const type = document.getElementById("p-type").value;
     const amount = Number(document.getElementById("p-amount").value) || 0;
     if (amount <= 0) throw new Error("Amount must be greater than 0");
     const currentPaid = totalPaid(o);
     const total = Number(o.totalAmount) || 0;
     if (type !== "Refund" && (currentPaid + amount) > total) {
-      throw new Error(`Payment exceeds total. Already paid ${fmtINR(currentPaid)}, total is ${fmtINR(total)}. Max allowed: ${fmtINR(total - currentPaid)}`);
+      throw new Error(`Payment exceeds total. Already paid ${fmtMoneyOrig(currentPaid, cur)}, total is ${fmtMoneyOrig(total, cur)}. Max allowed: ${fmtMoneyOrig(total - currentPaid, cur)}`);
     }
     if (type === "Refund" && amount > currentPaid) {
-      throw new Error(`Refund cannot exceed already paid ${fmtINR(currentPaid)}`);
+      throw new Error(`Refund cannot exceed already paid ${fmtMoneyOrig(currentPaid, cur)}`);
     }
     const file = document.getElementById("p-file").files[0];
     let fileData = null, fileName = "";
@@ -1326,6 +1519,7 @@ window.openOrderModal = () => {
   document.getElementById("orderForm").reset();
   document.getElementById("f-orderId").value = nextOrderId();
   document.getElementById("f-status").value = "New Order";
+  document.getElementById("f-currency").value = "USD"; // ✨ default USD for US market
   document.getElementById("f-advance").disabled = false;
   document.getElementById("f-invoice").disabled = false;
   document.getElementById("orderModal").classList.add("show");
@@ -1342,6 +1536,7 @@ window.editOrder = (id) => {
   document.getElementById("f-name").value = o.customerName || "";
   document.getElementById("f-job").value = o.jobName || "";
   document.getElementById("f-qty").value = o.quantity || "";
+  document.getElementById("f-currency").value = o.currency || "INR";
   document.getElementById("f-status").value = o.status || "New Order";
   document.getElementById("f-total").value = o.totalAmount || "";
   document.getElementById("f-advance").value = "";
@@ -1380,8 +1575,10 @@ window.saveOrder = async (e) => {
     const orderId = document.getElementById("f-orderId").value.trim();
     const totalAmount = Number(document.getElementById("f-total").value) || 0;
     const advance = Number(document.getElementById("f-advance").value) || 0;
+    const currency = document.getElementById("f-currency").value;
+    const sym = currency === "USD" ? "$" : "₹";
 
-    if (advance > totalAmount) throw new Error(`Advance ${fmtINR(advance)} cannot exceed Total ${fmtINR(totalAmount)}`);
+    if (advance > totalAmount) throw new Error(`Advance ${sym}${advance} cannot exceed Total ${sym}${totalAmount}`);
     if (totalAmount < 0) throw new Error("Total amount cannot be negative");
     if (advance < 0) throw new Error("Advance cannot be negative");
 
@@ -1393,10 +1590,12 @@ window.saveOrder = async (e) => {
 
     const baseData = {
       orderId,
-      email: document.getElementById("f-email").value.trim(),
+      // ✨ CRITICAL FIX: email saved as lowercase for case-insensitive matching
+      email: document.getElementById("f-email").value.trim().toLowerCase(),
       customerName: document.getElementById("f-name").value.trim(),
       jobName: document.getElementById("f-job").value.trim(),
       quantity: document.getElementById("f-qty").value.trim(),
+      currency,
       status: document.getElementById("f-status").value,
       totalAmount,
       deliveryDate: document.getElementById("f-delivery").value,
@@ -1436,10 +1635,10 @@ window.saveOrder = async (e) => {
 // ========== EXPORT ==========
 window.exportCSV = () => {
   if (!allOrders.length) { toast("No orders to export", true); return; }
-  const headers = ["Order ID","Customer","Email","Job","Qty","Status","Total","Paid","Pending","Payment Status","Delivery","Created"];
+  const headers = ["Order ID","Customer","Email","Job","Qty","Status","Currency","Total","Paid","Pending","Payment Status","Delivery","Created"];
   const rows = allOrders.map(o => {
     const paid = totalPaid(o), total = Number(o.totalAmount)||0;
-    return [o.orderId,o.customerName,o.email,o.jobName,o.quantity,o.status,total,paid,(total-paid),paymentStatus(o),o.deliveryDate,o.createdAt];
+    return [o.orderId,o.customerName,o.email,o.jobName,o.quantity,o.status,o.currency||"INR",total,paid,(total-paid),paymentStatus(o),o.deliveryDate,o.createdAt];
   });
   const csv = [headers, ...rows].map(r => r.map(v => `"${(v??"").toString().replace(/"/g,'""')}"`).join(",")).join("\n");
   const blob = new Blob([csv], { type:"text/csv" });
@@ -1488,5 +1687,6 @@ window.toggleSidebar = () => document.getElementById("sidebar").classList.toggle
 
 document.querySelectorAll(".modal").forEach(m => m.addEventListener("click", e => { if (e.target === m) m.classList.remove("show"); }));
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
