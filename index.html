@@ -1,5 +1,3 @@
--- index.html
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn-icons-png.flaticon.com">
 <link rel="preconnect" href="https://www.gstatic.com">
-< rel="dns-prefetch" href="https://upload.wikimedia.org">
+<link rel="dns-prefetch" href="https://upload.wikimedia.org">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
 <link rel="canonical" href="https://sharangoud44.github.io/new_eevee_website/">
@@ -23,10 +21,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ============================================= */
-/* ============ FIX #3: STAR SIZE =============== */
-/* Star now matches the "5" text size for a clean professional look */
-/* ============================================= */
 .rating {
   display: inline-flex;
   align-items: center;
@@ -41,7 +35,7 @@ body {
 }
 .star {
   color: #ff8c00 !important;
-  font-size: 16px !important;       /* SAME SIZE AS THE "5" */
+  font-size: 16px !important;
   font-weight: 700 !important;
   line-height: 1 !important;
   display: inline-block;
@@ -130,6 +124,7 @@ body {
   padding: 14px;
   transition: 0.35s ease;
   backdrop-filter: blur(10px);
+  cursor: pointer;
 }
 .type-box img {
   width: 100%;
@@ -202,16 +197,6 @@ body {
   width: 80px;
   height: 80px;
   object-fit: contain;
-  display: block;
-}
-.work-item:hover video {
-  transform: scale(1.08);
-  transition: 0.4s;
-}
-.work-item video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
 }
 .industries h2 {
@@ -474,9 +459,6 @@ body {
   line-height: 1.6;
 }
 
-/* ============================================= */
-/* ====== FIX #5: PREMIUM NAV LINK EFFECTS ===== */
-/* ============================================= */
 .nav-links {
   display: flex;
   gap: 8px;
@@ -1206,12 +1188,6 @@ html {
 .dot-orange {
   color: #ff8c00;
 }
-.work-item video {
-  transition: transform 0.4s ease, opacity 0.3s;
-}
-.work-item:hover video {
-  transform: scale(1.05);
-}
 .track-btn{
   margin-right: 35px;
 }
@@ -1224,6 +1200,10 @@ html {
   overflow: hidden;
   margin-left: -114px; 
 }
+
+/* ============================================= */
+/* === OUR WORKS — IMAGE GRID (no more videos) = */
+/* ============================================= */
 .our-works {
   padding: 60px 0;
   background: #0f0f0f;
@@ -1246,87 +1226,34 @@ html {
   overflow: hidden;
   background: #111;
 }
-
-/* ============================================= */
-/* ===== FIX #4: VIDEO LOADING PLACEHOLDER ===== */
-/* Shows nice loading state while videos load */
-/* ============================================= */
-.work-item::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-  z-index: 0;
-}
-.work-item .video-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-  transition: opacity 0.4s;
-}
-.work-item .video-placeholder::before {
-  content: "";
-  width: 40px;
-  height: 40px;
-  border: 3px solid rgba(255,140,0,0.2);
-  border-top-color: #ff8c00;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-.work-item.video-loaded .video-placeholder {
-  opacity: 0;
-  pointer-events: none;
-}
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-.work-item video {
-  position: relative;
-  z-index: 2;
-}
-
-.work-item.active::before{
-  border: 2px solid #ff6a00;
-  pointer-events: none;
-  animation: borderGlow 1.5s linear infinite;
-  background: transparent;
-  z-index: 5;
-}
-.work-item.active::after{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60px;
-  height: 60px;
-  border-top: 3px solid orange;
-  border-left: 3px solid orange;
-  z-index: 6;
-  animation: cornerMove 2s infinite;
-}
-@keyframes borderGlow{
-  0%{ box-shadow: 0 0 10px rgba(255,140,0,0.3); }
-  50%{ box-shadow: 0 0 25px rgba(255,140,0,0.8); }
-  100%{ box-shadow: 0 0 10px rgba(255,140,0,0.3); }
-}
-@keyframes cornerMove{
-  0%{ transform: translate(0,0); }
-  50%{ transform: translate(6px,6px); }
-  100%{ transform: translate(0,0); }
-}
 .work-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: 0.4s;
+  transition: transform 0.5s ease;
 }
 .work-item:hover img {
   transform: scale(1.08);
+}
+/* Subtle placeholder while you add HD images */
+.work-item.placeholder {
+  background:
+    linear-gradient(135deg, rgba(255,140,0,0.08), rgba(255,80,0,0.04)),
+    linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,140,0,0.35);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 10px;
+}
+.work-item.placeholder::after {
+  content: "HD IMAGE";
+  opacity: 0.5;
 }
 
 /* QUOTE FORM */
@@ -1508,22 +1435,19 @@ textarea:-webkit-autofill{
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* ============================================= */
-/* === FIX #1: PRINT GREAT MODAL — SCROLL FIX === */
-/* ============================================= */
+/* PRINT GREAT MODAL */
 #printGreatModal .modal-content{
   width: 92%;
   max-width: 880px;
   padding: 0;
   border-radius: 24px;
-  overflow: hidden;            /* outer keeps round corners */
+  overflow: hidden;
   background: linear-gradient(160deg, #141416 0%, #0a0a0c 100%);
   border: 1px solid rgba(255,140,0,0.15);
-  max-height: 92vh;            /* allow more screen space */
+  max-height: 92vh;
   display: flex;
   flex-direction: column;
 }
-/* Inner scrollable wrapper */
 #printGreatModal .pg-scrollable {
   overflow-y: auto;
   overflow-x: hidden;
@@ -1609,9 +1533,7 @@ textarea:-webkit-autofill{
   position: relative;
   z-index: 2;
 }
-.pg-body{
-  padding: 35px 40px 40px;
-}
+.pg-body{ padding: 35px 40px 40px; }
 .pg-features{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1632,28 +1554,10 @@ textarea:-webkit-autofill{
   border-color: rgba(255,140,0,0.3);
   transform: translateY(-4px);
 }
-.pg-feature .pg-emoji{
-  font-size: 26px;
-  display: block;
-  margin-bottom: 8px;
-}
-.pg-feature h4{
-  margin: 0 0 4px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-}
-.pg-feature p{
-  margin: 0;
-  font-size: 11px;
-  color: #888;
-  line-height: 1.4;
-}
-.pg-cta-row{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
+.pg-feature .pg-emoji{ font-size: 26px; display: block; margin-bottom: 8px; }
+.pg-feature h4{ margin: 0 0 4px; font-size: 14px; font-weight: 600; color: #fff; }
+.pg-feature p{ margin: 0; font-size: 11px; color: #888; line-height: 1.4; }
+.pg-cta-row{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .pg-btn{
   height: 56px;
   border-radius: 14px;
@@ -1669,24 +1573,10 @@ textarea:-webkit-autofill{
   border: none;
   font-family: 'Poppins', sans-serif;
 }
-.pg-btn-primary{
-  background: linear-gradient(135deg, #ff8c00, #ff5e00);
-  color: #fff;
-  box-shadow: 0 8px 25px rgba(255,140,0,0.4);
-}
-.pg-btn-primary:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(255,140,0,0.55);
-}
-.pg-btn-whatsapp{
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  color: #fff;
-  box-shadow: 0 8px 25px rgba(37,211,102,0.35);
-}
-.pg-btn-whatsapp:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(37,211,102,0.5);
-}
+.pg-btn-primary{ background: linear-gradient(135deg, #ff8c00, #ff5e00); color: #fff; box-shadow: 0 8px 25px rgba(255,140,0,0.4); }
+.pg-btn-primary:hover{ transform: translateY(-3px); box-shadow: 0 12px 32px rgba(255,140,0,0.55); }
+.pg-btn-whatsapp{ background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; box-shadow: 0 8px 25px rgba(37,211,102,0.35); }
+.pg-btn-whatsapp:hover{ transform: translateY(-3px); box-shadow: 0 12px 32px rgba(37,211,102,0.5); }
 .pg-stats{
   display: flex;
   justify-content: center;
@@ -1697,19 +1587,8 @@ textarea:-webkit-autofill{
   flex-wrap: wrap;
 }
 .pg-stat{ text-align: center; }
-.pg-stat strong{
-  display: block;
-  font-size: 22px;
-  font-weight: 700;
-  color: #ff8c00;
-  line-height: 1;
-}
-.pg-stat span{
-  font-size: 11px;
-  color: #888;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
+.pg-stat strong{ display: block; font-size: 22px; font-weight: 700; color: #ff8c00; line-height: 1; }
+.pg-stat span{ font-size: 11px; color: #888; letter-spacing: 0.5px; text-transform: uppercase; }
 
 /* HAMBURGER */
 .hamburger-btn{
@@ -1888,7 +1767,6 @@ textarea:-webkit-autofill{
   .quote-actions .submit-btn{ width: 100% !important; min-width: auto !important; height: 48px !important; font-size: 13px !important; }
   .form-trust-row{ gap: 12px !important; }
 
-  /* Print Great mobile — fully scrollable */
   #printGreatModal .modal-content{ padding: 0 !important; max-height: 90vh !important; }
   #printGreatModal .pg-scrollable{ max-height: 90vh !important; }
   .pg-hero{ padding: 35px 22px 25px !important; }
@@ -2004,7 +1882,11 @@ textarea:-webkit-autofill{
   </div>
 </div> 
 
-<!-- SERVICES -->
+<!-- ============================================= -->
+<!-- ===== FIX #2: SERVICES — RESTAURANT FIRST === -->
+<!-- Order: Boxes, Menu Cards, Tent Cards, Coasters, -->
+<!-- Covers, Paper Bags, Stickers, Bill Books, etc. -->
+<!-- ============================================= -->
 <section class="services" id="services">
   <h2>OUR SERVICES</h2>
   <p class="subtitle">Printing Solutions That Speak For Your Brand</p>
@@ -2012,33 +1894,38 @@ textarea:-webkit-autofill{
   <div class="scroll-btn right" onclick="scrollRightFunc(this)"><span class="arrow"></span></div>
   <div class="container">
     <div class="grid">
+      <!-- ===== RESTAURANT / FOOD ESSENTIALS FIRST ===== -->
+      <div class="card" onclick="openModal('boxesModal')"><img src="boxes_main.png" loading="lazy" alt=""><p>Boxes</p></div>
+      <div class="card"><img src="MENU_CARD_MAIN.PNG" loading="lazy" alt=""><p>Menu Cards</p></div>
+      <div class="card"><img src="tent_cards.png" loading="lazy" alt=""><p>Tent Cards</p></div>
+      <div class="card"><img src="coasters_main.png" loading="lazy" alt=""><p>Table Coasters</p></div>
+      <div class="card"><img src="covers_main.png" loading="lazy" alt=""><p>Covers</p></div>
+      <div class="card"><img src="paper_bag_main_page.png" loading="lazy" alt=""><p>Paper Bags</p></div>
+      <div class="card"><img src="stickers_main_page.png" loading="lazy" alt=""><p>Shape Sticker & Labels</p></div>
+      <div class="card"><img src="SWEETBOX_MAIN.PNG" loading="lazy" alt=""><p>Custom Sweet Box</p></div>
+      <div class="card"><img src="BILLBOOKS_MAIN.PNG" loading="lazy" alt=""><p>Bill Books</p></div>
+      <div class="card"><img src="COUPONS_MAIN.PNG" loading="lazy" alt=""><p>Coupons</p></div>
+      <div class="card"><img src="valet_parking.png" loading="lazy" alt=""><p>Valet Parking Coupon</p></div>
+      <div class="card"><img src="danglers_main.png" loading="lazy" alt=""><p>Danglers</p></div>
+
+      <!-- ===== CORPORATE / OFFICE ===== -->
       <div class="card" onclick="openModal('cardModal')"><img src="Business_card_image_Main_Page.png" loading="lazy" alt=""><p>Business Cards</p></div>
       <div class="card" onclick="openModal('letterModal')"><img src="letter_head_main_page.png" loading="lazy" alt=""><p>Letter Heads</p></div>
       <div class="card"><img src="envelops_main_page.png" loading="lazy" alt=""><p>Envelopes</p></div>
       <div class="card"><img src="idcards_main_page.png" loading="lazy" alt=""><p>ID Cards & Lanyards</p></div>
-      <div class="card"><img src="paper_bag_main_page.png" loading="lazy" alt=""><p>Paper Bags</p></div>
       <div class="card"><img src="diaries_main_page.png" loading="lazy" alt=""><p>Diaries</p></div>
       <div class="card"><img src="calendar_main_page.png" loading="lazy" alt=""><p>Calendars</p></div>
       <div class="card"><img src="button_badges_main_page.png" loading="lazy" alt=""><p>Button Badges</p></div>
-      <div class="card"><img src="stickers_main_page.png" loading="lazy" alt=""><p>Shape Sticker & Labels</p></div>
-      <div class="card"><img src="tent_cards.png" loading="lazy" alt=""><p>Tent Cards</p></div>
-      <div class="card"><img src="Tshirt_main_page.png" loading="lazy" alt=""><p>T-Shirt Printing</p></div>
-      <div class="card"><img src="valet_parking.png" loading="lazy" alt=""><p>Valet Parking Coupon</p></div>
-      <div class="card"><img src="covers_main.png" loading="lazy" alt=""><p>Covers</p></div>
       <div class="card"><img src="mugs_botlle_main.png" loading="lazy" alt=""><p>Corporate Mugs & Bottles</p></div>
       <div class="card"><img src="corportae_gift_set.png" loading="lazy" alt=""><p>Corporate Gift Set</p></div>
+
+      <!-- ===== EVENTS / OTHERS ===== -->
       <div class="card"><img src="invitation_cards_main.png" loading="lazy" alt=""><p>Invitation Cards</p></div>
-      <div class="card" onclick="openModal('boxesModal')"><img src="boxes_main.png" loading="lazy" alt=""><p>Boxes</p></div>
-      <div class="card"><img src="coasters_main.png" loading="lazy" alt=""><p>Table Coasters</p></div>
-      <div class="card"><img src="SWEETBOX_MAIN.PNG" loading="lazy" alt=""><p>Custom Sweet Box</p></div>
+      <div class="card"><img src="Tshirt_main_page.png" loading="lazy" alt=""><p>T-Shirt Printing</p></div>
       <div class="card"><img src="BOOKS_MAIN.PNG" loading="lazy" alt=""><p>Books Printing</p></div>
       <div class="card"><img src="BANNER_SIGNNAGE.PNG" loading="lazy" alt=""><p>Banner & Signages</p></div>
       <div class="card"><img src="FOAM_BOARD_MAIN.PNG" loading="lazy" alt=""><p>Foam Boards</p></div>
       <div class="card"><img src="FLUTE_BOARD_MAIN.PNG" loading="lazy" alt=""><p>Flute Boards</p></div>
-      <div class="card"><img src="BILLBOOKS_MAIN.PNG" loading="lazy" alt=""><p>Bill Books</p></div>
-      <div class="card"><img src="danglers_main.png" loading="lazy" alt=""><p>Danglers</p></div>
-      <div class="card"><img src="COUPONS_MAIN.PNG" loading="lazy" alt=""><p>Coupons</p></div>
-      <div class="card"><img src="MENU_CARD_MAIN.PNG" loading="lazy" alt=""><p>Menu Cards</p></div>
     </div>
   </div>
 </section>
@@ -2117,26 +2004,56 @@ textarea:-webkit-autofill{
 </section>
 
 <!-- ============================================= -->
-<!-- ====== FIX #4: OUR WORKS WITH PLACEHOLDER ==== -->
+<!-- ===== FIX #1: OUR WORKS — IMAGES ONLY ======= -->
+<!-- Videos commented out. Replace placeholders -->
+<!-- with HD images: work1.jpg, work2.jpg ... etc. -->
 <!-- ============================================= -->
 <section class="our-works" id="ourworks">
   <h2>Our Works</h2>
   <div class="works-grid">
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="foam board sample.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="VID_20260224_041201_225.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="cloth.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="rudrabookgit.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="storieswhitegit.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="visitingcardsgit1.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="visitingcards1git.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="storiesgreengit.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="windowboxgit.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="pencilboxgit.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="momosgit.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="medicalboxgit.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="magnetbadgesgit.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="tentcard1git.mp4"></video></div>
-    <div class="work-item"><div class="video-placeholder"></div><video muted playsinline preload="none" data-src="tentcardgit.mp4"></video></div>
+    <!-- 
+      ✅ TO ADD YOUR HD IMAGES:
+      Just replace each <div class="work-item placeholder"></div>
+      with: <div class="work-item"><img src="work1.jpg" alt="" loading="lazy"></div>
+      
+      Recommended image size: 600x400px, JPG/WebP, optimized for web
+    -->
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+    <div class="work-item placeholder"></div>
+
+    <!-- ============================================= -->
+    <!-- ===== ORIGINAL VIDEO CODE (COMMENTED OUT) === -->
+    <!-- ============================================= -->
+    <!--
+    <div class="work-item"><video muted playsinline preload="none" data-src="foam board sample.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="VID_20260224_041201_225.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="cloth.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="rudrabookgit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="storieswhitegit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="visitingcardsgit1.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="visitingcards1git.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="storiesgreengit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="windowboxgit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="pencilboxgit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="momosgit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="medicalboxgit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="magnetbadgesgit.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="tentcard1git.mp4"></video></div>
+    <div class="work-item"><video muted playsinline preload="none" data-src="tentcardgit.mp4"></video></div>
+    -->
   </div>
 </section>
 
@@ -2191,7 +2108,12 @@ textarea:-webkit-autofill{
   </a>
 </div>
 
-<!-- ALL OTHER MODALS (cardModal, letterModal, etc.) -->
+<!-- ============================================= -->
+<!-- ====== ALL MODALS (with FIX #3 nested popups) === -->
+<!-- Inside industry modals, items now have onclick -->
+<!-- that closes parent modal and opens the linked one -->
+<!-- ============================================= -->
+
 <div id="cardModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('cardModal')">&times;</span>
@@ -2237,17 +2159,20 @@ textarea:-webkit-autofill{
   </div>
 </div>
 
+<!-- ===== FIX #3: RESTAURANT MODAL — nested clicks now work ===== -->
 <div id="restaurantModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('restaurantModal')">&times;</span>
     <h2>Restaurants & Cafes</h2>
+    <p class="subtitle">Click any item to view available types</p>
     <div class="types-grid">
       <div class="type-box"><img src="MENU_CARD_MAIN.PNG" loading="lazy" alt=""><p>Menu Cards</p></div>
       <div class="type-box"><img src="tent_cards.png" loading="lazy" alt=""><p>Table Tent Cards</p></div>
       <div class="type-box"><img src="coasters_main.png" loading="lazy" alt=""><p>Table Coasters</p></div>
       <div class="type-box"><img src="covers_main.png" loading="lazy" alt=""><p>Covers</p></div>
       <div class="type-box"><img src="stickers_main_page.png" loading="lazy" alt=""><p>Stickers</p></div>
-      <div class="type-box"><img src="boxes_main.png" loading="lazy" alt=""><p>Parcel Boxes</p></div>
+      <!-- THIS NOW OPENS BOXES MODAL -->
+      <div class="type-box" onclick="switchModal('restaurantModal','boxesModal')"><img src="boxes_main.png" loading="lazy" alt=""><p>Parcel Boxes</p></div>
       <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy" alt=""><p>Paper Bags</p></div>
     </div>
   </div>
@@ -2257,8 +2182,10 @@ textarea:-webkit-autofill{
   <div class="modal-content">
     <span class="close" onclick="closeModal('foodModal')">&times;</span>
     <h2>Food Brands</h2>
+    <p class="subtitle">Click any item to view available types</p>
     <div class="types-grid">
-      <div class="type-box"><p>Food Boxes</p></div>
+      <!-- THIS NOW OPENS BOXES MODAL -->
+      <div class="type-box" onclick="switchModal('foodModal','boxesModal')"><img src="boxes_main.png" loading="lazy" alt=""><p>Food Boxes</p></div>
       <div class="type-box"><p>Wrappers</p></div>
       <div class="type-box"><img src="stickers_main_page.png" loading="lazy" alt=""><p>Stickers</p></div>
       <div class="type-box"><p>Labels</p></div>
@@ -2271,11 +2198,13 @@ textarea:-webkit-autofill{
   <div class="modal-content">
     <span class="close" onclick="closeModal('hospitalModal')">&times;</span>
     <h2>Hospitals</h2>
+    <p class="subtitle">Click any item to view available types</p>
     <div class="types-grid">
       <div class="type-box"><p>Patient Files</p></div>
       <div class="type-box"><p>X-Ray Covers</p></div>
       <div class="type-box"><p>Prescription Pads</p></div>
-      <div class="type-box"><p>Letter Heads</p></div>
+      <!-- THIS NOW OPENS LETTERHEAD MODAL -->
+      <div class="type-box" onclick="switchModal('hospitalModal','letterModal')"><img src="letter_head_main_page.png" loading="lazy" alt=""><p>Letter Heads</p></div>
       <div class="type-box"><p>Envelopes</p></div>
       <div class="type-box"><p>Reports / Forms</p></div>
     </div>
@@ -2286,6 +2215,17 @@ textarea:-webkit-autofill{
   <div class="modal-content">
     <span class="close" onclick="closeModal('corporateModal')">&times;</span>
     <h2>Corporate Offices</h2>
+    <p class="subtitle">Click any item to view available types</p>
+    <div class="types-grid">
+      <!-- BUSINESS CARDS — OPENS cardModal -->
+      <div class="type-box" onclick="switchModal('corporateModal','cardModal')"><img src="Business_card_image_Main_Page.png" loading="lazy" alt=""><p>Visiting Cards</p></div>
+      <!-- LETTERHEADS — OPENS letterModal -->
+      <div class="type-box" onclick="switchModal('corporateModal','letterModal')"><img src="letter_head_main_page.png" loading="lazy" alt=""><p>Letter Heads</p></div>
+      <div class="type-box"><img src="idcards_main_page.png" loading="lazy" alt=""><p>ID Cards & Lanyards</p></div>
+      <div class="type-box"><img src="envelops_main_page.png" loading="lazy" alt=""><p>Envelopes</p></div>
+      <div class="type-box"><img src="corportae_gift_set.png" loading="lazy" alt=""><p>Branding Gifts</p></div>
+      <div class="type-box"><img src="diaries_main_page.png" loading="lazy" alt=""><p>Diaries</p></div>
+    </div>
   </div>
 </div>
 
@@ -2293,10 +2233,12 @@ textarea:-webkit-autofill{
   <div class="modal-content">
     <span class="close" onclick="closeModal('eventModal')">&times;</span>
     <h2>Events & Weddings</h2>
+    <p class="subtitle">Click any item to view available types</p>
     <div class="types-grid">
       <div class="type-box"><p>Invitation Cards</p></div>
       <div class="type-box"><p>Wedding Cards</p></div>
-      <div class="type-box"><p>Gift Boxes</p></div>
+      <!-- GIFT BOXES — OPENS BOXES MODAL -->
+      <div class="type-box" onclick="switchModal('eventModal','boxesModal')"><img src="boxes_main.png" loading="lazy" alt=""><p>Gift Boxes</p></div>
       <div class="type-box"><p>Welcome Boards</p></div>
       <div class="type-box"><p>Return Gift Tags</p></div>
       <div class="type-box"><p>Banners</p></div>
@@ -2414,9 +2356,7 @@ textarea:-webkit-autofill{
   </div>
 </div>
 
-<!-- ============================================= -->
-<!-- ===== FIX #1: PRINT GREAT MODAL — SCROLL ==== -->
-<!-- ============================================= -->
+<!-- PRINT GREAT MODAL -->
 <div id="printGreatModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closePrintGreat()">&times;</span>
@@ -2497,6 +2437,25 @@ function scrollRightFunc(btn) {
 }
 function openModal(id) { document.getElementById(id).style.display = "block"; }
 function closeModal(id) { document.getElementById(id).style.display = "none"; }
+
+/* ============================================= */
+/* === FIX #3: SWITCH MODAL (nested popups) === */
+/* Closes current modal & opens a new one with */
+/* a small delay so animation feels smooth. */
+/* ============================================= */
+function switchModal(fromId, toId){
+  const from = document.getElementById(fromId);
+  const to = document.getElementById(toId);
+  if(from) from.style.display = "none";
+  // small delay for smooth UX
+  setTimeout(() => {
+    if(to) to.style.display = "block";
+    // scroll the new modal to top
+    const inner = to.querySelector('.modal-content');
+    if(inner) inner.scrollTop = 0;
+  }, 120);
+}
+
 function openLogin() { document.getElementById("loginModal").style.display = "block"; }
 function closeLogin() { document.getElementById("loginModal").style.display = "none"; }
 function openQuoteModal() { document.getElementById("quoteModal").style.display = "block"; }
@@ -2510,88 +2469,6 @@ window.onclick = function(event) {
     if (event.target == modal) modal.style.display = "none";
   });
 }
-</script>
-
-<!-- ============================================= -->
-<!-- ====== FIX #4: ROBUST WORKS VIDEO LOADER ==== -->
-<!-- ============================================= -->
-<script>
-(function(){
-  const items = document.querySelectorAll(".work-item");
-  const videos = document.querySelectorAll(".work-item video");
-  let currentIndex = 0;
-  let videosLoaded = false;
-
-  function loadVideoSources(){
-    if(videosLoaded) return;
-    videosLoaded = true;
-    videos.forEach((video, idx) => {
-      const src = video.getAttribute('data-src');
-      if(src && !video.querySelector('source')){
-        const source = document.createElement('source');
-        source.src = src;
-        source.type = 'video/mp4';
-        video.appendChild(source);
-        video.load();
-        // When this video's data is ready, mark as loaded (hides spinner)
-        video.addEventListener('loadeddata', () => {
-          items[idx].classList.add('video-loaded');
-        }, { once: true });
-        // If video errors or takes too long, still hide spinner after 6s
-        setTimeout(() => {
-          items[idx].classList.add('video-loaded');
-        }, 6000);
-      }
-    });
-    if(videos.length > 0) playVideo(0);
-  }
-  function stopAllVideos(){
-    videos.forEach(video => { try { video.pause(); video.currentTime = 0; } catch(e){} });
-    items.forEach(item => item.classList.remove("active"));
-  }
-  function playVideo(index){
-    stopAllVideos();
-    const currentVideo = videos[index];
-    const currentItem = items[index];
-    if(!currentVideo) return;
-    currentItem.classList.add("active");
-    const playPromise = currentVideo.play();
-    if(playPromise !== undefined){ playPromise.catch(()=>{}); }
-    currentVideo.onended = () => {
-      currentIndex = (currentIndex + 1) % videos.length;
-      playVideo(currentIndex);
-    };
-  }
-
-  // Load videos as soon as page is ready (don't wait for scroll)
-  function startLoading(){
-    loadVideoSources();
-  }
-  if(document.readyState === 'complete' || document.readyState === 'interactive'){
-    setTimeout(startLoading, 100);
-  } else {
-    document.addEventListener('DOMContentLoaded', startLoading);
-  }
-  // Also use IntersectionObserver as backup (for slower connections)
-  if('IntersectionObserver' in window){
-    const worksSection = document.querySelector('.our-works');
-    if(worksSection){
-      const observer = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting){ loadVideoSources(); observer.disconnect(); }
-        });
-      }, { rootMargin: '300px' });
-      observer.observe(worksSection);
-    }
-  }
-  items.forEach((item, index) => {
-    item.addEventListener("click", () => {
-      if(!videosLoaded) loadVideoSources();
-      currentIndex = index;
-      playVideo(index);
-    });
-  });
-})();
 </script>
 
 <!-- FIREBASE LOGIN -->
@@ -2639,20 +2516,15 @@ window.resetPassword = function () {
 };
 </script>
 
-<!-- ============================================= -->
-<!-- ===== FIX #2: EMAIL + WHATSAPP FULL DETAILS = -->
-<!-- Now WhatsApp gets the SAME full details as email -->
-<!-- ============================================= -->
+<!-- EMAIL + WHATSAPP -->
 <script>
 const quoteForm = document.getElementById("quoteForm");
 const submitBtn = document.getElementById("qf-submit");
-// Your business WhatsApp number (without + or spaces)
 const BUSINESS_WHATSAPP = "919014891062";
 
 quoteForm.addEventListener("submit", async function(e){
   e.preventDefault();
 
-  // Collect all field values
   const name       = document.getElementById("qf-name").value.trim();
   const phone      = document.getElementById("qf-phone").value.trim();
   const email      = document.getElementById("qf-email").value.trim();
@@ -2661,7 +2533,6 @@ quoteForm.addEventListener("submit", async function(e){
   const dimensions = document.getElementById("qf-dimensions").value.trim();
   const message    = document.getElementById("qf-message").value.trim();
 
-  // ===== Build full WhatsApp message (SAME details as email) =====
   const waText =
 `*🆕 NEW QUOTE REQUEST — Eevee Printers*
 ━━━━━━━━━━━━━━━━━━━━
@@ -2680,16 +2551,11 @@ _Sent via eeveeprinters.com_`;
 
   const waUrl = `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(waText)}`;
 
-  // Disable button during submission
   submitBtn.disabled = true;
   submitBtn.textContent = "⏳ Sending...";
 
-  // ===== Open WhatsApp FIRST (before async email) =====
-  // This is critical: browsers block window.open() if called after async/await
-  // because it loses the "user gesture" context.
   const waWindow = window.open(waUrl, "_blank");
 
-  // ===== Send to email (Formspree) in background =====
   let emailOk = false;
   try{
     const formData = new FormData(quoteForm);
@@ -2703,14 +2569,12 @@ _Sent via eeveeprinters.com_`;
     emailOk = false;
   }
 
-  // ===== Show confirmation =====
   if(emailOk){
     alert("✅ Success!\n\n• Email sent to Eevee Printers\n• WhatsApp opened with your full details\n\nPlease press SEND in WhatsApp to deliver your message. We'll reply within 30 minutes!");
   } else {
     alert("⚠️ Email could not be sent right now.\n\nDon't worry — WhatsApp has been opened with your full details. Just press SEND in WhatsApp and we'll respond within 30 minutes!");
   }
 
-  // If WhatsApp window was blocked by popup blocker, give user a fallback
   if(!waWindow || waWindow.closed){
     if(confirm("WhatsApp didn't open automatically (popup may be blocked).\n\nClick OK to open WhatsApp now.")){
       window.location.href = waUrl;
@@ -2718,7 +2582,6 @@ _Sent via eeveeprinters.com_`;
     }
   }
 
-  // Reset
   submitBtn.disabled = false;
   submitBtn.textContent = "📧 Submit & Send to WhatsApp";
   quoteForm.reset();
