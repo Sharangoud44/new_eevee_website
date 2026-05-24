@@ -147,6 +147,104 @@ body {
 .type-box:hover img {
   transform: scale(1.06);
 }
+
+/* ============================================= */
+/* === NEW: BACK BUTTON FOR NESTED MODALS ====== */
+/* ============================================= */
+.back-btn {
+  position: absolute;
+  left: 22px;
+  top: 18px;
+  width: auto;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 20px;
+  background: rgba(255,140,0,0.12);
+  border: 1px solid rgba(255,140,0,0.3);
+  color: #ff8c00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10;
+  font-family: 'Poppins', sans-serif;
+}
+.back-btn:hover {
+  background: rgba(255,140,0,0.25);
+  transform: translateX(-3px);
+}
+.back-btn::before {
+  content: "←";
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* ============================================= */
+/* === NEW: BOX-STYLE CARD (with description) == */
+/* ============================================= */
+.box-style-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 16px;
+  transition: 0.35s ease;
+  cursor: pointer;
+  text-align: center;
+}
+.box-style-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255,140,0,0.5);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4), 0 0 20px rgba(255,140,0,0.15);
+  background: linear-gradient(145deg, rgba(255,140,0,0.08), rgba(255,255,255,0.02));
+}
+.box-style-card .box-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 10px;
+  background: linear-gradient(135deg, rgba(255,140,0,0.15), rgba(255,94,0,0.08));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  border: 1px solid rgba(255,140,0,0.25);
+}
+.box-style-card h4 {
+  margin: 8px 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+.box-style-card p {
+  margin: 0;
+  font-size: 11px;
+  color: #aaa;
+  line-height: 1.4;
+}
+.box-styles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin: 25px 0 20px;
+}
+.modal-category-tag {
+  display: inline-block;
+  padding: 5px 14px;
+  background: rgba(255,140,0,0.12);
+  border: 1px solid rgba(255,140,0,0.3);
+  color: #ff8c00;
+  font-size: 11px;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
 .close {
   position: absolute;
   right: 22px;
@@ -445,6 +543,8 @@ body {
   cursor: pointer;
   border-radius: 25px;
   box-shadow: 0 0 15px orange;
+  text-decoration: none;
+  display: inline-block;
 }
 .btn:hover {
   background: #ff8800;
@@ -1201,9 +1301,6 @@ html {
   margin-left: -114px; 
 }
 
-/* ============================================= */
-/* === OUR WORKS — IMAGE GRID (no more videos) = */
-/* ============================================= */
 .our-works {
   padding: 60px 0;
   background: #0f0f0f;
@@ -1236,7 +1333,6 @@ html {
 .work-item:hover img {
   transform: scale(1.08);
 }
-/* Subtle placeholder while you add HD images */
 .work-item.placeholder {
   background:
     linear-gradient(135deg, rgba(255,140,0,0.08), rgba(255,80,0,0.04)),
@@ -1757,6 +1853,12 @@ textarea:-webkit-autofill{
   .type-box img{ height: 80px !important; }
   .type-box p{ font-size: 12px !important; margin-top: 8px !important; }
   .close{ width: 32px !important; height: 32px !important; right: 12px !important; top: 12px !important; font-size: 20px !important; }
+  .back-btn{ height: 32px !important; padding: 0 12px !important; font-size: 11px !important; left: 12px !important; top: 12px !important; }
+  .box-styles-grid{ grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+  .box-style-card{ padding: 12px !important; }
+  .box-style-card .box-icon{ width: 48px !important; height: 48px !important; font-size: 22px !important; }
+  .box-style-card h4{ font-size: 12px !important; }
+  .box-style-card p{ font-size: 10px !important; }
 
   #quoteModal .modal-content{ padding: 24px 20px !important; }
   #quoteModal h2{ font-size: 22px !important; }
@@ -1882,11 +1984,7 @@ textarea:-webkit-autofill{
   </div>
 </div> 
 
-<!-- ============================================= -->
-<!-- ===== FIX #2: SERVICES — RESTAURANT FIRST === -->
-<!-- Order: Boxes, Menu Cards, Tent Cards, Coasters, -->
-<!-- Covers, Paper Bags, Stickers, Bill Books, etc. -->
-<!-- ============================================= -->
+<!-- SERVICES -->
 <section class="services" id="services">
   <h2>OUR SERVICES</h2>
   <p class="subtitle">Printing Solutions That Speak For Your Brand</p>
@@ -1894,7 +1992,6 @@ textarea:-webkit-autofill{
   <div class="scroll-btn right" onclick="scrollRightFunc(this)"><span class="arrow"></span></div>
   <div class="container">
     <div class="grid">
-      <!-- ===== RESTAURANT / FOOD ESSENTIALS FIRST ===== -->
       <div class="card" onclick="openModal('boxesModal')"><img src="boxes_main.png" loading="lazy" alt=""><p>Boxes</p></div>
       <div class="card"><img src="MENU_CARD_MAIN.PNG" loading="lazy" alt=""><p>Menu Cards</p></div>
       <div class="card"><img src="tent_cards.png" loading="lazy" alt=""><p>Tent Cards</p></div>
@@ -1907,8 +2004,6 @@ textarea:-webkit-autofill{
       <div class="card"><img src="COUPONS_MAIN.PNG" loading="lazy" alt=""><p>Coupons</p></div>
       <div class="card"><img src="valet_parking.png" loading="lazy" alt=""><p>Valet Parking Coupon</p></div>
       <div class="card"><img src="danglers_main.png" loading="lazy" alt=""><p>Danglers</p></div>
-
-      <!-- ===== CORPORATE / OFFICE ===== -->
       <div class="card" onclick="openModal('cardModal')"><img src="Business_card_image_Main_Page.png" loading="lazy" alt=""><p>Business Cards</p></div>
       <div class="card" onclick="openModal('letterModal')"><img src="letter_head_main_page.png" loading="lazy" alt=""><p>Letter Heads</p></div>
       <div class="card"><img src="envelops_main_page.png" loading="lazy" alt=""><p>Envelopes</p></div>
@@ -1918,8 +2013,6 @@ textarea:-webkit-autofill{
       <div class="card"><img src="button_badges_main_page.png" loading="lazy" alt=""><p>Button Badges</p></div>
       <div class="card"><img src="mugs_botlle_main.png" loading="lazy" alt=""><p>Corporate Mugs & Bottles</p></div>
       <div class="card"><img src="corportae_gift_set.png" loading="lazy" alt=""><p>Corporate Gift Set</p></div>
-
-      <!-- ===== EVENTS / OTHERS ===== -->
       <div class="card"><img src="invitation_cards_main.png" loading="lazy" alt=""><p>Invitation Cards</p></div>
       <div class="card"><img src="Tshirt_main_page.png" loading="lazy" alt=""><p>T-Shirt Printing</p></div>
       <div class="card"><img src="BOOKS_MAIN.PNG" loading="lazy" alt=""><p>Books Printing</p></div>
@@ -2003,21 +2096,10 @@ textarea:-webkit-autofill{
   </div>
 </section>
 
-<!-- ============================================= -->
-<!-- ===== FIX #1: OUR WORKS — IMAGES ONLY ======= -->
-<!-- Videos commented out. Replace placeholders -->
-<!-- with HD images: work1.jpg, work2.jpg ... etc. -->
-<!-- ============================================= -->
+<!-- OUR WORKS -->
 <section class="our-works" id="ourworks">
   <h2>Our Works</h2>
   <div class="works-grid">
-    <!-- 
-      ✅ TO ADD YOUR HD IMAGES:
-      Just replace each <div class="work-item placeholder"></div>
-      with: <div class="work-item"><img src="work1.jpg" alt="" loading="lazy"></div>
-      
-      Recommended image size: 600x400px, JPG/WebP, optimized for web
-    -->
     <div class="work-item placeholder"></div>
     <div class="work-item placeholder"></div>
     <div class="work-item placeholder"></div>
@@ -2033,27 +2115,6 @@ textarea:-webkit-autofill{
     <div class="work-item placeholder"></div>
     <div class="work-item placeholder"></div>
     <div class="work-item placeholder"></div>
-
-    <!-- ============================================= -->
-    <!-- ===== ORIGINAL VIDEO CODE (COMMENTED OUT) === -->
-    <!-- ============================================= -->
-    <!--
-    <div class="work-item"><video muted playsinline preload="none" data-src="foam board sample.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="VID_20260224_041201_225.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="cloth.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="rudrabookgit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="storieswhitegit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="visitingcardsgit1.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="visitingcards1git.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="storiesgreengit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="windowboxgit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="pencilboxgit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="momosgit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="medicalboxgit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="magnetbadgesgit.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="tentcard1git.mp4"></video></div>
-    <div class="work-item"><video muted playsinline preload="none" data-src="tentcardgit.mp4"></video></div>
-    -->
   </div>
 </section>
 
@@ -2109,9 +2170,7 @@ textarea:-webkit-autofill{
 </div>
 
 <!-- ============================================= -->
-<!-- ====== ALL MODALS (with FIX #3 nested popups) === -->
-<!-- Inside industry modals, items now have onclick -->
-<!-- that closes parent modal and opens the linked one -->
+<!-- ============== ALL MODALS =================== -->
 <!-- ============================================= -->
 
 <div id="cardModal" class="modal">
@@ -2145,21 +2204,250 @@ textarea:-webkit-autofill{
   </div>
 </div>
 
+<!-- ===== MAIN BOXES MODAL (Level 1) ===== -->
 <div id="boxesModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('boxesModal')">&times;</span>
     <h2>Box Types</h2>
     <p class="subtitle">Choose the perfect box style for your product</p>
     <div class="types-grid">
-      <div class="type-box"><img src="duplex_board.png" loading="lazy" alt=""><p>Duplex Boxes</p></div>
-      <div class="type-box"><img src="rigid_boxes.png" loading="lazy" alt=""><p>Rigid Boxes</p></div>
-      <div class="type-box"><img src="corrugated_boxes.png" loading="lazy" alt=""><p>Corrugated Boxes</p></div>
+      <div class="type-box" onclick="switchModal('boxesModal','duplexBoxesModal')"><img src="duplex_board.png" loading="lazy" alt=""><p>Duplex Boxes</p></div>
+      <div class="type-box" onclick="switchModal('boxesModal','rigidBoxesModal')"><img src="rigid_boxes.png" loading="lazy" alt=""><p>Rigid Boxes</p></div>
+      <div class="type-box" onclick="switchModal('boxesModal','corrugatedBoxesModal')"><img src="corrugated_boxes.png" loading="lazy" alt=""><p>Corrugated Boxes</p></div>
     </div>
     <a href="https://wa.me/919014891062" target="_blank" rel="noopener" class="btn">Request a Quote</a>
   </div>
 </div>
 
-<!-- ===== FIX #3: RESTAURANT MODAL — nested clicks now work ===== -->
+<!-- ============================================= -->
+<!-- === NEW LEVEL-2 MODAL: DUPLEX BOX STYLES ==== -->
+<!-- ============================================= -->
+<div id="duplexBoxesModal" class="modal">
+  <div class="modal-content">
+    <button class="back-btn" onclick="switchModal('duplexBoxesModal','boxesModal')">Back</button>
+    <span class="close" onclick="closeModal('duplexBoxesModal')">&times;</span>
+    <span class="modal-category-tag">DUPLEX BOARD</span>
+    <h2>Duplex Box Styles</h2>
+    <p class="subtitle">Lightweight, printable boxes — ideal for retail, cosmetics, food & gifts</p>
+    <div class="box-styles-grid">
+      <div class="box-style-card">
+        <div class="box-icon">📦</div>
+        <h4>Tuck Top Boxes</h4>
+        <p>Top tuck-in flap closure, easy to assemble</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">📥</div>
+        <h4>Tuck Top & Bottom</h4>
+        <p>Both top & bottom tuck flaps, double security</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🔒</div>
+        <h4>Auto-Lock / Crash Bottom</h4>
+        <p>Self-locking bottom — pops open instantly</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🎁</div>
+        <h4>Reverse Tuck End</h4>
+        <p>Flaps tuck in opposite directions for strength</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">📐</div>
+        <h4>Straight Tuck End</h4>
+        <p>Top & bottom flaps tuck the same direction</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🪟</div>
+        <h4>Window Patch Boxes</h4>
+        <p>Transparent PVC window for product display</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">👜</div>
+        <h4>Handle Boxes</h4>
+        <p>Built-in carry handle — perfect for gifting</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🍕</div>
+        <h4>Pillow Boxes</h4>
+        <p>Curved pillow shape for sweets & accessories</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🔺</div>
+        <h4>Gable Boxes</h4>
+        <p>Triangular handle top — food & party favors</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🍔</div>
+        <h4>Burger / Food Boxes</h4>
+        <p>Hinged-lid food boxes for takeaway</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🌸</div>
+        <h4>Sleeve Boxes</h4>
+        <p>Two-piece slide-out sleeve design</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">💊</div>
+        <h4>Cartridge / Pharma Boxes</h4>
+        <p>Standard medicine / cosmetic packaging</p>
+      </div>
+    </div>
+    <a href="https://wa.me/919014891062?text=Hi%20Eevee%20Printers%2C%20I%20want%20a%20quote%20for%20Duplex%20Boxes." target="_blank" rel="noopener" class="btn">Request a Quote</a>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- === NEW LEVEL-2 MODAL: RIGID BOX STYLES ===== -->
+<!-- ============================================= -->
+<div id="rigidBoxesModal" class="modal">
+  <div class="modal-content">
+    <button class="back-btn" onclick="switchModal('rigidBoxesModal','boxesModal')">Back</button>
+    <span class="close" onclick="closeModal('rigidBoxesModal')">&times;</span>
+    <span class="modal-category-tag">RIGID / LUXURY</span>
+    <h2>Rigid Box Styles</h2>
+    <p class="subtitle">Premium hard-board boxes — luxury feel for jewelry, watches, electronics & gifting</p>
+    <div class="box-styles-grid">
+      <div class="box-style-card">
+        <div class="box-icon">🎩</div>
+        <h4>Top & Bottom (Lid Off)</h4>
+        <p>Classic 2-piece rigid box — removable lid</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">📖</div>
+        <h4>Book-Style / Magnetic</h4>
+        <p>Hinged lid with hidden magnetic closure</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🎁</div>
+        <h4>Shoulder Neck Boxes</h4>
+        <p>Inner neck collar — premium gift feel</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">💍</div>
+        <h4>Jewelry Boxes</h4>
+        <p>Velvet/foam inserts for rings, necklaces</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">⌚</div>
+        <h4>Watch Boxes</h4>
+        <p>Cushioned pillow inside for watches</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">📱</div>
+        <h4>Drawer / Slide Boxes</h4>
+        <p>Pull-out drawer style — sleek & modern</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🌹</div>
+        <h4>Flower Boxes</h4>
+        <p>Round/square hat boxes for bouquets</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🍫</div>
+        <h4>Chocolate Boxes</h4>
+        <p>Compartmented rigid boxes with dividers</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🎀</div>
+        <h4>Hamper / Combo Boxes</h4>
+        <p>Large multi-product luxury hamper boxes</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">📸</div>
+        <h4>Photo Frame Boxes</h4>
+        <p>Custom rigid boxes for albums & frames</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">👞</div>
+        <h4>Shoe Boxes (Rigid)</h4>
+        <p>Premium rigid version of shoe packaging</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🥃</div>
+        <h4>Wine / Liquor Boxes</h4>
+        <p>Single/double bottle premium gift boxes</p>
+      </div>
+    </div>
+    <a href="https://wa.me/919014891062?text=Hi%20Eevee%20Printers%2C%20I%20want%20a%20quote%20for%20Rigid%20Boxes." target="_blank" rel="noopener" class="btn">Request a Quote</a>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- === NEW LEVEL-2 MODAL: CORRUGATED STYLES ==== -->
+<!-- ============================================= -->
+<div id="corrugatedBoxesModal" class="modal">
+  <div class="modal-content">
+    <button class="back-btn" onclick="switchModal('corrugatedBoxesModal','boxesModal')">Back</button>
+    <span class="close" onclick="closeModal('corrugatedBoxesModal')">&times;</span>
+    <span class="modal-category-tag">CORRUGATED / SHIPPING</span>
+    <h2>Corrugated Box Styles</h2>
+    <p class="subtitle">Heavy-duty boxes for shipping, e-commerce, storage & industrial use</p>
+    <div class="box-styles-grid">
+      <div class="box-style-card">
+        <div class="box-icon">📦</div>
+        <h4>RSC (Regular Slotted)</h4>
+        <p>Most common shipping box — top & bottom flaps</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">📮</div>
+        <h4>Mailer Boxes</h4>
+        <p>Self-locking e-commerce / subscription boxes</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🍕</div>
+        <h4>Pizza Boxes</h4>
+        <p>Flat fold-up corrugated food boxes</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🔻</div>
+        <h4>Die-Cut Boxes</h4>
+        <p>Custom shape boxes cut to your design</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">📚</div>
+        <h4>Telescopic / 2-Piece</h4>
+        <p>Separate lid & base — extra strong</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🗂️</div>
+        <h4>Five Panel Folder</h4>
+        <p>Wraps fully around the product</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🛒</div>
+        <h4>E-commerce Shipping</h4>
+        <p>Branded boxes for Amazon, Flipkart sellers</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🧊</div>
+        <h4>Heavy Duty 5-Ply / 7-Ply</h4>
+        <p>Extra thick walls — fragile / heavy goods</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🍱</div>
+        <h4>Tray / Open Top</h4>
+        <p>Open-top trays for displays & produce</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🧃</div>
+        <h4>Partition Boxes</h4>
+        <p>Internal dividers for bottles & glassware</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🔄</div>
+        <h4>FOL (Full Overlap)</h4>
+        <p>Flaps fully overlap for max strength</p>
+      </div>
+      <div class="box-style-card">
+        <div class="box-icon">🚚</div>
+        <h4>Heavy Cargo / Moving</h4>
+        <p>Large moving & storage boxes</p>
+      </div>
+    </div>
+    <a href="https://wa.me/919014891062?text=Hi%20Eevee%20Printers%2C%20I%20want%20a%20quote%20for%20Corrugated%20Boxes." target="_blank" rel="noopener" class="btn">Request a Quote</a>
+  </div>
+</div>
+
+<!-- ===== INDUSTRY MODALS ===== -->
 <div id="restaurantModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('restaurantModal')">&times;</span>
@@ -2171,7 +2459,6 @@ textarea:-webkit-autofill{
       <div class="type-box"><img src="coasters_main.png" loading="lazy" alt=""><p>Table Coasters</p></div>
       <div class="type-box"><img src="covers_main.png" loading="lazy" alt=""><p>Covers</p></div>
       <div class="type-box"><img src="stickers_main_page.png" loading="lazy" alt=""><p>Stickers</p></div>
-      <!-- THIS NOW OPENS BOXES MODAL -->
       <div class="type-box" onclick="switchModal('restaurantModal','boxesModal')"><img src="boxes_main.png" loading="lazy" alt=""><p>Parcel Boxes</p></div>
       <div class="type-box"><img src="paper_bag_main_page.png" loading="lazy" alt=""><p>Paper Bags</p></div>
     </div>
@@ -2184,7 +2471,6 @@ textarea:-webkit-autofill{
     <h2>Food Brands</h2>
     <p class="subtitle">Click any item to view available types</p>
     <div class="types-grid">
-      <!-- THIS NOW OPENS BOXES MODAL -->
       <div class="type-box" onclick="switchModal('foodModal','boxesModal')"><img src="boxes_main.png" loading="lazy" alt=""><p>Food Boxes</p></div>
       <div class="type-box"><p>Wrappers</p></div>
       <div class="type-box"><img src="stickers_main_page.png" loading="lazy" alt=""><p>Stickers</p></div>
@@ -2203,7 +2489,6 @@ textarea:-webkit-autofill{
       <div class="type-box"><p>Patient Files</p></div>
       <div class="type-box"><p>X-Ray Covers</p></div>
       <div class="type-box"><p>Prescription Pads</p></div>
-      <!-- THIS NOW OPENS LETTERHEAD MODAL -->
       <div class="type-box" onclick="switchModal('hospitalModal','letterModal')"><img src="letter_head_main_page.png" loading="lazy" alt=""><p>Letter Heads</p></div>
       <div class="type-box"><p>Envelopes</p></div>
       <div class="type-box"><p>Reports / Forms</p></div>
@@ -2217,9 +2502,7 @@ textarea:-webkit-autofill{
     <h2>Corporate Offices</h2>
     <p class="subtitle">Click any item to view available types</p>
     <div class="types-grid">
-      <!-- BUSINESS CARDS — OPENS cardModal -->
       <div class="type-box" onclick="switchModal('corporateModal','cardModal')"><img src="Business_card_image_Main_Page.png" loading="lazy" alt=""><p>Visiting Cards</p></div>
-      <!-- LETTERHEADS — OPENS letterModal -->
       <div class="type-box" onclick="switchModal('corporateModal','letterModal')"><img src="letter_head_main_page.png" loading="lazy" alt=""><p>Letter Heads</p></div>
       <div class="type-box"><img src="idcards_main_page.png" loading="lazy" alt=""><p>ID Cards & Lanyards</p></div>
       <div class="type-box"><img src="envelops_main_page.png" loading="lazy" alt=""><p>Envelopes</p></div>
@@ -2237,7 +2520,6 @@ textarea:-webkit-autofill{
     <div class="types-grid">
       <div class="type-box"><p>Invitation Cards</p></div>
       <div class="type-box"><p>Wedding Cards</p></div>
-      <!-- GIFT BOXES — OPENS BOXES MODAL -->
       <div class="type-box" onclick="switchModal('eventModal','boxesModal')"><img src="boxes_main.png" loading="lazy" alt=""><p>Gift Boxes</p></div>
       <div class="type-box"><p>Welcome Boards</p></div>
       <div class="type-box"><p>Return Gift Tags</p></div>
@@ -2262,13 +2544,11 @@ textarea:-webkit-autofill{
 <div id="quoteModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeQuoteModal()">&times;</span>
-
     <div class="quote-header">
       <span class="quote-badge">⚡ INSTANT QUOTE</span>
       <h2>Get Your Custom Quote</h2>
       <p class="quote-subtitle">Tell us your requirements — we'll respond within 30 minutes</p>
     </div>
-
     <form id="quoteForm" class="premium-quote-form">
       <div class="field-group">
         <div>
@@ -2286,7 +2566,6 @@ textarea:-webkit-autofill{
           </div>
         </div>
       </div>
-
       <div class="field-group">
         <div>
           <label>Email Address<span class="required">*</span></label>
@@ -2306,7 +2585,9 @@ textarea:-webkit-autofill{
               <option>Envelopes</option>
               <option>ID Cards & Lanyards</option>
               <option>Paper Bags</option>
-              <option>Boxes / Packaging</option>
+              <option>Duplex Boxes</option>
+              <option>Rigid Boxes</option>
+              <option>Corrugated Boxes</option>
               <option>Brochures & Flyers</option>
               <option>T-Shirt Printing</option>
               <option>Stickers & Labels</option>
@@ -2318,7 +2599,6 @@ textarea:-webkit-autofill{
           </div>
         </div>
       </div>
-
       <div class="field-group">
         <div>
           <label>Quantity<span class="required">*</span></label>
@@ -2335,18 +2615,15 @@ textarea:-webkit-autofill{
           </div>
         </div>
       </div>
-
       <div class="field-full">
         <label>Project Details<span class="required">*</span></label>
         <textarea name="message" id="qf-message" placeholder="Describe your design, finish (matte / glossy / spot UV), paper type, deadline, and any other specifics..." required></textarea>
       </div>
-
       <div class="quote-actions">
         <button type="submit" class="submit-btn" id="qf-submit">
           📧 Submit & Send to WhatsApp
         </button>
       </div>
-
       <div class="form-trust-row">
         <div class="trust-mini">Reply in 30 min</div>
         <div class="trust-mini">Free design support</div>
@@ -2370,7 +2647,6 @@ textarea:-webkit-autofill{
         <h2>Let's Print Something Great!</h2>
         <p>From concept to delivery — premium quality printing tailored for your brand. Choose how you'd like to start your project.</p>
       </div>
-
       <div class="pg-body">
         <div class="pg-features">
           <div class="pg-feature">
@@ -2389,7 +2665,6 @@ textarea:-webkit-autofill{
             <p>USA, UK, Canada & 50+ more</p>
           </div>
         </div>
-
         <div class="pg-cta-row">
           <button class="pg-btn pg-btn-primary" onclick="closePrintGreat();openQuoteModal();">
             📝 Get Free Quote
@@ -2398,7 +2673,6 @@ textarea:-webkit-autofill{
             💬 Chat on WhatsApp
           </a>
         </div>
-
         <div class="pg-stats">
           <div class="pg-stat"><strong>500+</strong><span>Happy Clients</span></div>
           <div class="pg-stat"><strong>5+</strong><span>Years Experience</span></div>
@@ -2438,19 +2712,12 @@ function scrollRightFunc(btn) {
 function openModal(id) { document.getElementById(id).style.display = "block"; }
 function closeModal(id) { document.getElementById(id).style.display = "none"; }
 
-/* ============================================= */
-/* === FIX #3: SWITCH MODAL (nested popups) === */
-/* Closes current modal & opens a new one with */
-/* a small delay so animation feels smooth. */
-/* ============================================= */
 function switchModal(fromId, toId){
   const from = document.getElementById(fromId);
   const to = document.getElementById(toId);
   if(from) from.style.display = "none";
-  // small delay for smooth UX
   setTimeout(() => {
     if(to) to.style.display = "block";
-    // scroll the new modal to top
     const inner = to.querySelector('.modal-content');
     if(inner) inner.scrollTop = 0;
   }, 120);
